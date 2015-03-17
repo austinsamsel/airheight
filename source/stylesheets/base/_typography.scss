@@ -40,6 +40,27 @@ a {
   }
 }
 
+blockquote{
+  border-left:$off-white 4px solid;
+  padding: 10px 0px 10px 20px;
+  margin-left: 4em;
+  font-size:120%;
+  line-height:1.2em;
+}
+
+strong{
+  font-family:'archivo black';
+  font-weight:normal;
+  letter-spacing: -0.1em;
+  font-size:95%;
+}
+.highlight{
+  color:$hot-purp;
+}
+.highlight2{
+  color:$rich-violet;
+}
+
 hr {
   border-bottom: $base-border;
   border-left: none;

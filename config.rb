@@ -71,7 +71,18 @@ page "/feed.xml", layout: false
 # Reload the browser automatically whenever files change
  activate :livereload
 
- sprockets.append_path File.join root, 'bower_components'
+
+  compass_config do |config|
+    # Require any additional compass plugins here.
+    config.add_import_path "bower_components/fullpage.js/"
+
+    config.output_style = :compact
+  end
+
+  after_configuration do
+    @bower_config = JSON.parse(IO.read("#{root}/.bowerrc"))
+    sprockets.append_path File.join "#{root}", @bower_config["directory"]
+  end
 
 # Methods defined in the helpers block are available in templates
 # helpers do

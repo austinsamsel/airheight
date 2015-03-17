@@ -3,7 +3,10 @@
 @import "bourbon";
 @import "base/base";   /* Bitters needs to be imported before Neat */
 @import "neat";
-@import "partials/layout";
 
+@import "partials/layout";
 @import "partials/nav";
 @import "partials/footer";
+@import "partials/home";
+
+@import "fullpage.js/jquery.fullPage.scss";

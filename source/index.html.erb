@@ -2,26 +2,35 @@
 pageable: true
 per_page: 10
 ---
-<% if paginate && num_pages > 1 %>
-  <p>Page <%= page_number %> of <%= num_pages %></p>
 
-  <% if prev_page %>
-    <p><%= link_to 'Previous page', prev_page %></p>
-  <% end %>
-<% end %>
-
-<ul>
-  <% page_articles.each_with_index do |article, i| %>
-    <li>
-      <h3><%= link_to article.title, article %></h3>
-      <h5><%= article.date.strftime('%b %e') %></h5>
-      <p><%= article.body %></p>
-    </li>
-  <% end %>
-</ul>
-
-<% if paginate %>
-  <% if next_page %>
-    <p><%= link_to 'Next page', next_page %></p>
-  <% end %>
-<% end %>
+  <div id="fullpage">
+    <div class="section dawn-mist">
+      <section class="wrapper">
+        <div class="logo-wrap"><%= image_tag 'hightops_logo.svg' %></div>
+        <div class="hero">We build digital realities.</div>
+        <div class="hero-sub">
+          high tops is a web development consultancy<br>
+          <strong>based in NYC</strong>
+        </div>
+      </section>
+    </div>
+    <div class="section midnight">
+      <section class="wrapper night">
+        <h1 class="light">What our clients say</h1>
+        <div class="testimonial">
+          <blockquote>
+            Austin worked quickly and efficiently and <strong class="highlight">got my website done perfectly on the first go</strong>, which is super rare. Austin is also great about solving any problems and responding right away. I'd recommend him as an A+.
+          </blockquote>
+        </div>
+      </section>
+    </div>
+    <div class="section">Some section</div>
+    <div class="section">Some section</div>
+  </div>
+  
+  <%= javascript_include_tag  "all" %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $('#fullpage').fullpage();
+    });i
+  </script>

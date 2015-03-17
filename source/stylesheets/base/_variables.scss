@@ -1,9 +1,9 @@
 // Typography
-$base-font-family: 'Oxygen', $helvetica;
-$heading-font-family: $base-font-family;
+$base-font-family: 'Archivo Narrow', $helvetica;
+$heading-font-family: 'Enriqueta', serif;
 
 // Font Sizes
-$base-font-size: 1em;
+$base-font-size: 1.2em;
 
 // Line height
 $base-line-height: 1.5;
@@ -16,14 +16,33 @@ $small-spacing: $base-spacing / 2;
 $base-z-index: 0;
 
 // Colors
-$blue: #477dca;
+$blue:#27AAE1;
+
+$sky-top: #27AAE1;
+$crystal-blue: #1C7BC1;
+$off-white:#E7E4EA;
+
+$brand-gray: #42545E;
+$faded-brand: #9A99A7;
+
+$rich-violet: #8136D8;
+$hot-purp: #BF7EF2; 
+
+$bg-dawn-mist:#F7F9FC;
+$bg-midnight:#282B36;
+$bg-egg-blue:#ECF7FC;
+$bg-spring-vine:#463B4F;
+$bg-sirius-night: #282B36;
+
+
+
 $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #ddd;
 
 // Font Colors
-$base-background-color: #fff;
-$base-font-color: $dark-gray;
+$base-background-color: $bg-dawn-mist;
+$base-font-color: $brand-gray;
 $action-color: $blue;
 
 // Border
