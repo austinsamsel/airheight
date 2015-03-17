@@ -71,6 +71,8 @@ page "/feed.xml", layout: false
 # Reload the browser automatically whenever files change
  activate :livereload
 
+ sprockets.append_path File.join root, 'bower_components'
+
 # Methods defined in the helpers block are available in templates
 # helpers do
 #   def some_helper
