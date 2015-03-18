@@ -23,7 +23,10 @@
 }
 .logo-wrap{
   @include span-columns(6 of 12);
-  @include pad(0px 0px 40px default);
+  @include pad(0px 0px 8% default);
+  position:absolute;
+  top:30px;
+  left:20px;
 }
 .hero, .hero-sub{
   @include span-columns(12);
@@ -33,7 +36,7 @@
   font-size:2.25em;
   line-height:1em;
   color: $sky-top;
-  margin-bottom:30px;
+  margin-bottom:8%;
   text-align:center;
     @include media(769px) {
       font-size:4em;
@@ -42,14 +45,77 @@
 }
 .hero-sub{
   text-align:center;
+  font-size:80%;
 }
 
 h1 {
-  font-size:2em;
+  font-size:1.4em;
   @include media($medium-screen){
-    font-size: 3.7em;
+    font-size: 3.1em;
   }
 }
+
+.section-title{
+  text-transform: uppercase;
+  color: $faded-brand;
+  @extend .archivo-black;
+  font-size:63%;
+  border-bottom: $faded-brand 3px solid;
+}
+.section-title + h1{
+  margin-top:20px;
+}
+
+/* testimonial */
 .testimonial {
   @include span-columns(10 of 12);
+}
+.testimonial-pic{
+  border-radius:100%;
+  width:100px;
+  margin-left:80px;
+  display:inline;
+}
+.testimonial-p{
+  display:inline;
+  vertical-align: 40px;
+  margin-left:10px;
+}
+
+/* info slide */
+
+.main{
+  @include span-columns(8);
+}
+.sidebar{
+  @include span-columns(4);
+}
+.sidebar-block{
+  background:#fff;
+  border-radius:5px;
+  padding:20px 40px;
+  font-size:80%;
+}
+
+
+/* fancy numbers */
+
+.small{font-size: 80%}
+.extra-sm{font-size: 80%}
+
+.numbers{
+  display:inline;
+}
+li.num{
+  @include span-columns(4);
+  position:relative;
+  padding-left:80px;
+  @extend .small;
+}
+.fancy{
+  color:$hot-purp;
+  font-size:3em;
+  margin-left:-60px;
+  position:absolute;
+  font-family:'enriqueta'
 }

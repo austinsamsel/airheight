@@ -21,9 +21,66 @@ per_page: 10
           <blockquote>
             Austin worked quickly and efficiently and <strong class="highlight">got my website done perfectly on the first go</strong>, which is super rare. Austin is also great about solving any problems and responding right away. I'd recommend him as an A+.
           </blockquote>
+          <div class="testimonial">
+            <%= image_tag 'marlo.jpg', class: 'testimonial-pic' %> <p class='testimonial-p'>Marlo Kronberg, <em>Creators Connect</em></p>
+          </div>
         </div>
       </section>
     </div>
+    <div class="section egg-blue">
+      <section class="wrapper">
+        <div class="main">
+          <span class="section-title">Services</span>
+          <h1>Our Impact</h1>
+          <p class="main">We guide our clients to <strong class="highlight2">the best choices in tech</strong>. First we understand their business and the challenges they face. Then we create unique solutions with measurable results that achieve your business goals.</p>
+        </div>
+        <div class="sidebar">
+          <div class="sidebar-block">
+            <h3>I'm interested in</h3>
+            <li>a new website</li>
+            <li>web or mobile apps</li>
+            <li>database applications</li>
+            <li>action-oriented consulting</li>
+            <li>increasing revenue</li>
+            <li>saving money</li>
+            <li>acquire users</li>
+            <li>retain users</li>
+            <li>increase sign ups</li>
+            <li>generate leads</li>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="section spring-vine">
+      <section class="wrapper night">
+        <span class="section-title">Process</span>
+        <h1 class="light">Methodology</h1>
+        <div class="main">
+          <p>To help you make the best choices in digital, we start by understanding your business. Then we talk about your project. Our goal-oriented approach is all about you, whether its getting you sales or sign ups or gaining users for your product.</p>
+
+          <h2>The steps:</h2>
+        </div>
+        <div class="fancy-nums">
+          <li class="num"><span class="fancy">1)</span>
+
+            <strong>Do the right amount of</strong>:<br> 
+              research |||||||||||||||||||||||
+              <span class="extra-sm">quora, analytics, interviews, surveys etc...</span>
+              planning ||||||||||||||||||||||
+              <span class="extra-sm">user flows, info architecture, sketches etc...</span>
+              prototyping ||||||||||||||||||||||
+              <span class="extra-sm">wireframes, user interface, visual design...</span></li>
+          <li class="num"><span class="fancy">2)</span><strong>Launch early</strong>:<br>
+           cut it down to the minimum necessary features and launch early with a beautiful product. At this stage we want to understand exactly the problem we are hired to solve, why we’re solving it and how to do it best.</li>
+          <li class="num"><span class="fancy">3)</span>
+          <strong>Listen</strong>.<br>
+          Get data. Talk to users. Talk to clients. Gather feedback. And evolve. Iterate to increase success. Optimize. Test. Iterate.</li>
+        </div>
+      </section>
+    </div>
+    <div class="section">Some section</div>
+    <div class="section">Some section</div>
     <div class="section">Some section</div>
     <div class="section">Some section</div>
   </div>
@@ -31,6 +88,8 @@ per_page: 10
   <%= javascript_include_tag  "all" %>
   <script type="text/javascript">
     $(document).ready(function() {
-        $('#fullpage').fullpage();
-    });i
+        $('#fullpage').fullpage({
+          responsive: 1400,
+        });
+    });
   </script>

@@ -44,16 +44,21 @@ blockquote{
   border-left:$off-white 4px solid;
   padding: 10px 0px 10px 20px;
   margin-left: 4em;
-  font-size:120%;
-  line-height:1.2em;
+  font-size:110%;
+  line-height:1.4em;
 }
 
-strong{
+.archivo-black {
   font-family:'archivo black';
   font-weight:normal;
   letter-spacing: -0.1em;
-  font-size:95%;
+  font-size:95%
 }
+
+strong{
+  @extend .archivo-black;
+}
+
 .highlight{
   color:$hot-purp;
 }
