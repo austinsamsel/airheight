@@ -87,21 +87,27 @@ h1 {
 .main{
   @include span-columns(8);
 }
+.main-narrow{
+  @include span-columns(6);
+}
 .sidebar{
   @include span-columns(4);
+  @include omega();
 }
 .sidebar-block{
   background:#fff;
   border-radius:5px;
   padding:20px 40px;
   font-size:80%;
+  @include shift(1);
 }
 
 
 /* fancy numbers */
 
 .small{font-size: 80%}
-.extra-sm{font-size: 80%}
+.extra-sm{font-size: 70%}
+.tiny{font-size: 65%}
 
 .numbers{
   display:inline;
@@ -118,4 +124,94 @@ li.num{
   margin-left:-60px;
   position:absolute;
   font-family:'enriqueta'
+}
+
+/* work */
+.bg-cc{
+  background-image: image-url("bg-creators-connect.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.scr-desktop:before{
+  // background-image: url("/images/browser.svg");
+  // content: '';
+  // background-repeat: no-repeat;
+  // height: 100px;
+  // width: 800px;
+  // position: absolute;
+}
+.browser{
+  margin-bottom:-10px;
+}
+img.main{
+  width:100%;
+}
+.scr-desktop{
+  border-radius: 0px 0px 3px 3px;
+}
+img.scr-desktop {
+  width: 99.8%;
+}
+.scr-mobile{
+  z-index: 2;
+  border-radius: 3px;
+  position: absolute;
+  top: 22px;
+  left: -10px;
+  padding: 14px;
+}
+.scr-mobile-wrap img{
+  width: 72%;
+}
+.scr-mobile-wrap{
+  position:relative;
+}
+.scr-mobile-img{
+  position:absolute;
+  top:-10px;
+  left:-10px;
+  z-index:1;
+  width:100%;
+}
+.side-pad{
+  margin: 10% 0 40px 0;
+}
+.pad-left{
+  padding-left:40px;
+}
+
+.fp-slidesNav ul li a.active span{
+  @extend .pulse;
+  background:$rich-violet;
+}
+.fp-controlArrow.fp-prev {
+  display: none;
+}
+.fp-controlArrow.fp-next {
+  @extend .pulse;
+  border-color: transparent transparent transparent $rich-violet !important;
+}
+
+/* about */
+.staff-pic{
+  border-radius: 100%;
+  display: inline;
+  width: 200px !important;
+  text-align: left;
+  float: left;
+  margin: 0px 20px 0 20px;
+}
+
+
+/* forms */
+input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], textarea, select[multiple=multiple], textarea {
+  background:#fff;
+  font-size:100%;
+}
+
+
+.omega{
+  @include omega();
 }

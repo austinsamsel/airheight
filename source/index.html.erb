@@ -7,6 +7,9 @@ per_page: 10
     <div class="section dawn-mist">
       <section class="wrapper">
         <div class="logo-wrap"><%= image_tag 'hightops_logo.svg' %></div>
+        <br>
+        <br>
+        <br>
         <div class="hero">We build digital realities.</div>
         <div class="hero-sub">
           high tops is a web development consultancy<br>
@@ -34,6 +37,8 @@ per_page: 10
           <h1>Our Impact</h1>
           <p class="main">We guide our clients to <strong class="highlight2">the best choices in tech</strong>. First we understand their business and the challenges they face. Then we create unique solutions with measurable results that achieve your business goals.</p>
         </div>
+        <br>
+        <br>
         <div class="sidebar">
           <div class="sidebar-block">
             <h3>I'm interested in</h3>
@@ -56,40 +61,134 @@ per_page: 10
       <section class="wrapper night">
         <span class="section-title">Process</span>
         <h1 class="light">Methodology</h1>
-        <div class="main">
+        <div class="main omega">
           <p>To help you make the best choices in digital, we start by understanding your business. Then we talk about your project. Our goal-oriented approach is all about you, whether its getting you sales or sign ups or gaining users for your product.</p>
 
-          <h2>The steps:</h2>
         </div>
-        <div class="fancy-nums">
+        <!--<div class="fancy-nums">
           <li class="num"><span class="fancy">1)</span>
 
-            <strong>Do the right amount of</strong>:<br> 
-              research |||||||||||||||||||||||
-              <span class="extra-sm">quora, analytics, interviews, surveys etc...</span>
-              planning ||||||||||||||||||||||
-              <span class="extra-sm">user flows, info architecture, sketches etc...</span>
-              prototyping ||||||||||||||||||||||
+            <strong class="highlight3">Do the right amount of</strong> :<br> 
+              research |||||||||||||||||||||||<br>
+              <span class="extra-sm">quora, analytics, interviews, surveys etc...</span><br>
+              planning ||||||||||||||||||||||<br>
+              <span class="extra-sm">user flows, info architecture, sketches etc...</span><br>
+              prototyping ||||||||||||||||||||||<br>
               <span class="extra-sm">wireframes, user interface, visual design...</span></li>
-          <li class="num"><span class="fancy">2)</span><strong>Launch early</strong>:<br>
+          <li class="num"><span class="fancy">2)</span><strong class="highlight3">Launch early</strong> :<br>
            cut it down to the minimum necessary features and launch early with a beautiful product. At this stage we want to understand exactly the problem we are hired to solve, why we’re solving it and how to do it best.</li>
           <li class="num"><span class="fancy">3)</span>
-          <strong>Listen</strong>.<br>
+          <strong class="highlight3">Listen</strong> :<br>
           Get data. Talk to users. Talk to clients. Gather feedback. And evolve. Iterate to increase success. Optimize. Test. Iterate.</li>
+        </div>-->
+      </section>
+    </div>
+    <div class="section egg-blue">
+      <div class="slide">
+        <section class="wrapper">
+          <span class="section-title">Work</span>
+          <h1 class="light">We keep busy</h1>
+          <div class="main-narrow">
+            <p>We’ve done some cool work lately. As you <a href="">browse our work</a> you might wonder: </p>
+            <blockquote class="quote-purp"><em>Is this what my project will look like?</em></blockquote>
+            <p>The answer is: not really. We strive for a natural expression of every project, determined by its unique goals, context, and identity.</p>
+            <p><strong>Your project will be different</strong>.</p>
+          </div>
+          <div class="sidebar">
+          </div>
+        </section>
+      </div>
+      <div class="slide bg-cc">
+        <section class="wrapper visible">
+        <div class="main">
+          <!-- <h2 class="light">Creators Connect</h2> -->
+          <p class="extra-sm"><strong class="highlight3">Creators Connect</strong> needed to showcase the members of their community. We developed a custom WordPress theme from a designer's mock up. We programmed it to have a modern feel and modern functionality. It works across all devices and screens and makes use of some slick animations.</p>
+          
+          <%= image_tag 'browser.svg', class: "browser" %>
+            <%= image_tag 'screen-cc.jpg', alt:'creators connect screen capture', class: 'scr-desktop' %>
+        </div>
+        <div class="sidebar pad-left">
+        <p class="extra-sm side-pad">Exhibit B) The responsive design.</p>
+          <div class="scr-mobile-wrap">
+            <%= image_tag 'screen-cc-mobile.jpg', alt:'creators connect screen capture', class: 'scr-mobile' %>
+            <div class="scr-mobile-img"><%= image_tag 'mobile.svg' %></div>
+           </div>
+        </div>
+        </section>
+      <div class="slide"> Slide 3 </div>
+      <div class="slide"> Slide 4 </div>
+    </div>
+    <div class="section midnight">
+      <section class="wrapper night">
+        <span class="section-title">About</span>
+        <h1 class="light">Listen first</h1>
+        <div class="main">
+          <p><strong class="highlight">Listen first, then build</strong>. In order to create beautiful, useful digital products we first listen to our clients. We also listen to their audience. Then we think about solutions and how we can measure the results. As we work together, there’s lots of communication and feedback and our clients get to see their projects develop. This is how we get it right.</p>
+
+          <%= image_tag 'austin.jpg', class: 'staff-pic' %>
+          <h3>Austin Samsel <span class="tiny">: &nbsp;Developer</span></h3>
+          <p class="extra-sm">
+            Austin approaches every project with a design-first, user-centric approach. He started in web development as a designer before learning to program with Javascript, Ruby, and PHP. In 2010, Austin became a certified yoga teacher. What does that have to do with Web Development? Being able to empathize and connect with people is the driving force behind creating great work.
+          </p>
         </div>
       </section>
     </div>
-    <div class="section">Some section</div>
-    <div class="section">Some section</div>
-    <div class="section">Some section</div>
-    <div class="section">Some section</div>
+    <div class="section dawn-mist">
+      <section class="wrapper">
+        <div class="main">
+          <span class="section-title">Contact</span>
+          <h1>Ask us anything</h1>
+          <p class="main">It’s never too soon to get in touch about a project. Let us know what you're working on. No worries, we’re super nice.</p>
+          <form class="main" action="//formspree.io/you@email.com">
+              <input type="hidden" name="_next" value="//site.io/thanks.html" />
+              <input type="hidden" name="_subject" value="New contact on High Tops." />
+              <input type="text" name="_gotcha" style="display:none" />
+              <input type="email" name="_replyto" placeholder="Your email" />
+              <textarea placeholder="Your message"></textarea>
+              <input type="submit" value="Send" />
+          </form>
+        </div>
+        <br>
+        <br>
+        <div class="sidebar">
+          <div class="sidebar-block">
+            <h3>Don't like forms?</h3>
+            <p>e-mail us:<br>
+              goodtimes@hightops.com</p>
+              
+            <p>call us:<br>
+              +1 718 218 3108</p>
+
+            <p>write a letter:<br>
+              252 S 4th St,<br>
+              Suite 2B<br>
+              Brooklyn, NY 11211</p>
+            
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
   
   <%= javascript_include_tag  "all" %>
   <script type="text/javascript">
     $(document).ready(function() {
         $('#fullpage').fullpage({
-          responsive: 1400,
+          responsive: 2400,
+          controlArrows: true,
+          slidesNavigation: true,
+          showActiveTooltips: true,
+          fitToSection: false,
+          animateAnchor: true,
+          slidesNavPosition: 'bottom',
+          keyboardScrolling: true,
         });
+    });
+
+    $.ajax({
+        url: "//formspree.io/you@email.com", 
+        method: "POST",
+        data: {message: "hello!"},
+        dataType: "json"
     });
   </script>

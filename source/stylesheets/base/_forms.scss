@@ -12,6 +12,9 @@ select {
   font-family: $base-font-family;
   font-size: $base-font-size;
 }
+input, select, textarea{
+  background: #fff;
+}
 
 label {
   font-weight: 600;
