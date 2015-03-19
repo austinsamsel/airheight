@@ -310,6 +310,9 @@ form{
     margin-bottom:0;
   }
 }
+textarea{
+  min-height:5em;
+}
 
 .omega{
   @include omega();
