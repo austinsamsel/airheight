@@ -19,7 +19,7 @@
 
 .wrapper{
   @include outer-container;
-  @include pad(0px 40px default);
+  @include pad(1em 40px default);
 }
  
 // section {
@@ -84,13 +84,13 @@ h1 {
   }
 }
 h2 {
-  font-size:1.4em;
+  font-size:1.6em;
   @include media($medium-screen){
     font-size: 2.1em;
   }
 }
 h3 {
-  font-size:1.2em;
+  font-size:1.4em;
   @include media($medium-screen){
     font-size: 1.9em;
   }
@@ -109,6 +109,10 @@ h3 {
 
 /* testimonial */
 .testimonial {
+  @include span-columns(12);
+  @include media($medium-screen){
+    @include span-columns(9);
+  }
 }
 .testimonial-pic{
   border-radius:100%;
@@ -154,19 +158,37 @@ h3 {
   
 }
 .main-narrow{
-  @include span-columns(6);
+    @include span-columns(12);
+  
+  @include media($medium-screen){
+    @include span-columns(6);
+  }
 }
 .sidebar{
   @include span-columns(12);
   @include media($medium-screen){
     @include span-columns(4);
+    @include shift(-1);
   }
 }
 .sidebar-block{
   background:#fff;
   border-radius:5px;
-  padding:20px 40px;
+  padding:40px;
   font-size:80%;
+}
+
+.sidebar-night{
+  @include span-columns(12);
+  background:rgba(0,0,0,0.2);
+  padding:40px;
+  border-radius:5px;
+  @include media($medium-screen){
+    @include span-columns(4);
+
+    @include omega();
+    @include shift(1);
+  }
 }
 
 
@@ -258,6 +280,7 @@ img.scr-desktop {
 }
 .fp-controlArrow.fp-next {
   @extend .pulse;
+  display:none;
   border-color: transparent transparent transparent $rich-violet !important;
 }
 
@@ -270,8 +293,8 @@ img.scr-desktop {
   margin: 0px 20px 0 0px;
   width: 100px !important;
   @include media($medium-screen) {
-    margin: 0px 20px 0 20px;
-    width: 200px !important;
+    margin: 0px 20px 0 0px;
+    width: 120px !important;
   }
 }
 
@@ -281,7 +304,12 @@ input[type="color"], input[type="date"], input[type="datetime"], input[type="dat
   background:#fff;
   font-size:100%;
 }
-
+form{
+  margin-bottom:1em;
+  @include media($medium-screen){
+    margin-bottom:0;
+  }
+}
 
 .omega{
   @include omega();
