@@ -70,7 +70,7 @@
 }
 
 body {
-  font-size: $base-font-size / 1.25;
+  font-size: $base-font-size / 1.2;
   
   @include media($medium-screen){
     font-size: $base-font-size;
