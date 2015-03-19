@@ -19,7 +19,7 @@ per_page: 10
     </div>
     <div class="section midnight">
       <section class="wrapper night">
-        <h1 class="light">What our clients say</h1>
+        <!-- <h1 class="light">What our clients say</h1> -->
         <div class="testimonial">
           <div class="testimonial-block">
             Austin worked quickly and efficiently and <strong class="highlight">got my website done perfectly on the first go</strong>, which is super rare. Austin is also great about solving any problems and responding right away. I'd recommend him as an A+.
@@ -35,24 +35,20 @@ per_page: 10
         <div class="main">
           <span class="section-title">Services</span>
           <h1>Our Impact</h1>
-          <p class="main">We guide our clients to <strong class="highlight2">the best choices in tech</strong>. First we understand their business and the challenges they face. Then we create unique solutions with measurable results that achieve your business goals.</p>
+          <p class="">We guide our clients to <strong class="highlight2">the best choices in tech</strong>. First we understand their business and the challenges they face. Then we create unique solutions with measurable results that achieve your business goals.</p>
         </div>
-        <br>
-        <br>
         <div class="sidebar">
-          <div class="sidebar-block">
-            <h3>I'm interested in</h3>
-            <li>a new website</li>
-            <li>web or mobile apps</li>
-            <li>database applications</li>
-            <li>action-oriented consulting</li>
-            <li>increasing revenue</li>
-            <li>saving money</li>
-            <li>acquire users</li>
-            <li>retain users</li>
-            <li>increase sign ups</li>
-            <li>generate leads</li>
-          </div>
+          <h3>We help with…</h3>
+          <li>new websites</li>
+          <li>web or mobile apps</li>
+          <li>database applications</li>
+          <li>action-oriented consulting</li>
+          <li>increasing revenue</li>
+          <li>saving money</li>
+          <li>increasing users</li>
+          <li>retaining users</li>
+          <li>increasing sign ups</li>
+          <li>generating leads</li>
         </div>
       </section>
     </div>
@@ -84,37 +80,64 @@ per_page: 10
       </section>
     </div>
     <div class="section egg-blue">
-      <div class="slide">
+      <!-- <div class="slide">
         <section class="wrapper">
+          <div class="main">
           <span class="section-title">Work</span>
           <h1 class="light">We keep busy</h1>
-          <div class="main-narrow">
+          
             <p>We’ve done some cool work lately. As you <a href="">browse our work</a> you might wonder: <em>Is this what my project will look like?</em></p>
             <p>The answer is: not really. We strive for a natural expression of every project, determined by its unique goals, context, and identity.</p>
             <p><strong>Your project will be different</strong>.</p>
           </div>
           <div class="sidebar">
+            <p class="sidebar-testimonial">
+              <em>Austin is incredibly professional, efficient, responds promptly to questions and concerns, and is able to put technical information into layman’s terms that are easily understood and digested by people like me!</em><br>
+            </p>
+            <p class="sidebar-testimonial-footer"><%= image_tag 'erin.jpg', class: 'profile-pic' %>Erin Anderson, <em>Brooklyn Fire Proof</em></p>
           </div>
         </section>
-      </div>
+      </div> -->
       <div class="slide bg-cc">
         <section class="wrapper visible">
-        <div class="main">
-          <!-- <h2 class="light">Creators Connect</h2> -->
+        <div class="main-big">
           <p class="extra-sm"><strong class="highlight3">Creators Connect</strong> needed to showcase the members of their community. We developed a custom WordPress theme from a designer's mock up. We programmed it to have a modern feel and modern functionality. It works across all devices and screens and makes use of some slick animations.</p>
-          
-          <%= image_tag 'browser.svg', class: "browser" %>
+        </div>
+        <div class="sidebar2">
+        </div>
+        <div class="main-big">  
+            <%= image_tag 'browser.svg', class: "browser" %>
             <%= image_tag 'screen-cc.jpg', alt:'creators connect screen capture', class: 'scr-desktop' %>
         </div>
-        <div class="sidebar pad-left">
-        <p class="extra-sm side-pad">Exhibit B) The responsive design.</p>
+        <div class="sidebar2">
           <div class="scr-mobile-wrap">
-            <%= image_tag 'screen-cc-mobile.jpg', alt:'creators connect screen capture', class: 'scr-mobile' %>
-            <div class="scr-mobile-img"><%= image_tag 'mobile.svg' %></div>
+            <%= image_tag 'mobile-top.svg', class: 'mobile-top' %>
+            <div class="mobile-screen"><%= image_tag 'screen-cc-mobile.jpg', alt:'creators connect screen capture', class: '' %></div>
+            <%= image_tag 'mobile-bottom.svg', class: 'mobile-bottom' %>
            </div>
         </div>
         </section>
-      <div class="slide"> Slide 3 </div>
+      </div>
+      <div class="slide bg-madepulse">
+        <section class="wrapper visible">
+        <div class="main-big">
+          <p class="extra-sm"><strong class="highlight3">MadePulse</strong> needed to showcase the members of their community. We developed a custom WordPress theme from a designer's mock up. We programmed it to have a modern feel and modern functionality. It works across all devices and screens and makes use of some slick animations.</p>
+        </div>
+        <div class="sidebar2">
+        </div>
+        <div class="main-big">  
+            <%= image_tag 'browser.svg', class: "browser" %>
+            <%= image_tag 'screen-madepulse.jpg', alt:'made pulse screen capture', class: 'scr-desktop' %>
+        </div>
+        <div class="sidebar2">
+          <div class="scr-mobile-wrap">
+            <%= image_tag 'mobile-top.svg', class: 'mobile-top' %>
+            <div class="mobile-screen"><%= image_tag 'screen-madepulse-mobile.jpg', alt:'made pulse screen capture', class: '' %></div>
+            <%= image_tag 'mobile-bottom.svg', class: 'mobile-bottom' %>
+           </div>
+        </div>
+        </section>
+      </div>
       <div class="slide"> Slide 4 </div>
     </div>
     <div class="section midnight">
@@ -122,17 +145,16 @@ per_page: 10
         <div class="main">
           <span class="section-title">About</span>
           <br><br>
-        </div>
-        <div class="main-narrow">
+        
         <h1 class="light">Listen first</h1>
         
           <p><strong class="highlight">Listen first, then build</strong>. In order to create beautiful, useful digital products we first listen to our clients. We also listen to their audience. Then we think about solutions and how we can measure the results. As we work together, there’s lots of communication and feedback and our clients get to see their projects develop. This is how we get it right.</p>
         </div>
         <div class="sidebar-night">
-          <h3>Developer<span class="tiny"><br>Austin Samsel</span></h3>
+          <h3>Founder<span class="tiny"><br>Austin Samsel</span></h3>
           <p class="small">
-          <%= image_tag 'austin.jpg', class: 'staff-pic' %>
-            Austin started as a visual designer before learning to program with Javascript, Ruby, and PHP. In 2010, Austin became a certified yoga teacher. What does that have to do with Web Development? He believes empathizing and connecting with people is the driving force behind creating great work.
+          <%= image_tag 'austin.jpg', class: 'profile-pic' %>
+            Austin started as a visual designer before learning to program with Javascript, Ruby, and PHP. He believes empathizing and connecting with people is the driving force behind creating great work.
           </p>
         </div>
       </section>
@@ -142,33 +164,28 @@ per_page: 10
         <div class="main">
           <span class="section-title">Contact</span>
           <h1>Ask us anything</h1>
-          <p class="main">It’s never too soon to get in touch about a project. Let us know what you're working on. No worries, we’re super nice.</p>
-          <form class="main" action="//formspree.io/you@email.com">
-              <input type="hidden" name="_next" value="//site.io/thanks.html" />
-              <input type="hidden" name="_subject" value="New contact on High Tops." />
-              <input type="text" name="_gotcha" style="display:none" required />
-              <input type="email" name="_replyto" placeholder="Your email" required />
-              <textarea placeholder="Your message"></textarea>
-              <input type="submit" value="Send" />
+          <p class="">It’s never too soon to get in touch about a project. Let us know what you're working on. We'd love to hear about it. <strong class="highlight2">No worries, we’re super nice</strong>.</p>
+          <form class="" action="//formspree.io/you@email.com">
+            <input type="hidden" name="_next" value="//site.io/thanks.html" />
+            <input type="hidden" name="_subject" value="New contact on High Tops." />
+            <input type="text" name="_gotcha" style="display:none" required />
+            <input type="email" name="_replyto" placeholder="Your email" required />
+            <textarea placeholder="Your message"></textarea>
+            <input type="submit" value="Send" />
           </form>
         </div>
-        <br>
-        <br>
         <div class="sidebar">
-          <div class="sidebar-block">
-            <h3>Don't like forms?</h3>
-            <p>e-mail us:<br>
-              goodtimes@hightops.com</p>
-              
-            <p>call us:<br>
-              +1 718 218 3108</p>
-
-            <p>write a letter:<br>
-              252 S 4th St,<br>
-              Suite 2B<br>
-              Brooklyn, NY 11211</p>
+          <h3>Don't like forms?</h3>
+          <p><strong>e-mail us</strong>:<br>
+            goodtimes@hightops.com</p>
             
-          </div>
+          <p><strong>call us:</strong><br>
+            +1 718 218 3108</p>
+
+          <p><strong>write a letter:</strong><br>
+            252 S 4th St,<br>
+            Suite 2B<br>
+            Brooklyn, NY 11211</p>
         </div>
       </section>
     </div>
