@@ -3,7 +3,7 @@ pageable: true
 per_page: 10
 ---
 
-  <div id="fullpage">
+  <div id="fullpage1">
     <div class="section dawn-mist">
       <section class="wrapper">
         <div class="logo-wrap"><%= image_tag 'hightops_logo.svg' %></div>
@@ -21,9 +21,9 @@ per_page: 10
       <section class="wrapper night">
         <h1 class="light">What our clients say</h1>
         <div class="testimonial">
-          <blockquote>
+          <div class="testimonial-block">
             Austin worked quickly and efficiently and <strong class="highlight">got my website done perfectly on the first go</strong>, which is super rare. Austin is also great about solving any problems and responding right away. I'd recommend him as an A+.
-          </blockquote>
+          </div>
           <div class="testimonial">
             <%= image_tag 'marlo.jpg', class: 'testimonial-pic' %> <p class='testimonial-p'>Marlo Kronberg, <em>Creators Connect</em></p>
           </div>
@@ -35,7 +35,7 @@ per_page: 10
         <div class="main">
           <span class="section-title">Services</span>
           <h1>Our Impact</h1>
-          <p class="main">We guide our clients to <strong class="highlight2">the best choices in tech</strong>. First we understand their business and the challenges they face. Then we create unique solutions with measurable results that achieve your business goals.</p>
+          <p class="">We guide our clients to <strong class="highlight2">the best choices in tech</strong>. First we understand their business and the challenges they face. Then we create unique solutions with measurable results that achieve your business goals.</p>
         </div>
         <br>
         <br>
@@ -88,9 +88,9 @@ per_page: 10
         <section class="wrapper">
           <span class="section-title">Work</span>
           <h1 class="light">We keep busy</h1>
-          <div class="main-narrow">
+          <div class="main">
             <p>We’ve done some cool work lately. As you <a href="">browse our work</a> you might wonder: </p>
-            <blockquote class="quote-purp"><em>Is this what my project will look like?</em></blockquote>
+            <div class="quote-purp"><em>Is this what my project will look like?</em></div>
             <p>The answer is: not really. We strive for a natural expression of every project, determined by its unique goals, context, and identity.</p>
             <p><strong>Your project will be different</strong>.</p>
           </div>
@@ -125,9 +125,10 @@ per_page: 10
         <div class="main">
           <p><strong class="highlight">Listen first, then build</strong>. In order to create beautiful, useful digital products we first listen to our clients. We also listen to their audience. Then we think about solutions and how we can measure the results. As we work together, there’s lots of communication and feedback and our clients get to see their projects develop. This is how we get it right.</p>
 
-          <%= image_tag 'austin.jpg', class: 'staff-pic' %>
+          
           <h3>Austin Samsel <span class="tiny">: &nbsp;Developer</span></h3>
           <p class="extra-sm">
+          <%= image_tag 'austin.jpg', class: 'staff-pic' %>
             Austin approaches every project with a design-first, user-centric approach. He started in web development as a designer before learning to program with Javascript, Ruby, and PHP. In 2010, Austin became a certified yoga teacher. What does that have to do with Web Development? Being able to empathize and connect with people is the driving force behind creating great work.
           </p>
         </div>
@@ -142,8 +143,8 @@ per_page: 10
           <form class="main" action="//formspree.io/you@email.com">
               <input type="hidden" name="_next" value="//site.io/thanks.html" />
               <input type="hidden" name="_subject" value="New contact on High Tops." />
-              <input type="text" name="_gotcha" style="display:none" />
-              <input type="email" name="_replyto" placeholder="Your email" />
+              <input type="text" name="_gotcha" style="display:none" required />
+              <input type="email" name="_replyto" placeholder="Your email" required />
               <textarea placeholder="Your message"></textarea>
               <input type="submit" value="Send" />
           </form>

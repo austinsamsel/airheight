@@ -21,8 +21,29 @@
   @include outer-container;
   @include pad(0px 40px default);
 }
+ 
+// section {
+//   @include outer-container;
+// }
+// aside {
+//     @include span-columns(12);
+
+//     @include media($medium-screen) {
+//         @include span-columns(4)
+//       }
+//     @include omega();
+//   }
+//   article {
+//     @include span-columns(12);
+
+//       @include media($medium-screen) {
+//         @include span-columns(8)
+//       }
+//   }
+
+
+
 .logo-wrap{
-  @include span-columns(6 of 12);
   @include pad(0px 0px 8% default);
   position:absolute;
   top:30px;
@@ -48,10 +69,30 @@
   font-size:80%;
 }
 
+body {
+  font-size: $base-font-size / 1.25;
+  
+  @include media($medium-screen){
+    font-size: $base-font-size;
+  }
+}
+
 h1 {
-  font-size:1.4em;
+  font-size:1.8em;
   @include media($medium-screen){
     font-size: 3.1em;
+  }
+}
+h2 {
+  font-size:1.4em;
+  @include media($medium-screen){
+    font-size: 2.1em;
+  }
+}
+h3 {
+  font-size:1.2em;
+  @include media($medium-screen){
+    font-size: 1.9em;
   }
 }
 
@@ -68,38 +109,64 @@ h1 {
 
 /* testimonial */
 .testimonial {
-  @include span-columns(10 of 12);
 }
 .testimonial-pic{
   border-radius:100%;
   width:100px;
-  margin-left:80px;
+  float:left;
+  margin: 20px 11px 0 0;
   display:inline;
+  @include media($medium-screen){
+    margin-left:80px;
+  }
 }
 .testimonial-p{
-  display:inline;
-  vertical-align: 40px;
-  margin-left:10px;
+  padding: 30px 0 0 0px;
+  margin-left:20px;
+}
+.testimonial-block{
+  border-left:$off-white 4px solid;
+  padding: 10px 0px 10px 20px;
+  margin-left: 1em;
+  font-size:90%;
+  @include media($medium-screen){
+    margin-left: 4em;
+    font-size:110%;
+  }
+}
+
+.quote-purp{
+  border-left:$rich-violet 4px solid;
+  padding: 10px 0px 10px 20px;
+  margin-left: 2em !important;
+  font-size:110%;
+  line-height:1.4em;
 }
 
 /* info slide */
 
 .main{
-  @include span-columns(8);
+  @include span-columns(12);
+  
+  @include media($medium-screen){
+    @include span-columns(8);
+  }
+  
 }
 .main-narrow{
   @include span-columns(6);
 }
 .sidebar{
-  @include span-columns(4);
-  @include omega();
+  @include span-columns(12);
+  @include media($medium-screen){
+    @include span-columns(4);
+  }
 }
 .sidebar-block{
   background:#fff;
   border-radius:5px;
   padding:20px 40px;
   font-size:80%;
-  @include shift(1);
 }
 
 
@@ -198,10 +265,14 @@ img.scr-desktop {
 .staff-pic{
   border-radius: 100%;
   display: inline;
-  width: 200px !important;
   text-align: left;
   float: left;
-  margin: 0px 20px 0 20px;
+  margin: 0px 20px 0 0px;
+  width: 100px !important;
+  @include media($medium-screen) {
+    margin: 0px 20px 0 20px;
+    width: 200px !important;
+  }
 }
 
 
