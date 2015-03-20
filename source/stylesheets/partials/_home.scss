@@ -21,27 +21,18 @@
   @include outer-container;
   @include pad(1em 2em default);
 }
- 
-// section {
-//   @include outer-container;
-// }
-// aside {
-//     @include span-columns(12);
 
-//     @include media($medium-screen) {
-//         @include span-columns(4)
-//       }
-//     @include omega();
-//   }
-//   article {
-//     @include span-columns(12);
-
-//       @include media($medium-screen) {
-//         @include span-columns(8)
-//       }
-//   }
-
-
+#header{
+  background: #fff;
+  height: 2em;
+  position: fixed;
+  top: 0;
+  transition: top 0.2s ease-in-out;
+  width: 100%;
+}
+.nav-up {
+  top: -2em; // same as header height. use variables in LESS/SASS
+}
 
 .logo-wrap{
   @include pad(0px 0px 8% default);
@@ -232,37 +223,36 @@ li.num{
 }
 
 /* work */
-.bg-cc{
+.slide{
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.loadImage-creators{
   background-image: image-url("bg-creators-connect.jpg");
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
 }
-.bg-madepulse{
+.loadImage-madepulse{
   background-image: image-url("bg-madepulse.jpg");
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-.scr-desktop:before{
-  // background-image: url("/images/browser.svg");
-  // content: '';
-  // background-repeat: no-repeat;
-  // height: 100px;
-  // width: 800px;
-  // position: absolute;
 }
 .browser{
-  margin-bottom:-7px;
+  margin:0 0 -8px;
+  width:100% !important;
+}
+.browser img{
   width:100% !important;
 }
 img.main{
-  width:100%;
+  //width:100%;
 }
 .scr-desktop{
   border-radius: 0px 0px 3px 3px;
+  width:100%;
+  min-height:100px;
+  text-align:center;
+}
+.scr-desktop img{
+
 }
 .mobile-top, .mobile-bottom {
   width:100%;
