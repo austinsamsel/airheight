@@ -65,43 +65,43 @@ td { border-bottom: 1px solid #ddd; padding: 0.7em 0; }
 tr, td, th { vertical-align: middle; }
 
 /* line 1, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
-body { -webkit-font-feature-settings: "kern", "liga", "pnum"; -moz-font-feature-settings: "kern", "liga", "pnum"; -ms-font-feature-settings: "kern", "liga", "pnum"; font-feature-settings: "kern", "liga", "pnum"; -webkit-font-smoothing: antialiased; color: #42545E; font-family: "Archivo Narrow", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif; font-size: 1.5em; line-height: 1.4; }
+body { -webkit-font-feature-settings: "kern", "liga", "pnum"; -moz-font-feature-settings: "kern", "liga", "pnum"; -ms-font-feature-settings: "kern", "liga", "pnum"; font-feature-settings: "kern", "liga", "pnum"; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; color: #42545E; font-family: "Archivo Narrow", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif; font-size: 1.5em; line-height: 1.4; }
 
-/* line 10, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
+/* line 11, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
 h1, h2, h3, h4, h5, h6 { font-family: "Enriqueta", serif; font-size: 1.5em; line-height: 1.2; letter-spacing: -0.03em; font-weight: 700; }
 
-/* line 23, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
+/* line 24, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
 h1 { margin: 0 0 0.7em; }
 
-/* line 26, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
+/* line 27, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
 h2, h3 { margin: 0 0 0.46667em; }
 
-/* line 30, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
+/* line 31, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
 p { margin: 0 0 0.7em; }
 
-/* line 34, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
+/* line 35, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
 a { color: #27AAE1; background-color: #fff; padding: 1px 2px; border-radius: 2px; text-decoration: none; transition: color 0.1s linear; }
-/* line 42, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
+/* line 43, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
 a:active, a:focus, a:hover { color: #177ba5; }
-/* line 48, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
+/* line 49, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
 a:active, a:focus { outline: none; }
 
-/* line 54, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
+/* line 55, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
 .archivo-black, strong, .section-title { font-family: 'archivo black'; font-weight: normal; letter-spacing: -0.1em; font-size: 95%; }
 
-/* line 65, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
+/* line 66, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
 .highlight { color: #BF7EF2; }
 
-/* line 68, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
+/* line 69, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
 .highlight2 { color: #8136D8; }
 
-/* line 71, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
+/* line 72, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
 .highlight3 { font-size: 120%; }
 
-/* line 75, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
+/* line 76, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
 hr { border-bottom: 1px solid #ddd; border-left: none; border-right: none; border-top: none; margin: 1.4em 0; }
 
-/* line 83, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
+/* line 84, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/base/_typography.scss */
 img, picture { margin: 0; max-width: 100%; }
 
 /* Bitters needs to be imported before Neat */
@@ -180,216 +180,225 @@ footer { border-top: 1px solid #ddd; margin: 2em 0; padding-top: 2em; }
 /* line 20, /Users/x/.rvm/gems/ruby-2.2.0-preview1/gems/bourbon-4.2.1/app/assets/stylesheets/addons/_clearfix.scss */
 .wrapper::after { clear: both; content: ""; display: table; }
 
-/* line 46, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 25, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+#header { background: #fff; height: 2em; position: fixed; top: 0; transition: top 0.2s ease-in-out; width: 100%; }
+
+/* line 33, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+.nav-up { top: -2em; }
+
+/* line 37, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .logo-wrap { padding: 0px 0px 8% 4.34783%; position: absolute; top: 30px; left: 20px; }
 
-/* line 52, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 43, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .hero, .hero-sub { float: left; display: block; margin-right: 4.34783%; width: 100%; }
 /* line 89, /Users/x/.rvm/gems/ruby-2.2.0-preview1/gems/neat-1.7.2/app/assets/stylesheets/grid/_span-columns.scss */
 .hero:last-child, .hero-sub:last-child { margin-right: 0; }
 
-/* line 55, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 46, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .hero { font-family: 'enriqueta', serif; font-size: 2.25em; line-height: 1em; color: #27AAE1; margin-bottom: 8%; text-align: center; }
-@media screen and (min-width: 769px) { /* line 55, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+@media screen and (min-width: 769px) { /* line 46, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
   .hero { font-size: 4em; line-height: 1em; } }
 
-/* line 67, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 58, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .hero-sub { text-align: center; font-size: 80%; }
 
-/* line 72, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 63, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 body { font-size: 1.25em; }
-@media screen and (min-width: 40em) { /* line 72, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+@media screen and (min-width: 40em) { /* line 63, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
   body { font-size: 1.5em; } }
 
-/* line 80, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 71, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 h1 { font-size: 1.8em; }
-@media screen and (min-width: 40em) { /* line 80, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+@media screen and (min-width: 40em) { /* line 71, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
   h1 { font-size: 3.1em; } }
 
-/* line 86, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 77, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 h2 { font-size: 1.6em; }
-@media screen and (min-width: 40em) { /* line 86, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+@media screen and (min-width: 40em) { /* line 77, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
   h2 { font-size: 2.1em; } }
 
-/* line 92, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 83, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 h3 { font-size: 1.4em; }
-@media screen and (min-width: 40em) { /* line 92, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+@media screen and (min-width: 40em) { /* line 83, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
   h3 { font-size: 1.5em; } }
 
-/* line 99, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 90, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .section-title { text-transform: uppercase; color: #9A99A7; font-size: 63%; border-bottom: #9A99A7 3px solid; }
 
-/* line 106, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 97, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .section-title + h1 { margin-top: 20px; }
 
 /* testimonial */
-/* line 111, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 102, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .testimonial { float: left; display: block; margin-right: 4.34783%; width: 100%; }
 /* line 89, /Users/x/.rvm/gems/ruby-2.2.0-preview1/gems/neat-1.7.2/app/assets/stylesheets/grid/_span-columns.scss */
 .testimonial:last-child { margin-right: 0; }
-@media screen and (min-width: 40em) { /* line 111, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+@media screen and (min-width: 40em) { /* line 102, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
   .testimonial { float: left; display: block; margin-right: 4.34783%; width: 73.91304%; }
   /* line 89, /Users/x/.rvm/gems/ruby-2.2.0-preview1/gems/neat-1.7.2/app/assets/stylesheets/grid/_span-columns.scss */
   .testimonial:last-child { margin-right: 0; } }
 
-/* line 117, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 108, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .testimonial-pic { border-radius: 100%; width: 100px; float: left; margin: 20px 11px 0 0; display: inline; }
-@media screen and (min-width: 40em) { /* line 117, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+@media screen and (min-width: 40em) { /* line 108, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
   .testimonial-pic { margin-left: 80px; } }
 
-/* line 127, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 118, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .testimonial-p { padding: 30px 0 0 0px; margin-left: 20px; }
 
-/* line 131, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 122, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .testimonial-block { border-left: #E7E4EA 4px solid; padding: 10px 0px 10px 20px; margin-left: 1em; font-size: 90%; }
-@media screen and (min-width: 40em) { /* line 131, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+@media screen and (min-width: 40em) { /* line 122, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
   .testimonial-block { margin-left: 4em; font-size: 110%; } }
 
-/* line 141, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 132, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .sidebar-testimonial { border-left: 4px #8136D8 solid; margin: 0 -10px 14px; padding: 10px 0 10px 20px; }
 
-/* line 146, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 137, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .sidebar-testimonial-footer { margin-left: -16px; }
 
-/* line 150, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 141, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .quote-purp { border-left: #8136D8 4px solid; padding: 10px 0px 10px 20px; margin-left: 2em !important; font-size: 110%; line-height: 1.4em; }
 
 /* info slide */
-/* line 160, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 151, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .main-big { float: left; display: block; margin-right: 4.34783%; width: 100%; }
 /* line 89, /Users/x/.rvm/gems/ruby-2.2.0-preview1/gems/neat-1.7.2/app/assets/stylesheets/grid/_span-columns.scss */
 .main-big:last-child { margin-right: 0; }
-@media screen and (min-width: 40em) { /* line 160, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+@media screen and (min-width: 40em) { /* line 151, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
   .main-big { float: left; display: block; margin-right: 4.34783%; width: 73.91304%; }
   /* line 89, /Users/x/.rvm/gems/ruby-2.2.0-preview1/gems/neat-1.7.2/app/assets/stylesheets/grid/_span-columns.scss */
   .main-big:last-child { margin-right: 0; } }
 
-/* line 167, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 158, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .main { float: left; display: block; margin-right: 4.34783%; width: 100%; }
 /* line 89, /Users/x/.rvm/gems/ruby-2.2.0-preview1/gems/neat-1.7.2/app/assets/stylesheets/grid/_span-columns.scss */
 .main:last-child { margin-right: 0; }
-@media screen and (min-width: 40em) { /* line 167, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+@media screen and (min-width: 40em) { /* line 158, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
   .main { float: left; display: block; margin-right: 4.34783%; width: 65.21739%; }
   /* line 89, /Users/x/.rvm/gems/ruby-2.2.0-preview1/gems/neat-1.7.2/app/assets/stylesheets/grid/_span-columns.scss */
   .main:last-child { margin-right: 0; } }
 
-/* line 174, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 165, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .main-narrow { float: left; display: block; margin-right: 4.34783%; width: 100%; }
 /* line 89, /Users/x/.rvm/gems/ruby-2.2.0-preview1/gems/neat-1.7.2/app/assets/stylesheets/grid/_span-columns.scss */
 .main-narrow:last-child { margin-right: 0; }
-@media screen and (min-width: 40em) { /* line 174, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+@media screen and (min-width: 40em) { /* line 165, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
   .main-narrow { float: left; display: block; margin-right: 4.34783%; width: 47.82609%; }
   /* line 89, /Users/x/.rvm/gems/ruby-2.2.0-preview1/gems/neat-1.7.2/app/assets/stylesheets/grid/_span-columns.scss */
   .main-narrow:last-child { margin-right: 0; } }
 
-/* line 181, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 172, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .sidebar { float: left; display: block; margin-right: 4.34783%; width: 100%; background: #fff; border-radius: 5px; padding: 40px; font-size: 80%; }
 /* line 89, /Users/x/.rvm/gems/ruby-2.2.0-preview1/gems/neat-1.7.2/app/assets/stylesheets/grid/_span-columns.scss */
 .sidebar:last-child { margin-right: 0; }
-@media screen and (min-width: 40em) { /* line 181, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+@media screen and (min-width: 40em) { /* line 172, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
   .sidebar { float: left; display: block; margin-right: 4.34783%; width: 30.43478%; }
   /* line 89, /Users/x/.rvm/gems/ruby-2.2.0-preview1/gems/neat-1.7.2/app/assets/stylesheets/grid/_span-columns.scss */
   .sidebar:last-child { margin-right: 0; } }
 
-/* line 191, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 182, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .sidebar2 { float: left; display: block; margin-right: 4.34783%; width: 100%; }
 /* line 89, /Users/x/.rvm/gems/ruby-2.2.0-preview1/gems/neat-1.7.2/app/assets/stylesheets/grid/_span-columns.scss */
 .sidebar2:last-child { margin-right: 0; }
-@media screen and (min-width: 40em) { /* line 191, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+@media screen and (min-width: 40em) { /* line 182, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
   .sidebar2 { float: left; display: block; margin-right: 4.34783%; width: 21.73913%; }
   /* line 89, /Users/x/.rvm/gems/ruby-2.2.0-preview1/gems/neat-1.7.2/app/assets/stylesheets/grid/_span-columns.scss */
   .sidebar2:last-child { margin-right: 0; } }
 
-/* line 197, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 188, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .sidebar-night { float: left; display: block; margin-right: 4.34783%; width: 100%; background: rgba(0, 0, 0, 0.2); padding: 40px; border-radius: 5px; }
 /* line 89, /Users/x/.rvm/gems/ruby-2.2.0-preview1/gems/neat-1.7.2/app/assets/stylesheets/grid/_span-columns.scss */
 .sidebar-night:last-child { margin-right: 0; }
-@media screen and (min-width: 40em) { /* line 197, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+@media screen and (min-width: 40em) { /* line 188, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
   .sidebar-night { float: left; display: block; margin-right: 4.34783%; width: 30.43478%; margin-right: 0; }
   /* line 89, /Users/x/.rvm/gems/ruby-2.2.0-preview1/gems/neat-1.7.2/app/assets/stylesheets/grid/_span-columns.scss */
   .sidebar-night:last-child { margin-right: 0; } }
 
 /* fancy numbers */
-/* line 213, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 204, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .small, li.num { font-size: 80%; }
 
-/* line 214, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 205, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .extra-sm { font-size: 70%; }
 
-/* line 215, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 206, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .tiny { font-size: 65%; }
 
-/* line 217, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 208, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .numbers { display: inline; }
 
-/* line 220, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 211, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 li.num { float: left; display: block; margin-right: 4.34783%; width: 30.43478%; position: relative; padding-left: 80px; }
 /* line 89, /Users/x/.rvm/gems/ruby-2.2.0-preview1/gems/neat-1.7.2/app/assets/stylesheets/grid/_span-columns.scss */
 li.num:last-child { margin-right: 0; }
 
-/* line 226, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 217, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .fancy { color: #BF7EF2; font-size: 3em; margin-left: -60px; position: absolute; font-family: "enriqueta"; }
 
 /* work */
+/* line 226, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+.slide { -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; }
+
+/* line 232, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+.loadImage-creators { background-image: url("/images/bg-creators-connect.jpg"); }
+
 /* line 235, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
-.bg-cc { background-image: url("/images/bg-creators-connect.jpg"); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; }
+.loadImage-madepulse { background-image: url("/images/bg-madepulse.jpg"); }
+
+/* line 238, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+.browser { margin: 0 0 -8px; width: 100% !important; }
 
 /* line 242, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
-.bg-madepulse { background-image: url("/images/bg-madepulse.jpg"); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; }
+.browser img { width: 100% !important; }
+
+/* line 248, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+.scr-desktop { border-radius: 0px 0px 3px 3px; width: 100%; min-height: 100px; text-align: center; }
 
 /* line 257, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
-.browser { margin-bottom: -7px; width: 100% !important; }
-
-/* line 261, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
-img.main { width: 100%; }
-
-/* line 264, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
-.scr-desktop { border-radius: 0px 0px 3px 3px; }
-
-/* line 267, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .mobile-top, .mobile-bottom { width: 100%; }
 
-/* line 270, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 260, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .mobile-top { margin-bottom: -9px; }
 
-/* line 273, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 263, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .mobile-bottom { margin-top: -2px; }
 
-/* line 276, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 266, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .mobile-screen { background-color: #2A2B31; margin-bottom: -2px; }
 
-/* line 282, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 272, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .mobile-screen img { padding: 0.3em; border-radius: 10px; }
 
 /* nav arrows */
-/* line 288, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 278, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .fp-slidesNav ul li a.active span { background: #8136D8; }
 
-/* line 292, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 282, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .fp-controlArrow.fp-prev { display: none; }
 
-/* line 295, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 285, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .fp-controlArrow.fp-next { display: none; border-color: transparent transparent transparent #8136D8 !important; }
 
 /* about */
-/* line 305, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 295, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .profile-pic { border-radius: 100%; display: inline; text-align: left; float: left; margin: 0px 10px 0 0px; width: 100px !important; }
-@media screen and (min-width: 40em) { /* line 305, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+@media screen and (min-width: 40em) { /* line 295, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
   .profile-pic { margin: 0px 10px 0 0px; width: 100px !important; } }
 
 /* forms */
-/* line 320, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 310, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], textarea, select[multiple=multiple], textarea { background: #fff; font-size: 100%; }
 
-/* line 324, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 314, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 form { margin-bottom: 1em; }
-@media screen and (min-width: 40em) { /* line 324, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+@media screen and (min-width: 40em) { /* line 314, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
   form { margin-bottom: 0; } }
 
-/* line 330, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 320, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 textarea { min-height: 5em; }
 
-/* line 334, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 324, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .omega { margin-right: 0; }
 
 /*

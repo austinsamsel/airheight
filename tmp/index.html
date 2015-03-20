@@ -11,11 +11,11 @@
 
   </head>
   <body>
-    
-  <!--   <div id="main" role="main">
-    </div> -->
 
-    <div id="fullpage1">
+    <div id="header" class="nav-down">
+    yooooo
+  </div>
+  <div id="#fullpage">
     <div class="section dawn-mist">
       <section class="wrapper">
         <div class="logo-wrap"><img src="/images/hightops_logo.svg" /></div>
@@ -37,7 +37,7 @@
             Austin worked quickly and efficiently and <strong class="highlight">got my website done perfectly on the first go</strong>, which is super rare. Austin is also great about solving any problems and responding right away. I'd recommend him as an A+.
           </div>
           <div class="testimonial">
-            <img class="testimonial-pic" src="/images/marlo.jpg" /> <p class='testimonial-p'>Marlo Kronberg, <em>Creators Connect</em></p>
+            <img src="/images/loading.gif" data-src="/images/marlo.jpg" alt="marlo of creator's connect" class="testimonial-pic"><p class='testimonial-p'>Marlo Kronberg, <em>Creators Connect</em></p>
           </div>
         </div>
       </section>
@@ -92,7 +92,7 @@
       </section>
     </div>
     <div class="section egg-blue">
-      <!-- <div class="slide">
+      <div class="slide">
         <section class="wrapper">
           <div class="main">
           <span class="section-title">Work</span>
@@ -106,11 +106,12 @@
             <p class="sidebar-testimonial">
               <em>Austin is incredibly professional, efficient, responds promptly to questions and concerns, and is able to put technical information into layman’s terms that are easily understood and digested by people like me!</em><br>
             </p>
-            <p class="sidebar-testimonial-footer"><img class="profile-pic" src="/images/erin.jpg" />Erin Anderson, <em>Brooklyn Fire Proof</em></p>
+            <p class="sidebar-testimonial-footer">
+            <img src="/images/loading.gif" data-src="/images/erin.jpg" class="profile-pic" alt="Erin of Brooklyn Fire Proof">Erin Anderson, <em>Brooklyn Fire Proof</em></p>
           </div>
         </section>
-      </div> -->
-      <div class="slide bg-cc">
+      </div>
+      <div class="slide slide-creators">
         <section class="wrapper visible">
         <div class="main-big">
           <p class="extra-sm"><strong class="highlight3">Creators Connect</strong> needed to showcase the members of their community. We developed a custom WordPress theme from a designer's mock up. We programmed it to have a modern feel and modern functionality. It works across all devices and screens and makes use of some slick animations.</p>
@@ -119,18 +120,22 @@
         </div>
         <div class="main-big">  
             <img class="browser" src="/images/browser.svg" />
-            <img src="images/loading.gif" data-src="/images/screen-cc.jpg" class="scr-desktop" alt="creators connect screen capture">
+            <div class="scr-desktop"><img src="/images/loading.gif" data-src="/images/screen-cc.jpg"  alt="creators connect screen capture">
+            </div>
         </div>
         <div class="sidebar2">
           <div class="scr-mobile-wrap">
             <img class="mobile-top" src="/images/mobile-top.svg" />
-            <div class="mobile-screen"><img alt="creators connect screen capture" class="" src="/images/screen-cc-mobile.jpg" /></div>
+
+            <div class="mobile-screen">
+              <img src="/images/loading.gif" data-src="/images/screen-cc-mobile.jpg" alt="creators connect mobile screen capture">
+            </div>
             <img class="mobile-bottom" src="/images/mobile-bottom.svg" />
            </div>
         </div>
         </section>
       </div>
-      <div class="slide bg-madepulse">
+      <div class="slide slide-madepulse">
         <section class="wrapper visible">
         <div class="main-big">
           <p class="extra-sm"><strong class="highlight3">MadePulse</strong> needed to showcase the members of their community. We developed a custom WordPress theme from a designer's mock up. We programmed it to have a modern feel and modern functionality. It works across all devices and screens and makes use of some slick animations.</p>
@@ -139,12 +144,15 @@
         </div>
         <div class="main-big">  
             <img class="browser" src="/images/browser.svg" />
-            <img src="images/loading.gif" data-src="/images/screen-madepulse.jpg" class="scr-desktop" alt="made pulse screen capture">
-        </div>
+            <div class="scr-desktop"><img src="/images/loading.gif" data-src="/images/screen-madepulse.jpg" alt="made pulse screen capture"></div>
+        </div> 
         <div class="sidebar2">
           <div class="scr-mobile-wrap">
             <img class="mobile-top" src="/images/mobile-top.svg" />
-            <div class="mobile-screen"><img alt="made pulse screen capture" class="" src="/images/screen-madepulse-mobile.jpg" /></div>
+
+            <div class="mobile-screen">
+              <img src="/images/loading.gif" data-src="/images/screen-madepulse-mobile.jpg" alt="made pulse mobile screen capture">
+            </div>
             <img class="mobile-bottom" src="/images/mobile-bottom.svg" />
            </div>
         </div>
@@ -165,7 +173,7 @@
         <div class="sidebar-night">
           <h3>Founder<span class="tiny"><br>Austin Samsel</span></h3>
           <p class="small">
-          <img class="profile-pic" src="/images/austin.jpg" />
+          <img src="/images/loading.gif" data-src="/images/austin.jpg" alt="austin, founder of High Tops" class="profile-pic">
             Austin started as a visual designer before learning to program with Javascript, Ruby, and PHP. He believes empathizing and connecting with people is the driving force behind creating great work.
           </p>
         </div>
@@ -215,17 +223,14 @@
           animateAnchor: true,
           slidesNavPosition: 'bottom',
           keyboardScrolling: true,
-          onLeave: function(index, nextIndex, direction){
-            //after leaving section 1
-            if(index == '4' && direction =='down'){
-                //Going to section 2!
-                $('#section2').find('.slide').addClass('loadImage');
-            }
-          }
+          fixedElements: '#header',
         });
     });
+
     $(document).ready(function() {
       $("img").unveil();
+      $('.slide-creators').addClass('loadImage-creators');
+      $('.slide-madepulse').addClass('loadImage-madepulse');
     });
 
     $.ajax({
@@ -234,6 +239,46 @@
         data: {message: "hello!"},
         dataType: "json"
     });
+
+
+// Hide Header on on scroll down
+var didScroll;
+var lastScrollTop = 0;
+var delta = 5;
+var navbarHeight = $('#header').outerHeight();
+
+$(window).scroll(function(event){
+    didScroll = true;
+});
+
+setInterval(function() {
+    if (didScroll) {
+        hasScrolled();
+        didScroll = false;
+    }
+}, 250);
+
+function hasScrolled() {
+    var st = $(this).scrollTop();
+    
+    // Make sure they scroll more than delta
+    if(Math.abs(lastScrollTop - st) <= delta)
+        return;
+    
+    // If they scrolled down and are past the navbar, add class .nav-up.
+    // This is necessary so you never see what is "behind" the navbar.
+    if (st > lastScrollTop && st > navbarHeight){
+        // Scroll Down
+        $('#header').removeClass('nav-down').addClass('nav-up');
+    } else {
+        // Scroll Up
+        if(st + $(window).height() < $(document).height()) {
+            $('#header').removeClass('nav-up').addClass('nav-down');
+        }
+    }
+    
+    lastScrollTop = st;
+}
   </script>
 
 
