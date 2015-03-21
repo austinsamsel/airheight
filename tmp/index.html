@@ -12,13 +12,18 @@
   </head>
   <body>
 
-    <div id="header" class="nav-down">
-    yooooo
+    <div class="nav-lg">
+    <div class="logo-wrap"><img src="/images/hightops_logo.svg" /></div>
   </div>
+
+  <div class="nav-sm">
+    <div class="logo-wrap"><img src="/images/hightops_logo.svg" /></div>
+  </div>
+
   <div id="#fullpage">
-    <div class="section dawn-mist">
+    <div class="section dawn-mist" data-anchor="firstPage">
       <section class="wrapper">
-        <div class="logo-wrap"><img src="/images/hightops_logo.svg" /></div>
+        
         <br>
         <br>
         <br>
@@ -29,7 +34,7 @@
         </div>
       </section>
     </div>
-    <div class="section midnight">
+    <div class="section midnight" data-anchor="secondPage">
       <section class="wrapper night">
         <!-- <h1 class="light">What our clients say</h1> -->
         <div class="testimonial">
@@ -119,18 +124,17 @@
         <div class="sidebar2">
         </div>
         <div class="main-big">  
-            <img class="browser" src="/images/browser.svg" />
+            <img src="/images/loading.gif" data-src="/images/browser.svg" class="browser">
             <div class="scr-desktop"><img src="/images/loading.gif" data-src="/images/screen-cc.jpg"  alt="creators connect screen capture">
             </div>
         </div>
         <div class="sidebar2">
           <div class="scr-mobile-wrap">
-            <img class="mobile-top" src="/images/mobile-top.svg" />
-
+            <img src="/images/loading.gif" data-src="/images/mobile-top.svg" class="mobile-top">
             <div class="mobile-screen">
               <img src="/images/loading.gif" data-src="/images/screen-cc-mobile.jpg" alt="creators connect mobile screen capture">
             </div>
-            <img class="mobile-bottom" src="/images/mobile-bottom.svg" />
+            <img src="/images/loading.gif" data-src="/images/mobile-bottom.svg" class="mobile-bottom">
            </div>
         </div>
         </section>
@@ -143,17 +147,18 @@
         <div class="sidebar2">
         </div>
         <div class="main-big">  
-            <img class="browser" src="/images/browser.svg" />
+            <img src="/images/loading.gif" data-src="/images/browser.svg" class="browser">
             <div class="scr-desktop"><img src="/images/loading.gif" data-src="/images/screen-madepulse.jpg" alt="made pulse screen capture"></div>
         </div> 
         <div class="sidebar2">
           <div class="scr-mobile-wrap">
-            <img class="mobile-top" src="/images/mobile-top.svg" />
-
+            <img src="/images/loading.gif" data-src="/images/mobile-top.svg" class="mobile-top">
+            
             <div class="mobile-screen">
               <img src="/images/loading.gif" data-src="/images/screen-madepulse-mobile.jpg" alt="made pulse mobile screen capture">
             </div>
-            <img class="mobile-bottom" src="/images/mobile-bottom.svg" />
+            <img src="/images/loading.gif" data-src="/images/mobile-bottom.svg" class="mobile-bottom">
+
            </div>
         </div>
         </section>
@@ -214,23 +219,65 @@
   <script src="/javascripts/all.js" type="text/javascript"></script>
   <script type="text/javascript">
     $(document).ready(function() {
+        $navBar = $('.nav-sm');
+        var slideDown = function() {
+                          $navBar.animate({top: '0em'}, 100);
+                        };
+        var slideUp = function() {
+                          $navBar.animate({top: '-2em'}, 100);
+                        };
+        //$slideDown = animate({top: '0em'}, 100);
+        //$slideUp = animate({top: '-2em'}, 100);
         $('#fullpage').fullpage({
-          responsive: 2400,
-          controlArrows: true,
+          anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage', 'sixthPage', 'lastPage'],
+          responsive: 5000,
+          controlArrows: false,
           slidesNavigation: true,
           showActiveTooltips: true,
           fitToSection: false,
           animateAnchor: true,
+          scrollBar: true,
+          css3: true,
           slidesNavPosition: 'bottom',
-          keyboardScrolling: true,
-          fixedElements: '#header',
-        });
-    });
+          afterRender: function(){
+              $("img").unveil();
+              $('.slide-creators').addClass('loadImage-creators');
+              $('.slide-madepulse').addClass('loadImage-madepulse');
+          },
+          afterLoad: function(anchorLink, index){
+              var loadedSection = $(this);
+              if(index == 1){
+                  slideUp();
+              }
+          },
+          onLeave: function(index, nextIndex, direction){
+            var leavingSection = $(this);
 
-    $(document).ready(function() {
-      $("img").unveil();
-      $('.slide-creators').addClass('loadImage-creators');
-      $('.slide-madepulse').addClass('loadImage-madepulse');
+            //after leaving section 2
+            if(index == 1){
+              slideDown();
+            }
+            if(index == 2 && direction == 'up'){
+              slideUp();
+            }
+            if(index == 5){
+              slideDown();
+            }
+          },
+          afterSlideLoad: function( anchorLink, index, slideAnchor, slideIndex){
+              var loadedSlide = $(this);
+
+              //first slide of the second section
+              if(anchorLink == 'fifthPage' && slideIndex > 0){
+                  $("img").unveil();
+                  slideUp();
+              }
+              if(anchorLink == 'fifthPage' && slideIndex == 0){
+                  $("img").unveil();
+                  slideDown();
+              }
+          }
+        });
     });
 
     $.ajax({
@@ -239,46 +286,15 @@
         data: {message: "hello!"},
         dataType: "json"
     });
-
-
-// Hide Header on on scroll down
-var didScroll;
-var lastScrollTop = 0;
-var delta = 5;
-var navbarHeight = $('#header').outerHeight();
-
-$(window).scroll(function(event){
-    didScroll = true;
-});
-
-setInterval(function() {
-    if (didScroll) {
-        hasScrolled();
-        didScroll = false;
-    }
-}, 250);
-
-function hasScrolled() {
-    var st = $(this).scrollTop();
     
-    // Make sure they scroll more than delta
-    if(Math.abs(lastScrollTop - st) <= delta)
-        return;
-    
-    // If they scrolled down and are past the navbar, add class .nav-up.
-    // This is necessary so you never see what is "behind" the navbar.
-    if (st > lastScrollTop && st > navbarHeight){
-        // Scroll Down
-        $('#header').removeClass('nav-down').addClass('nav-up');
-    } else {
-        // Scroll Up
-        if(st + $(window).height() < $(document).height()) {
-            $('#header').removeClass('nav-up').addClass('nav-down');
-        }
-    }
-    
-    lastScrollTop = st;
-}
+    $(document).ready(function() {
+      
+    });
+
+
+
+
+
   </script>
 
 
