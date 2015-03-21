@@ -42,7 +42,7 @@ per_page: 10
         <div class="main">
           <span class="section-title">Services</span>
           <h1>Our Impact</h1>
-          <p class="">We guide our clients to <strong class="highlight2">the best choices in tech</strong>. First we understand their business and the challenges they face. Then we create unique solutions with measurable results that achieve your business goals.</p>
+          <p class="">We guide our clients to <strong class="highlight2">the best choices in tech</strong>. First we understand their business and the challenges they face. Then we create unique solutions with measurable results that achieve real business goals.</p>
         </div>
         <div class="sidebar">
           <h3>We help with…</h3>
@@ -65,7 +65,7 @@ per_page: 10
         <span class="section-title">Process</span>
         <h1 class="light">Methodology</h1>
         <div class="main omega">
-          <p>To help you make the best choices in digital, we start by understanding your business. Then we talk about your project. Our goal-oriented approach is all about you, whether its getting you sales or sign ups or gaining users for your product.</p>
+          <p>To help make the best choices in digital, we start by understanding the business. Then we talk about your project. Our goal-oriented approach is all about you, whether its getting you sales or sign ups or gaining users for your product.</p>
 
         </div>
         <!--<div class="fancy-nums">
@@ -97,7 +97,7 @@ per_page: 10
             <p>The answer is: not really. We strive for a natural expression of every project, determined by its unique goals, context, and identity.</p>
             <p><strong>Your project will be different</strong>.</p>
           </div>
-          <div class="sidebar">
+          <div class="sidebar slide-test">
             <p class="sidebar-testimonial">
               <em>Austin is incredibly professional, efficient, responds promptly to questions and concerns, and is able to put technical information into layman’s terms that are easily understood and digested by people like me!</em><br>
             </p>
@@ -192,7 +192,7 @@ per_page: 10
         <div class="sidebar">
           <h3>Don't like forms?</h3>
           <p><strong>e-mail us</strong>:<br>
-            goodtimes@hightops.com</p>
+            hi@hightops.com</p>
             
           <p><strong>call us:</strong><br>
             +1 718 218 3108</p>
@@ -239,6 +239,10 @@ per_page: 10
               if(index == 1){
                   slideUp();
               }
+              if (index == 5){
+                $('.fp-slidesNav.bottom').addClass('slideExpandUp');
+                $('.slide-test').addClass('slideLeft');
+              }
           },
           onLeave: function(index, nextIndex, direction){
             var leavingSection = $(this);
@@ -270,15 +274,15 @@ per_page: 10
         });
     });
 
-    $.ajax({
+    
+    
+    $(document).ready(function() {
+      $.ajax({
         url: "//formspree.io/you@email.com", 
         method: "POST",
         data: {message: "hello!"},
         dataType: "json"
-    });
-    
-    $(document).ready(function() {
-      
+      });
     });
 
 
