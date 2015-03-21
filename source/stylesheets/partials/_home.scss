@@ -28,9 +28,10 @@ header{
     -moz-transition: all 2s; // Mozilla
     -o-transition: all 2s; // Opera
     transition: all 2s;
-  z-index:9999999999;
+  z-index:999;
 }
 .nav-lg{
+  z-index:999;
   height:3em;
   background:none;
   position:absolute;
@@ -41,13 +42,14 @@ header{
   transition: top 1.2s ease-in-out;
 }
 .nav-sm {
+  z-index:999;
   transition: top 1.2s ease-in-out;
   position:fixed;
   background:#fff;
-  top:0;
+  top:-2em;
   left:0;
   width:100%;
-  height:0em;
+  height:2em;
 }
 
 .logo-wrap{
@@ -250,6 +252,7 @@ li.num{
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  z-index:1000;
 }
 .loadImage-creators{
   background-image: image-url("bg-creators-connect.jpg");

@@ -2,9 +2,14 @@
 pageable: true
 per_page: 10
 ---
-  <header class="nav-lg">
+  <div class="nav-lg">
     <div class="logo-wrap"><%= image_tag 'hightops_logo.svg' %></div>
-  </header>
+  </div>
+
+  <div class="nav-sm">
+    <div class="logo-wrap"><%= image_tag 'hightops_logo.svg' %></div>
+  </div>
+
   <div id="#fullpage">
     <div class="section dawn-mist" data-anchor="firstPage">
       <section class="wrapper">
@@ -204,6 +209,15 @@ per_page: 10
   <%= javascript_include_tag  "all" %>
   <script type="text/javascript">
     $(document).ready(function() {
+        $navBar = $('.nav-sm');
+        var slideDown = function() {
+                          $navBar.animate({top: '0em'}, 100);
+                        };
+        var slideUp = function() {
+                          $navBar.animate({top: '-2em'}, 100);
+                        };
+        //$slideDown = animate({top: '0em'}, 100);
+        //$slideUp = animate({top: '-2em'}, 100);
         $('#fullpage').fullpage({
           anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage', 'sixthPage', 'lastPage'],
           responsive: 5000,
@@ -215,22 +229,43 @@ per_page: 10
           scrollBar: true,
           css3: true,
           slidesNavPosition: 'bottom',
+          afterRender: function(){
+              $("img").unveil();
+              $('.slide-creators').addClass('loadImage-creators');
+              $('.slide-madepulse').addClass('loadImage-madepulse');
+          },
           afterLoad: function(anchorLink, index){
               var loadedSection = $(this);
-              if(anchorLink == "firstPage"){
-                  $('header').animate({height: '0em'}, 3000).removeClass("nav-sm").css('height','3em').addClass("nav-lg");
+              if(index == 1){
+                  slideUp();
               }
           },
           onLeave: function(index, nextIndex, direction){
             var leavingSection = $(this);
 
             //after leaving section 2
-            if(index == 1 && direction =='down'){
-              $('header').removeClass("nav-lg").css('height','0em').addClass("nav-sm").animate({height: '2em'}, 3000);
+            if(index == 1){
+              slideDown();
             }
-            else if(index == 2 && direction == 'up'){
-              $('header').animate({height: '0px'}, 3000).removeClass("nav-sm").css('height','3em').addClass("nav-lg");
+            if(index == 2 && direction == 'up'){
+              slideUp();
             }
+            if(index == 5){
+              slideDown();
+            }
+          },
+          afterSlideLoad: function( anchorLink, index, slideAnchor, slideIndex){
+              var loadedSlide = $(this);
+
+              //first slide of the second section
+              if(anchorLink == 'fifthPage' && slideIndex > 0){
+                  $("img").unveil();
+                  slideUp();
+              }
+              if(anchorLink == 'fifthPage' && slideIndex == 0){
+                  $("img").unveil();
+                  slideDown();
+              }
           }
         });
     });
@@ -243,9 +278,7 @@ per_page: 10
     });
     
     $(document).ready(function() {
-      $("img").unveil();
-      $('.slide-creators').addClass('loadImage-creators');
-      $('.slide-madepulse').addClass('loadImage-madepulse');
+      
     });
 
 
