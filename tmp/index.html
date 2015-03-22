@@ -17,7 +17,29 @@
   </div>
 
   <div class="nav-sm">
-    <div class="logo-wrap"><img src="/images/hightops_logo.svg" /></div>
+   <!--  <div class="logo-wrap"><img src="/images/hightops_logo.svg" /></div> -->
+    <header class="centered-navigation" role="banner">
+      <div class="centered-navigation-wrapper">
+        <a href="javascript:void(0)" class="mobile-logo">
+          <img alt="high tops logo" src="/images/hightops_logo.svg" />
+        </a>
+        <a href="javascript:void(0)" id="js-centered-navigation-mobile-menu" class="centered-navigation-mobile-menu">MENU</a>
+        <nav role="navigation">
+          <ul id="js-centered-navigation-menu" class="centered-navigation-menu show">
+            <li class="nav-link logo">
+              <a href="javascript:void(0)" class="logo">
+                <img alt="high tops logo" src="/images/hightops_logo.svg" />
+              </a>
+            </li>
+            <li class="nav-link"><a href="javascript:void(0)">Services</a></li>
+            <li class="nav-link"><a href="javascript:void(0)">Process</a></li>
+            <li class="nav-link"><a href="javascript:void(0)">Work</a></li>
+            <li class="nav-link"><a href="javascript:void(0)">About</a></li>
+            <li class="nav-link"><a href="javascript:void(0)">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
   </div>
 
   <div id="#fullpage">
@@ -312,7 +334,20 @@
             data: {message: "hello!"},
             dataType: "json"
           });
-        }
+        };
+        var navMenu = function(){
+          var menuToggle = $('#js-centered-navigation-mobile-menu').unbind();
+            $('#js-centered-navigation-menu').removeClass("show");
+            
+            menuToggle.on('click', function(e) {
+              e.preventDefault();
+              $('#js-centered-navigation-menu').slideToggle(function(){
+                if($('#js-centered-navigation-menu').is(':hidden')) {
+                  $('#js-centered-navigation-menu').removeAttr('style');
+                }
+              });
+            });
+        };
         $('#fullpage').fullpage({
           anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage', 'sixthPage', 'lastPage'],
           responsive: 5000,
@@ -326,6 +361,7 @@
           slidesNavPosition: 'bottom',
           afterRender: function(){
               $("img").unveil();
+              navMenu();
               var waypoints = $('#slide-tester').waypoint(function(direction) {
                   $('.slide-test').addClass('slideLeft');
                   //$('.fp-slidesNav.bottom').addClass('fadeIn');

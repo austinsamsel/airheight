@@ -76,7 +76,7 @@ page "/feed.xml", layout: false
     # Require any additional compass plugins here.
     config.add_import_path "bower_components/fullpage.js/"
 
-    config.output_style = :expanded
+    config.output_style = :compressed
   end
 
   after_configuration do
@@ -102,10 +102,10 @@ set :build_dir, 'tmp'
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment
-  # activate :minify_css
+  activate :minify_css
 
   # Minify Javascript on build
-  # activate :minify_javascript
+  activate :minify_javascript
 
   # Enable cache buster
   # activate :asset_hash
