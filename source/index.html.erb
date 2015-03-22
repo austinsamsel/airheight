@@ -283,13 +283,26 @@ per_page: 10
     $(document).ready(function() {
         $navBar = $('.nav-sm');
         var slideDown = function() {
-                          $navBar.animate({top: '0em'}, 100);
-                        };
+          $navBar.animate({top: '0em'}, 100);
+        };
         var slideUp = function() {
-                          $navBar.animate({top: '-2em'}, 100);
-                        };
-        //$slideDown = animate({top: '0em'}, 100);
-        //$slideUp = animate({top: '-2em'}, 100);
+          $navBar.animate({top: '-2em'}, 100);
+        };
+        var loadBGs = function() {
+          $('.slide-creators').addClass('loadImage-creators');
+          $('.slide-madepulse').addClass('loadImage-madepulse');
+          $('.slide-bfp').addClass('loadImage-bfp');
+          $('.slide-calico').addClass('loadImage-calico');
+          $('.slide-haiku').addClass('loadImage-haiku');
+        };
+        var email = function(){
+          $.ajax({
+            url: "//formspree.io/you@email.com", 
+            method: "POST",
+            data: {message: "hello!"},
+            dataType: "json"
+          });
+        }
         $('#fullpage').fullpage({
           anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage', 'sixthPage', 'lastPage'],
           responsive: 5000,
@@ -303,12 +316,6 @@ per_page: 10
           slidesNavPosition: 'bottom',
           afterRender: function(){
               $("img").unveil();
-              $('.slide-creators').addClass('loadImage-creators');
-              $('.slide-madepulse').addClass('loadImage-madepulse');
-              $('.slide-bfp').addClass('loadImage-bfp');
-              $('.slide-calico').addClass('loadImage-calico');
-              $('.slide-haiku').addClass('loadImage-haiku');
-
               var waypoints = $('#slide-tester').waypoint(function(direction) {
                   $('.slide-test').addClass('slideLeft');
                   //$('.fp-slidesNav.bottom').addClass('fadeIn');
@@ -328,8 +335,10 @@ per_page: 10
           },
           onLeave: function(index, nextIndex, direction){
             var leavingSection = $(this);
-
-            //after leaving section 2
+            if (direction == 'up' || direction == 'down'){
+              loadBGs();
+              email();
+            }
             if(index == 1){
               slideDown();
             }
@@ -354,17 +363,6 @@ per_page: 10
               }
           }
         });
-    });
-
-    
-    
-    $(document).ready(function() {
-      $.ajax({
-        url: "//formspree.io/you@email.com", 
-        method: "POST",
-        data: {message: "hello!"},
-        dataType: "json"
-      });
     });
 
 
