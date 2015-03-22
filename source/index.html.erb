@@ -21,11 +21,11 @@ per_page: 10
                 <%= image_tag 'hightops_logo.svg', alt: 'high tops logo' %>
               </a>
             </li>
-            <li class="nav-link"><a href="javascript:void(0)">Services</a></li>
-            <li class="nav-link"><a href="javascript:void(0)">Process</a></li>
-            <li class="nav-link"><a href="javascript:void(0)">Work</a></li>
-            <li class="nav-link"><a href="javascript:void(0)">About</a></li>
-            <li class="nav-link"><a href="javascript:void(0)">Contact</a></li>
+            <li data-menuanchor="services" class="nav-link"><a href="#services">Services</a></li>
+            <li data-menuanchor="process" class="nav-link"><a href="#process">Process</a></li>
+            <li data-menuanchor="work" class="nav-link"><a href="#work">Work</a></li>
+            <li data-menuanchor="about" class="nav-link"><a href="#about">About</a></li>
+            <li data-menuanchor="contact" class="nav-link"><a href="#contact">Contact</a></li>
           </ul>
         </nav>
       </div>
@@ -33,7 +33,7 @@ per_page: 10
   </div>
 
   <div id="#fullpage">
-    <div class="section dawn-mist" data-anchor="Home">
+    <div class="section dawn-mist" data-anchor="home">
       <section class="wrapper">
         
         <br>
@@ -46,7 +46,7 @@ per_page: 10
         </div>
       </section>
     </div>
-    <div class="section midnight" data-anchor="Praise">
+    <div class="section midnight" data-anchor="praise">
       <section class="wrapper night">
         <!-- <h1 class="light">What our clients say</h1> -->
         <div class="testimonial">
@@ -59,7 +59,7 @@ per_page: 10
         </div>
       </section>
     </div>
-    <div class="section egg-blue">
+    <div class="section egg-blue" data-anchor="services">
       <section class="wrapper">
         <div class="main">
           <span class="section-title">Services</span>
@@ -69,7 +69,7 @@ per_page: 10
         <div class="sidebar">
           <h3>We help with…</h3>
           <li>new websites</li>
-          <li>web or mobile apps</li>
+          <li>web and mobile apps</li>
           <li>database applications</li>
           <li>action-oriented consulting</li>
           <li>increasing revenue</li>
@@ -82,7 +82,7 @@ per_page: 10
       </section>
     </div>
 
-    <div class="section spring-vine">
+    <div class="section spring-vine" data-anchor="methodology">
       <section class="wrapper night">
         <span class="section-title">Process</span>
         <h1 class="light">Methodology</h1>
@@ -108,7 +108,7 @@ per_page: 10
         </div>-->
       </section>
     </div>
-    <div class="section egg-blue">
+    <div class="section egg-blue" data-anchor="work">
       <div class="slide" id="slide-tester">
         <section class="wrapper">
           <div class="main">
@@ -249,7 +249,7 @@ per_page: 10
       </div>
 
     </div>
-    <div class="section midnight">
+    <div class="section midnight" data-anchor="about">
       <section class="wrapper night">
         <div class="main">
           <span class="section-title">About</span>
@@ -268,7 +268,7 @@ per_page: 10
         </div>
       </section>
     </div>
-    <div class="section dawn-mist">
+    <div class="section dawn-mist" data-anchor="contact">
       <section class="wrapper">
         <div class="main">
           <span class="section-title">Contact</span>
@@ -339,7 +339,7 @@ per_page: 10
             });
         };
         $('#fullpage').fullpage({
-          anchors: ['Home', 'Praise', 'Services', 'Process', 'Work', 'About', 'Contact'],
+          anchors: ['home', 'praise', 'services', 'process', 'work', 'about', 'contact'],
           responsive: 5000,
           controlArrows: false,
           slidesNavigation: true,
@@ -347,6 +347,7 @@ per_page: 10
           fitToSection: false,
           animateAnchor: true,
           scrollBar: true,
+          menu:'#js-centered-navigation-menu',
           css3: true,
           slidesNavPosition: 'bottom',
           afterRender: function(){
@@ -389,11 +390,11 @@ per_page: 10
               var loadedSlide = $(this);
               // used to be anchorLink == 'About' instead of index == 6
               // need to test if this works.
-              if(index == 6 && slideIndex > 0){
+              if(index == 5 && slideIndex > 0){
                   $("img").unveil();
                   slideUp();
               }
-              if(index == 6 && slideIndex == 0){
+              if(index == 5 && slideIndex == 0){
                   $("img").unveil();
                   slideDown();
               }
