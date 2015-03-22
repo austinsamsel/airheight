@@ -7,29 +7,26 @@ per_page: 10
   </div>
 
   <div class="nav-sm">
-   <!--  <div class="logo-wrap"><%= image_tag 'hightops_logo.svg' %></div> -->
-    <header class="centered-navigation" role="banner">
-      <div class="centered-navigation-wrapper">
-        <a href="javascript:void(0)" class="mobile-logo">
-          <%= image_tag 'hightops_logo.svg', alt: 'high tops logo' %>
-        </a>
-        <a href="javascript:void(0)" id="js-centered-navigation-mobile-menu" class="centered-navigation-mobile-menu">MENU</a>
-        <nav role="navigation">
-          <ul id="js-centered-navigation-menu" class="centered-navigation-menu show">
-            <li class="nav-link logo">
-              <a href="javascript:void(0)" class="logo">
-                <%= image_tag 'hightops_logo.svg', alt: 'high tops logo' %>
-              </a>
-            </li>
-            <li data-menuanchor="services" class="nav-link"><a href="#services">Services</a></li>
-            <li data-menuanchor="process" class="nav-link"><a href="#process">Process</a></li>
-            <li data-menuanchor="work" class="nav-link"><a href="#work">Work</a></li>
-            <li data-menuanchor="about" class="nav-link"><a href="#about">About</a></li>
-            <li data-menuanchor="contact" class="nav-link"><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+<header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="javascript:void(0)" class="logo">
+      <%= image_tag 'hightops_logo.svg', alt: 'high tops logo' %>
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+    <nav role="navigation">
+      
+    </nav>
+    <div class="navigation-tools">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        <li data-menuanchor="services" class="nav-link"><a href="#services">Services</a></li>
+        <li data-menuanchor="process" class="nav-link"><a href="#process">Process</a></li>
+        <li data-menuanchor="work" class="nav-link"><a href="#work">Work</a></li>
+        <li data-menuanchor="about" class="nav-link"><a href="#about">About</a></li>
+        <li data-menuanchor="contact" class="nav-link"><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
   </div>
 
   <div id="#fullpage">
@@ -326,17 +323,17 @@ per_page: 10
           });
         };
         var navMenu = function(){
-          var menuToggle = $('#js-centered-navigation-mobile-menu').unbind();
-            $('#js-centered-navigation-menu').removeClass("show");
-            
-            menuToggle.on('click', function(e) {
-              e.preventDefault();
-              $('#js-centered-navigation-menu').slideToggle(function(){
-                if($('#js-centered-navigation-menu').is(':hidden')) {
-                  $('#js-centered-navigation-menu').removeAttr('style');
-                }
-              });
+          var menuToggle = $('#js-mobile-menu').unbind();
+          $('#js-navigation-menu').removeClass("show");
+
+          menuToggle.on('click', function(e) {
+            e.preventDefault();
+            $('#js-navigation-menu').slideToggle(function(){
+              if($('#js-navigation-menu').is(':hidden')) {
+                $('#js-navigation-menu').removeAttr('style');
+              }
             });
+          });
         };
         $('#fullpage').fullpage({
           anchors: ['home', 'praise', 'services', 'process', 'work', 'about', 'contact'],
