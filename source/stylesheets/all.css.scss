@@ -3,10 +3,10 @@
 @import "bourbon";
 @import "base/base";   /* Bitters needs to be imported before Neat */
 
-$visual-grid: true;
+
 @import "grid-settings";
 @import "neat";
-$visual-grid: true;
+@import "base/navigation";
 
 @import "partials/layout";
 @import "partials/nav";

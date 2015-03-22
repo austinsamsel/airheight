@@ -76,7 +76,7 @@ page "/feed.xml", layout: false
     # Require any additional compass plugins here.
     config.add_import_path "bower_components/fullpage.js/"
 
-    config.output_style = :compact
+    config.output_style = :expanded
   end
 
   after_configuration do
