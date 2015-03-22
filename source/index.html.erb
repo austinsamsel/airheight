@@ -33,7 +33,7 @@ per_page: 10
   </div>
 
   <div id="#fullpage">
-    <div class="section dawn-mist" data-anchor="firstPage">
+    <div class="section dawn-mist" data-anchor="Home">
       <section class="wrapper">
         
         <br>
@@ -46,7 +46,7 @@ per_page: 10
         </div>
       </section>
     </div>
-    <div class="section midnight" data-anchor="secondPage">
+    <div class="section midnight" data-anchor="Praise">
       <section class="wrapper night">
         <!-- <h1 class="light">What our clients say</h1> -->
         <div class="testimonial">
@@ -339,7 +339,7 @@ per_page: 10
             });
         };
         $('#fullpage').fullpage({
-          anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage', 'sixthPage', 'lastPage'],
+          anchors: ['Home', 'Praise', 'Services', 'Process', 'Work', 'About', 'Contact'],
           responsive: 5000,
           controlArrows: false,
           slidesNavigation: true,
@@ -387,13 +387,13 @@ per_page: 10
           },
           afterSlideLoad: function( anchorLink, index, slideAnchor, slideIndex){
               var loadedSlide = $(this);
-
-              //first slide of the second section
-              if(anchorLink == 'fifthPage' && slideIndex > 0){
+              // used to be anchorLink == 'About' instead of index == 6
+              // need to test if this works.
+              if(index == 6 && slideIndex > 0){
                   $("img").unveil();
                   slideUp();
               }
-              if(anchorLink == 'fifthPage' && slideIndex == 0){
+              if(index == 6 && slideIndex == 0){
                   $("img").unveil();
                   slideDown();
               }

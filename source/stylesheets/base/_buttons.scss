@@ -19,13 +19,20 @@ button {
   vertical-align: middle;
   white-space: nowrap;
   text-transform:uppercase;
-  border-bottom:$crystal-blue solid 4px;
+  border-bottom:$crystal-blue solid 0.1em;
+  transition:0.1s linear;
 
   &:hover,
   &:focus {
     background-color: darken($action-color, 10%);
     border-color:darken($crystal-blue, 10%);
     color: #fff;
+  }
+  &:focus{
+    border-bottom:0px;
+    padding-top:0.55em;
+    padding-bottom:0.55em;
+    transition:0.1s linear;
   }
 
   &:disabled {

@@ -112,7 +112,8 @@
   }
 
   ul li.nav-link {
-    background: $centered-navigation-background;
+    //background: $centered-navigation-background;
+    background:none;
     display: block;
     //line-height: $centered-navigation-height;
     overflow: hidden;
