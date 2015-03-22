@@ -132,7 +132,7 @@ per_page: 10
       <div class="slide slide-madepulse">
         <section class="wrapper visible">
         <div class="main-big">
-          <p class="extra-sm"><strong class="highlight3">MadePulse</strong> needed to showcase the members of their community. We developed a custom WordPress theme from a designer's mock up. We programmed it to have a modern feel and modern functionality. It works across all devices and screens and makes use of some slick animations.</p>
+          <p class="extra-sm"><strong class="highlight3">MadePulse</strong> was created as an in-the-moment accomplishment tracker or "done list" where users can share their work and progress with others. We built in social functionality such as: likes, comments, and the ability to follow others.</p>
         </div>
         <div class="sidebar2">
         </div>
@@ -153,7 +153,79 @@ per_page: 10
         </div>
         </section>
       </div>
-      <div class="slide"> Slide 4 </div>
+
+      <div class="slide slide-bfp">
+        <section class="wrapper visible">
+        <div class="main-big">
+          <p class="extra-sm"><strong class="highlight3">Brooklyn Fire Proof</strong> came to us with a theme and custom graphics but wanted help implementing a custom WordPress install, done the right way. We built in additional slider functionality into their website. We then optimized it to improve page load times by 300%. Also, we added enhanced security features.</p>
+        </div>
+        <div class="sidebar2">
+        </div>
+        <div class="main-big">  
+            <img src="/images/loading.gif" data-src="/images/browser.svg" class="browser">
+            <div class="scr-desktop"><img src="/images/loading.gif" data-src="/images/screen-bfp.jpg"  alt="brooklyn fire proof stages screen capture">
+            </div>
+        </div>
+        <div class="sidebar2">
+          <div class="scr-mobile-wrap">
+            <img src="/images/loading.gif" data-src="/images/mobile-top.svg" class="mobile-top">
+            <div class="mobile-screen">
+              <img src="/images/loading.gif" data-src="/images/screen-bfp-mobile.jpg" alt="brooklyn fire proof stages mobile screen capture">
+            </div>
+            <img src="/images/loading.gif" data-src="/images/mobile-bottom.svg" class="mobile-bottom">
+           </div>
+        </div>
+        </section>
+      </div>
+      
+      <div class="slide slide-calico">
+        <section class="wrapper visible">
+        <div class="main-big">
+          <p class="extra-sm"><strong class="highlight3">Calico</strong> offers fast, free, and easy calendar booking for professionals. We built this app to be lightweight and mobile responsive so users could book with their favorite pros on-the-go. It focuses on quickly generating leads, connecting customer and client, and leaves the details to the client to manage via email. Users can easily match their booking to their page with images.</p>
+        </div>
+        <div class="sidebar2">
+        </div>
+        <div class="main-big">  
+            <img src="/images/loading.gif" data-src="/images/browser.svg" class="browser">
+            <div class="scr-desktop"><img src="/images/loading.gif" data-src="/images/screen-calico.jpg"  alt="calico screen capture">
+            </div>
+        </div>
+        <div class="sidebar2">
+          <div class="scr-mobile-wrap">
+            <img src="/images/loading.gif" data-src="/images/mobile-top.svg" class="mobile-top">
+            <div class="mobile-screen">
+              <img src="/images/loading.gif" data-src="/images/screen-calico-mobile.jpg" alt="calico mobile screen capture">
+            </div>
+            <img src="/images/loading.gif" data-src="/images/mobile-bottom.svg" class="mobile-bottom">
+           </div>
+        </div>
+        </section>
+      </div>
+
+      <div class="slide slide-haiku">
+        <section class="wrapper visible">
+        <div class="main-big">
+          <p class="extra-sm"><strong class="highlight3">haiku</strong> was born out of the need for a simple, lightweight text editor with just a few basic features for composing notes. We hooked together the ZenPen app with a Ruby on Rails back end for authentication and saving all user posts in the cloud.</p>
+        </div>
+        <div class="sidebar2">
+        </div>
+        <div class="main-big">  
+            <img src="/images/loading.gif" data-src="/images/browser.svg" class="browser">
+            <div class="scr-desktop"><img src="/images/loading.gif" data-src="/images/screen-haiku.jpg"  alt="haiku screen capture">
+            </div>
+        </div>
+        <div class="sidebar2">
+          <div class="scr-mobile-wrap">
+            <img src="/images/loading.gif" data-src="/images/mobile-top.svg" class="mobile-top">
+            <div class="mobile-screen">
+              <img src="/images/loading.gif" data-src="/images/screen-haiku-mobile.jpg" alt="haiku mobile screen capture">
+            </div>
+            <img src="/images/loading.gif" data-src="/images/mobile-bottom.svg" class="mobile-bottom">
+           </div>
+        </div>
+        </section>
+      </div>
+
     </div>
     <div class="section midnight">
       <section class="wrapper night">
@@ -233,6 +305,9 @@ per_page: 10
               $("img").unveil();
               $('.slide-creators').addClass('loadImage-creators');
               $('.slide-madepulse').addClass('loadImage-madepulse');
+              $('.slide-bfp').addClass('loadImage-bfp');
+              $('.slide-calico').addClass('loadImage-calico');
+              $('.slide-haiku').addClass('loadImage-haiku');
 
               var waypoints = $('#slide-tester').waypoint(function(direction) {
                   $('.slide-test').addClass('slideLeft');

@@ -240,7 +240,7 @@ h3 { font-size: 1.4em; }
 /* line 89, /Users/x/.rvm/gems/ruby-2.2.0-preview1/gems/neat-1.7.2/app/assets/stylesheets/grid/_span-columns.scss */
 .testimonial:last-child { margin-right: 0; }
 @media screen and (min-width: 40em) { /* line 126, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
-  .testimonial { float: left; display: block; margin-right: 4.34783%; width: 73.91304%; }
+  .testimonial { float: left; display: block; margin-right: 4.34783%; width: 82.6087%; }
   /* line 89, /Users/x/.rvm/gems/ruby-2.2.0-preview1/gems/neat-1.7.2/app/assets/stylesheets/grid/_span-columns.scss */
   .testimonial:last-child { margin-right: 0; } }
 
@@ -353,55 +353,73 @@ li.num:last-child { margin-right: 0; }
 .loadImage-madepulse { background-image: url("/images/bg-madepulse.jpg"); }
 
 /* line 263, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+.loadImage-bfp { background-image: url("/images/bg-bfp.jpg"); }
+
+/* line 266, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+.loadImage-calico { background-image: url("/images/bg-calico.jpg"); }
+
+/* line 269, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+.loadImage-haiku { background-image: url("/images/bg-haiku.jpg"); }
+
+/* line 272, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .browser { margin: 0 0 -8px; width: 100% !important; }
 
-/* line 267, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 276, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .browser img { width: 100% !important; }
 
-/* line 273, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 282, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .scr-desktop { border-radius: 0px 0px 3px 3px; width: 100%; min-height: 100px; text-align: center; }
 
-/* line 282, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 291, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .mobile-top, .mobile-bottom { width: 100%; }
 
-/* line 285, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 294, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .mobile-top { margin-bottom: -9px; }
 
-/* line 288, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 297, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .mobile-bottom { margin-top: -2px; }
 
-/* line 291, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 300, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .mobile-screen { background-color: #2A2B31; margin-bottom: -2px; }
 
-/* line 297, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 306, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .mobile-screen img { padding: 0.3em; border-radius: 10px; }
 
 /* nav arrows */
-/* line 303, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 312, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .fp-slidesNav ul li a.active span { background: #8136D8; }
 
-/* line 309, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 318, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .fp-controlArrow.fp-next { border-color: transparent transparent transparent #8136D8 !important; }
 
+/* line 322, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+.fp-slidesNav.bottom { visibility: hidden; }
+
+/* line 326, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+.fp-slidesNav.bottom:before { content: 'our work: '; font-size: 20px; position: absolute; left: -90px; top: -3px; background: #fff; border-radius: 3px; padding: 1px 3px; }
+
+/* line 336, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+.slide-test { visibility: hidden; }
+
 /* about */
-/* line 318, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 341, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .profile-pic { border-radius: 100%; display: inline; text-align: left; float: left; margin: 0px 10px 0 0px; width: 100px !important; }
-@media screen and (min-width: 40em) { /* line 318, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+@media screen and (min-width: 40em) { /* line 341, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
   .profile-pic { margin: 0px 10px 0 0px; width: 100px !important; } }
 
 /* forms */
-/* line 333, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 356, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], textarea, select[multiple=multiple], textarea { background: #fff; font-size: 100%; }
 
-/* line 337, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 360, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 form { margin-bottom: 1em; }
-@media screen and (min-width: 40em) { /* line 337, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+@media screen and (min-width: 40em) { /* line 360, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
   form { margin-bottom: 0; } }
 
-/* line 343, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 366, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 textarea { min-height: 5em; }
 
-/* line 347, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
+/* line 370, /Users/x/Dropbox/DEV/apps-middleman/airheight/source/stylesheets/partials/_home.scss */
 .omega { margin-right: 0; }
 
 /*

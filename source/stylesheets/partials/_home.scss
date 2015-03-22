@@ -126,7 +126,7 @@ h3 {
 .testimonial {
   @include span-columns(12);
   @include media($medium-screen){
-    @include span-columns(9);
+    @include span-columns(10);
   }
 }
 .testimonial-pic{
@@ -260,6 +260,15 @@ li.num{
 .loadImage-madepulse{
   background-image: image-url("bg-madepulse.jpg");
 }
+.loadImage-bfp{
+  background-image: image-url("bg-bfp.jpg");
+}
+.loadImage-calico{
+  background-image: image-url("bg-calico.jpg");
+}
+.loadImage-haiku{
+  background-image: image-url("bg-haiku.jpg");
+}
 .browser{
   margin:0 0 -8px;
   width:100% !important;
@@ -315,10 +324,10 @@ img.main{
   visibility: hidden;
 }
 .fp-slidesNav.bottom:before{
-  content: 'see our work: ';
+  content: 'our work: ';
   font-size: 20px;
   position: absolute;
-  left: -110px;
+  left: -90px;
   top: -3px;
   background:#fff;
   border-radius:3px;
