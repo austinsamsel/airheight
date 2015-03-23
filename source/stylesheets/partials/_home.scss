@@ -170,6 +170,15 @@ h3 {
   line-height:1.4em;
 }
 
+/* services */
+
+.services-list{
+  list-style: none;
+}
+.fa-check{
+  //visibility: hidden;
+}
+
 /* info slide */
 
 .main-big{
@@ -334,7 +343,7 @@ img.main{
   padding:1px 3px;
 }
 .slide-test{
-  visibility: hidden;
+  //visibility: hidden;
 }
 
 /* about */

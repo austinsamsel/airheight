@@ -9,6 +9,8 @@ gem 'bitters'
 gem 'bourbon'
 gem 'neat'
 
+gem 'font-awesome-middleman'
+
 # For feed.xml.builder
 gem "builder", "~> 3.0"
 

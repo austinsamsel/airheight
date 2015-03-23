@@ -99,6 +99,8 @@ set :images_dir, 'images'
 
 set :build_dir, 'tmp'
 
+set :fonts_dir,  "fonts-folder"
+
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment
