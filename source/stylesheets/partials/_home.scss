@@ -507,3 +507,25 @@ $purple: $rich-violet;
   border-radius:100%;
   max-width:100px;
 }
+
+
+.upstate-features-list li{
+    list-style: none;
+    margin-left:3em;
+    font-size:80%;
+  .fa {
+    position:absolute;
+    margin-left:-1.25em;
+    margin-top:7px;
+    font-size:2em;
+  }
+  .fa-magic{ color:$red;}
+  .fa-file-code-o{ color: $blue}
+  .fa-fighter-jet{
+    color:$orange;
+    -ms-transform: rotate(-45deg); /* IE 9 */
+    -webkit-transform: rotate(-45deg); /* Safari */
+    transform: rotate(-45deg);
+  }
+  .fa-tree{ color: $green;}
+}
