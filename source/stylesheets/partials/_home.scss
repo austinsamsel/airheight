@@ -116,6 +116,18 @@ h3 {
     font-size: 1.5em;
   }
 }
+h4 {
+  font-size:1.2em;
+  @include media($medium-screen){
+    font-size: 1.3em;
+  }
+}
+h5 {
+  font-size:1.0em;
+  @include media($medium-screen){
+    font-size: 1.1em;
+  }
+}
 
 .section-title{
   text-transform: uppercase;
@@ -336,7 +348,7 @@ img.main{
 }
 .fp-slidesNav.bottom{
   @extend .floating;
-  visibility: hidden;
+  //visibility: hidden;
 }
 .fp-slidesNav.bottom:before{
   content: 'our work: ';
@@ -442,6 +454,7 @@ $purple: $rich-violet;
   line-height:1.6em;
   position:relative;
   font-size:90%;
+  line-height:1.2em;
   .fa {
     color:$sky-top;
     position:absolute;
@@ -528,4 +541,40 @@ $purple: $rich-violet;
     transform: rotate(-45deg);
   }
   .fa-tree{ color: $green;}
+}
+
+.upstate-work-quote{
+  margin-top:2em;
+  padding-top:1em;
+}
+
+.upstate-price-service{
+  margin-left:3em;
+  position:relative;
+  .fa-cubes{
+    position:absolute;
+    top:0;
+    left:-1.5em;
+    font-size:2em;
+    color:$blue;
+  }
+  li {
+    margin-left:0.75em;
+  }
+}
+.update-add-on{
+  margin-left:2.5em;
+  position:relative;
+  .fa{
+    left:-1.25em;
+    font-size:2em;
+    position:absolute;
+    top:0;
+  }
+  .fa-heart{
+    color:$red;
+  }
+  .fa-pagelines{
+    color:$green;
+  }
 }
