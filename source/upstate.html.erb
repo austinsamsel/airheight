@@ -1,0 +1,139 @@
+---
+pageable: false
+per_page: 10
+---
+
+<div class="nav-lg">
+  <div class="logo-wrap"><%= image_tag 'hightops_logo.svg' %></div>
+</div>
+<div id="fullpage">
+  <div class="section dawn-mist" data-anchor="home">
+    <section class="wrapper">
+      <div class="upstate-hero">Lift off</div>
+      <p class="hero-h2">Modern, mobile responsive websites launched in one week for $999.</p>
+      <div class="hero-sub">
+      <div class="half">  
+            
+            <img src="/images/loading.gif" data-src="/images/browser.svg" class="browser">
+            <div class="scr-desktop"><img src="/images/loading.gif" data-src="/images/screen-bfp.jpg"  alt="brooklyn fire proof stages screen capture">
+            </div>
+
+            <div class="scr-mobile-wrap mobile-small">
+              <img src="/images/loading.gif" data-src="/images/mobile-top.svg" class="mobile-top">
+              <div class="mobile-screen">
+                <img src="/images/loading.gif" data-src="/images/screen-bfp-mobile.jpg" alt="brooklyn fire proof stages mobile screen capture">
+              </div>
+            <img src="/images/loading.gif" data-src="/images/mobile-bottom.svg" class="mobile-bottom">
+           </div>
+        </div>
+        <div class="hero-support">
+          <h3>We care about your success.</h3>
+          <p>The first thing we do is discuss your project and your goals in order to make sure we’re a match. Then we…</p>
+            <li><i class="fa fa-magic"></i> Customize your theme to match your brand</li>
+            <li><i class="fa fa-file-code-o"></i> Set up your content to look and feel good.</li>
+            <li><i class="fa fa-fighter-jet"></i> Boost the performance for faster page loads </li>
+            <li><i class="fa fa-search"></i> Optimize for SEO so you look good in Search.</li>
+            <li><i class="fa fa-shield"></i> Secure against hackers and bots.</li>
+          <br>
+          <button class="upstate-apply">Apply Now</button>
+          <!-- <div class="upstate-apply1 full">
+            <form class="upstate-apply-form1" action="//formspree.io/hi@austinsamsel.com.com">
+              <input type="hidden" name="_next" value="//airheight.herokuapp.com/thanks.html" />
+              <input type="hidden" name="_subject" value="New contact on High Tops." />
+              <input type="text" name="_gotcha" style="display:none" required />
+              <div class="half">
+                <input type="email" name="_replyto" placeholder="Your email" required />
+              </div>
+              <div class="half-omega">
+                <button class="upstate-apply" type="submit">Apply Now</button>
+              </div>
+            </form>
+            <div class="full">
+              <p class="small">We'll send you a form to get started. No newsletter, no spam.</p>
+            </div> 
+          </div>-->
+        </div>
+        <div class="full upstate-hero-footer">
+          high tops is a web development consultancy<br>
+          <strong>based in NYC</strong>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="section" style="background:#fff;border-top:1px solid #ccc;" data-anchor="home">
+    <section class="wrapper">
+      <span class="section-title">Overview</span>
+        <h1>Done Right</h1>
+        <div class="upstate-done-right">
+          <p>We created Up State to make launching high quality websites<strong class="highlight2"> fast, easy and stress-free</strong>. So you can focus on what you do best.</p>
+          <br><br>
+        </div>
+        <div class='wrap'>
+          <div class='upstate-feature'>
+            <img src="images/temp-beach.jpg" class="upstate-feature-img">
+            <h3>Stress-free</h3>
+            <p class="small">We’ve made every step of the process easy for you. Once you send us your content, we’ll set up your site so its works for you.</p>
+          </div>
+          <div class='upstate-feature'>
+            <img src="images/temp-diamonds.jpg" class="upstate-feature-img">
+            <h3>Presentation</h3>
+            <p class="small">The way you look on the web affects your business. Make sure you’re making the presentation that speaks to your audience.</p>
+          </div>
+          <div class='upstate-feature'>
+            <img src="images/temp-dog.jpg" class="upstate-feature-img">
+            <h3>Profit</h3>
+            <p class="small">Whether its generating leads, promoting your services, or selling a new product or course, we help you reach your goals.</p>
+          </div>
+        </div>
+    </section>
+  </div>
+  <div class="section egg-blue" data-anchor="services">
+    <section class="wrapper">
+      <div class="main">
+        <span class="section-title">Features</span>
+        <h1>All in one</h1>
+        <p>We build on WordPress so you can easily manage your site.</p>
+        <hr>
+      </div>
+      <div class="sidebar services-list">
+        <h3>Get everything you need:</h3>
+          <li><i class="fa fa-check"></i> $60 credit for theme</li>
+          <li><i class="fa fa-check"></i> SEO optimization</li>
+          <li><i class="fa fa-check"></i> Fast page loads</li>
+          <li><i class="fa fa-check"></i> Secure, limit spam</li>
+          <li><i class="fa fa-check"></i> Connect your URL</li>
+          <li><i class="fa fa-check"></i> Connect your hosting </li>
+          <li><i class="fa fa-check"></i> Analytics</li>
+          <li><i class="fa fa-check"></i> Easy blogging</li>
+          <li><i class="fa fa-check"></i> Responsive website</li>
+          <li><i class="fa fa-check"></i> Mobile friendly</li>
+          <li><i class="fa fa-check"></i> Social network icons</li>
+          <li><i class="fa fa-check"></i> Newsletter sign ups</li>
+      </div>
+    </section>
+  </div>
+
+
+</div>
+
+  <%= javascript_include_tag  "all" %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $('#fullpage').fullpage({
+          anchors: ['home', 'praise', 'services', 'process', 'work', 'about', 'contact'],
+          responsive: 5000,
+          controlArrows: false,
+          slidesNavigation: true,
+          showActiveTooltips: true,
+          fitToSection: false,
+          animateAnchor: true,
+          scrollBar: true,
+          menu:'#js-centered-navigation-menu',
+          css3: true,
+          slidesNavPosition: 'bottom',
+          afterRender: function(){
+              $("img").unveil();
+            }
+        });
+    });
+  </script>
