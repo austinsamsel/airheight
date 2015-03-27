@@ -17,38 +17,31 @@
   </div>
 
   <div class="nav-sm">
-   <!--  <div class="logo-wrap"><img src="/images/hightops_logo.svg" /></div> -->
-    <header class="centered-navigation" role="banner">
-      <div class="centered-navigation-wrapper">
-        <a href="javascript:void(0)" class="mobile-logo">
-          <img alt="high tops logo" src="/images/hightops_logo.svg" />
+    <header class="navigation" role="banner">
+      <div class="navigation-wrapper">
+        <a href="#home" class="logo">
+          <img src="/images/hightops_logo.svg" alt="high tops logo">
         </a>
-        <a href="javascript:void(0)" id="js-centered-navigation-mobile-menu" class="centered-navigation-mobile-menu">MENU</a>
+        <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
         <nav role="navigation">
-          <ul id="js-centered-navigation-menu" class="centered-navigation-menu show">
-            <li class="nav-link logo">
-              <a href="javascript:void(0)" class="logo">
-                <img alt="high tops logo" src="/images/hightops_logo.svg" />
-              </a>
-            </li>
-            <li class="nav-link"><a href="javascript:void(0)">Services</a></li>
-            <li class="nav-link"><a href="javascript:void(0)">Process</a></li>
-            <li class="nav-link"><a href="javascript:void(0)">Work</a></li>
-            <li class="nav-link"><a href="javascript:void(0)">About</a></li>
-            <li class="nav-link"><a href="javascript:void(0)">Contact</a></li>
-          </ul>
+          
         </nav>
+        <div class="navigation-tools">
+          <ul id="js-navigation-menu" class="navigation-menu show">
+            <li data-menuanchor="services" class="nav-link"><a href="#services">Services</a></li>
+            <li data-menuanchor="process" class="nav-link"><a href="#process">Process</a></li>
+            <li data-menuanchor="work" class="nav-link"><a href="#work">Work</a></li>
+            <li data-menuanchor="about" class="nav-link"><a href="#about">About</a></li>
+            <li data-menuanchor="contact" class="nav-link"><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
       </div>
     </header>
   </div>
 
-  <div id="#fullpage">
-    <div class="section dawn-mist" data-anchor="firstPage">
+  <div id="fullpage">
+    <div class="section dawn-mist" data-anchor="home">
       <section class="wrapper">
-        
-        <br>
-        <br>
-        <br>
         <div class="hero">We build digital realities.</div>
         <div class="hero-sub">
           high tops is a web development consultancy<br>
@@ -56,7 +49,7 @@
         </div>
       </section>
     </div>
-    <div class="section midnight" data-anchor="secondPage">
+    <div class="section midnight" data-anchor="praise">
       <section class="wrapper night">
         <!-- <h1 class="light">What our clients say</h1> -->
         <div class="testimonial">
@@ -69,30 +62,30 @@
         </div>
       </section>
     </div>
-    <div class="section egg-blue">
+    <div class="section egg-blue" data-anchor="services">
       <section class="wrapper">
         <div class="main">
           <span class="section-title">Services</span>
           <h1>Our Impact</h1>
           <p class="">We guide our clients to <strong class="highlight2">the best choices in tech</strong>. First we understand their business and the challenges they face. Then we create unique solutions with measurable results that achieve real business goals.</p>
         </div>
-        <div class="sidebar">
+        <div class="sidebar services-list">
           <h3>We help with…</h3>
-          <li>new websites</li>
-          <li>web or mobile apps</li>
-          <li>database applications</li>
-          <li>action-oriented consulting</li>
-          <li>increasing revenue</li>
-          <li>saving money</li>
-          <li>increasing users</li>
-          <li>retaining users</li>
-          <li>increasing sign ups</li>
-          <li>generating leads</li>
+            <li><i class="fa fa-check"></i> new websites</li>
+            <li><i class="fa fa-check"></i> web and mobile apps</li>
+            <li><i class="fa fa-check"></i> database applications</li>
+            <li><i class="fa fa-check"></i> action-oriented consulting</li>
+            <li><i class="fa fa-check"></i> increasing revenue</li>
+            <li><i class="fa fa-check"></i> saving money</li>
+            <li><i class="fa fa-check"></i> increasing users</li>
+            <li><i class="fa fa-check"></i> retaining users</li>
+            <li><i class="fa fa-check"></i> increasing sign ups</li>
+            <li><i class="fa fa-check"></i> generating leads</li>
         </div>
       </section>
     </div>
 
-    <div class="section spring-vine">
+    <div class="section spring-vine" data-anchor="methodology">
       <section class="wrapper night">
         <span class="section-title">Process</span>
         <h1 class="light">Methodology</h1>
@@ -118,14 +111,14 @@
         </div>-->
       </section>
     </div>
-    <div class="section egg-blue">
+    <div class="section egg-blue" data-anchor="work">
       <div class="slide" id="slide-tester">
         <section class="wrapper">
           <div class="main">
           <span class="section-title">Work</span>
           <h1 class="light">We keep busy</h1>
           
-            <p>We’ve done some cool work lately. As you <a href="">browse our work</a> you might wonder: <em>Is this what my project will look like?</em></p>
+            <p>We’ve done some cool work lately. As you <a href="#work/1">browse our work</a> you might wonder: <em>Is this what my project will look like?</em></p>
             <p>The answer is: not really. We strive for a natural expression of every project, determined by its unique goals, context, and identity.</p>
             <p><strong>Your project will be different</strong>.</p>
           </div>
@@ -138,7 +131,7 @@
           </div>
         </section>
       </div>
-      <div class="slide slide-creators">
+      <div class="slide slide-creators" data-anchor="1">
         <section class="wrapper visible">
         <div class="main-big">
           <p class="extra-sm"><strong class="highlight3">Creators Connect</strong> needed to showcase the members of their community. We developed a custom WordPress theme from a designer's mock up. We programmed it to have a modern feel and modern functionality. It works across all devices and screens and makes use of some slick animations.</p>
@@ -259,55 +252,55 @@
       </div>
 
     </div>
-    <div class="section midnight">
-      <section class="wrapper night">
-        <div class="main">
-          <span class="section-title">About</span>
-          <br><br>
-        
-        <h1 class="light">Listen first</h1>
-        
-          <p><strong class="highlight">Listen first, then build</strong>. In order to create beautiful, useful digital products we first listen to our clients. We also listen to their audience. Then we think about solutions and how we can measure the results. As we work together, there’s lots of communication and feedback and our clients get to see their projects develop. This is how we get it right.</p>
-        </div>
-        <div class="sidebar-night">
-          <h3>Founder<span class="tiny"><br>Austin Samsel</span></h3>
-          <p class="small">
-          <img src="/images/loading.gif" data-src="/images/austin.jpg" alt="austin, founder of High Tops" class="profile-pic">
-            Austin started as a visual designer before learning to program with Javascript, Ruby, and PHP. He believes empathizing and connecting with people is the driving force behind creating great work.
-          </p>
-        </div>
-      </section>
+    <div class="section midnight" data-anchor="about">
+  <section class="wrapper night">
+    <div class="main">
+      <span class="section-title">About</span>
+      <br><br>
+    
+    <h1 class="light">Listen first</h1>
+    
+      <p><strong class="highlight">Listen first, then create</strong>. In order to create beautiful, useful digital products we first listen to our clients. We also listen to their audience. Then we think about solutions and how we can measure the results. As we work together, there’s lots of communication and feedback and our clients get to see their projects develop. This is how we get it right.</p>
     </div>
-    <div class="section dawn-mist">
-      <section class="wrapper">
-        <div class="main">
-          <span class="section-title">Contact</span>
-          <h1>Ask us anything</h1>
-          <p class="">It’s never too soon to get in touch about a project. Let us know what you're working on. We'd love to hear about it. <strong class="highlight2">No worries, we’re super nice</strong>.</p>
-          <form class="" action="//formspree.io/you@email.com">
-            <input type="hidden" name="_next" value="//site.io/thanks.html" />
-            <input type="hidden" name="_subject" value="New contact on High Tops." />
-            <input type="text" name="_gotcha" style="display:none" required />
-            <input type="email" name="_replyto" placeholder="Your email" required />
-            <textarea placeholder="Your message"></textarea>
-            <input type="submit" value="Send" />
-          </form>
-        </div>
-        <div class="sidebar">
-          <h3>Don't like forms?</h3>
-          <p><strong>e-mail us</strong>:<br>
-            hi@hightops.com</p>
-            
-          <p><strong>call us:</strong><br>
-            +1 718 218 3108</p>
+    <div class="sidebar-night">
+      <h3>Founder<span class="tiny"><br>Austin Samsel</span></h3>
+      <p class="small">
+      <img src="/images/loading.gif" data-src="/images/austin.jpg" alt="austin, founder of High Tops" class="profile-pic">
+        Austin started as a visual designer before becoming a programmer, working with Javascript, Ruby, and PHP. He believes empathy and connection are the driving forces for creating great work.
+      </p>
+    </div>
+  </section>
+</div>
+    <div class="section dawn-mist" data-anchor="contact">
+  <section class="wrapper">
+    <div class="main">
+      <span class="section-title">Contact</span>
+      <h1>Ask us anything</h1>
+      <p class="">It’s never too soon to get in touch about a project. Let us know what you're working on. We'd love to hear about it. <strong class="highlight2">No worries, we’re super nice</strong>.</p>
+      <form class="" action="//formspree.io/hi@austinsamsel.com.com">
+        <input type="hidden" name="_next" value="//airheight.herokuapp.com/thanks.html" />
+        <input type="hidden" name="_subject" value="New contact on High Tops." />
+        <input type="text" name="_gotcha" style="display:none" required />
+        <input type="email" name="_replyto" placeholder="Your email" required />
+        <textarea placeholder="Your message"></textarea>
+        <button class="upstate-submit" type="submit" value="SEND" />SEND</button>
+      </form>
+    </div>
+    <div class="sidebar">
+      <h3>Don't like forms?</h3>
+      <p><strong class="small">EMAIL US</strong>:<br>
+        hi@hightops.com</p>
+        
+      <p><strong class="small">call us:</strong><br>
+        +1 718 218 3108</p>
 
-          <p><strong>write a letter:</strong><br>
-            252 S 4th St,<br>
-            Suite 2B<br>
-            Brooklyn, NY 11211</p>
-        </div>
-      </section>
+      <p><strong class="small">write a letter:</strong><br>
+        252 S 4th St,<br>
+        Suite 2B<br>
+        Brooklyn, NY 11211</p>
     </div>
+  </section>
+</div>
   </div>
   
   <script src="/javascripts/all.js" type="text/javascript"></script>
@@ -327,29 +320,29 @@
           $('.slide-calico').addClass('loadImage-calico');
           $('.slide-haiku').addClass('loadImage-haiku');
         };
-        var email = function(){
-          $.ajax({
-            url: "//formspree.io/you@email.com", 
-            method: "POST",
-            data: {message: "hello!"},
-            dataType: "json"
+        // var email = function(){
+        //   $.ajax({
+        //     url: "//formspree.io/hi@austinsamsel.com", 
+        //     method: "POST",
+        //     data: {message: "thanks!"},
+        //     dataType: "json"
+        //   });
+        // };
+        var navMenu = function(){
+          var menuToggle = $('#js-mobile-menu').unbind();
+          $('#js-navigation-menu').removeClass("show");
+
+          menuToggle.on('click', function(e) {
+            e.preventDefault();
+            $('#js-navigation-menu').slideToggle(function(){
+              if($('#js-navigation-menu').is(':hidden')) {
+                $('#js-navigation-menu').removeAttr('style');
+              }
+            });
           });
         };
-        var navMenu = function(){
-          var menuToggle = $('#js-centered-navigation-mobile-menu').unbind();
-            $('#js-centered-navigation-menu').removeClass("show");
-            
-            menuToggle.on('click', function(e) {
-              e.preventDefault();
-              $('#js-centered-navigation-menu').slideToggle(function(){
-                if($('#js-centered-navigation-menu').is(':hidden')) {
-                  $('#js-centered-navigation-menu').removeAttr('style');
-                }
-              });
-            });
-        };
         $('#fullpage').fullpage({
-          anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage', 'sixthPage', 'lastPage'],
+          anchors: ['home', 'praise', 'services', 'process', 'work', 'about', 'contact'],
           responsive: 5000,
           controlArrows: false,
           slidesNavigation: true,
@@ -357,17 +350,24 @@
           fitToSection: false,
           animateAnchor: true,
           scrollBar: true,
+          menu:'#js-centered-navigation-menu',
           css3: true,
           slidesNavPosition: 'bottom',
           afterRender: function(){
               $("img").unveil();
               navMenu();
-              var waypoints = $('#slide-tester').waypoint(function(direction) {
-                  $('.slide-test').addClass('slideLeft');
-                  //$('.fp-slidesNav.bottom').addClass('fadeIn');
-                }, {
-                  offset: '25%'
-                });              
+              // var waypoints = $('#services').waypoint(function(direction) {
+                  
+              //     //$('.fp-slidesNav.bottom').addClass('fadeIn');
+              //   }, {
+              //     offset: '0%'
+              //   }); 
+              // var waypoints = $('#slide-tester').waypoint(function(direction) {
+              //     $('.slide-test').addClass('slideLeft');
+              //     //$('.fp-slidesNav.bottom').addClass('fadeIn');
+              //   }, {
+              //     offset: '25%'
+              //   });              
           },
           afterLoad: function(anchorLink, index){
               var loadedSection = $(this);
@@ -377,6 +377,12 @@
               if (index == 5){
                 $('.fp-slidesNav.bottom').addClass('slideExpandUp');
                 //$('.slide-test').addClass('slideLeft');
+              }
+              if (index == 3){
+                //$('.fa-check').addClass('hatch');
+                // $('.fa-check').each(function(i) {
+                //     $(this).children().delay(700*i).addClass('hatch');
+                // });
               }
           },
           onLeave: function(index, nextIndex, direction){
@@ -397,13 +403,13 @@
           },
           afterSlideLoad: function( anchorLink, index, slideAnchor, slideIndex){
               var loadedSlide = $(this);
-
-              //first slide of the second section
-              if(anchorLink == 'fifthPage' && slideIndex > 0){
+              // used to be anchorLink == 'About' instead of index == 6
+              // need to test if this works.
+              if(index == 5 && slideIndex > 0){
                   $("img").unveil();
                   slideUp();
               }
-              if(anchorLink == 'fifthPage' && slideIndex == 0){
+              if(index == 5 && slideIndex == 0){
                   $("img").unveil();
                   slideDown();
               }
@@ -417,6 +423,7 @@
 
   </script>
 
-
+  
+  <script src="/javascripts/all.js" type="text/javascript"></script>
   </body>
 </html>
