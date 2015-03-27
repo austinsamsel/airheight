@@ -32,10 +32,6 @@ per_page: 10
   <div id="fullpage">
     <div class="section dawn-mist" data-anchor="home">
       <section class="wrapper">
-        
-        <br>
-        <br>
-        <br>
         <div class="hero">We build digital realities.</div>
         <div class="hero-sub">
           high tops is a web development consultancy<br>
@@ -246,55 +242,8 @@ per_page: 10
       </div>
 
     </div>
-    <div class="section midnight" data-anchor="about">
-      <section class="wrapper night">
-        <div class="main">
-          <span class="section-title">About</span>
-          <br><br>
-        
-        <h1 class="light">Listen first</h1>
-        
-          <p><strong class="highlight">Listen first, then build</strong>. In order to create beautiful, useful digital products we first listen to our clients. We also listen to their audience. Then we think about solutions and how we can measure the results. As we work together, there’s lots of communication and feedback and our clients get to see their projects develop. This is how we get it right.</p>
-        </div>
-        <div class="sidebar-night">
-          <h3>Founder<span class="tiny"><br>Austin Samsel</span></h3>
-          <p class="small">
-          <img src="/images/loading.gif" data-src="/images/austin.jpg" alt="austin, founder of High Tops" class="profile-pic">
-            Austin started as a visual designer before learning to program with Javascript, Ruby, and PHP. He believes empathy and connection are the driving forces for creating great work.
-          </p>
-        </div>
-      </section>
-    </div>
-    <div class="section dawn-mist" data-anchor="contact">
-      <section class="wrapper">
-        <div class="main">
-          <span class="section-title">Contact</span>
-          <h1>Ask us anything</h1>
-          <p class="">It’s never too soon to get in touch about a project. Let us know what you're working on. We'd love to hear about it. <strong class="highlight2">No worries, we’re super nice</strong>.</p>
-          <form class="" action="//formspree.io/hi@austinsamsel.com.com">
-            <input type="hidden" name="_next" value="//airheight.herokuapp.com/thanks.html" />
-            <input type="hidden" name="_subject" value="New contact on High Tops." />
-            <input type="text" name="_gotcha" style="display:none" required />
-            <input type="email" name="_replyto" placeholder="Your email" required />
-            <textarea placeholder="Your message"></textarea>
-            <input type="submit" value="Send" />
-          </form>
-        </div>
-        <div class="sidebar">
-          <h3>Don't like forms?</h3>
-          <p><strong class="small">e-mail us</strong>:<br>
-            hi@hightops.com</p>
-            
-          <p><strong class="small">call us:</strong><br>
-            +1 718 218 3108</p>
-
-          <p><strong class="small">write a letter:</strong><br>
-            252 S 4th St,<br>
-            Suite 2B<br>
-            Brooklyn, NY 11211</p>
-        </div>
-      </section>
-    </div>
+    <%= partial "partials/about" %>
+    <%= partial "partials/contact" %>
   </div>
   
   <%= javascript_include_tag  "all" %>

@@ -1,0 +1,291 @@
+
+/* Upstate */
+
+.upstate-hero{
+  font-family: 'enriqueta', serif;
+  font-size:2.0em;
+  line-height:1em;
+  color: $sky-top;
+  margin-bottom:1%;
+  text-align:center;
+    @include media(769px) {
+      font-size:4em;
+      line-height:1em;
+    }
+}
+
+.hero-h2{
+  text-align:center;
+  font-size:1.2em;
+}
+
+.upstate-hero-footer{
+  @include span-columns(12);
+  margin-top:2em;
+}
+.half{
+  @include span-columns(12);
+  position:relative;
+  @include media($medium-screen){
+    @include span-columns(6);
+  }
+}
+.half-omega{
+  @extend .half;
+  @include omega();
+}
+
+.hero-support{
+  @extend .half;
+  @include omega();
+  text-align:left;
+}
+
+$red: #F95050;
+$blue: $sky-top;
+$orange: #FFAE55;
+$green: #2FE087;
+$purple: $rich-violet;
+
+.hero-support li{
+  list-style:none;
+  margin-left:3em;
+  line-height:1.6em;
+  position:relative;
+  .fa {
+    color:$sky-top;
+    position:absolute;
+    margin-left:-1.5em;
+    margin-top:7px;
+  }
+  .fa-magic{ color:$red;}
+  .fa-file-code-o{ color: $purple}
+  .fa-fighter-jet{
+    color:$orange;
+    -ms-transform: rotate(-45deg); /* IE 9 */
+    -webkit-transform: rotate(-45deg); /* Safari */
+    transform: rotate(-45deg);
+  }
+  .fa-search{ color: $green;}
+  .fa-shield{ color:$blue;}
+}
+
+.mobile-small{
+  max-width:150px;
+  position:absolute;
+  top:20px;
+  left:20px;
+}
+
+.upstate-apply {
+  @include bbb_size(2);
+  @include bbb-3D-style($rich-violet, #fff);
+  font-family: archivo-black;
+  font-size:1.2em;
+  text-transform:uppercase;
+  letter-spacing:-0.09em;
+}
+.upstate-apply:hover,
+.upstate-apply:focus {
+  background-color:$rich-violet;
+}
+.upstate-apply-form1{
+  input {
+    display:inline;
+    height:2.6em;
+  }
+}
+.upstate-apply1{
+  background:#fff;
+  border-radius:4px;
+  padding:1em;
+}
+
+.col-1{
+  @include span-columns(12);
+  @include media($medium-screen){
+    @include span-columns(1);
+  }
+}
+.col-2{
+  @include span-columns(12);
+  @include media($medium-screen){
+    @include span-columns(2);
+  }
+}
+.col-3{
+  @include span-columns(12);
+  @include media($medium-screen){
+    @include span-columns(3);
+  }
+}
+.col-4{
+  @include span-columns(12);
+  @include media($medium-screen){
+    @include span-columns(4);
+  }
+}
+.col-5{
+  @include span-columns(12);
+  @include media($medium-screen){
+    @include span-columns(5);
+  }
+}
+.col-6{
+  @include span-columns(12);
+  @include media($medium-screen){
+    @include span-columns(6);
+  }
+}
+.col-7{
+  @include span-columns(12);
+  @include media($medium-screen){
+    @include span-columns(7);
+  }
+}
+.col-8{
+  @include span-columns(12);
+  @include media($medium-screen){
+    @include span-columns(8);
+  }
+}
+.col-9{
+  @include span-columns(12);
+  @include media($medium-screen){
+    @include span-columns(9);
+  }
+}
+.col-10{
+  @include span-columns(12);
+  @include media($medium-screen){
+    @include span-columns(10);
+  }
+}
+.col-11{
+  @include span-columns(12);
+  @include media($medium-screen){
+    @include span-columns(11);
+  }
+}
+.col-12{
+  @include span-columns(12);
+  @include media($medium-screen){
+    @include span-columns(12);
+  }
+}
+
+/* overview */
+.upstate-feature{
+  @include span-columns(12);
+  @include media($medium-screen){
+    @include span-columns(4);
+  }
+}
+.upstate-feature-img{
+  border-radius:100%;
+  max-width:100px;
+}
+
+
+.upstate-features-list li{
+    list-style: none;
+    margin-left:3em;
+  .fa {
+    position:absolute;
+    margin-left:-1.25em;
+    margin-top:7px;
+    font-size:2em;
+  }
+  .fa-magic{ color:$red;}
+  .fa-file-code-o{ color: $blue}
+  .fa-fighter-jet{
+    color:$orange;
+    -ms-transform: rotate(-45deg); /* IE 9 */
+    -webkit-transform: rotate(-45deg); /* Safari */
+    transform: rotate(-45deg);
+  }
+  .fa-tree{ color: $green;}
+}
+
+/* features */
+.upstate-services-list{
+  li {
+    list-style:none;
+    line-height: 1.7em;
+  }
+  .fa {
+    color:$rich-violet;
+    padding-right:8px;
+  }
+}
+
+.upstate-work-quote{
+  margin-top:2em;
+  padding-top:1em;
+}
+
+.upstate-price-service{
+  margin-left:3em;
+  position:relative;
+  .fa-cubes{
+    position:absolute;
+    top:0;
+    left:-1.5em;
+    font-size:2em;
+    color:$blue;
+  }
+  li {
+    margin-left:0.75em;
+  }
+}
+.update-add-on{
+  margin-left:2.5em;
+  position:relative;
+  .fa{
+    left:-1.25em;
+    font-size:2em;
+    position:absolute;
+    top:0;
+  }
+  .fa-heart{
+    color:$red;
+  }
+  .fa-pagelines{
+    color:$green;
+  }
+}
+
+.upstate-submit{
+  @include bbb_size(2);
+  @include bbb-3D-style($rich-violet, #fff);
+  font-family: archivo-black;
+  font-size:1.2em;
+  text-transform:uppercase;
+  letter-spacing:-0.09em;
+}
+.upstate-submit:hover,
+.upstate-submit:focus {
+  background-color:$rich-violet;
+}
+.upstate-apply-form{
+  input {
+    //display:inline;
+    //height:2.6em;
+    max-width:300px;
+  }
+}
+
+.upstate-nav-wrapper{
+  @extend .navigation;
+  background:$bg-dawn-mist !important;
+  border-bottom:0px !important;
+  a {
+    background: $bg-dawn-mist !important;
+  }
+  .logo{
+    font-size:1.1em;
+  }
+  li.nav-link {
+   background: $bg-dawn-mist !important;
+  }
+}
