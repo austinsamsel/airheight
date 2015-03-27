@@ -33,6 +33,10 @@
 .wrapper{
   @include outer-container;
   @include pad(1em 2em default);
+
+  @include media($medium-screen){
+    @include pad(1em 3em default);
+  }
 }
 .wrap{
   @include outer-container;
