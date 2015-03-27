@@ -5,9 +5,9 @@ source 'http://rubygems.org'
 gem "middleman", "~> 3.3.10"
 gem "middleman-blog", "~> 3.5.3"
 
-gem 'bitters'
-gem 'bourbon'
-gem 'neat'
+gem 'bitters', '~> 1.0.0'
+gem 'bourbon', '~> 4.2.1'
+gem 'neat', '~> 1.7.2'
 
 gem 'font-awesome-middleman'
 
