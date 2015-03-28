@@ -32,15 +32,15 @@ per_page: 10
     <section class="wrapper">
       <br><br><br>
       <div class="upstate-hero">Up State</div>
-      <p class="hero-h2">
+      <div class="hero-h2">
         Modern, mobile responsive websites launched in one week for $999.
-      </p>
-      <p class="center no-bg-link">
+      </div>
+      <div class="center no-bg-link">
         <a href="#Overview"><button class="upstate-learn" >Learn More</button></a>
         <a href="#Apply"><button class="upstate-apply" >Apply</button></a>
-      <br>
-      <br>
-      </p>
+        <br>
+        <br>
+      </div>
       <div class="half"> 
         <!-- <div class="sidebar transparent-bg">
         </div>
@@ -102,7 +102,7 @@ per_page: 10
           <div class='upstate-feature'>
             <img src="images/profit.svg" class="upstate-feature-img">
             <h3>Profit</h3>
-            <p>We keep your goals in mind. Whether you need to generate leads, promote services, or sell a new product, we have you covered.</p>
+            <p>Whether you need to generate leads, promote services, or sell a new product, we keep your goals in mind.</p>
           </div>
         </div>
     </section>
@@ -152,13 +152,13 @@ per_page: 10
       </div>
     </section>
   </div>
-  <div class="section white-moon" data-anchor="work">
+  <div class="section white-moon" data-anchor="Example">
     <!-- <div class="slide slide-creators" data-anchor="1"> -->
       <section class="wrapper visible">
-      <span class="section-title">Work</span>
+      <span class="section-title">Example</span>
       <h1>Results</h1>
       <div class="main-big">
-        <p class="small"><strong class="highlight3">Brooklyn Fire Proof</strong> needed to promote their sound stage business. We started with a pre-built WordPress theme then built in additional functionality into their website. We then optimized it to improve page load times by 300% to help with SEO and user experience.</p>
+        <p class="small"><strong class="highlight3">Brooklyn Fire Proof</strong> needed to promote their sound stage business. We started with a pre-built WordPress theme then built in additional functionality. We then optimized it to improve page load times by 300% to help with SEO and user experience.</p>
       </div>
       <div class="sidebar2">
       </div>
@@ -168,12 +168,8 @@ per_page: 10
           </div>
       </div>
       <div class="sidebar2 omega">
-        <div class="scr-mobile-wrap">
-          <img src="/images/loading.gif" data-src="/images/mobile-top.svg" class="mobile-top">
-          <div class="mobile-screen">
-            <img src="/images/loading.gif" data-src="/images/screen-bfp-mobile-2.jpg" alt="brooklyn fire proof mobile screen capture">
-          </div>
-          <img src="/images/loading.gif" data-src="/images/mobile-bottom.svg" class="mobile-bottom">
+        <div class="upstate-scr-mobile-wrap">
+            <img src="/images/loading.gif" data-src="/images/mobile-bfp2.png" alt="brooklyn fire proof mobile screen capture">
          </div>
       </div>
       <div class="full upstate-work-quote">
@@ -193,7 +189,7 @@ per_page: 10
     <section class="wrapper">
       <span class="section-title">Pricing</span>
       <h1>Website in a week</h1>
-      <div class="half">
+      <div class="col-7">
         <h3>Professional Set Up</h3>
         <p>1x build fee of $999<br>
         We launch your high-quality, modern WordPress website in a week and make sure you’re able to manage the site yourself.</p>
@@ -209,21 +205,22 @@ per_page: 10
           <li>Security configuration</li>
           <li>Spam protection</li>
           <li>1x Tutorial</li>
+          <br>
         </div>
       </div>
-      <div class="half omega">
+      <div class="col-5 omega">
         <h4>Optional Add-Ons</h4>
-        <p>Although WordPress websites are easy to maintain yourself, we offer two optional add-ons for convenience and peace of mind.</p>
+        <p>For convenience and peace of mind…</p>
         <div class="update-add-on">
             <i class="fa fa-heart"></i>
             </i><h5>Check Ups</h5>
             <p>$129/ea<br>
-            Developer review. We’ll check out your website and make sure you’re taking good care of it. We’ll also check in with you about your goals and can make suggestions for improvements.</p>
+            We’ll check your website for errors and vulnerabilities. We’ll also check in with you about your goals and can make suggestions for improvements.</p>
         </div>
         <div class="update-add-on">
           <i class="fa fa-pagelines"></i><h5>Monthly Support</h5>
           <p>starts at $49/mo or $499/yr<br>
-          Ongoing Support. We manage your back up system and software updates for you. We also maintain your codebase so everything works well.</p>
+          We manage your back up system and software updates for you. We also maintain your codebase so everything works well.</p>
         </div>
       </div>
     </section>
@@ -270,7 +267,7 @@ per_page: 10
     };
     $(document).ready(function() {
         $('#fullpage').fullpage({
-          anchors: ['Home', 'Overview', 'Features', 'Work', 'Pricing', 'About', 'Apply', 'Contact'],
+          anchors: ['Home', 'Overview', 'Features', 'Example', 'Pricing', 'About', 'Apply', 'Contact'],
           responsive: 5000,
           controlArrows: false,
           slidesNavigation: true,
@@ -287,7 +284,7 @@ per_page: 10
               setTimeout(function(){
                  $('.upstate-hero').addClass('visible animated slideInUp');
               }, delay);
-              //navMenu();
+              navMenu();
           },
           afterLoad: function(anchorLink, index){
               var loadedSection = $(this);

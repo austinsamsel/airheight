@@ -3,14 +3,18 @@
 
 .upstate-hero{
   font-family: 'enriqueta', serif;
-  font-size:2.0em;
+  font-size:2.5em;
   line-height:1em;
   color: $sky-top;
   margin-bottom:1%;
   text-align:center;
   visibility: hidden;
-    @include media(769px) {
+    @include media($medium-screen) {
       font-size:4em;
+      line-height:1em;
+    }
+    @include media($large-screen) {
+      font-size:4.5em;
       line-height:1em;
     }
 }
@@ -48,14 +52,6 @@
 .center{
   text-align:center;
 }
-.gradient1 {
-  @include linear-gradient(330deg, lighten($hot-purp, 25%), lighten($crystal-blue, 65%) 40%, lighten($crystal-blue, 45%));
-  border-top:1px solid #ddd;
-}
-.gradient2 {
-  @include linear-gradient(-330deg, lighten($hot-purp, 25%), lighten($crystal-blue, 65%) 40%, lighten($crystal-blue, 45%));
-  border-top:1px solid #ddd;
-}
 
 .hero-support li{
   list-style:none;
@@ -85,10 +81,6 @@
   position:absolute;
   top:0px;
   left:-30px;
-}
-
-.transparent-bg {
-  background:none !important;
 }
 
 .upstate-apply {
@@ -241,13 +233,23 @@
 
 /* features */
 .upstate-services-list{
-  li {
-    list-style:none;
-    line-height: 1.7em;
-  }
-  .fa {
-    color:$green;
-    padding-right:5px;
+  @extend .services-list;
+}
+
+/* work */
+
+.upstate-scr-mobile-wrap{
+  //max-width: 142px;
+  //display:none;
+  //position: absolute;
+  //bottom: 8%;
+  //margin-left: -20px;
+  @include media($large-screen){
+    //display:block;
+    max-width:1000px;
+    position:relative;
+    bottom:auto;
+    margin-left:0;
   }
 }
 
