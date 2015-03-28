@@ -89,6 +89,8 @@ GEM
       em-websocket (~> 0.5.1)
       middleman-core (~> 3.2)
       rack-livereload (~> 0.3.15)
+    middleman-protect-emails (0.2.0)
+      middleman-core (~> 3.2)
     middleman-sprockets (3.4.2)
       middleman-core (>= 3.3)
       sprockets (~> 2.12.1)
@@ -149,5 +151,6 @@ DEPENDENCIES
   middleman (~> 3.3.10)
   middleman-blog (~> 3.5.3)
   middleman-livereload (~> 3.3.0)
+  middleman-protect-emails
   neat (~> 1.7.2)
   rack-contrib

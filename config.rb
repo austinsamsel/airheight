@@ -105,6 +105,7 @@ set :fonts_dir,  "fonts-folder"
 configure :build do
   # For example, change the Compass output style for deployment
   activate :minify_css
+  activate :protect_emails
 
   # Minify Javascript on build
   activate :minify_javascript

@@ -248,7 +248,6 @@ h5 {
   background:#fff;
   border-radius:5px;
   padding:40px;
-  font-size:80%;
   @include media($medium-screen){
     @include span-columns(4);
   }
@@ -440,18 +439,22 @@ textarea{
   }
   .fa-envelope-o{
     color: $green;
+    margin-left: -0.1em;
+    margin-top:0.05em;
   }
   .fa-mobile{
     color: $rich-violet;
     font-size: 2.4em;
-    margin-left:0.4em;
+    margin-left:0.6em;
+    margin-top: -0.16em;
   }
   .fa-building{
     color: $red;
+    margin-top: 0.1em;
   }
 }
 img.fa.svg-pigeon{
-  max-width:65px;
-  margin-left:-1.25em;
-  margin-top:-5px;
+  max-width: 50px;
+  margin-left: -0.4em;
+  margin-top: 0.1em;
 }
