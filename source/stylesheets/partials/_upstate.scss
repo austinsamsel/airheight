@@ -8,10 +8,14 @@
   color: $sky-top;
   margin-bottom:1%;
   text-align:center;
+  visibility: hidden;
     @include media(769px) {
       font-size:4em;
       line-height:1em;
     }
+}
+.visible{
+  visibility:visible !important;
 }
 
 .hero-h2{
@@ -41,12 +45,17 @@
   @include omega();
   text-align:left;
 }
-
-$red: #F95050;
-$blue: $sky-top;
-$orange: #FFAE55;
-$green: #2FE087;
-$purple: $rich-violet;
+.center{
+  text-align:center;
+}
+.gradient1 {
+  @include linear-gradient(330deg, lighten($hot-purp, 25%), lighten($crystal-blue, 65%) 40%, lighten($crystal-blue, 45%));
+  border-top:1px solid #ddd;
+}
+.gradient2 {
+  @include linear-gradient(-330deg, lighten($hot-purp, 25%), lighten($crystal-blue, 65%) 40%, lighten($crystal-blue, 45%));
+  border-top:1px solid #ddd;
+}
 
 .hero-support li{
   list-style:none;
@@ -72,10 +81,14 @@ $purple: $rich-violet;
 }
 
 .mobile-small{
-  max-width:150px;
+  max-width:190px;
   position:absolute;
-  top:20px;
-  left:20px;
+  top:0px;
+  left:-30px;
+}
+
+.transparent-bg {
+  background:none !important;
 }
 
 .upstate-apply {
@@ -88,8 +101,26 @@ $purple: $rich-violet;
 }
 .upstate-apply:hover,
 .upstate-apply:focus {
-  background-color:$rich-violet;
+  background-color:lighten($rich-violet, 10%);
 }
+
+.upstate-learn {
+  @include bbb_size(2);
+  @include bbb-3D-style(darken($bg-egg-blue, 5%), $brand-gray);
+  font-family: archivo-black;
+  font-size:1.2em;
+  text-transform:uppercase;
+  letter-spacing:-0.09em;
+}
+.upstate-learn:hover,
+.upstate-learn:focus {
+  background-color:lighten($bg-egg-blue, 5%);
+  color: $brand-gray;
+}
+.no-bg-link a{
+  background:none !important;
+}
+
 .upstate-apply-form1{
   input {
     display:inline;
@@ -215,19 +246,27 @@ $purple: $rich-violet;
     line-height: 1.7em;
   }
   .fa {
-    color:$rich-violet;
-    padding-right:8px;
+    color:$green;
+    padding-right:5px;
   }
 }
 
 .upstate-work-quote{
   margin-top:2em;
   padding-top:1em;
+  margin-left:0;
+}
+.upstate-testimonial-block{
+  margin-left:0px;
+}
+.upstate-test-pic{
+  margin-left:0px;
 }
 
 .upstate-price-service{
   margin-left:3em;
   position:relative;
+  @extend .small;
   .fa-cubes{
     position:absolute;
     top:0;
@@ -242,6 +281,7 @@ $purple: $rich-violet;
 .update-add-on{
   margin-left:2.5em;
   position:relative;
+  @extend .small;
   .fa{
     left:-1.25em;
     font-size:2em;
@@ -266,7 +306,7 @@ $purple: $rich-violet;
 }
 .upstate-submit:hover,
 .upstate-submit:focus {
-  background-color:$rich-violet;
+  background-color:lighten($rich-violet, 10%);
 }
 .upstate-apply-form{
   input {

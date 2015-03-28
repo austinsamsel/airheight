@@ -209,11 +209,14 @@ h5 {
 
 .services-list{
   list-style: none;
+  li {
+    line-height:1.8em;
+  }
+  .fa-check{
+    color: $green;
+    padding-right:5px;
+  }
 }
-.fa-check{
-  //visibility: hidden;
-}
-
 /* info slide */
 
 .main-big{
@@ -228,6 +231,9 @@ h5 {
   
   @include media($medium-screen){
     @include span-columns(8);
+    p {
+      max-width:575px;
+    }
   }
 }
 .main-narrow{
@@ -269,9 +275,7 @@ h5 {
 
 /* fancy numbers */
 
-.small{font-size: 80%}
-.extra-sm{font-size: 70%}
-.tiny{font-size: 65%}
+.small{font-size: 90%}
 
 .numbers{
   display:inline;
@@ -413,4 +417,41 @@ textarea{
 
 .omega{
   @include omega();
+}
+
+.contact-form{
+  max-width:500px;
+}
+.contact-methods{
+  li{
+    list-style:none;
+    position:relative;
+    margin-left:3em;
+    line-height:1.5em;
+    margin-bottom:1em;
+  }
+  .fa{
+    font-size:1.5em;
+    position:absolute;
+    left:-1.8em;
+    //border-radius:100%;
+    color:#fff;
+    padding:0.25em;
+  }
+  .fa-envelope-o{
+    color: $green;
+  }
+  .fa-mobile{
+    color: $rich-violet;
+    font-size: 2.4em;
+    margin-left:0.4em;
+  }
+  .fa-building{
+    color: $red;
+  }
+}
+img.fa.svg-pigeon{
+  max-width:65px;
+  margin-left:-1.25em;
+  margin-top:-5px;
 }
