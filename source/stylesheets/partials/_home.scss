@@ -448,6 +448,7 @@ img.main{
 }
 .fp-controlArrow.fp-prev {
   @extend .pulse;
+  display:none;
   border-color: transparent $blue transparent transparent  !important;
 }
 .fp-controlArrow.fp-next {
@@ -458,16 +459,19 @@ img.main{
   @extend .floating;
   //visibility: hidden;
 }
-.fp-slidesNav.bottom:before{
-  content: 'our work: ';
-  font-size: 20px;
-  position: absolute;
-  left: -90px;
-  top: -3px;
-  background:#fff;
-  border-radius:3px;
-  padding:1px 3px;
+.fp-slidesNav.bottom{
+  //margin: 0 auto !important;
 }
+// .fp-slidesNav.bottom:before{
+//   content: 'our work: ';
+//   font-size: 20px;
+//   position: absolute;
+//   left: -90px;
+//   top: -3px;
+//   background:#fff;
+//   border-radius:3px;
+//   padding:1px 3px;
+// }
 .slide-test{
   //visibility: hidden;
 }
@@ -543,6 +547,6 @@ textarea{
 }
 img.fa.svg-pigeon{
   max-width: 50px;
-  margin-left: -0.3em;
+  margin-left: -0.4em;
   margin-top: 0.1em;
 }

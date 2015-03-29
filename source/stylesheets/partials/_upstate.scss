@@ -88,30 +88,27 @@
 /* themes */
 
 .upstate-slides{
-  .fp-slidesNav.bottom:before{
-    content: 'browse themes: ';
-    font-size: 20px;
-    position: absolute;
-    left: -120px;
-    top: -3px;
-    background:#fff;
-    border-radius:3px;
-    padding:1px 3px;
+  // .fp-slidesNav.bottom:before{
+  //   content: 'browse themes: ';
+  //   font-size: 20px;
+  //   position: absolute;
+  //   left: -120px;
+  //   top: -3px;
+  //   background:#fff;
+  //   border-radius:3px;
+  //   padding:1px 3px;
+  // }
+}
+.upstate-slides{
+  #fp-nav ul, .fp-slidesNav ul {
+  margin: 0 0 0 -62px;
+  @include media($medium-screen){
+    margin: 0;
+  }
   }
 }
 .theme-wrapper{
   @include outer-container;
-  @include pad(1em 2em 0 default);
-
-  @include media($large-screen){
-    @include pad(1em 3em 0 default);
-  }
-}
-.theme-fixie{
-  max-width:700px;
-  position:absolute;
-  top:1em;
-  left:2em;
   @include pad(1em 2em 0 default);
 
   @include media($large-screen){
