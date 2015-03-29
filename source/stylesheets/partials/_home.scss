@@ -290,6 +290,7 @@ h5 {
 
 .main-big{
   @include span-columns(12);
+  position:relative;
   
   @include media($medium-screen){
     @include span-columns(9);
@@ -413,12 +414,14 @@ img.main{
   position: absolute;
   bottom: 8%;
   margin-left: -20px;
+  display:none;
   // @include media($medium-screen){
   //   max-width:200px;
   //   bottom:4%;
   // }
   @include media($medium-screen){
-    max-width:1000px;
+    display:block;
+    max-width:100%;
     position:relative;
     bottom:auto;
     margin-left:0;
@@ -441,13 +444,15 @@ img.main{
 /* nav arrows */
 .fp-slidesNav ul li a.active span{
   @extend .pulse;
-  background:$rich-violet;
+  background:$blue;
 }
 .fp-controlArrow.fp-prev {
+  @extend .pulse;
+  border-color: transparent $blue transparent transparent  !important;
 }
 .fp-controlArrow.fp-next {
   @extend .pulse;
-  border-color: transparent transparent transparent $rich-violet !important;
+  border-color: transparent transparent transparent $blue !important;
 }
 .fp-slidesNav.bottom{
   @extend .floating;
