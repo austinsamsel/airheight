@@ -87,6 +87,13 @@
 
 /* themes */
 
+.hide-mobile{
+  display:none;
+  @include media($medium-screen){
+    display:block;
+  }
+}
+
 .upstate-slides{
   // .fp-slidesNav.bottom:before{
   //   content: 'browse themes: ';
@@ -121,7 +128,7 @@
 .upstate-apply {
   @include bbb_size(2);
   @include bbb-3D-style($rich-violet, #fff);
-  font-family: archivo-black;
+  font-family: 'archivo black';
   font-size:1.2em;
   text-transform:uppercase;
   letter-spacing:-0.09em;
@@ -134,7 +141,7 @@
 .upstate-learn {
   @include bbb_size(2);
   @include bbb-3D-style(darken($bg-egg-blue, 5%), $brand-gray);
-  font-family: archivo-black;
+  font-family: 'archivo black';
   font-size:1.2em;
   text-transform:uppercase;
   letter-spacing:-0.09em;
@@ -243,6 +250,7 @@
 .upstate-feature-img{
   border-radius:100%;
   max-width:100px;
+  margin-top:1em;
 }
 
 
@@ -336,7 +344,7 @@
 .upstate-submit{
   @include bbb_size(2);
   @include bbb-3D-style($rich-violet, #fff);
-  font-family: archivo-black;
+  font-family: 'archivo black';
   font-size:1.2em;
   text-transform:uppercase;
   letter-spacing:-0.09em;
