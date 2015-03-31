@@ -42,6 +42,7 @@
 }
 .gradient3 {
   @include linear-gradient(330deg, lighten($hot-purp, 25%), lighten($crystal-blue, 65%) 40%, lighten($crystal-blue, 45%));
+  border-top:0px;
 }
 
 .wrapper{
@@ -83,7 +84,7 @@ header{
   transition: top 1.2s ease-in-out;
   position:fixed;
   background:#fff;
-  top:-2em;
+  top:-2.1em;
   left:0;
   width:100%;
   height:2em;
@@ -156,7 +157,7 @@ span.typed-cursor{
       font-size:3em;
     }
     @include media($large-screen) {
-      font-size:4em;
+      font-size:3.5em;
     }
 }
 .hero-sub{
@@ -165,6 +166,22 @@ span.typed-cursor{
 }
 .hero a{
   background: none;
+}
+
+.scroll-down-arrow{
+  font-size:2em;
+  color: $brand-gray;
+  margin-top:2em;
+  display:block;
+  opacity: 0.5;
+  position:absolute;
+  bottom:1em;
+  left: calc(50% - 16px);
+  @extend .floating;
+  @extend .pulse;
+}
+.scroll-down-arrow:hover{
+  opacity:0.75;
 }
 
 body {
