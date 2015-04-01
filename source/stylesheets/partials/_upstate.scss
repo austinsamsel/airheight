@@ -122,6 +122,25 @@
     @include pad(1em 3em 0 default);
   }
 }
+.col-3.theme-preview{
+  opacity:0.5;
+  transition:0.5s;
+}
+.col-3.theme-preview a{
+  background-color:transparent !important;
+  padding: 0 !important;
+}
+.col-3.theme-preview:hover {
+  opacity:1.0;
+  background-color:transparent !important;
+}
+.col-3.theme-browse-link.omega{
+  @include display(flex);
+  @include flex-direction(column);
+  @include align-items(center);
+  @include justify-content(space-between);
+}
+// http://www.sitepoint.com/5-ways-improve-sass-bourbon/
 
 /* apply */
 
