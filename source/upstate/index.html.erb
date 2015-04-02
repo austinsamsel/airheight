@@ -563,8 +563,12 @@ per_page: 10
           css3: true,
           slidesNavPosition: 'bottom',
           afterRender: function(){
-              $("img").unveil();
-              var delay=1000;
+              $("img").unveil(200, function() {
+                $(this).load(function() {
+                  this.style.opacity = 1;
+                });
+              });
+              var delay=750;
               setTimeout(function(){
                  $('.upstate-hero').addClass('visible animated slideInUp');
               }, delay);
@@ -573,7 +577,11 @@ per_page: 10
           afterLoad: function(anchorLink, index){
               var loadedSection = $(this);
               if(index != 999){
-                  $("img").unveil();
+                  $("img").unveil(200, function() {
+                    $(this).load(function() {
+                      this.style.opacity = 1;
+                    });
+                  });
               }
           },
           afterSlideLoad: function( anchorLink, index, slideAnchor, slideIndex){
@@ -583,11 +591,19 @@ per_page: 10
 
               if(index == 5 && slideIndex == 0){
                   $('.fp-controlArrow.fp-prev').css('display', 'none');
-                  $("img").unveil();
+                  $("img").unveil(200, function() {
+                    $(this).load(function() {
+                      this.style.opacity = 1;
+                    });
+                  });
               }
               if(index == 5 && slideIndex != 0){
                   $('.fp-controlArrow.fp-prev').css('display', 'block');
-                  $("img").unveil();
+                  $("img").unveil(200, function() {
+                    $(this).load(function() {
+                      this.style.opacity = 1;
+                    });
+                  });
               }
           }
         });
