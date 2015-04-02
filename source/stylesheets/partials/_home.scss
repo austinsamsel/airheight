@@ -47,8 +47,11 @@
 
 .wrapper{
   @include outer-container;
-  @include pad(1em 2em default);
+  @include pad(1em 1em default);
 
+  @include media($medium-screen){
+    @include pad(1em 2em default);
+  }
   @include media($large-screen){
     @include pad(1em 3em default);
   }

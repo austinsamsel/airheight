@@ -108,9 +108,9 @@
 }
 .upstate-slides{
   #fp-nav ul, .fp-slidesNav ul {
-  margin: 0 0 0 -62px;
+  //margin: 0 0 0 -62px;
   @include media($medium-screen){
-    margin: 0;
+   // margin: 0;
   }
   }
 }
@@ -126,6 +126,18 @@
   opacity:0.5;
   transition:0.5s;
 }
+.col-3.hide-preview-sm{
+  display:none;
+  @include media($medium-screen){
+    display:block;
+  }
+}
+.hide-link-md{
+  display:block;
+  @include media($medium-screen){
+    display:none;
+  }
+}
 .col-3.theme-preview a{
   background-color:transparent !important;
   padding: 0 !important;
@@ -134,13 +146,23 @@
   opacity:1.0;
   background-color:transparent !important;
 }
-.col-3.theme-browse-link.omega{
-  @include display(flex);
-  @include flex-direction(column);
-  @include align-items(center);
-  @include justify-content(space-between);
+
+@mixin vertical-align {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
-// http://www.sitepoint.com/5-ways-improve-sass-bourbon/
+.col-3.theme-browse-link.omega > .wrappily  {
+  margin-top:1em;
+  width:120%;
+   @include media($medium-screen){
+    margin-top:50%;
+   text-align:center;
+   width:100%;
+  }
+}
 
 /* apply */
 
@@ -151,6 +173,11 @@
   font-size:1.2em;
   text-transform:uppercase;
   letter-spacing:-0.09em;
+  margin-top:0.5em;
+  @include media($medium-screen){
+    margin-top:0em;
+  }
+  
 }
 .upstate-apply:hover,
 .upstate-apply:focus {
@@ -164,6 +191,10 @@
   font-size:1.2em;
   text-transform:uppercase;
   letter-spacing:-0.09em;
+  margin-top:0.5em;
+  @include media($medium-screen){
+    margin-top:0em;
+  }
 }
 .upstate-learn:hover,
 .upstate-learn:focus {
@@ -380,10 +411,13 @@
   }
 }
 
+/* nav wrapper */
 .upstate-nav-wrapper{
   @extend .navigation;
   background:$bg-dawn-mist !important;
   border-bottom:0px !important;
+  position:absolute;
+  width: 100%;
   a {
     background: $bg-dawn-mist !important;
   }
@@ -393,4 +427,12 @@
   li.nav-link {
    background: $bg-dawn-mist !important;
   }
+}
+header.navigation .navigation-wrapper, header.upstate-nav-wrapper .navigation-wrapper {
+  max-width: auto;
+  width: 100% !important;
+  position: absolute;
+}
+header.navigation, header.upstate-nav-wrapper {
+  overflow: hidden;
 }
