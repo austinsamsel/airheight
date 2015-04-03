@@ -164,7 +164,8 @@ per_page: 10
       </div>
       <div class="main-big">  
           <img src="/images/loading.gif" data-src="/images/browser.svg" class="browser">
-          <div class="scr-desktop"><img src="/images/loading.gif" data-src="/images/screen-bfp.jpg"  alt="brooklyn fire proof screen capture">
+          <div class="scr-desktop">
+          <img src="/images/loading.gif" data-src-small="/images/loading.gif" data-src="/images/screen-bfp.jpg"  alt="brooklyn fire proof screen capture">
           </div>
       </div>
       <div class="sidebar2 omega">
@@ -535,6 +536,22 @@ per_page: 10
 
   <%= javascript_include_tag  "all" %>
   <script type="text/javascript">
+  $('img').addClass('b-lazy');
+ ;(function() {
+        // Initialize
+        var bLazy = new Blazy({ 
+              offset: 300,
+              breakpoints: [{
+                  width: 768 // max-width
+                , src: 'data-src-small'
+             }
+                 , {
+                  width: 992 // max-width
+                , src: 'data-src-medium'
+        }]
+          });
+    })();
+
     var navMenu = function(){
       var menuToggle = $('#js-mobile-menu').unbind();
       $('#js-navigation-menu').removeClass("show");
@@ -563,11 +580,6 @@ per_page: 10
           css3: true,
           slidesNavPosition: 'bottom',
           afterRender: function(){
-              $("img").unveil(200, function() {
-                $(this).load(function() {
-                  this.style.opacity = 1;
-                });
-              });
               var delay=750;
               setTimeout(function(){
                  $('.upstate-hero').addClass('visible animated slideInUp');
@@ -577,11 +589,6 @@ per_page: 10
           afterLoad: function(anchorLink, index){
               var loadedSection = $(this);
               if(index != 999){
-                  $("img").unveil(200, function() {
-                    $(this).load(function() {
-                      this.style.opacity = 1;
-                    });
-                  });
               }
           },
           afterSlideLoad: function( anchorLink, index, slideAnchor, slideIndex){
@@ -591,19 +598,23 @@ per_page: 10
 
               if(index == 5 && slideIndex == 0){
                   $('.fp-controlArrow.fp-prev').css('display', 'none');
-                  $("img").unveil(200, function() {
-                    $(this).load(function() {
-                      this.style.opacity = 1;
-                    });
-                  });
+                  // $("img").unveil(200, function() {
+                  //   $(this).load(function() {
+                  //     this.style.opacity = 1;
+                  //   });
+                  // });
+                  var bLazy = new Blazy();
+                      bLazy.revalidate(); // eg bLazy.revalidate();
               }
               if(index == 5 && slideIndex != 0){
                   $('.fp-controlArrow.fp-prev').css('display', 'block');
-                  $("img").unveil(200, function() {
-                    $(this).load(function() {
-                      this.style.opacity = 1;
-                    });
-                  });
+                  // $("img").unveil(200, function() {
+                  //   $(this).load(function() {
+                  //     this.style.opacity = 1;
+                  //   });
+                  // });
+                  var bLazy = new Blazy();
+                      bLazy.revalidate(); // eg bLazy.revalidate();
               }
           }
         });
