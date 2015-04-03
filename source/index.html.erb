@@ -60,7 +60,7 @@ per_page: 10
           <h1>Our Impact</h1>
           <p class="">We guide our clients to <strong class="highlight2">the best choices in tech</strong>. We start by understanding your business needs first. Then we talk about your project. We frame every decision around your end goals. This is how we create unique solutions with measurable results.</p>
         </div>
-        <div class="sidebar services-list small">
+        <!-- <div class="sidebar services-list small">
           <h3>We help with…</h3>
           <li><i class="fa fa-check"></i> new & existing websites</li>
           <li><i class="fa fa-check"></i> web and mobile apps</li>
@@ -72,7 +72,7 @@ per_page: 10
           <li><i class="fa fa-check"></i> retaining users</li>
           <li><i class="fa fa-check"></i> increasing sign ups</li>
           <li><i class="fa fa-check"></i> generating leads</li>
-        </div>
+        </div> -->
       </section>
     </div>
 
@@ -272,7 +272,11 @@ per_page: 10
           css3: true,
           slidesNavPosition: 'bottom',
           afterRender: function(){
-              $("img").unveil();
+              $("img").unveil(200, function() {
+                    $(this).load(function() {
+                      this.style.opacity = 1;
+                    });
+                  });
               navMenu();
               $("#hero-story").typed({
                       strings: ["We create realities^500.", "We engineer^500 experiences^800.", "We make life ^500better ^1000:^800)^500","<a href='#Contact'>How can we help^800?</a>"],
@@ -331,12 +335,20 @@ per_page: 10
               // used to be anchorLink == 'About' instead of index == 6
               // need to test if this works.
               if(index == 5 && slideIndex > 0){
-                  $("img").unveil();
+                  $("img").unveil(200, function() {
+                    $(this).load(function() {
+                      this.style.opacity = 1;
+                    });
+                  });
                   slideUp();
                   $('.fp-controlArrow.fp-prev').css('display', 'block');
               }
               if(index == 5 && slideIndex == 0){
-                  $("img").unveil();
+                  $("img").unveil(200, function() {
+                    $(this).load(function() {
+                      this.style.opacity = 1;
+                    });
+                  });
                   slideDown();
                   $('.fp-controlArrow.fp-prev').css('display', 'none');
               }
