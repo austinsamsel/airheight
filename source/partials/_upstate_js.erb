@@ -1,0 +1,84 @@
+  <script type="text/javascript">
+    var navMenu = function(){
+      var menuToggle = $('#js-mobile-menu').unbind();
+      $('#js-navigation-menu').removeClass("show");
+
+      menuToggle.on('click', function(e) {
+        e.preventDefault();
+        $('#js-navigation-menu').slideToggle(function(){
+          if($('#js-navigation-menu').is(':hidden')) {
+            $('#js-navigation-menu').removeAttr('style');
+          }
+        });
+      });
+    };
+    $(document).ready(function() {
+        $('#fullpage').fullpage({
+          anchors: ['Home', 'Overview', 'Features', 'Success', 'Themes', 'Pricing', 'About', 'Apply', 'Contact'],
+          responsive: 5000,
+          controlArrows: true,
+          slidesNavigation: true,
+          showActiveTooltips: true,
+          fitToSection: false,
+          animateAnchor: true,
+          scrollingSpeed: 1900,
+          scrollBar: true,
+          menu:'#js-navigation-menu',
+          css3: true,
+          slidesNavPosition: 'bottom',
+          afterRender: function(){
+              var delay=750;
+              setTimeout(function(){
+                 $('.upstate-hero').addClass('visible animated slideInUp');
+              }, delay);
+              navMenu();
+                $('img').addClass('b-lazy');
+                 ;(function() {
+                        // Initialize
+                        var bLazy = new Blazy({ 
+                              offset: 300,
+                              breakpoints: [{
+                                  width: 768 // max-width
+                                , src: 'data-src-small'
+                             }
+                                 , {
+                                  width: 992 // max-width
+                                , src: 'data-src-medium'
+                        }]
+                          });
+                    })();
+          },
+          afterLoad: function(anchorLink, index){
+              var loadedSection = $(this);
+              if(index != 999){
+              }
+          },
+          afterSlideLoad: function( anchorLink, index, slideAnchor, slideIndex){
+              var loadedSlide = $(this);
+
+              //first slide of the second section
+
+              if(index == 5 && slideIndex == 0){
+                  $('.fp-controlArrow.fp-prev').css('display', 'none');
+                  // $("img").unveil(200, function() {
+                  //   $(this).load(function() {
+                  //     this.style.opacity = 1;
+                  //   });
+                  // });
+                  var bLazy = new Blazy();
+                      bLazy.revalidate(); // eg bLazy.revalidate();
+              }
+              if(index == 5 && slideIndex != 0){
+                  $('.fp-controlArrow.fp-prev').css('display', 'block');
+                  // $("img").unveil(200, function() {
+                  //   $(this).load(function() {
+                  //     this.style.opacity = 1;
+                  //   });
+                  // });
+                  var bLazy = new Blazy();
+                      bLazy.revalidate(); // eg bLazy.revalidate();
+              }
+          }
+        });
+    });
+  </script>
