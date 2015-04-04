@@ -495,11 +495,19 @@ img.main{
 .fp-controlArrow.fp-prev {
   @extend .pulse;
   display:none;
-  border-color: transparent $blue transparent transparent  !important;
+  border-color: transparent transparentize($blue, .6) transparent transparent  !important;
+  left:0px !important;
+  @include media($medium-screen){
+    left:15px !important;
+  }
 }
 .fp-controlArrow.fp-next {
   @extend .pulse;
-  border-color: transparent transparent transparent $blue !important;
+  border-color: transparent transparent transparent transparentize($blue, .6) !important;
+  right:0px !important;
+  @include media($medium-screen){
+    right:15px !important;
+  }
 }
 .fp-slidesNav.bottom{
   @extend .floating;
