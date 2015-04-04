@@ -14,6 +14,9 @@ gem 'font-awesome-middleman'
 #security
 gem 'middleman-protect-emails'
 
+#build
+gem 'middleman-imageoptim'
+
 # For feed.xml.builder
 gem "builder", "~> 3.0"
 

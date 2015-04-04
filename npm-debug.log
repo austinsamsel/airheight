@@ -1,0 +1,246 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', '-g', 'imageoptim-cli' ]
+2 info using npm@1.3.24
+3 info using node@v0.10.25
+4 verbose cache add [ 'imageoptim-cli', null ]
+5 verbose cache add name=undefined spec="imageoptim-cli" args=["imageoptim-cli",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'imageoptim-cli',
+6 verbose parsed url   path: 'imageoptim-cli',
+6 verbose parsed url   href: 'imageoptim-cli' }
+7 silly lockFile 2930c2eb-imageoptim-cli imageoptim-cli
+8 verbose lock imageoptim-cli /Users/x/.npm/2930c2eb-imageoptim-cli.lock
+9 silly lockFile 2930c2eb-imageoptim-cli imageoptim-cli
+10 silly lockFile 2930c2eb-imageoptim-cli imageoptim-cli
+11 verbose addNamed [ 'imageoptim-cli', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 2010c03c-imageoptim-cli imageoptim-cli@
+14 verbose lock imageoptim-cli@ /Users/x/.npm/2010c03c-imageoptim-cli.lock
+15 silly addNameRange { name: 'imageoptim-cli', range: '*', hasData: false }
+16 verbose url raw imageoptim-cli
+17 verbose url resolving [ 'https://registry.npmjs.org/', './imageoptim-cli' ]
+18 verbose url resolved https://registry.npmjs.org/imageoptim-cli
+19 info trying registry request attempt 1 at 11:31:57
+20 http GET https://registry.npmjs.org/imageoptim-cli
+21 http 200 https://registry.npmjs.org/imageoptim-cli
+22 silly registry.get cb [ 200,
+22 silly registry.get   { date: 'Sat, 04 Apr 2015 15:31:58 GMT',
+22 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+22 silly registry.get     etag: '"5YYK0VZNBHUNA6QK400BJSSXS"',
+22 silly registry.get     'content-type': 'application/json',
+22 silly registry.get     'cache-control': 'max-age=60',
+22 silly registry.get     'content-length': '52006',
+22 silly registry.get     'accept-ranges': 'bytes',
+22 silly registry.get     via: '1.1 varnish',
+22 silly registry.get     age: '0',
+22 silly registry.get     'x-served-by': 'cache-ams4130-AMS',
+22 silly registry.get     'x-cache': 'MISS',
+22 silly registry.get     'x-cache-hits': '0',
+22 silly registry.get     'x-timer': 'S1428161518.572765,VS0,VE374',
+22 silly registry.get     vary: 'Accept',
+22 silly registry.get     'keep-alive': 'timeout=10, max=50',
+22 silly registry.get     connection: 'Keep-Alive' } ]
+23 silly addNameRange number 2 { name: 'imageoptim-cli', range: '*', hasData: true }
+24 silly addNameRange versions [ 'imageoptim-cli',
+24 silly addNameRange   [ '1.0.0',
+24 silly addNameRange     '1.0.4',
+24 silly addNameRange     '1.1.1',
+24 silly addNameRange     '1.1.2',
+24 silly addNameRange     '1.1.3',
+24 silly addNameRange     '1.1.4',
+24 silly addNameRange     '1.1.5',
+24 silly addNameRange     '1.3.1',
+24 silly addNameRange     '1.3.2',
+24 silly addNameRange     '1.4.0',
+24 silly addNameRange     '1.4.1',
+24 silly addNameRange     '1.4.2',
+24 silly addNameRange     '1.4.4',
+24 silly addNameRange     '1.4.5',
+24 silly addNameRange     '1.6.8',
+24 silly addNameRange     '1.6.12',
+24 silly addNameRange     '1.6.13',
+24 silly addNameRange     '1.6.14',
+24 silly addNameRange     '1.6.15',
+24 silly addNameRange     '1.6.18',
+24 silly addNameRange     '1.6.19',
+24 silly addNameRange     '1.7.1',
+24 silly addNameRange     '1.7.2',
+24 silly addNameRange     '1.7.3',
+24 silly addNameRange     '1.7.9',
+24 silly addNameRange     '1.7.10',
+24 silly addNameRange     '1.7.11',
+24 silly addNameRange     '1.11.4',
+24 silly addNameRange     '1.11.6' ] ]
+25 verbose addNamed [ 'imageoptim-cli', '1.11.6' ]
+26 verbose addNamed [ '1.11.6', '1.11.6' ]
+27 silly lockFile 09ac6c65-imageoptim-cli-1-11-6 imageoptim-cli@1.11.6
+28 verbose lock imageoptim-cli@1.11.6 /Users/x/.npm/09ac6c65-imageoptim-cli-1-11-6.lock
+29 silly lockFile a5823491-im-cli-imageoptim-cli-1-11-6-tgz https://registry.npmjs.org/imageoptim-cli/-/imageoptim-cli-1.11.6.tgz
+30 verbose lock https://registry.npmjs.org/imageoptim-cli/-/imageoptim-cli-1.11.6.tgz /Users/x/.npm/a5823491-im-cli-imageoptim-cli-1-11-6-tgz.lock
+31 verbose addRemoteTarball [ 'https://registry.npmjs.org/imageoptim-cli/-/imageoptim-cli-1.11.6.tgz',
+31 verbose addRemoteTarball   '5ff4a0d33eabaa0b18ad1329a713131e07f5da37' ]
+32 info retry fetch attempt 1 at 11:31:59
+33 verbose fetch to= /var/folders/2l/nkb67mbj0477dsnf1g9jklxr0000gn/T/npm-35648-gIbQjgWn/1428161519475-0.7643431148026139/tmp.tgz
+34 http GET https://registry.npmjs.org/imageoptim-cli/-/imageoptim-cli-1.11.6.tgz
+35 http 200 https://registry.npmjs.org/imageoptim-cli/-/imageoptim-cli-1.11.6.tgz
+36 verbose tar unpack /var/folders/2l/nkb67mbj0477dsnf1g9jklxr0000gn/T/npm-35648-gIbQjgWn/1428161519475-0.7643431148026139/tmp.tgz
+37 silly lockFile 40e5dc1e-19475-0-7643431148026139-package tar:///var/folders/2l/nkb67mbj0477dsnf1g9jklxr0000gn/T/npm-35648-gIbQjgWn/1428161519475-0.7643431148026139/package
+38 verbose lock tar:///var/folders/2l/nkb67mbj0477dsnf1g9jklxr0000gn/T/npm-35648-gIbQjgWn/1428161519475-0.7643431148026139/package /Users/x/.npm/40e5dc1e-19475-0-7643431148026139-package.lock
+39 silly lockFile 7e41b646-19475-0-7643431148026139-tmp-tgz tar:///var/folders/2l/nkb67mbj0477dsnf1g9jklxr0000gn/T/npm-35648-gIbQjgWn/1428161519475-0.7643431148026139/tmp.tgz
+40 verbose lock tar:///var/folders/2l/nkb67mbj0477dsnf1g9jklxr0000gn/T/npm-35648-gIbQjgWn/1428161519475-0.7643431148026139/tmp.tgz /Users/x/.npm/7e41b646-19475-0-7643431148026139-tmp-tgz.lock
+41 silly gunzTarPerm modes [ '755', '644' ]
+42 silly gunzTarPerm extractEntry package.json
+43 silly gunzTarPerm extractEntry .npmignore
+44 silly gunzTarPerm extractEntry README.md
+45 silly gunzTarPerm extractEntry LICENSE-MIT
+46 silly gunzTarPerm extractEntry Icon.png
+47 silly gunzTarPerm extractEntry CHANGELOG.md
+48 silly gunzTarPerm extractEntry bin/imageOptim
+49 silly gunzTarPerm extractEntry bin/imageOptimAppleScriptLib
+50 silly gunzTarPerm extractEntry bin/imageOptimBashLib
+51 silly gunzTarPerm extractEntry bin/pngquant
+52 silly gunzTarPerm extractEntry CONTRIBUTING.md
+53 silly lockFile 40e5dc1e-19475-0-7643431148026139-package tar:///var/folders/2l/nkb67mbj0477dsnf1g9jklxr0000gn/T/npm-35648-gIbQjgWn/1428161519475-0.7643431148026139/package
+54 silly lockFile 40e5dc1e-19475-0-7643431148026139-package tar:///var/folders/2l/nkb67mbj0477dsnf1g9jklxr0000gn/T/npm-35648-gIbQjgWn/1428161519475-0.7643431148026139/package
+55 silly lockFile 7e41b646-19475-0-7643431148026139-tmp-tgz tar:///var/folders/2l/nkb67mbj0477dsnf1g9jklxr0000gn/T/npm-35648-gIbQjgWn/1428161519475-0.7643431148026139/tmp.tgz
+56 silly lockFile 7e41b646-19475-0-7643431148026139-tmp-tgz tar:///var/folders/2l/nkb67mbj0477dsnf1g9jklxr0000gn/T/npm-35648-gIbQjgWn/1428161519475-0.7643431148026139/tmp.tgz
+57 verbose tar pack [ '/Users/x/.npm/imageoptim-cli/1.11.6/package.tgz',
+57 verbose tar pack   '/var/folders/2l/nkb67mbj0477dsnf1g9jklxr0000gn/T/npm-35648-gIbQjgWn/1428161519475-0.7643431148026139/package' ]
+58 verbose tarball /Users/x/.npm/imageoptim-cli/1.11.6/package.tgz
+59 verbose folder /var/folders/2l/nkb67mbj0477dsnf1g9jklxr0000gn/T/npm-35648-gIbQjgWn/1428161519475-0.7643431148026139/package
+60 silly lockFile 40e5dc1e-19475-0-7643431148026139-package tar:///var/folders/2l/nkb67mbj0477dsnf1g9jklxr0000gn/T/npm-35648-gIbQjgWn/1428161519475-0.7643431148026139/package
+61 verbose lock tar:///var/folders/2l/nkb67mbj0477dsnf1g9jklxr0000gn/T/npm-35648-gIbQjgWn/1428161519475-0.7643431148026139/package /Users/x/.npm/40e5dc1e-19475-0-7643431148026139-package.lock
+62 silly lockFile d150d788-mageoptim-cli-1-11-6-package-tgz tar:///Users/x/.npm/imageoptim-cli/1.11.6/package.tgz
+63 verbose lock tar:///Users/x/.npm/imageoptim-cli/1.11.6/package.tgz /Users/x/.npm/d150d788-mageoptim-cli-1-11-6-package-tgz.lock
+64 silly lockFile 40e5dc1e-19475-0-7643431148026139-package tar:///var/folders/2l/nkb67mbj0477dsnf1g9jklxr0000gn/T/npm-35648-gIbQjgWn/1428161519475-0.7643431148026139/package
+65 silly lockFile 40e5dc1e-19475-0-7643431148026139-package tar:///var/folders/2l/nkb67mbj0477dsnf1g9jklxr0000gn/T/npm-35648-gIbQjgWn/1428161519475-0.7643431148026139/package
+66 silly lockFile d150d788-mageoptim-cli-1-11-6-package-tgz tar:///Users/x/.npm/imageoptim-cli/1.11.6/package.tgz
+67 silly lockFile d150d788-mageoptim-cli-1-11-6-package-tgz tar:///Users/x/.npm/imageoptim-cli/1.11.6/package.tgz
+68 silly lockFile 82a9d6aa-pm-imageoptim-cli-1-11-6-package /Users/x/.npm/imageoptim-cli/1.11.6/package
+69 verbose lock /Users/x/.npm/imageoptim-cli/1.11.6/package /Users/x/.npm/82a9d6aa-pm-imageoptim-cli-1-11-6-package.lock
+70 silly lockFile 82a9d6aa-pm-imageoptim-cli-1-11-6-package /Users/x/.npm/imageoptim-cli/1.11.6/package
+71 silly lockFile 82a9d6aa-pm-imageoptim-cli-1-11-6-package /Users/x/.npm/imageoptim-cli/1.11.6/package
+72 verbose tar unpack /Users/x/.npm/imageoptim-cli/1.11.6/package.tgz
+73 silly lockFile 50eab6cf-pm-imageoptim-cli-1-11-6-package tar:///Users/x/.npm/imageoptim-cli/1.11.6/package
+74 verbose lock tar:///Users/x/.npm/imageoptim-cli/1.11.6/package /Users/x/.npm/50eab6cf-pm-imageoptim-cli-1-11-6-package.lock
+75 silly lockFile d150d788-mageoptim-cli-1-11-6-package-tgz tar:///Users/x/.npm/imageoptim-cli/1.11.6/package.tgz
+76 verbose lock tar:///Users/x/.npm/imageoptim-cli/1.11.6/package.tgz /Users/x/.npm/d150d788-mageoptim-cli-1-11-6-package-tgz.lock
+77 silly gunzTarPerm modes [ '755', '644' ]
+78 silly gunzTarPerm extractEntry package.json
+79 silly gunzTarPerm extractEntry .npmignore
+80 silly gunzTarPerm extractEntry README.md
+81 silly gunzTarPerm extractEntry CHANGELOG.md
+82 silly gunzTarPerm extractEntry CONTRIBUTING.md
+83 silly gunzTarPerm extractEntry Icon.png
+84 silly gunzTarPerm extractEntry LICENSE-MIT
+85 silly gunzTarPerm extractEntry bin/imageOptim
+86 silly gunzTarPerm extractEntry bin/imageOptimAppleScriptLib
+87 silly gunzTarPerm extractEntry bin/imageOptimBashLib
+88 silly gunzTarPerm extractEntry bin/pngquant
+89 silly lockFile 50eab6cf-pm-imageoptim-cli-1-11-6-package tar:///Users/x/.npm/imageoptim-cli/1.11.6/package
+90 silly lockFile 50eab6cf-pm-imageoptim-cli-1-11-6-package tar:///Users/x/.npm/imageoptim-cli/1.11.6/package
+91 silly lockFile d150d788-mageoptim-cli-1-11-6-package-tgz tar:///Users/x/.npm/imageoptim-cli/1.11.6/package.tgz
+92 silly lockFile d150d788-mageoptim-cli-1-11-6-package-tgz tar:///Users/x/.npm/imageoptim-cli/1.11.6/package.tgz
+93 verbose chmod /Users/x/.npm/imageoptim-cli/1.11.6/package.tgz 644
+94 verbose chown /Users/x/.npm/imageoptim-cli/1.11.6/package.tgz [ 501, 20 ]
+95 silly lockFile a5823491-im-cli-imageoptim-cli-1-11-6-tgz https://registry.npmjs.org/imageoptim-cli/-/imageoptim-cli-1.11.6.tgz
+96 silly lockFile a5823491-im-cli-imageoptim-cli-1-11-6-tgz https://registry.npmjs.org/imageoptim-cli/-/imageoptim-cli-1.11.6.tgz
+97 silly lockFile 09ac6c65-imageoptim-cli-1-11-6 imageoptim-cli@1.11.6
+98 silly lockFile 09ac6c65-imageoptim-cli-1-11-6 imageoptim-cli@1.11.6
+99 silly lockFile 2010c03c-imageoptim-cli imageoptim-cli@
+100 silly lockFile 2010c03c-imageoptim-cli imageoptim-cli@
+101 silly resolved [ { name: 'imageoptim-cli',
+101 silly resolved     author: { name: 'Jamie Mason', email: 'siunmaru@gmail.com' },
+101 silly resolved     description: 'Automates ImageOptim, ImageAlpha, and JPEGmini for Mac to make batch optimisation of images part of your automated build process.',
+101 silly resolved     homepage: 'https://github.com/JamieMason/ImageOptim-CLI',
+101 silly resolved     bugs: { url: 'https://github.com/JamieMason/ImageOptim-CLI/issues' },
+101 silly resolved     main: './bin/imageOptim',
+101 silly resolved     version: '1.11.6',
+101 silly resolved     repository:
+101 silly resolved      { type: 'git',
+101 silly resolved        url: 'git://github.com/JamieMason/ImageOptim-CLI.git' },
+101 silly resolved     bin:
+101 silly resolved      { imageOptim: 'bin/imageOptim',
+101 silly resolved        imageOptimAppleScriptLib: 'bin/imageOptimAppleScriptLib',
+101 silly resolved        imageOptimBashLib: 'bin/imageOptimBashLib',
+101 silly resolved        pngquant: 'bin/pngquant' },
+101 silly resolved     licenses: [ [Object] ],
+101 silly resolved     keywords:
+101 silly resolved      [ 'advpng',
+101 silly resolved        'compress',
+101 silly resolved        'gifsicle',
+101 silly resolved        'imagealpha',
+101 silly resolved        'imagemin',
+101 silly resolved        'imageoptim',
+101 silly resolved        'images',
+101 silly resolved        'jpegmini',
+101 silly resolved        'jpegoptim',
+101 silly resolved        'jpegtran',
+101 silly resolved        'image optimisation',
+101 silly resolved        'optimise images',
+101 silly resolved        'image compression',
+101 silly resolved        'compress images',
+101 silly resolved        'optipng',
+101 silly resolved        'pngcrush',
+101 silly resolved        'pngquant',
+101 silly resolved        'pngout',
+101 silly resolved        'smushit',
+101 silly resolved        'tinypng' ],
+101 silly resolved     devDependencies:
+101 silly resolved      { grunt: '^0.4.5',
+101 silly resolved        'grunt-cli': '^0.1.13',
+101 silly resolved        'grunt-contrib-concat': '^0.5.0',
+101 silly resolved        'grunt-contrib-watch': '^0.6.1' },
+101 silly resolved     contributors: [ [Object], [Object], [Object], [Object], [Object] ],
+101 silly resolved     readme: '# ImageOptim-CLI\n\n> Automates [ImageOptim](http://imageoptim.com), [ImageAlpha](http://pngmini.com), and\n> [JPEGmini for Mac](http://jpegmini.com/mac) to make batch optimisation of images part of your\n> automated build process.\n\nWhile other image optimization tools are available from the command line, ImageOptim-CLI exists\nbecause the [current benchmarks](http://jamiemason.github.io/ImageOptim-CLI/) suggest that\nImageOptim, ImageAlpha and JPEGmini currently outperform those alternatives over lossless and\nlossy optimizations.\n\nCheck out this short [video demo of ImageOptim-CLI](https://www.youtube.com/watch?v=HGBounRIzSs) to\nsee how it works.\n\nJamie Mason / [@fold_left](https://twitter.com/fold_left).\n\n\n\n\n## Contents\n\n+ [Installation](#installation)\n  + [Manual Installation](#manual-installation)\n  + [JPEGmini and support for assistive devices](#jpegmini-and-support-for-assistive-devices)\n+ [Usage](#usage)\n+ [Examples](#examples)\n  + [Optimise a directory of images](#optimise-a-directory-of-images)\n  + [Optimise a filtered set of images](#optimise-a-filtered-set-of-images)\n  + [Passing additional options](#passing-additional-options)\n  + [Adding to git pre-commit hook](#adding-to-git-pre-commit-hook)\n+ [Related projects](#related-projects)\n  + [Grunt plugin](#grunt-plugin)\n  + [Comparison of image optimization tools](#comparison-of-image-optimization-tools)\n  + [Article for Smashing Magazine](#article-for-smashing-magazine)\n  + [Alfred workflow](#alfred-workflow)\n+ [FAQs](#faqs)\n  + [General](#general)\n  + [ImageOptim](#imageoptim)\n  + [ImageAlpha](#imagealpha)\n  + [JPEGmini](#jpegmini)\n  + [Windows and Linux](#windows-and-linux)\n\n\n\n\n## Installation\n\nImageOptim-CLI is written in Shell and AppleScript, you don\'t _need_ Node.js to run it.\n[npm](https://npmjs.org/) is suggested because it makes installation very convenient.\n\n```shell\nnpm install -g imageoptim-cli\n```\n\n### Manual Installation\n\nYou can install manually by downloading the latest zip then adding ImageOptim-CLI to your\n[$PATH](https://en.wikipedia.org/wiki/PATH_\\(variable\\)).\n\n```shell\ncurl --output imageoptim-cli.zip https://codeload.github.com/JamieMason/ImageOptim-CLI/zip/1.11.6\nunzip imageoptim-cli.zip\nexport PATH=$PATH:imageoptim-cli/bin\n```\n\n> Saving somewhere in your home directory such as `~/imageoptim-cli` is recommended, but not\nessential. Saving to `/Applications` is **not** recommended, do not do this.\n\n### JPEGmini and support for assistive devices\n\nYou may be presented with the following message the first time you run ImageOptim-CLI with the `--jpeg-mini` flag.\n\n> To automate JPEGmini we need to add Terminal.app (or iTerm.app etc) to the \'support for assistive devices\' whitelist.\n\nThe JPEGmini OS X Apps don\'t include a command line API, so a real user is\nsimulated by entering synthetic clicks and keyboard commands instead. This\nrequires your permission and is easily set up in System Preferences as shown by\nthese guides.\n\n+ [Enable access for assistive devices in OS X Yosemite](http://www.klabouch.com/?p=98).\n+ [OS X Mavericks: Enable access for assistive devices and applications](http://support.apple.com/en-us/HT6026)\n\n\n\n\n\n## Usage\n    Usage: imageoptim [options]\n    \n    Options:\n    \n      -d, --directory     directory of images to process\n      -a, --image-alpha   pre-process PNGs with ImageAlpha.app *\n      -j, --jpeg-mini     pre-process JPGs with JPEGmini.app **\n      -q, --quit          quit all apps when complete\n      -c, --no-color      disable color output\n      -h, --help          display this usage information\n      -e, --examples      display some example commands and uses\n      -v, --version       display the version number\n    \n    *  http://pngmini.com\n    ** https://itunes.apple.com/us/app/jpegmini/id498944723\n    \n\n\n\n\n\n## Examples\n### Optimise a directory of images\n\nThis command will optimise all image files in your Awesome project.\n\n```shell\nimageoptim --directory ~/Sites/Awesome # [options]\n```\n\n### Optimise a filtered set of images\n\nThis command will optimise just the .jpg files in your Awesome project.\n\n```shell\nfind ~/Sites/Awesome -name \'*.jpg\' | imageoptim # [options]\n```\n\n### Passing additional options\n\nThe long format for enabling options is as follows;\n\n```shell\nimageoptim --jpeg-mini --image-alpha --quit --no-color --directory path/to/images\n```\n\nThe equivalent of the above in short format is as follows;\n\n```shell\nimageoptim -j -a -q -d -c path/to/images\n```\n\n### Adding to git pre-commit hook\n\nAdding the below to **your_project/.git/hooks/pre-commit** will run imageoptim-CLI\neach time you commit new and changed files into your project. Any files which\naren\'t images will be ignored.\n\n```shell\nimages=$(git diff --exit-code --cached --name-only --diff-filter=ACM -- \'*.png\' \'*.jpg\')\n$(exit $?) || echo $images | imageoptim && git add $images\n```\n\n\n\n\n\n\n\n\n## Related Projects\n\n\n### Grunt Plugin\n\nThe ImageOptim-CLI [Grunt](http://gruntjs.com) plugin\nis [grunt-imageoptim](https://github.com/JamieMason/grunt-imageoptim).\n\n\n### Comparison of image optimization tools\n\nImageOptim-CLI features in this comparison of the [performance of image optimisation\ntools](http://jamiemason.github.io/ImageOptim-CLI/) alongside Kraken.io, CodeKit,\ngrunt-contrib-imagemin, Smush.it, and TinyPNG.\n\n\n### Article for Smashing Magazine\n\n[How Optimized Are Your Images? Meet ImageOptim-CLI, a Batch Compression\nTool](http://www.smashingmagazine.com/2013/12/17/imageoptim-cli-batch-compression-tool/)\n\n\n### Alfred Workflow\n\nThe ImageOptim-CLI Workflow for Alfred app\nis [alfred-image-optim-workflow](https://github.com/ramiroaraujo/alfred-image-optim-workflow)\n\n\n\n\n## FAQs\n\n\n\n\n\n### General\n\n#### Do ImageOptim, ImageAlpha, or JPEGmini come bundled with the ImageOptim-CLI installation?\n\nYou will need to install these applications separately.\n\n#### Do I have to pay to use ImageOptim-CLI?\n\nThe CLI, ImageOptim and ImageAlpha are all free. JPEGmini is a paid-for product but you can use\nImageOptim-CLI and choose not to run JPEGmini.\n\n#### Why are shorthand options supplied in the format `imageoptim -a -j -q` instead of the more common `imageoptim -ajq`?\n\nThis was an early mistake which now needs supporting for backwards compatibility.\n[Issue 21](https://github.com/JamieMason/ImageOptim-CLI/issues/21) is open to add support for\nthe `-ajq` format as well as the current format.\n\n#### The WebP image format looks promising, can you get ImageOptim-CLI to convert images to it?\n\nWebP looks great and may well overtake the formats handled by ImageOptim-CLI, but converting images\nto WebP is outside ImageOptim-CLI\'s chosen remit.\n\n#### Can you get ImageOptim-CLI to skip images it has already processed, if they haven\'t changed?\n\nJPEGmini does this today, but for ImageOptim and ImageAlpha I feel a feature like this belongs\nin those applications rather than this automator.\n\n\n\n\n### ImageOptim\n\n\n#### ImageOptim makes the fans on my Mac run at full power.\n\nOptimising images is a pretty intensive process, so instead of optimising one image at a time (which\nwould take forever) — ImageOptim optimises many images at the same time until all of them are done.\n\nA side effect of this is that the fans come on at full power to keep your machine cool while it\'s\nmaxed out.\n\n\n\n\n\n### ImageAlpha\n\n#### I don\'t think ImageAlpha is running, I can\'t see anything.\n\nImageOptim-CLI uses ImageAlpha\'s internal installation of [pngquant](http://pngquant.org) so it\'s\nnormal that nothing is shown on screen.\n\nIt\'s also possible that if you look in the [Activity Monitor](http://support.apple.com/kb/HT5890)\nyou will not see `pngquant` displayed but it _is_ being run. In my experience it\'s only when you\nrun ImageOptim-CLI on a very large number of PNGs that you have enough time to spot it.\n\n#### Can I configure ImageAlpha\'s settings using ImageOptim-CLI?\n\nImageOptim-CLI is intended to be a simple, convenient, powerful, general-purpose image optimisation\ntool. If your needs have outgrown ImageOptim-CLI it\'s better to\nrun [pngquant](http://pngquant.org) separately, passing whatever custom settings you need.\n\n\n\n\n\n### JPEGmini\n\n#### Can I use ImageOptim-CLI with JPEGmini Lite, the free version of JPEGmini?\n\nNot currently, the full version of JPEGmini already has some subtle differences and JPEGmini Lite\ncauses further fragmentation. It is possible but not a priority, as the free version has a limit of\nprocessing 30 images per day anyway.\n\n#### I upgraded from JPEGmini Lite to JPEGmini but ImageOptim-CLI still says JPEGmini is not installed.\n\nPerforming the in-app upgrade leaves the app named as jpegmini-lite, so ImageOptim-CLI can\'t\ndetermine whether it\'s the free or full version. It is better to instead buy [the full version of\nJPEGmini](https://itunes.apple.com/us/app/jpegmini/id498944723) separately.\n\n#### ImageOptim-CLI says “To automate JPEGmini we need to enable GUI Scripting”, how do I do that?\n\nSee this tutorial on [how to manage Accessibility preferences\nand GUI Scripting](http://www.macosautomation.com/mavericks/guiscripting/index.html). In the case\nof OS X Mavericks, you will want to add the Applications JPEGmini and Terminal (or equivalent such\nas iTerm).\n\n\n\n\n\n### Windows and Linux\n\n#### Can I use ImageOptim-CLI on Windows or Linux?\n\nImageOptim-CLI is responsible for automating 3 OS X applications so is inherently bound to OS X for\nthat reason.\n\n#### Are there any plans for ImageOptim-CLI to support Windows or Linux?\n\nIt would first require ImageOptim, ImageAlpha, and JPEGmini to be available for those platforms.\n\n#### I don\'t have OS X, can you recommend an alternative to ImageOptim-CLI?\n\n[@addyosmani](https://github.com/addyosmani) wrote a really thorough article on [tools for\nimage optimization](http://addyosmani.com/blog/image-optimization-tools/) which discusses a wide\nrange of options in great detail.\n',
+101 silly resolved     readmeFilename: 'README.md',
+101 silly resolved     _id: 'imageoptim-cli@1.11.6',
+101 silly resolved     dist: { shasum: 'e072418bd05c2101222a41f193947ba0be33064c' },
+101 silly resolved     _from: 'imageoptim-cli@',
+101 silly resolved     _resolved: 'https://registry.npmjs.org/imageoptim-cli/-/imageoptim-cli-1.11.6.tgz' } ]
+102 info install imageoptim-cli@1.11.6 into /usr/local/lib
+103 info installOne imageoptim-cli@1.11.6
+104 info /usr/local/lib/node_modules/imageoptim-cli unbuild
+105 verbose tar unpack /Users/x/.npm/imageoptim-cli/1.11.6/package.tgz
+106 silly lockFile 5d0144f2--lib-node-modules-imageoptim-cli tar:///usr/local/lib/node_modules/imageoptim-cli
+107 verbose lock tar:///usr/local/lib/node_modules/imageoptim-cli /Users/x/.npm/5d0144f2--lib-node-modules-imageoptim-cli.lock
+108 silly lockFile d150d788-mageoptim-cli-1-11-6-package-tgz tar:///Users/x/.npm/imageoptim-cli/1.11.6/package.tgz
+109 verbose lock tar:///Users/x/.npm/imageoptim-cli/1.11.6/package.tgz /Users/x/.npm/d150d788-mageoptim-cli-1-11-6-package-tgz.lock
+110 silly gunzTarPerm modes [ '755', '644' ]
+111 error Error: EACCES, mkdir '/usr/local/lib/node_modules/imageoptim-cli'
+111 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules/imageoptim-cli']
+111 error   errno: 3,
+111 error   code: 'EACCES',
+111 error   path: '/usr/local/lib/node_modules/imageoptim-cli',
+111 error   fstream_type: 'Directory',
+111 error   fstream_path: '/usr/local/lib/node_modules/imageoptim-cli',
+111 error   fstream_class: 'DirWriter',
+111 error   fstream_stack:
+111 error    [ '/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+111 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:37:53',
+111 error      'Object.oncomplete (fs.js:107:15)' ] }
+112 error Please try running this command again as root/Administrator.
+113 error System Darwin 14.1.0
+114 error command "node" "/usr/local/bin/npm" "install" "-g" "imageoptim-cli"
+115 error cwd /Users/x/Dropbox/DEV/apps-middleman/airheight
+116 error node -v v0.10.25
+117 error npm -v 1.3.24
+118 error path /usr/local/lib/node_modules/imageoptim-cli
+119 error fstream_path /usr/local/lib/node_modules/imageoptim-cli
+120 error fstream_type Directory
+121 error fstream_class DirWriter
+122 error code EACCES
+123 error errno 3
+124 error stack Error: EACCES, mkdir '/usr/local/lib/node_modules/imageoptim-cli'
+125 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+125 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:37:53
+125 error fstream_stack Object.oncomplete (fs.js:107:15)
+126 verbose exit [ 3, true ]
