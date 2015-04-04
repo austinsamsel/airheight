@@ -52,6 +52,7 @@ GEM
     hitimes (1.2.2)
     hooks (0.4.0)
       uber (~> 0.0.4)
+    htmlcompressor (0.1.2)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
     image_optim (0.20.2)
@@ -106,6 +107,9 @@ GEM
       em-websocket (~> 0.5.1)
       middleman-core (~> 3.2)
       rack-livereload (~> 0.3.15)
+    middleman-minify-html (3.4.0)
+      htmlcompressor (~> 0.1.0)
+      middleman-core (>= 3.2)
     middleman-protect-emails (0.2.0)
       middleman-core (~> 3.2)
     middleman-sprockets (3.4.2)
@@ -170,6 +174,7 @@ DEPENDENCIES
   middleman-blog (~> 3.5.3)
   middleman-imageoptim
   middleman-livereload (~> 3.3.0)
+  middleman-minify-html
   middleman-protect-emails
   neat (~> 1.7.2)
   rack-contrib

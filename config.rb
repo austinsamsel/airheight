@@ -4,17 +4,17 @@
 
 # Time.zone = "UTC"
 
-require 'rack'
-require 'rack/contrib/try_static'
-require 'rack-zippy'
-require 'zippy_static_cache'
+# require 'rack'
+# require 'rack/contrib/try_static'
+# require 'rack-zippy'
+# require 'zippy_static_cache'
 
-use ZippyStaticCache, :urls => ['/images', '/stylesheets', '/javascripts', '/fonts']
-use Rack::Zippy::AssetServer, 'build'
-use Rack::TryStatic,
-  root: 'build',
-  urls: %w[/],
-  try: ['.html', 'index.html', '/index.html']
+# use ZippyStaticCache, :urls => ['/images', '/stylesheets', '/javascripts', '/fonts']
+# use Rack::Zippy::AssetServer, 'build'
+# use Rack::TryStatic,
+#   root: 'build',
+#   urls: %w[/],
+#   try: ['.html', 'index.html', '/index.html']
 
 
 
