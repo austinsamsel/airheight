@@ -118,6 +118,9 @@ header.navigation .navigation-menu-button, header.upstate-nav-wrapper .navigatio
 header.navigation .navigation-tools, header.upstate-nav-wrapper .navigation-tools {
   margin-top: 0.26em;
 }
+header.navigation .navigation-wrapper, header.upstate-nav-wrapper .navigation-wrapper, header.upstate-nav-wrapper .navigation-wrapper {
+  position: relative !important;
+}
 
 .logo-wrap{
   
