@@ -144,6 +144,14 @@ set :build_dir, 'tmp'
 
 set :fonts_dir,  "fonts-folder"
 
+activate :meta_tags
+ # set_meta_tags title: ''
+ # title 'High Tops'
+set_meta_tags description: ''
+description 'High Tops is a web development consultancy based in NYC. We guide our clients to the best decisions in tech.'
+set_meta_tags keywords: %w().join(', ')
+keywords %w(web development consulting design responsive mobile ux ruby on rails javascript apps marketing seo).join(', ')
+
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment
