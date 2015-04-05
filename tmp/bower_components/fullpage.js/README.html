@@ -1,0 +1,235 @@
+<!doctype html> <html> <head> <meta charset=utf-8 /> <meta http-equiv=X-UA-Compatible content='IE=edge;chrome=1'/> <title>High Tops</title> <meta name=viewport content="width=device-width,initial-scale=1"> <link rel=alternate type="application/atom+xml" title="Atom Feed" href="/feed.xml"/> <link href="/stylesheets/all.css" rel=stylesheet /> <link href='//fonts.googleapis.com/css?family=Archivo+Black|Archivo+Narrow:400,700,400italic|Enriqueta:400,700' rel=stylesheet> <script src="/javascripts/all.js"></script> <script>
+    $(document).ready(function() {
+        $navBar = $('.nav-sm');
+        var slideDown = function() {
+          $navBar.animate({top: '0em'}, 100);
+        };
+        var slideUp = function() {
+          $navBar.animate({top: '-2em'}, 100);
+        };
+        var loadBGs = function() {
+          $('.slide-creators').addClass('loadImage-creators');
+          $('.slide-madepulse').addClass('loadImage-madepulse');
+          $('.slide-bfp').addClass('loadImage-bfp');
+          $('.slide-calico').addClass('loadImage-calico');
+          $('.slide-haiku').addClass('loadImage-haiku');
+        };
+        // var email = function(){
+        //   $.ajax({
+        //     url: "//formspree.io/hi@austinsamsel.com", 
+        //     method: "POST",
+        //     data: {message: "thanks!"},
+        //     dataType: "json"
+        //   });
+        // };
+        var navMenu = function(){
+          var menuToggle = $('#js-mobile-menu').unbind();
+          $('#js-navigation-menu').removeClass("show");
+
+          menuToggle.on('click', function(e) {
+            e.preventDefault();
+            $('#js-navigation-menu').slideToggle(function(){
+              if($('#js-navigation-menu').is(':hidden')) {
+                $('#js-navigation-menu').removeAttr('style');
+              }
+            });
+          });
+        };
+        $('#fullpage').fullpage({
+          anchors: ['Home', 'Praise', 'Services', 'Praise2', 'Work', 'About', 'Contact'],
+          responsive: 50000,
+          controlArrows: true,
+          slidesNavigation: true,
+          showActiveTooltips: true,
+          fitToSection: false,
+          animateAnchor: true,
+          scrollBar: true,
+          scrollingSpeed: 1900,
+          menu:'#js-centered-navigation-menu',
+          css3: true,
+          slidesNavPosition: 'bottom',
+          afterRender: function(){
+              navMenu();
+              $("#hero-story").typed({
+                      strings: ["We create realities^500.", "We engineer^500 experiences^800.", "We make life ^500better ^1000:^800)^500","<a href='#Contact'>How can we help^800?</a>"],
+                      typeSpeed: 20,
+                      backDelay: 500,
+                      loop: false,
+                      loopCount: false
+                  });
+              // var waypoints = $('#services').waypoint(function(direction) {
+                  
+              //     //$('.fp-slidesNav.bottom').addClass('fadeIn');
+              //   }, {
+              //     offset: '0%'
+              //   }); 
+              // var waypoints = $('#slide-tester').waypoint(function(direction) {
+              //     $('.slide-test').addClass('slideLeft');
+              //     //$('.fp-slidesNav.bottom').addClass('fadeIn');
+              //   }, {
+              //     offset: '25%'
+              //   }); 
+              $('img').addClass('b-lazy');
+              ;(function() {
+                // Initialize
+                var bLazy = new Blazy({ 
+                      offset: 300,
+                      //selector: 'img', // all images
+                      breakpoints: [{
+                          width: 2000, // max-width
+                          src: 'data-src-small'
+                      },
+                      {
+                          width: 3000, // max-width
+                          src: 'data-src-medium'
+                      }]
+                  });
+              })();             
+          },
+          afterLoad: function(anchorLink, index){
+              var loadedSection = $(this);
+              if(index == 1){
+                  slideUp();
+              }
+              if (index == 5){
+                $('.fp-slidesNav.bottom').addClass('slideExpandUp');
+                //$('.slide-test').addClass('slideLeft');
+              }
+              if (index == 3){
+                //$('.fa-check').addClass('hatch');
+                // $('.fa-check').each(function(i) {
+                //     $(this).children().delay(700*i).addClass('hatch');
+                // });
+              }
+          },
+          onLeave: function(index, nextIndex, direction){
+            var leavingSection = $(this);
+            if (direction == 'up' || direction == 'down'){
+              loadBGs();
+              //email();
+            }
+            if(index == 1){
+              slideDown();
+            }
+            if(index == 2 && direction == 'up'){
+              slideUp();
+            }
+            if(index == 5){
+              slideDown();
+            }
+          },
+          afterSlideLoad: function( anchorLink, index, slideAnchor, slideIndex){
+              var loadedSlide = $(this);
+              // used to be anchorLink == 'About' instead of index == 6
+              // need to test if this works.
+              if(index == 5 && slideIndex > 0){
+                  slideUp();
+                  $('.fp-controlArrow.fp-prev').css('display', 'block');
+                  var bLazy = new Blazy();
+                      bLazy.revalidate(); // eg bLazy.revalidate();
+              }
+              if(index == 5 && slideIndex == 0){
+                  slideDown();
+                  $('.fp-controlArrow.fp-prev').css('display', 'none');
+                  var bLazy = new Blazy();
+                      bLazy.revalidate(); // eg bLazy.revalidate();
+              }
+          }
+        });
+    });
+  </script> </head> <body> <h1 id=fullpagejs>fullPage.js</h1> <p><img alt=preview src="https://raw.github.com/alvarotrigo/fullPage.js/master/examples/imgs/intro.png"/> <img alt=compatibility src="https://raw.github.com/alvarotrigo/fullPage.js/master/examples/imgs/compatible.gif"/> <img alt="fullPage.js version" src="//img.shields.io/badge/fullPage.js-v2.6.2-brightgreen.svg"/> <a href="//opensource.org/licenses/MIT"><img alt=License src="//img.shields.io/badge/License-MIT-blue.svg"/></a> 7Kb gziped!</p> <p>A simple and easy to use plugin to create fullscreen scrolling websites (also known as single page websites). It allows the creation of fullscreen scrolling websites, as well as adding some landscape sliders inside the sections of the site.</p> <ul> <li><a href="//alvarotrigo.com/fullPage/">Live demo</a></li> <li>[Apple demo] (http://alvarotrigo.com/fullPage/examples/apple.html)</li> <li><a href="//alvarotrigo.com/blog/fullpage-jquery-plugin-for-fullscreen-scrolling-websites/">Blog Article</a></li> <li><a href="https://github.com/alvarotrigo/fullPage.js/wiki/FAQ---Frequently-Answered-Questions">Frequently Answered Questions</a></li> </ul> <p>Invite me to a coffee <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=BEK5JQCQMED4J&amp;lc=GB&amp;item_name=fullPage%2ejs&amp;currency_code=USD&amp;bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"><img alt=Donate src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif"/></a></p> <p>Customizations of the plugin available upon request for some reasonable price. <a href="//alvarotrigo.com/#contact-page">Contact me</a>.</p> <p>Would you like to have a website using fullpage.js functionality but you don't know how to use it? I can do it for you for a reasonable price. <a href="//alvarotrigo.com/#contact-page">Contact me</a>.</p> <h2 id=introduction>Introduction</h2> <p>Suggestion are more than welcome, not only for feature requests but also for coding style improvements. Let's make this a great plugin to make people's lives easier!</p> <h2 id=compatibility>Compatibility</h2> <p>fullPage.js is fully functional on all modern browsers, as well as some old ones such as Internet Explorer 8, 9, Opera 12, etc. It works with browsers with CSS3 support and with the ones which don't have it, making it ideal for old browsers compatibility.</p> <h2 id=usage>Usage</h2> <p>As you can see in the example files, you will need to include: - <a href="//jquery.com/">jQuery library</a>. (1.6.0 minimum) - The JavaScript file <code>jquery.fullPage.js</code> (or its minified version <code>jquery.fullPage.min.js</code>) - The css file <code>jquery.fullPage.css</code></p> <p><strong>Optionally</strong>, you can add the <a href="//jqueryui.com/">jQuery UI library</a> in case you want to use other easing effects apart from the ones included in the jQuery library (<code>linear</code>, <code>swing</code>) or the one included by default in fullPage.js (<code>easeInQuart</code>).</p> <h3 id=install-using-bower>Install using bower:</h3> <p><strong>Optionally</strong>, you can install fullPage.js with bower if you prefer: Terminal: <code>shell bower install fullpage.js </code></p> <h3 id=including-files>Including files:</h3> <p>```html</p> <link rel=stylesheet href="jquery.fullPage.css"/> <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <script src="vendors/jquery.easings.min.js"></script> <script src="vendors/jquery.slimscroll.min.js"></script> <script src="jquery.fullPage.js"></script> <p>```</p> <h3 id=optional-use-of-cdn>Optional use of CDN</h3> <p>If you prefer to use a CDN to load the needed files, fullPage.js is in CDNJS: https://cdnjs.com/libraries/fullpage.js</p> <h3 id=required-html-structure>Required HTML structure</h3> <p>Each section will be defined with a <code>div</code> containing the <code>section</code> class. The active section by default will be the first section, which is taken as the home page. ```html</p> <div id=fullpage> <div class=section>Some section</div> <div class=section>Some section</div> <div class=section>Some section</div> <div class=section>Some section</div> </div> <p><code> If you want to define a different starting point rather than the first section or the first slide of a section, just add the class `active` to the section and slide you want to load first. </code>html</p> <div class="section active">Some section</div> <p>```</p> <p>In order to create a landscape slider within a section, each slide will be defined with another <code>div</code>: ```html</p> <div class=section> <div class=slide> Slide 1 </div> <div class=slide> Slide 2 </div> <div class=slide> Slide 3 </div> <div class=slide> Slide 4 </div> </div> <p>```` You can see a fully working example of the HTML structure in the <a href="https://github.com/alvarotrigo/fullPage.js/blob/master/examples/demoPage.html"><code>demoPage.html</code> file</a>.</p> <h3 id=initialization>Initialization</h3> <p>All you need to do is call the plugin inside a <code>$(document).ready</code> function:</p> <p><code>javascript $(document).ready(function() { $('#fullpage').fullpage(); }); </code></p> <p>A more complex initialization with all options set could look like this: ```javascript $(document).ready(function() { $('#fullpage').fullpage({ //Navigation menu: false, anchors:['firstSlide', 'secondSlide'], navigation: false, navigationPosition: 'right', navigationTooltips: ['firstSlide', 'secondSlide'], showActiveTooltips: false, slidesNavigation: true, slidesNavPosition: 'bottom',</p> <pre><code>	//Scrolling
+	css3: true,
+	scrollingSpeed: 700,
+	autoScrolling: true,
+	fitToSection: true,
+	scrollBar: false,
+	easing: 'easeInOutCubic',
+	easingcss3: 'ease',
+	loopBottom: false,
+	loopTop: false,
+	loopHorizontal: true,
+	continuousVertical: false,
+	normalScrollElements: '#element1, .element2',
+	scrollOverflow: false,
+	touchSensitivity: 15,
+	normalScrollElementTouchThreshold: 5,
+
+	//Accessibility
+	keyboardScrolling: true,
+	animateAnchor: true,
+	recordHistory: true,
+
+	//Design
+	controlArrows: true,
+	verticalCentered: true,
+	resize : false,
+	sectionsColor : ['#ccc', '#fff'],
+	paddingTop: '3em',
+	paddingBottom: '10px',
+	fixedElements: '#header, .footer',
+	responsive: 0,
+
+	//Custom selectors
+	sectionSelector: '.section',
+	slideSelector: '.slide',
+
+	//events
+	onLeave: function(index, nextIndex, direction){},
+	afterLoad: function(anchorLink, index){},
+	afterRender: function(){},
+	afterResize: function(){},
+	afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
+	onSlideLeave: function(anchorLink, index, slideIndex, direction){}
+}); }); ```
+</code></pre> <h3 id=advance-usage>Advance usage</h3> <p>In order to create links to certain slides inside a section, you could do it in two ways:</p> <h4 id=using-anchor-links>Using anchor links</h4> <p>If you are using fullPage.js with anchor links for the sections (using the <code>anchors</code> option), then you will be able to use anchor links also to navigate directly to a certain slide inside a section. For example: http://alvarotrigo.com/fullPage/#secondPage/2</p> <p>You can do it by using the index of the slide (starting by 0), or if you prefer, you can create custom anchor links for them by using the attribute <code>data-anchor</code> in each slide. For example:</p> <p>```html</p> <div class=section> <div class=slide data-anchor=slide1> Slide 1 </div> <div class=slide data-anchor=slide2> Slide 2 </div> <div class=slide data-anchor=slide3> Slide 3 </div> <div class=slide data-anchor=slide4> Slide 4 </div> </div> <p>```</p> <p><strong>Be careful!</strong> <code>data-anchor</code> tags can not have the same value as any ID element on the site (or NAME element for IE).</p> <h2 id=options>Options</h2> <ul> <li> <p><code>controlArrows</code>: (default <code>true</code>) Determines whether to use control arrows for the slides to move right or left.</p> </li> <li> <p><code>verticalCentered</code>: (default <code>true</code>) Vertically centering of the content within sections. When set to <code>true</code>, your content will be wrapped by the plugin. Consider using delegation or load your other scripts in the <code>afterRender</code> callback.</p> </li> <li> <p><code>resize</code>: (default <code>false</code>) Whether you want to resize the text when the window is resized.</p> </li> <li> <p><code>scrollingSpeed</code>: (default <code>700</code>) Speed in milliseconds for the scrolling transitions.</p> </li> <li> <p><code>sectionsColor</code>:(default <code>none</code>) Define the CSS <code>background-color</code> property for each section: Example: <code>javascript $('#fullpage').fullpage({ sectionsColor: ['#f2f2f2', '#4BBFC3', '#7BAABE', 'whitesmoke', '#000'], }); </code></p> </li> <li> <p><code>anchors</code>: (default <code>[]</code>) Defines the anchor links (#example) to be shown on the URL for each section. Using anchors forward and backward navigation will also be possible through the browser. This option also allows users to bookmark a specific section or slide. <strong>Be careful!</strong> if you use anchors, they can not have the same value as any ID element on the site (or NAME element for IE).</p> </li> </ul> <p><strong>Important</strong> It is helpful to understand that the values in the <code>anchors</code> option array correlate directly to the element with the class of <code>.section</code> by it's position in the markup.</p> <ul> <li> <p><code>easing</code>: (default <code>easeInOutCubic</code>) Defines the transition effect to use for the vertical and horizontal scrolling. It requires the file <code>vendors/jquery.easings.min.js</code> or <a href="//jqueryui.com/">jQuery UI</a> for using some of <a href="//api.jqueryui.com/easings/">its transitions</a>. Other libraries could be used instead.</p> </li> <li> <p><code>easingcss3</code>: (default <code>ease</code>) Defines the transition effect to use in case of using <code>css3:true</code>. You can use the <a href="//www.w3schools.com/cssref/css3_pr_transition-timing-function.asp">pre-defined ones</a> (such as <code>linear</code>, <code>ease-out</code>…) or create your own ones using the <code>cubic-bezier</code> function. You might want to use <a href="//matthewlein.com/ceaser/">Matthew Lein CSS Easing Animation Tool</a> for it.</p> </li> <li> <p><code>loopTop</code>: (default <code>false</code>) Defines whether scrolling up in the first section should scroll to the last one or not.</p> </li> <li> <p><code>loopBottom</code>: (default <code>false</code>) Defines whether scrolling down in the last section should scroll to the first one or not.</p> </li> <li> <p><code>loopHorizontal</code>: (default <code>true</code>) Defines whether horizontal sliders will loop after reaching the last or previous slide or not.</p> </li> <li> <p><code>css3</code>: (default <code>true</code>). Defines whether to use JavaScript or CSS3 transforms to scroll within sections and slides. Useful to speed up the movement in tablet and mobile devices with browsers supporting CSS3. If this option is set to <code>true</code> and the browser doesn't support CSS3, a jQuery fallback will be used instead.</p> </li> <li> <p><code>autoScrolling</code>: (default <code>true</code>) Defines whether to use the "automatic" scrolling or the "normal" one. It also has affects the way the sections fit in the browser/device window in tablets and mobile phones.</p> </li> <li> <p><code>fitToSection</code>: (default <code>true</code>). Determines whether or not to fit sections to the viewport or not. When set to <code>true</code> the currente active section will always fill the whole viewport. Otherwise the user will be free to stop in the middle of a section (when )</p> </li> <li> <p><code>scrollBar</code>: (default <code>false</code>). Determines whether to use scrol bar for the site or not. In case of using scroll bar, the <code>autoScrolling</code> functionality will still working as expected. The user will also be free to scroll the site with the scroll bar and fullPage.js will fit the section in the screen when scrolling finishes.</p> </li> <li> <p><code>paddingTop</code>: (default <code>0</code>) Defines the top padding for each section with a numerical value and its measure (paddingTop: '10px', paddingTop: '10em'…) Useful in case of using a fixed header.</p> </li> <li> <p><code>paddingBottom</code>: (default <code>0</code>) Defines the bottom padding for each section with a numerical value and its measure (paddingBottom: '10px', paddingBottom: '10em'…). Useful in case of using a fixed footer.</p> </li> <li> <p><code>fixedElements</code>: (default <code>null</code>) Defines which elements will be taken off the scrolling structure of the plugin which is necessary when using the <code>css3</code> option to keep them fixed. It requires a string with the jQuery selectors for those elements. (For example: <code>fixedElements: '#element1, .element2'</code>)</p> </li> <li> <p><code>normalScrollElements</code>: (default <code>null</code>) If you want to avoid the auto scroll when scrolling over some elements, this is the option you need to use. (useful for maps, scrolling divs etc.) It requires a string with the jQuery selectors for those elements. (For example: <code>normalScrollElements: '#element1, .element2'</code>)</p> </li> <li> <p><code>normalScrollElementTouchThreshold</code> : (default <code>5</code>) Defines the threshold for the number of hops up the html node tree Fullpage will test to see if <code>normalScrollElements</code> is a match to allow scrolling functionality on divs on a touch device. (For example: <code>normalScrollElementTouchThreshold: 3</code>)</p> </li> <li> <p><code>keyboardScrolling</code>: (default <code>true</code>) Defines if the content can be navigated using the keyboard</p> </li> <li> <p><code>touchSensitivity</code>: (default <code>5</code>) Defines a percentage of the browsers window width/height, and how far a swipe must measure for navigating to the next section / slide</p> </li> <li> <p><code>continuousVertical</code>: (default <code>false</code>) Defines whether scrolling down in the last section should scroll down to the first one or not, and if scrolling up in the first section should scroll up to the last one or not. Not compatible with <code>loopTop</code> or <code>loopBottom</code>.</p> </li> <li> <p><code>animateAnchor</code>: (default <code>true</code>) Defines whether the load of the site when given an anchor (#) will scroll with animation to its destination or will directly load on the given section.</p> </li> <li> <p><code>recordHistory</code>: (default <code>true</code>) Defines whether to push the state of the site to the browser's history. When set to <code>true</code> each section/slide of the site will act as a new page and the back and forward buttons of the browser will scroll the sections/slides to reach the previous or next state of the site. When set to <code>false</code>, the URL will keep changing but will have no effect ont he browser's history. This option is automatically turned off when using <code>autoScrolling:false</code>.</p> </li> <li> <p><code>menu</code>: (default <code>false</code>) A selector can be used to specify the menu to link with the sections. This way the scrolling of the sections will activate the corresponding element in the menu using the class <code>active</code>. This won't generate a menu but will just add the <code>active</code> class to the element in the given menu with the corresponding anchor links. In order to link the elements of the menu with the sections, an HTML 5 data-tag (<code>data-menuanchor</code>) will be needed to use with the same anchor links as used within the sections. Example: ```html</p> </li> </ul> <ul id=myMenu> <li data-menuanchor=firstPage class=active><a href="#firstPage">First section</a></li> <li data-menuanchor=secondPage><a href="#secondPage">Second section</a></li> <li data-menuanchor=thirdPage><a href="#thirdPage">Third section</a></li> <li data-menuanchor=fourthPage><a href="#fourthPage">Fourth section</a></li> </ul> <p><code> </code>javascript $('#fullpage').fullpage({ anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'lastPage'], menu: '#myMenu' }); ```</p> <p><strong>Note:</strong> the menu element should be placed outside the fullpage wrapper in order to avoid problem when using <code>css3:true</code>. Otherwise it will be appended to the <code>body</code> by the plugin itself.</p> <ul> <li> <p><code>navigation</code>: (default <code>false</code>) If set to <code>true</code>, it will show a navigation bar made up of small circles.</p> </li> <li> <p><code>navigationPosition</code>: (default <code>none</code>) It can be set to <code>left</code> or <code>right</code> and defines which position the navigation bar will be shown (if using one).</p> </li> <li> <p><code>navigationTooltips</code>: (default []) Defines the tooltips to show for the navigation circles in case they are being used. Example: <code>navigationTooltips: ['firstSlide', 'secondSlide']</code>.</p> </li> <li> <p><code>showActiveTooltip</code>: (default <code>false</code>) Shows a persistent tooltip for the actively viewed section in the vertical navigation.</p> </li> <li> <p><code>slidesNavigation</code>: (default <code>false</code>) If set to <code>true</code> it will show a navigation bar made up of small circles for each landscape slider on the site.</p> </li> <li> <p><code>slidesNavPosition</code>: (default <code>bottom</code>) Defines the position for the landscape navigation bar for sliders. Admits <code>top</code> and <code>bottom</code> as values. You may want to modify the CSS styles to determine the distance from the top or bottom as well as any other style such as color.</p> </li> <li> <p><code>scrollOverflow</code>: (default <code>false</code>) defines whether or not to create a scroll for the section in case its content is bigger than the height of it. When set to <code>true</code>, your content will be wrapped by the plugin. Consider using delegation or load your other scripts in the <code>afterRender</code> callback. In case of setting it to <code>true</code>, it requires the vendor plugin <a href="https://github.com/rochal/jQuery-slimScroll"><code>jquery.slimscroll.min</code></a> and it should be loaded before the fullPage.js plugin. For example:</p> </li> </ul> <p><code>html &lt;script type="text/javascript" src="vendors/jquery.slimscroll.min.js"&gt;&lt;/script&gt; &lt;script type="text/javascript" src="jquery.fullPage.js"&gt;&lt;/script&gt; </code></p> <ul> <li> <p><code>sectionSelector</code>: (default <code>.section</code>) Defines the jQuery selector used for the plugin sections. It might need to be changed sometimes to avoid problem with other plugins using the same selectors as fullpage.js..</p> </li> <li> <p><code>slideSelector</code>: (default <code>.slide</code>) Defines the jQuery selector used for the plugin slides. It might need to be changed sometimes to avoid problem with other plugins using the same selectors as fullpage.js.</p> </li> <li> <p><code>responsive</code>: (default <code>0</code>) A normal scroll (<code>autoScrolling:false</code>) will be used under the defined width in pixels. A class <code>fp-responsive</code> is added to the plugin's container in case the user wants to use it for his own responsive CSS. For example, if set to 900, whenever the browser's width is less than 900 the plugin will scroll like a normal site.</p> </li> </ul> <h2 id=methods>Methods</h2> <h3 id=movesectionup>moveSectionUp()</h3> <p>Scrolls one section up: <code>javascript $.fn.fullpage.moveSectionUp(); </code> — ### moveSectionDown() Scrolls one section down: <code>javascript $.fn.fullpage.moveSectionDown(); </code> — ### moveTo(section, slide) Scrolls the page to the given section and slide. The first slide, the visible one by default, will have index 0. ```javascript /*Scrolling to the section with the anchor link <code>firstSlide</code> and to the 2nd Slide */ $.fn.fullpage.moveTo('firstSlide', 2);</p> <p>```</p> <p>```javascript //Scrolling to the 3rd section in the site $.fn.fullpage.moveTo(3, 0);</p> <p>//Which is the same as $.fn.fullpage.moveTo(3); <code> --- ### moveSlideRight() Scrolls the horizontal slider of the current section to the next slide: </code>javascript $.fn.fullpage.moveSlideRight(); <code> --- ### moveSlideLeft() Scrolls the horizontal slider of the current section to the previous slide: </code>javascript $.fn.fullpage.moveSlideLeft(); ``` — ### setAutoScrolling(boolean) Sets the scrolling configuration in real time. Defines the way the page scrolling behaves. If it is set to <code>true</code>, it will use the "automatic" scrolling, otherwise, it will use the "manual" or "normal" scrolling of the site. Be careful when combining this option with <code>scrollOverflow</code> set to true, as it might be difficult to scroll using the mouse wheel or the trackpad when the section is scrollable.</p> <p><code>javascript $.fn.fullpage.setAutoScrolling(false); </code> — ### setFitToSection(boolean) Sets the value for the option <code>fitToSection</code> determining whether to fit the section in the screen or not.</p> <p><code>javascript $.fn.fullpage.setFitToSection(false); </code> — ### setAllowScrolling(boolean, [directions]) Adds or remove the possibility of scrolling through sections by using the mouse wheel/trackpad or touch gestures (which is active by default).</p> <ul> <li><code>directions</code>: (optional parameter) Admitted values: <code>all</code>, <code>up</code>, <code>down</code>, <code>left</code>, <code>right</code> or a combination of them separated by commas like <code>down, right</code>. It defines the direction for which the scrolling will be enabled or disabled.</li> </ul> <p>```javascript</p> <p>//disabling scrolling $.fn.fullpage.setAllowScrolling(false);</p> <p>//disabling scrolling down $.fn.fullpage.setAllowScrolling(false, 'down');</p> <p>//disabling scrolling down and right $.fn.fullpage.setAllowScrolling(false, 'down, right'); ``` — ### setKeyboardScrolling(boolean) Adds or remove the possibility of scrolling through sections by using the keyboard arrow keys (which is active by default).</p> <p><code>javascript $.fn.fullpage.setKeyboardScrolling(false); </code> — ### setRecordHistory(boolean) Defines whether to record the history for each hash change in the URL.</p> <p><code>javascript $.fn.fullpage.setRecordHistory(false); </code> — ### setScrollingSpeed(milliseconds) Defines the scrolling speed in milliseconds.</p> <p><code>javascript $.fn.fullpage.setScrollingSpeed(700); </code> — ### destroy(type) Destroys the plugin events and optionally its HTML markup and styles. Ideal to use when using AJAX to load content. ()</p> <ul> <li><code>type</code>: can be empty or <code>all</code>. If <code>all</code> is passed, the HTML markup and styles used by fullpage.js will be removed. This way the original HTML markup, the one used before any plugin modification is made, will be maintained.</li> </ul> <p>```javascript //destroy any plugin event (scrolls, hashchange in the URL…) $.fn.fullpage.destroy();</p> <p>//destroy any plugin event and any plugin modification done over your original HTML markup. $.fn.fullpage.destroy('all'); ``` — ### reBuild() Updates the DOM structure to fit the new window size or its contents. Ideal to use in combination with AJAX calls or external changes in the DOM structure of the site.</p> <p><code>javascript $.fn.fullpage.reBuild(); </code></p> <h2 id=callbacks>Callbacks</h2> <p>###afterLoad (<code>anchorLink</code>, <code>index</code>) Callback fired once the sections have been loaded, after the scrolling has ended. Parameters:</p> <ul> <li><code>anchorLink</code>: anchorLink corresponding to the section.</li> <li><code>index</code>: index of the section. Starting from 1.</li> </ul> <p>In case of not having anchorLinks defined in the plugin the <code>index</code> parameter would be the only one to use.</p> <p>Example:</p> <p>```javascript $('#fullpage').fullpage({ anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'lastPage'],</p> <pre><code>	afterLoad: function(anchorLink, index){
+		var loadedSection = $(this);
+
+		//using index
+		if(index == 3){
+			alert("Section 3 ended loading");
+		}
+
+		//using anchorLink
+		if(anchorLink == 'secondSlide'){
+			alert("Section 2 ended loading");
+		}
+	}
+}); ``` --- ###onLeave (`index`, `nextIndex`, `direction`) This callback is fired once the user leaves a section, in the transition to the new section.
+</code></pre> <p>Parameters:</p> <ul> <li><code>index</code>: index of the leaving section. Starting from 1.</li> <li><code>nextIndex</code>: index of the destination section. Starting from 1.</li> <li><code>direction</code>: it will take the values <code>up</code> or <code>down</code> depending on the scrolling direction.</li> </ul> <p>Example:</p> <p>```javascript $('#fullpage').fullpage({ onLeave: function(index, nextIndex, direction){ var leavingSection = $(this);</p> <pre><code>		//after leaving section 2
+		if(index == 2 &amp;&amp; direction =='down'){
+			alert("Going to section 3!");
+		}
+
+		else if(index == 2 &amp;&amp; direction == 'up'){
+			alert("Going to section 1!");
+		}
+	}
+}); ```
+</code></pre> <hr/> <p>###afterRender() This callback is fired just after the structure of the page is generated. This is the callback you want to use to initialize other plugins or fire any code which requires the document to be ready (as this plugin modifies the DOM to create the resulting structure).</p> <p>Example:</p> <p><code>javascript $('#fullpage').fullpage({ afterRender: function(){ var pluginContainer = $(this); alert("The resulting DOM structure is ready"); } }); </code> — ###afterResize() This callback is fired after resizing the browser's window. Just after the sections are resized.</p> <p>Example:</p> <p><code>javascript $('#fullpage').fullpage({ afterResize: function(){ var pluginContainer = $(this); alert("The sections have finished resizing"); } }); </code> — ###afterSlideLoad (<code>anchorLink</code>, <code>index</code>, <code>slideAnchor</code>, <code>slideIndex</code>) Callback fired once the slide of a section have been loaded, after the scrolling has ended. Parameters:</p> <ul> <li><code>anchorLink</code>: anchorLink corresponding to the section.</li> <li><code>index</code>: index of the section. Starting from 1.</li> <li><code>slideAnchor</code>: anchor corresponding to the slide (in case there is)</li> <li><code>slideIndex</code>: index of the slide. Starting from 1. (the default slide doesn't count as slide, but as a section)</li> </ul> <p>In case of not having anchorLinks defined for the slide or slides the <code>slideIndex</code> parameter would be the only one to use. Example:</p> <p>```javascript $('#fullpage').fullpage({ anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'lastPage'],</p> <pre><code>	afterSlideLoad: function( anchorLink, index, slideAnchor, slideIndex){
+		var loadedSlide = $(this);
+
+		//first slide of the second section
+		if(anchorLink == 'secondPage' &amp;&amp; slideIndex == 1){
+			alert("First slide loaded");
+		}
+
+		//second slide of the second section (supposing #secondSlide is the
+		//anchor for the second slide
+		if(index == 2 &amp;&amp; slideIndex == 'secondSlide'){
+			alert("Second slide loaded");
+		}
+	}
+}); ```
+</code></pre> <hr/> <p>###onSlideLeave (<code>anchorLink</code>, <code>index</code>, <code>slideIndex</code>, <code>direction</code>) This callback is fired once the user leaves an slide to go to another, in the transition to the new slide. Parameters:</p> <ul> <li><code>anchorLink</code>: anchorLink corresponding to the section.</li> <li><code>index</code>: index of the section. Starting from 1.</li> <li><code>slideIndex</code>: index of the slide. <strong>Starting from 0.</strong></li> <li><code>direction</code>: takes the values <code>right</code> or <code>left</code> depending on the scrolling direction.</li> </ul> <p>Example:</p> <p>```javascript $('#fullpage').fullpage({ onSlideLeave: function( anchorLink, index, slideIndex, direction){ var leavingSlide = $(this);</p> <pre><code>		//leaving the first slide of the 2nd Section to the right
+		if(index == 2 &amp;&amp; slideIndex == 0 &amp;&amp; direction == 'right'){
+			alert("Leaving the fist slide!!");
+		}
+
+		//leaving the 3rd slide of the 2nd Section to the left
+		if(index == 2 &amp;&amp; slideIndex == 2 &amp;&amp; direction == 'left'){
+			alert("Going to slide 2! ");
+		}
+	}
+}); ``` #Resources - [CSS Easing Animation Tool - Matthew Lein](http://matthewlein.com/ceaser/) (useful to define the `easingcss3` value) - [fullPage.js jsDelivr CDN](http://www.jsdelivr.com/#!jquery.fullpage) - [fullPage.js plugin for October CMS](http://octobercms.com/plugin/freestream-parallax) - [fullPage.js wordpress plugin](https://wordpress.org/plugins/wp-fullpage/) - [Integrating fullPage.js with Wordpress (Tutorial)](http://premium.wpmudev.org/blog/build-apple-inspired-full-page-scrolling-pages-for-your-wordpress-site/)
+</code></pre> <h2 id=who-is-using-fullpagejs>Who is using fullPage.js</h2> <p>If you want your page to be listed here. Please <a href="#email-protection-nyineb@nyinebgevtb.pbz">contact me</a> with the URL.</p> <p><a href="//www.sony-asia.com/microsite/mdr-10/"><img alt=Sony src="//wallpapers-for-ipad.com/fullpage/imgs3/logos/sony.gif"/></a> <img alt=Vodafone src="//wallpapers-for-ipad.com/fullpage/imgs3/logos/vodafone.png"/> <a href="//www.britishairways.com/en-gb/information/travel-classes/experience-our-cabins"><img alt="British Airways" src="//wallpapers-for-ipad.com/fullpage/imgs3/logos/british-airways-fullpage.gif"/></a> <a href="//www.mi.com/shouhuan"><img alt=Mi src="//wallpapers-for-ipad.com/fullpage/imgs3/logos/mi.png"/></a> <a href="//usescribe.com/"><img alt=scribe src="//wallpapers-for-ipad.com/fullpage/imgs3/logos/scribe.png"/></a> <a href="//www.matrimonia.rs/"><img alt=matrimonia src="//wallpapers-for-ipad.com/fullpage/imgs3/logos/matrimonia.png"/></a> <a href="//www.getredd.com/"><img alt=redd src="//wallpapers-for-ipad.com/fullpage/imgs3/logos/redd.png"/></a> <a href="//www.sanyang.com.tw/service/Conception/"><img alt=redd src="//wallpapers-for-ipad.com/fullpage/imgs3/logos/sym.png"/></a></p> <ul> <li>http://www.britishairways.com/en-gb/information/travel-classes/experience-our-cabins</li> <li>http://www.sony-asia.com/microsite/mdr-10/</li> <li>http://www.saltaboombox.com.ar</li> <li>http://snapzheimer.org/</li> <li>http://www.battlefield.com/</li> <li>http://www.kibey.com/</li> <li>http://www.newjumoconcept.com/</li> <li>http://promo.prestigio.com/grace1/</li> <li>http://www.mi.com/shouhuan</li> <li>https://moneytree.jp/</li> <li>http://torchbrowser.com/</li> <li>http://leafcutter.com.au/</li> <li>http://thekorner.fr/</li> <li>http://ymcadc.org/AnnualReport/</li> <li>http://www.restaurantwoods.nl/</li> <li>http://lingualeo.com/</li> <li>http://www.getikto.com/</li> <li>http://charlotteaimes.com/</li> <li>http://collection.madeofsundays.com</li> <li>http://thiswasmybest.com/</li> <li>http://jacoberiksson.se/</li> <li>http://coppertino.com/</li> <li>https://cloudmagic.com/</li> <li>http://www.dividendsolar.com/</li> <li>http://www.thespecialists.be</li> <li>http://brianingle.webflow.com/</li> <li>http://lawinenstift.com/</li> <li>http://wtfdesign.pl/</li> <li>http://www.swenk.me/</li> <li>http://educationaboveall.org/</li> <li>http://bnacademy.com.au/</li> <li>http://rockercreative.com/</li> <li>http://wantnova.com/</li> <li>http://usescribe.com/</li> <li>http://lucilecazanave.com/</li> <li>http://overallstudio.co.il/</li> <li>http://boxx.hk/</li> <li>http://medlive.com</li> <li>http://bearonunicycle.com/</li> <li>http://rawmilk.dk/en/</li> <li>http://www.nearpod.com/</li> <li>http://www.famavolat.com/</li> <li>http://www.carpetloverclub.net/</li> <li>http://www.sanyang.com.tw/service/Conception/</li> <li>http://www.batzaya.net/</li> <li>http://www.graphicid.dk/</li> <li>http://hed.citinet.pro/</li> <li>http://www.jukstapoz.com/</li> <li>http://portfolio.io.utwente.nl/student/dijkavan/</li> <li>http://www.omqcomics.com/</li> <li>http://www.carlphot.com/</li> <li>http://medissix.com/</li> <li>http://trasmissione-energia.terna.it/</li> <li>http://www.thefoodmovie.com/</li> <li>http://www.villareginateodolinda.it</li> <li>http://www.kesstrio.com</li> <li>http://willontheway.com/</li> <li>http://www.karmaffne.com/</li> <li>http://fossdistillery.is</li> <li>http://www.conversionculture.com/</li> <li>http://ded-morozz.kiev.ua/</li> <li>http://www.fergalkeenan.com</li> <li>http://spell-star.appspot.com/</li> <li>http://yizeng.me/</li> <li>http://neolearning.eu/</li> <li>http://unabridgedsoftware.com/</li> <li>http://wc2014.plnwrx.com/</li> <li>http://organice.io/</li> <li>http://alchemy-research.com/</li> <li>http://www.cima-ecuador.com/</li> <li>http://atlanticcorp.us/</li> <li>http://moysport.ru/</li> <li>http://www.norttilaakso.fi/</li> <li>http://wcfixtures.co.uk/</li> <li>http://www.dopehustleinc.com/default.php</li> <li>http://themify.me/demo/#theme=fullpane</li> <li>http://bragdonfarm.com/</li> <li>http://www.paperdeermusic.com/</li> <li>http://dancingroad.com</li> <li>http://www.camanihome.com/</li> <li>http://www.exapoint.ch/</li> </ul> <p>You can find another list <a href="//libscore.com/#$.fn.fullpage">here</a>.</p> <h2 id=donations>Donations</h2> <p>Donations would be more than welcome :)</p> <p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=BEK5JQCQMED4J&amp;lc=GB&amp;item_name=fullPage%2ejs&amp;currency_code=USD&amp;bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"><img alt=Donate src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif"/></a></p> <h2 id=license>License</h2> <p>(The MIT License)</p> <p>Copyright (c) 2013 Alvaro Trigo &lt;alvaro@alvarotrigo.com&gt;</p> <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p> <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p> <p>THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p> <script type="text/javascript">!function(){try{var a,b,c,d,g=document.getElementsByTagName("a");for(c=0;g.length-c;c++)try{b=g[c].getAttribute("href"),b&&b.indexOf("#email-protection-")>-1&&b.length>19&&(a="",d=19+b.indexOf("#email-protection-"),b.length>d&&(a=b.substr(18).replace(/[a-zA-Z]/g,function(a){return String.fromCharCode(("Z">=a?90:122)>=(a=a.charCodeAt(0)+13)?a:a-26)})),g[c].setAttribute("href","mailto:"+a))}catch(h){}}catch(h){}}();</script>
+</body> </html>

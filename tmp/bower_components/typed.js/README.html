@@ -1,0 +1,248 @@
+<!doctype html> <html> <head> <meta charset=utf-8 /> <meta http-equiv=X-UA-Compatible content='IE=edge;chrome=1'/> <title>High Tops</title> <meta name=viewport content="width=device-width,initial-scale=1"> <link rel=alternate type="application/atom+xml" title="Atom Feed" href="/feed.xml"/> <link href="/stylesheets/all.css" rel=stylesheet /> <link href='//fonts.googleapis.com/css?family=Archivo+Black|Archivo+Narrow:400,700,400italic|Enriqueta:400,700' rel=stylesheet> <script src="/javascripts/all.js"></script> <script>
+    $(document).ready(function() {
+        $navBar = $('.nav-sm');
+        var slideDown = function() {
+          $navBar.animate({top: '0em'}, 100);
+        };
+        var slideUp = function() {
+          $navBar.animate({top: '-2em'}, 100);
+        };
+        var loadBGs = function() {
+          $('.slide-creators').addClass('loadImage-creators');
+          $('.slide-madepulse').addClass('loadImage-madepulse');
+          $('.slide-bfp').addClass('loadImage-bfp');
+          $('.slide-calico').addClass('loadImage-calico');
+          $('.slide-haiku').addClass('loadImage-haiku');
+        };
+        // var email = function(){
+        //   $.ajax({
+        //     url: "//formspree.io/hi@austinsamsel.com", 
+        //     method: "POST",
+        //     data: {message: "thanks!"},
+        //     dataType: "json"
+        //   });
+        // };
+        var navMenu = function(){
+          var menuToggle = $('#js-mobile-menu').unbind();
+          $('#js-navigation-menu').removeClass("show");
+
+          menuToggle.on('click', function(e) {
+            e.preventDefault();
+            $('#js-navigation-menu').slideToggle(function(){
+              if($('#js-navigation-menu').is(':hidden')) {
+                $('#js-navigation-menu').removeAttr('style');
+              }
+            });
+          });
+        };
+        $('#fullpage').fullpage({
+          anchors: ['Home', 'Praise', 'Services', 'Praise2', 'Work', 'About', 'Contact'],
+          responsive: 50000,
+          controlArrows: true,
+          slidesNavigation: true,
+          showActiveTooltips: true,
+          fitToSection: false,
+          animateAnchor: true,
+          scrollBar: true,
+          scrollingSpeed: 1900,
+          menu:'#js-centered-navigation-menu',
+          css3: true,
+          slidesNavPosition: 'bottom',
+          afterRender: function(){
+              navMenu();
+              $("#hero-story").typed({
+                      strings: ["We create realities^500.", "We engineer^500 experiences^800.", "We make life ^500better ^1000:^800)^500","<a href='#Contact'>How can we help^800?</a>"],
+                      typeSpeed: 20,
+                      backDelay: 500,
+                      loop: false,
+                      loopCount: false
+                  });
+              // var waypoints = $('#services').waypoint(function(direction) {
+                  
+              //     //$('.fp-slidesNav.bottom').addClass('fadeIn');
+              //   }, {
+              //     offset: '0%'
+              //   }); 
+              // var waypoints = $('#slide-tester').waypoint(function(direction) {
+              //     $('.slide-test').addClass('slideLeft');
+              //     //$('.fp-slidesNav.bottom').addClass('fadeIn');
+              //   }, {
+              //     offset: '25%'
+              //   }); 
+              $('img').addClass('b-lazy');
+              ;(function() {
+                // Initialize
+                var bLazy = new Blazy({ 
+                      offset: 300,
+                      //selector: 'img', // all images
+                      breakpoints: [{
+                          width: 2000, // max-width
+                          src: 'data-src-small'
+                      },
+                      {
+                          width: 3000, // max-width
+                          src: 'data-src-medium'
+                      }]
+                  });
+              })();             
+          },
+          afterLoad: function(anchorLink, index){
+              var loadedSection = $(this);
+              if(index == 1){
+                  slideUp();
+              }
+              if (index == 5){
+                $('.fp-slidesNav.bottom').addClass('slideExpandUp');
+                //$('.slide-test').addClass('slideLeft');
+              }
+              if (index == 3){
+                //$('.fa-check').addClass('hatch');
+                // $('.fa-check').each(function(i) {
+                //     $(this).children().delay(700*i).addClass('hatch');
+                // });
+              }
+          },
+          onLeave: function(index, nextIndex, direction){
+            var leavingSection = $(this);
+            if (direction == 'up' || direction == 'down'){
+              loadBGs();
+              //email();
+            }
+            if(index == 1){
+              slideDown();
+            }
+            if(index == 2 && direction == 'up'){
+              slideUp();
+            }
+            if(index == 5){
+              slideDown();
+            }
+          },
+          afterSlideLoad: function( anchorLink, index, slideAnchor, slideIndex){
+              var loadedSlide = $(this);
+              // used to be anchorLink == 'About' instead of index == 6
+              // need to test if this works.
+              if(index == 5 && slideIndex > 0){
+                  slideUp();
+                  $('.fp-controlArrow.fp-prev').css('display', 'block');
+                  var bLazy = new Blazy();
+                      bLazy.revalidate(); // eg bLazy.revalidate();
+              }
+              if(index == 5 && slideIndex == 0){
+                  slideDown();
+                  $('.fp-controlArrow.fp-prev').css('display', 'none');
+                  var bLazy = new Blazy();
+                      bLazy.revalidate(); // eg bLazy.revalidate();
+              }
+          }
+        });
+    });
+  </script> </head> <body> <h1 id=typedjs>Typed.js</h1> <table> <tbody> <tr> <td><a href="//www.mattboldt.com/demos/typed-js/">View the live demo</a></td> <td><a href="//www.mattboldt.com">Go to my site, mattboldt.com</a></td> </tr> </tbody> </table> <p>Typed.js is a jQuery plugin that types. Enter in any string, and watch it type at the speed you've set, backspace what it's typed, and begin a new sentence for however many strings you've set.</p> <hr/> <p>Looking for some custom use cases for Typed.js? <a href="https://github.com/mattboldt/typed.js/wiki">Check out the wiki</a></p> <hr/> <h2 id=installation>Installation</h2> <p>This is really all you need to get going.</p> <pre><code class="language-javascript">&lt;script src="jquery.js"&gt;&lt;/script&gt;
+&lt;script src="typed.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+	$(function(){
+		$(".element").typed({
+			strings: ["First sentence.", "Second sentence."],
+			typeSpeed: 0
+		});
+	});
+&lt;/script&gt;
+...
+
+&lt;span class="element"&gt;&lt;/span&gt;
+</code></pre> <h3 id=install-with-bower>Install with Bower</h3> <pre><code>bower install typed.js
+</code></pre> <p>Want the animated blinking cursor? Add this CSS.</p> <pre><code class="language-scss">.typed-cursor{
+	opacity: 1;
+	-webkit-animation: blink 0.7s infinite;
+	-moz-animation: blink 0.7s infinite;
+	animation: blink 0.7s infinite;
+}
+@keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+@-moz-keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+</code></pre> <h3 id=html-tags>HTML tags</h3> <p>By default the content type is set to <code>html</code>, so you're good to go. Want to type out the html regularly? Set it to <code>text</code>.</p> <pre><code class="language-javascript">$(".element").typed({
+	strings: ["Typed.js is a &lt;strong&gt;jQuery&lt;/strong&gt; plugin."],
+	contentType: 'html' // or 'text'
+});
+</code></pre> <h3 id=line-breaks>Line Breaks</h3> <h4 id=contenttype-html><code>contentType: 'html'</code></h4> <pre><code class="language-javascript">$(".typed").typed({ strings: ["Sentence with &lt;br&gt;line break."] });
+</code></pre> <h4 id=contenttype-text><code>contentType: 'text'</code></h4> <p>Use <code>white-space: pre</code> in your typed text element, and then <code>\n</code> when typing out the strings. Example:</p> <pre><code class="language-html">
+&lt;span id="typed" style="white-space:pre"&gt;&lt;/span&gt;
+
+...
+
+$(".typed").typed({ strings: ["Sentence with a\nline break."] });
+
+</code></pre> <h3 id=type-pausing>Type Pausing</h3> <p>You can pause in the middle of a string for a given amount of time by including an escape character.</p> <pre><code class="language-javascript">&lt;script&gt;
+	$(function(){
+		$(".element").typed({
+			// Waits 1000ms after typing "First"
+			strings: ["First ^1000 sentence.", "Second sentence."]
+		});
+	});
+&lt;/script&gt;
+</code></pre> <h2 id=customization>Customization</h2> <pre><code class="language-javascript">&lt;script&gt;
+	$(function(){
+		$(".element").typed({
+			strings: ["First sentence.", "Second sentence."],
+			// typing speed
+			typeSpeed: 0,
+			// time before typing starts
+			startDelay: 0,
+			// backspacing speed
+			backSpeed: 0,
+			// time before backspacing
+			backDelay: 500,
+			// loop
+			loop: false,
+			// false = infinite
+			loopCount: false,
+			// show cursor
+			showCursor: true,
+			// character for cursor
+			cursorChar: "|",
+			// attribute to type (null == text)
+			attr: null,
+			// either html or text
+			contentType: 'html',
+			// call when done callback function
+			callback: function() {},
+			// starting callback function before each string
+			preStringTyped: function() {},
+			//callback for every typed string
+			onStringTyped: function() {},
+			// callback for reset
+			resetCallback: function() {}
+		});
+	});
+&lt;/script&gt;
+</code></pre> <h3 id=get-super-custom>Get Super Custom</h3> <p>Want to get really custom? On my site and in the Typed.js demo I have the code type out two words, and then backspace only those two, then continue where it left off. This is done in an <code>if</code> statement in the <code>backspace()</code> function. Here's what it looks like.</p> <pre><code class="language-javascript">...
+, backspace: function(curString, curStrPos){
+	...
+
+	setTimeout(function() {
+
+			// check string array position
+			// on the first string, only delete one word
+			// the stopNum actually represents the amount of chars to
+			// keep in the current string. In my case it's 3.
+			if (self.arrayPos == 1){
+				self.stopNum = 3;
+			}
+			//every other time, delete the whole typed string
+			else{
+				self.stopNum = 0;
+			}
+...
+</code></pre> <p>This checks if the <code>arrayPos</code> is <code>1</code>, which would be the second string you entered. If so, it sets <code>stopNum</code> to <code>3</code> instead of <code>0</code>, which tells it to stop when there are 3 characters left. For now you'll have to create custom <code>if</code> statements for each specific case you want. I may automate this somehow in the future.</p> <h2 id=wonderfull-sites-using-typedjs>Wonderfull sites using Typed.js</h2> <p>http://allison.house/404</p> <p>http://www.maxcdn.com/</p> <p>https://commando.io/</p> <p>http://testdouble.com/agency.html</p> <p>http://www.stephanemartinw.com/</p> <p>http://www.trelab.fi/en/</p> <p>http://jessejohnson.github.io/</p> <p>http://patrickelhage.com/</p> <p>http://tairemadailey.com/</p> <h2 id=development>Development</h2> <p><code>npm install</code></p> <p>Then, once you've made your edits:</p> <p><code>gulp</code></p> <p>This will create a minified version in <code>/dist</code></p> <h2 id=end>end</h2> <p>Thanks for checking this out. If you have any questions, I'll be on <a href="//www.twitter.com/atmattb">Twitter</a>.</p> <p>If you're using this, let me know! I'd love to see it.</p> <p>It would also be great if you mentioned me or my website somewhere. <a href="//www.mattboldt.com">www.mattboldt.com</a></p> </body> </html>

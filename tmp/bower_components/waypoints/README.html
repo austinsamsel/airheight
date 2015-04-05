@@ -1,0 +1,140 @@
+<!doctype html> <html> <head> <meta charset=utf-8 /> <meta http-equiv=X-UA-Compatible content='IE=edge;chrome=1'/> <title>High Tops</title> <meta name=viewport content="width=device-width,initial-scale=1"> <link rel=alternate type="application/atom+xml" title="Atom Feed" href="/feed.xml"/> <link href="/stylesheets/all.css" rel=stylesheet /> <link href='//fonts.googleapis.com/css?family=Archivo+Black|Archivo+Narrow:400,700,400italic|Enriqueta:400,700' rel=stylesheet> <script src="/javascripts/all.js"></script> <script>
+    $(document).ready(function() {
+        $navBar = $('.nav-sm');
+        var slideDown = function() {
+          $navBar.animate({top: '0em'}, 100);
+        };
+        var slideUp = function() {
+          $navBar.animate({top: '-2em'}, 100);
+        };
+        var loadBGs = function() {
+          $('.slide-creators').addClass('loadImage-creators');
+          $('.slide-madepulse').addClass('loadImage-madepulse');
+          $('.slide-bfp').addClass('loadImage-bfp');
+          $('.slide-calico').addClass('loadImage-calico');
+          $('.slide-haiku').addClass('loadImage-haiku');
+        };
+        // var email = function(){
+        //   $.ajax({
+        //     url: "//formspree.io/hi@austinsamsel.com", 
+        //     method: "POST",
+        //     data: {message: "thanks!"},
+        //     dataType: "json"
+        //   });
+        // };
+        var navMenu = function(){
+          var menuToggle = $('#js-mobile-menu').unbind();
+          $('#js-navigation-menu').removeClass("show");
+
+          menuToggle.on('click', function(e) {
+            e.preventDefault();
+            $('#js-navigation-menu').slideToggle(function(){
+              if($('#js-navigation-menu').is(':hidden')) {
+                $('#js-navigation-menu').removeAttr('style');
+              }
+            });
+          });
+        };
+        $('#fullpage').fullpage({
+          anchors: ['Home', 'Praise', 'Services', 'Praise2', 'Work', 'About', 'Contact'],
+          responsive: 50000,
+          controlArrows: true,
+          slidesNavigation: true,
+          showActiveTooltips: true,
+          fitToSection: false,
+          animateAnchor: true,
+          scrollBar: true,
+          scrollingSpeed: 1900,
+          menu:'#js-centered-navigation-menu',
+          css3: true,
+          slidesNavPosition: 'bottom',
+          afterRender: function(){
+              navMenu();
+              $("#hero-story").typed({
+                      strings: ["We create realities^500.", "We engineer^500 experiences^800.", "We make life ^500better ^1000:^800)^500","<a href='#Contact'>How can we help^800?</a>"],
+                      typeSpeed: 20,
+                      backDelay: 500,
+                      loop: false,
+                      loopCount: false
+                  });
+              // var waypoints = $('#services').waypoint(function(direction) {
+                  
+              //     //$('.fp-slidesNav.bottom').addClass('fadeIn');
+              //   }, {
+              //     offset: '0%'
+              //   }); 
+              // var waypoints = $('#slide-tester').waypoint(function(direction) {
+              //     $('.slide-test').addClass('slideLeft');
+              //     //$('.fp-slidesNav.bottom').addClass('fadeIn');
+              //   }, {
+              //     offset: '25%'
+              //   }); 
+              $('img').addClass('b-lazy');
+              ;(function() {
+                // Initialize
+                var bLazy = new Blazy({ 
+                      offset: 300,
+                      //selector: 'img', // all images
+                      breakpoints: [{
+                          width: 2000, // max-width
+                          src: 'data-src-small'
+                      },
+                      {
+                          width: 3000, // max-width
+                          src: 'data-src-medium'
+                      }]
+                  });
+              })();             
+          },
+          afterLoad: function(anchorLink, index){
+              var loadedSection = $(this);
+              if(index == 1){
+                  slideUp();
+              }
+              if (index == 5){
+                $('.fp-slidesNav.bottom').addClass('slideExpandUp');
+                //$('.slide-test').addClass('slideLeft');
+              }
+              if (index == 3){
+                //$('.fa-check').addClass('hatch');
+                // $('.fa-check').each(function(i) {
+                //     $(this).children().delay(700*i).addClass('hatch');
+                // });
+              }
+          },
+          onLeave: function(index, nextIndex, direction){
+            var leavingSection = $(this);
+            if (direction == 'up' || direction == 'down'){
+              loadBGs();
+              //email();
+            }
+            if(index == 1){
+              slideDown();
+            }
+            if(index == 2 && direction == 'up'){
+              slideUp();
+            }
+            if(index == 5){
+              slideDown();
+            }
+          },
+          afterSlideLoad: function( anchorLink, index, slideAnchor, slideIndex){
+              var loadedSlide = $(this);
+              // used to be anchorLink == 'About' instead of index == 6
+              // need to test if this works.
+              if(index == 5 && slideIndex > 0){
+                  slideUp();
+                  $('.fp-controlArrow.fp-prev').css('display', 'block');
+                  var bLazy = new Blazy();
+                      bLazy.revalidate(); // eg bLazy.revalidate();
+              }
+              if(index == 5 && slideIndex == 0){
+                  slideDown();
+                  $('.fp-controlArrow.fp-prev').css('display', 'none');
+                  var bLazy = new Blazy();
+                      bLazy.revalidate(); // eg bLazy.revalidate();
+              }
+          }
+        });
+    });
+  </script> </head> <body> <h1 id=waypoints>Waypoints</h1> <p>Waypoints is a library that makes it easy to execute a function whenever you scroll to an element. <img alt="Build Status" src="https://travis-ci.org/imakewebthings/waypoints.svg"/></p> <p><code>js var waypoint = new Waypoint({ element: document.getElementById('thing'), handler: function(direction) { alert('You have scrolled to a thing') } }) </code></p> <p>If you're new to Waypoints, check out the <a href="//imakewebthings.com/waypoints/guides/getting-started">Getting Started</a> guide.</p> <p><a href="//imakewebthings.com/waypoints/api/waypoint">Read the full documentation</a> for more details on usage and customization.</p> <h2 id=shortcuts>Shortcuts</h2> <p>In addition to the normal Waypoints script, extensions exist to make common UI patterns just a little easier to implement:</p> <ul> <li><a href="//imakewebthings.com/waypoints/shortcuts/infinite-scroll">Infinite Scrolling</a></li> <li><a href="//imakewebthings.com/waypoints/shortcuts/sticky-elements">Sticky Elements</a></li> <li><a href="//imakewebthings.com/waypoints/shortcuts/inview">Inview Detection</a></li> </ul> <h2 id=contributing>Contributing</h2> <p>If you want to report a Waypoints bug or contribute code to the library, please read the <a href="https://github.com/imakewebthings/waypoints/blob/master/CONTRIBUTING.md">Contributing Guidelines</a>. If you need help <em>using</em> Waypoints, please do not open an issue. Instead, ask the question on <a href="//stackoverflow.com">Stack Overflow</a> and tag it with <code>#jquery-waypoints</code>. Be sure to follow the guidelines for <a href="//stackoverflow.com/help/how-to-ask">asking a good question</a>.</p> <h2 id=license>License</h2> <p>Copyright (c) 2011-2014 Caleb Troughton. Licensed under the <a href="https://github.com/imakewebthings/waypoints/blob/master/licenses.txt">MIT license</a>.</p> </body> </html>
