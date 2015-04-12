@@ -14,14 +14,9 @@
           $('.slide-calico').addClass('loadImage-calico');
           $('.slide-haiku').addClass('loadImage-haiku');
         };
-        // var email = function(){
-        //   $.ajax({
-        //     url: "//formspree.io/hi@austinsamsel.com", 
-        //     method: "POST",
-        //     data: {message: "thanks!"},
-        //     dataType: "json"
-        //   });
-        // };
+
+
+
         var navMenu = function(){
           var menuToggle = $('#js-mobile-menu').unbind();
           $('#js-navigation-menu').removeClass("show");
@@ -57,6 +52,29 @@
                       loop: false,
                       loopCount: false
                   });
+
+                  var $contactForm = $('#contactform');
+                  $contactForm.submit(function(e) {
+                    e.preventDefault();
+                    $.ajax({
+                      url: '//formspree.io/hi@hightopsnyc.com',
+                      method: 'POST',
+                      data: $(this).serialize(),
+                      dataType: 'json',
+                      beforeSend: function() {
+                        $contactForm.append('<div class="alert alert--loading">Sending message…</div>');
+                      },
+                      success: function(data) {
+                        $contactForm.find('.alert--loading').hide();
+                        $contactForm.append('<div class="alert alert--success">Message sent!</div>');
+                      },
+                      error: function(err) {
+                        $contactForm.find('.alert--loading').hide();
+                        $contactForm.append('<div class="alert alert--error">Ops, there was an error.</div>');
+                      }
+                    });
+                  });
+
               // var waypoints = $('#services').waypoint(function(direction) {
                   
               //     //$('.fp-slidesNav.bottom').addClass('fadeIn');
@@ -137,4 +155,4 @@
           }
         });
     });
-  </script> </head> <body> <div id=fullpage> <div class="section gradient3" data-anchor=Home> <section class=wrapper> <h1>Thanks!</h1> <p>We'll be in touch soon.</p> <p>- <a href="//hightopsnyc.com">High Tops</a></p> </section> </div> </div> </body> </html>
+  </script> </head> <body> <div id=fullpage> <div class="section gradient3" data-anchor=Home> <section class=wrapper> <h1>Thanks!</h1> <p>We'll be in touch soon.</p> <p><a href="//hightopsnyc.com">High Tops</a>. <a href="//hightopsnyc.com/upstate">Upstate</a>.</p> </section> </div> </div> </body> </html>
