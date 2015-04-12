@@ -33,7 +33,6 @@
         };
 
 
-
         var navMenu = function(){
           var menuToggle = $('#js-mobile-menu').unbind();
           $('#js-navigation-menu').removeClass("show");
@@ -79,15 +78,17 @@
                       data: $(this).serialize(),
                       dataType: 'json',
                       beforeSend: function() {
-                        $contactForm.append('<div class="alert alert--loading">Sending message…</div>');
+                        $contactForm.find('.alert--success').hide();
+                        $contactForm.find('.alert--error').hide();
+                        $contactForm.append('<div class="alert alert--loading"><div class="ui active inline loader small-loader"></div> Sending message…</div>');
                       },
                       success: function(data) {
                         $contactForm.find('.alert--loading').hide();
-                        $contactForm.append('<div class="alert alert--success">Message sent!</div>');
+                        $contactForm.append('<div class="alert alert--success"><i class="fa fa-check green"></i> Message sent!</div>');
                       },
                       error: function(err) {
                         $contactForm.find('.alert--loading').hide();
-                        $contactForm.append('<div class="alert alert--error">Ops, there was an error.</div>');
+                        $contactForm.append(' <div class="alert alert--error"><i class="fa fa-remove red"></i> Oops, there was an error.</div>');
                       }
                     });
                   });
