@@ -126,6 +126,9 @@ header.navigation, header.upstate-nav-wrapper, header.upstate-nav-wrapper {
 }
 header.navigation ul.submenu li a, header.upstate-nav-wrapper ul.submenu li a {
   text-align:center;
+  @include media($large-screen){
+    text-align:left;
+  }
 }
 header.navigation li.more.nav-link>ul>li:first-child a, header.upstate-nav-wrapper li.more.nav-link>ul>li:first-child a {
   padding-top: 0em !important;
