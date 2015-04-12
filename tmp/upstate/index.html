@@ -13,6 +13,15 @@
       });
     };
     $(document).ready(function() {
+        $navBar = $('.upstate-nav-sm');
+        var slideDown = function() {
+          //$navBar.animate({top: '0em'}, 100);
+          $navBar.fadeIn('slow');
+        };
+        var slideUp = function() {
+          //$navBar.animate({top: '-4em'}, 100);
+          $navBar.fadeOut('slow');
+        };
         $('#fullpage').fullpage({
           anchors: ['Home', 'Overview', 'Features', 'Success', 'Themes', 'Pricing', 'About', 'Apply', 'Contact'],
           responsive: 5000,
@@ -101,28 +110,26 @@
               if(index != 999){
               }
           },
+          onLeave: function(index, nextIndex, direction){
+            var leavingSection = $(this);
+            if(index == 5){
+             // slideDown();
+            }
+          },
           afterSlideLoad: function( anchorLink, index, slideAnchor, slideIndex){
               var loadedSlide = $(this);
 
               //first slide of the second section
 
               if(index == 5 && slideIndex == 0){
+                  slideDown();
                   $('.fp-controlArrow.fp-prev').css('display', 'none');
-                  // $("img").unveil(200, function() {
-                  //   $(this).load(function() {
-                  //     this.style.opacity = 1;
-                  //   });
-                  // });
                   var bLazy = new Blazy();
                       bLazy.revalidate(); // eg bLazy.revalidate();
               }
               if(index == 5 && slideIndex != 0){
+                  slideUp();
                   $('.fp-controlArrow.fp-prev').css('display', 'block');
-                  // $("img").unveil(200, function() {
-                  //   $(this).load(function() {
-                  //     this.style.opacity = 1;
-                  //   });
-                  // });
                   var bLazy = new Blazy();
                       bLazy.revalidate(); // eg bLazy.revalidate();
               }
