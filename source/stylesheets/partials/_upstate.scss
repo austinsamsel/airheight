@@ -419,18 +419,21 @@
 /* nav wrapper */
 .upstate-nav-wrapper{
   @extend .navigation;
-  background:$bg-dawn-mist !important;
+
+  @include media($large-screen){
+    background:transparentize($bg-dawn-mist, 0.5) !important;
+  }
   border-bottom:0px !important;
-  position:absolute;
+  position:fixed;
   width: 100%;
   a {
-    background: $bg-dawn-mist !important;
+    background: transparent !important;
   }
   .logo{
     font-size:1.1em;
   }
   li.nav-link {
-   background: $bg-dawn-mist !important;
+   background: transparent !important;
   }
 }
 header.navigation .navigation-wrapper, header.upstate-nav-wrapper .navigation-wrapper {

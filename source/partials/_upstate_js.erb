@@ -32,21 +32,69 @@
                  $('.upstate-hero').addClass('visible animated slideInUp');
               }, delay);
               navMenu();
-                $('img').addClass('b-lazy');
-                 ;(function() {
-                        // Initialize
-                        var bLazy = new Blazy({ 
-                              offset: 300,
-                              breakpoints: [{
-                                  width: 768 // max-width
-                                , src: 'data-src-small'
-                             }
-                                 , {
-                                  width: 992 // max-width
-                                , src: 'data-src-medium'
-                        }]
-                          });
-                    })();
+              $('img').addClass('b-lazy');
+              ;(function() {
+                // Initialize
+                var bLazy = new Blazy({ 
+                      offset: 300,
+                      breakpoints: [{
+                          width: 768 // max-width
+                        , src: 'data-src-small'
+                     }
+                         , {
+                          width: 992 // max-width
+                        , src: 'data-src-medium'
+                }]
+                });
+              })();
+              // contact upstate
+                  var $contactForm = $('#contactform');
+                  $contactForm.submit(function(e) {
+                    e.preventDefault();
+                    $.ajax({
+                      url: '//formspree.io/hi@hightopsnyc.com',
+                      method: 'POST',
+                      data: $(this).serialize(),
+                      dataType: 'json',
+                      beforeSend: function() {
+                        $contactForm.find('.alert--success').hide();
+                        $contactForm.find('.alert--error').hide();
+                        $contactForm.append('<div class="alert alert--loading"><div class="ui active inline loader small-loader"></div> Sending message…</div>');
+                      },
+                      success: function(data) {
+                        $contactForm.find('.alert--loading').hide();
+                        $contactForm.append('<div class="alert alert--success"><i class="fa fa-check green"></i> Message sent!</div>');
+                      },
+                      error: function(err) {
+                        $contactForm.find('.alert--loading').hide();
+                        $contactForm.append(' <div class="alert alert--error"><i class="fa fa-remove red"></i> Oops, there was an error.</div>');
+                      }
+                    });
+                  });
+                 // apply upstate
+                  var $upstateApply = $('#upstateApply');
+                  $upstateApply.submit(function(e) {
+                    e.preventDefault();
+                    $.ajax({
+                      url: '//formspree.io/hi@hightopsnyc.com',
+                      method: 'POST',
+                      data: $(this).serialize(),
+                      dataType: 'json',
+                      beforeSend: function() {
+                        $upstateApply.find('.alert--success').hide();
+                        $upstateApply.find('.alert--error').hide();
+                        $upstateApply.append('<div class="alert alert--loading"><div class="ui active inline loader small-loader"></div> Sending…</div>');
+                      },
+                      success: function(data) {
+                        $upstateApply.find('.alert--loading').hide();
+                        $upstateApply.append("<div class='alert alert--success'><i class='fa fa-check green'></i> Success! We'll be in touch.</div>");
+                      },
+                      error: function(err) {
+                        $upstateApply.find('.alert--loading').hide();
+                        $upstateApply.append(' <div class="alert alert--error"><i class="fa fa-remove red"></i> Oops, there was an error.</div>');
+                      }
+                    });
+                  });
           },
           afterLoad: function(anchorLink, index){
               var loadedSection = $(this);
