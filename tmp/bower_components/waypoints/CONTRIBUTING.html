@@ -14,8 +14,6 @@
           $('.slide-calico').addClass('loadImage-calico');
           $('.slide-haiku').addClass('loadImage-haiku');
         };
-
-
         var navMenu = function(){
           var menuToggle = $('#js-mobile-menu').unbind();
           $('#js-navigation-menu').removeClass("show");
@@ -43,7 +41,9 @@
           css3: true,
           slidesNavPosition: 'bottom',
           afterRender: function(){
+              
               navMenu();
+              
               $("#hero-story").typed({
                       strings: ["We create realities^500.", "We engineer^500 experiences^800.", "We make life ^500better ^1000:^800)^500","<a href='#Contact'>How can we help^800?</a>"],
                       typeSpeed: 20,
