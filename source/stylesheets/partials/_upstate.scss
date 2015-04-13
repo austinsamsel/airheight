@@ -1,5 +1,56 @@
 /* Upstate */
 
+/* nav */
+.upstate-nav-sm{
+  transition: top 1.2s ease-in-out;
+    -moz-transition: top 1.2s ease-in-out; /* FF 4 */
+    -webkit-transition: top 1.2s ease-in-out; /* Safari & Chrome */
+    -o-transition: top 1.2s ease-in-out; /* Opera */
+  left:0;
+  width:100%;
+}
+header.navigation .logo, header.upstate-nav-wrapper .logo {
+  background: transparent;
+}
+header.navigation .navigation-menu-button, header.upstate-nav-wrapper .navigation-menu-button {
+  background: transparent;
+}
+header.navigation .navigation-tools, header.upstate-nav-wrapper .navigation-tools {
+  margin-top: 0.26em;
+}
+header.navigation .navigation-wrapper, header.upstate-nav-wrapper .navigation-wrapper, header.upstate-nav-wrapper .navigation-wrapper {
+  position: relative !important;
+}
+header.navigation, header.upstate-nav-wrapper, header.upstate-nav-wrapper {
+  overflow:visible !important;
+}
+header.navigation ul.submenu li a, header.upstate-nav-wrapper ul.submenu li a {
+  text-align:center;
+  @include media($large-screen){
+    text-align:left;
+  }
+}
+header.navigation li.more.nav-link>ul>li:first-child a, header.upstate-nav-wrapper li.more.nav-link>ul>li:first-child a {
+  padding-top: 0.0em !important;
+  @include media($large-screen){
+    padding-top:0.5em !important;
+  }
+  padding-right:0.5em !important;
+  margin-right:-0.5em !important;
+  //margin-right:0em !important;
+}
+header.navigation li.more.nav-link>a:after, header.upstate-nav-wrapper li.more.nav-link>a:after {
+  right: -0.8em;
+}
+header.navigation li.more.nav-link a, header.upstate-nav-wrapper li.more.nav-link a {
+  //margin-right: 0em !important;
+}
+header.navigation li.more a, header.upstate-nav-wrapper li.more a {
+  padding-right: 0em !important;
+}
+
+/* home slide */
+
 .upstate-hero{
   font-family: 'enriqueta', serif;
   font-size:2.5em;

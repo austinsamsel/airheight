@@ -1,27 +1,28 @@
   <script type="text/javascript">
-    var navMenu = function(){
-      var menuToggle = $('#js-mobile-menu').unbind();
-      $('#js-navigation-menu').removeClass("show");
-
-      menuToggle.on('click', function(e) {
-        e.preventDefault();
-        $('#js-navigation-menu').slideToggle(function(){
-          if($('#js-navigation-menu').is(':hidden')) {
-            $('#js-navigation-menu').removeAttr('style');
-          }
-        });
-      });
-    };
     $(document).ready(function() {
+
+        var navMenu = function(){
+        var menuToggle = $('#js-mobile-menu').unbind();
+          $('#js-navigation-menu').removeClass("show");
+
+          menuToggle.on('click', function(e) {
+            e.preventDefault();
+            $('#js-navigation-menu').slideToggle(function(){
+              if($('#js-navigation-menu').is(':hidden')) {
+                $('#js-navigation-menu').removeAttr('style');
+              }
+            });
+          });
+        };
+
         $navBar = $('.upstate-nav-sm');
         var slideDown = function() {
-          //$navBar.animate({top: '0em'}, 100);
-          $navBar.fadeIn('slow');
+          $navBar.animate({top: '0em', opacity: 1.0}, 600);
         };
         var slideUp = function() {
-          //$navBar.animate({top: '-4em'}, 100);
-          $navBar.fadeOut('slow');
+          $navBar.animate({top: '-4em', opacity: 0.0}, 600);
         };
+
         $('#fullpage').fullpage({
           anchors: ['Home', 'Overview', 'Features', 'Success', 'Themes', 'Pricing', 'About', 'Apply', 'Contact'],
           responsive: 5000,
@@ -30,17 +31,20 @@
           showActiveTooltips: true,
           fitToSection: false,
           animateAnchor: true,
-          scrollingSpeed: 1900,
           scrollBar: true,
-          menu:'#js-navigation-menu',
+          scrollingSpeed: 1900,
+          //menu:'#js-navigation-menu',
           css3: true,
           slidesNavPosition: 'bottom',
           afterRender: function(){
+
               var delay=750;
               setTimeout(function(){
                  $('.upstate-hero').addClass('visible animated slideInUp');
               }, delay);
+              
               navMenu();
+
               $('img').addClass('b-lazy');
               ;(function() {
                 // Initialize
@@ -113,7 +117,7 @@
           onLeave: function(index, nextIndex, direction){
             var leavingSection = $(this);
             if(index == 5){
-             // slideDown();
+              slideDown();
             }
           },
           afterSlideLoad: function( anchorLink, index, slideAnchor, slideIndex){
