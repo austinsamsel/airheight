@@ -83,6 +83,10 @@ page "/feed.xml", layout: false
 # activate :automatic_image_sizes
 
 # Reload the browser automatically whenever files change
+activate :google_analytics do |ga|
+  ga.tracking_id = 'UA-61921206-1' # Replace with your property ID.
+end
+
  activate :livereload
 
 

@@ -11,8 +11,9 @@ gem 'bourbon', '~> 4.2.1'
 gem 'neat', '~> 1.7.2'
 gem 'font-awesome-middleman'
 
-#seo
+#intelligence
 gem 'middleman-meta-tags'
+gem 'middleman-google-analytics'
 
 #security
 gem 'middleman-protect-emails'
