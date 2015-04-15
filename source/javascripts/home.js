@@ -1,5 +1,4 @@
-  <script type="text/javascript">
-    $(document).ready(function() {
+$(document).ready(function() {
         $navBar = $('.nav-sm');
         var slideDown = function() {
           $navBar.animate({top: '0em'}, 100);
@@ -156,4 +155,3 @@
           }
         });
     });
-  </script>

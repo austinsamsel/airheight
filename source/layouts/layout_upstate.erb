@@ -12,12 +12,11 @@
     <meta name="og:description" content="Modern, mobile responsive websites launched in one week for $999." />
     <meta name="twitter:title" content="Up State by High Tops" />
     <meta name="og:title" content="Up State by High Tops" />
-    <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
+
     <%= stylesheet_link_tag "all" %>
      <link href='http://fonts.googleapis.com/css?family=Archivo+Black|Archivo+Narrow:400,700,400italic|Enriqueta:400,700' rel='stylesheet' type='text/css'>
 
-    <%= javascript_include_tag  "all" %>
-    <%= partial "partials/upstate_js" %>
+    <%= javascript_include_tag  "all", "upstate" %>
 
   </head>
 

@@ -1,4 +1,3 @@
-  <script type="text/javascript">
     $(document).ready(function() {
 
         var navMenu = function(){
@@ -140,4 +139,3 @@
           }
         });
     });
-  </script>
