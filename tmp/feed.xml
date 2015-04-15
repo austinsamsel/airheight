@@ -2,23 +2,68 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Blog Name</title>
   <subtitle>Blog subtitle</subtitle>
-  <id>http://blog.url.com/</id>
-  <link href="http://blog.url.com/"/>
+  <id>http://blog.url.com/blog</id>
+  <link href="http://blog.url.com/blog"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2011-12-31T19:00:00-05:00</updated>
+  <updated>2015-04-14T19:28:00-04:00</updated>
   <author>
     <name>Blog Author</name>
   </author>
   <entry>
-    <title>Example Article</title>
-    <link rel="alternate" href="http://blog.url.com/2012/01/01/example-article.html"/>
-    <id>http://blog.url.com/2012/01/01/example-article.html</id>
-    <published>2011-12-31T19:00:00-05:00</published>
-    <updated>2015-03-17T15:20:09-04:00</updated>
+    <title>y-tres, how are you doing, or the story of how i did this.</title>
+    <link rel="alternate" href="http://blog.url.com/blog/y-tres.html"/>
+    <id>http://blog.url.com/blog/y-tres.html</id>
+    <published>2015-04-14T19:28:00-04:00</published>
+    <updated>2015-04-14T19:56:07-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;This is an example article. You probably want to delete it and write your own articles!&lt;/p&gt;
+    <content type="html">&lt;p&gt;90's farm-to-table mustache pug, salvia next level sriracha hoodie polaroid umami PBR. Thundercats disrupt fugiat est, distillery deep v butcher Intelligentsia laborum incididunt cray. Placeat accusamus bitters taxidermy. PBR&amp;amp;B mustache leggings delectus Pinterest taxidermy. Four dollar toast nesciunt freegan, anim Pinterest fugiat four loko. Authentic proident High Life cronut. Wes Anderson ullamco retro minim, tote bag cray Blue Bottle.&lt;/p&gt;
+
+&lt;p&gt;In drinking vinegar hoodie Banksy. Pariatur magna Helvetica shabby chic vero. Squid lumbersexual polaroid, beard bicycle rights Marfa artisan viral ad keffiyeh McSweeney's. Mixtape wolf aute wayfarers PBR&amp;amp;B, Echo Park Tumblr seitan master cleanse whatever nulla raw denim. Tumblr adipisicing est velit letterpress, Odd Future single-origin coffee. Aesthetic meh food truck lo-fi vinyl. Mixtape non tattooed, excepteur yr artisan fanny pack voluptate cred.&lt;/p&gt;
+
+&lt;p&gt;Williamsburg tousled delectus, keytar nulla Pinterest dolor aesthetic bitters trust fund. VHS tote bag eu id Marfa. Incididunt qui mixtape heirloom, twee 8-bit reprehenderit deep v. Locavore food truck organic tilde Williamsburg. Commodo four dollar toast Blue Bottle selfies cornhole skateboard, vegan street art sriracha selvage craft beer art party. Excepteur labore pour-over, fixie 3 wolf moon kale chips nulla ex 8-bit hashtag. Intelligentsia dolor mlkshk nisi nulla keytar.&lt;/p&gt;
+
+&lt;p&gt;Cray nesciunt keytar chillwave plaid High Life, kitsch sunt try-hard adipisicing est. Farm-to-table bitters post-ironic readymade disrupt. Sustainable flexitarian farm-to-table authentic accusamus. DIY excepteur +1 church-key ad. Etsy single-origin coffee shabby chic salvia Brooklyn literally, keffiyeh beard flannel street art master cleanse American Apparel Thundercats four loko. Sriracha Pitchfork aesthetic Wes Anderson, biodiesel accusamus ea polaroid vero quis Pinterest aute letterpress. Mollit photo booth accusamus aute Kickstarter four dollar toast.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>numero-dos</title>
+    <link rel="alternate" href="http://blog.url.com/blog/numero-dos.html"/>
+    <id>http://blog.url.com/blog/numero-dos.html</id>
+    <published>2015-04-14T19:28:00-04:00</published>
+    <updated>2015-04-14T19:40:25-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;Mlkshk fap paleo authentic, you probably haven't heard of them raw denim viral synth art party bitters tattooed kitsch ethical. Farm-to-table food truck plaid, health goth Pitchfork photo booth pug. Tattooed sriracha wolf cornhole, salvia normcore organic iPhone literally seitan Wes Anderson farm-to-table listicle. Messenger bag keffiyeh meggings American Apparel, semiotics cornhole photo booth selvage Helvetica blog. Keffiyeh craft beer post-ironic, deep v Tumblr small batch pork belly fixie DIY keytar disrupt banh mi tofu fingerstache. Cred four dollar toast fashion axe, post-ironic chillwave seitan shabby chic locavore. Meggings Brooklyn lumbersexual vinyl VHS, Neutra Etsy.&lt;/p&gt;
+
+&lt;p&gt;Cray sustainable cardigan cold-pressed vinyl Williamsburg single-origin coffee. YOLO artisan flannel mumblecore kale chips, +1 skateboard bicycle rights viral typewriter vegan. Pickled migas next level banh mi, American Apparel artisan meditation. Put a bird on it retro four loko butcher. Skateboard photo booth tofu kale chips Shoreditch, mlkshk letterpress meggings selvage roof party sriracha salvia literally High Life. Disrupt single-origin coffee fixie four loko migas wolf. Butcher twee put a bird on it seitan, iPhone DIY brunch.&lt;/p&gt;
+
+&lt;p&gt;Post-ironic gentrify paleo meggings normcore Neutra. Pitchfork cronut Etsy distillery artisan. Sriracha flannel Thundercats, butcher iPhone PBR Williamsburg messenger bag chillwave biodiesel roof party wolf. Street art bicycle rights cliche, hoodie heirloom Vice Echo Park VHS brunch. Tattooed flannel pickled, cardigan Neutra health goth you probably haven't heard of them Etsy cred mlkshk Carles raw denim bespoke mixtape. Listicle slow-carb Wes Anderson, four dollar toast selvage church-key squid irony blog vinyl meggings chillwave. Locavore cold-pressed shabby chic literally before they sold out.&lt;/p&gt;
+
+&lt;p&gt;Tote bag banjo VHS mumblecore, gluten-free squid food truck single-origin coffee Wes Anderson chia selvage wayfarers. Marfa synth Williamsburg, literally wayfarers cray health goth jean shorts Echo Park flannel chillwave. Four loko aesthetic roof party, meggings tattooed squid deep v quinoa Tumblr Wes Anderson High Life. Bespoke fixie VHS artisan wolf next level. Squid scenester sartorial, meh banh mi cronut post-ironic roof party. DIY Banksy scenester, crucifix Echo Park wayfarers 90's cliche hella VHS yr. Shabby chic organic Bushwick, biodiesel sartorial Marfa banh mi PBR&amp;amp;B slow-carb.
+Oh. You need a little dummy text for your mockup? How quaint.&lt;/p&gt;
+
+&lt;p&gt;I bet you’re still using Bootstrap too…&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>How's it going?</title>
+    <link rel="alternate" href="http://blog.url.com/blog/sample.html"/>
+    <id>http://blog.url.com/blog/sample.html</id>
+    <published>2015-04-14T19:20:00-04:00</published>
+    <updated>2015-04-14T19:26:30-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;strong&gt;Four dollar&lt;/strong&gt; toast beard polaroid Williamsburg Pitchfork listicle, brunch Vice. Neutra typewriter street art banh mi ugh twee cronut. Keffiyeh deep v single-origin coffee pork belly ennui. Wes Anderson trust fund chia cray, readymade XOXO cred. Hella cold-pressed iPhone narwhal. Banksy skateboard fixie actually vegan, readymade artisan banh mi mixtape bitters PBR polaroid art party listicle. Kitsch artisan master cleanse PBR&amp;amp;B plaid, try-hard Neutra.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;8-bit put a bird&lt;/em&gt; on it pug, try-hard locavore gentrify paleo disrupt kogi Kickstarter Thundercats jean shorts beard. Cred Echo Park chia 90's Helvetica. Twee meditation +1 vinyl wayfarers squid. Before they sold out keytar brunch, hashtag hella tote bag Tumblr stumptown. Schlitz High Life seitan, cray cold-pressed skateboard cardigan pork belly roof party wolf gentrify listicle. Narwhal brunch direct trade, Vice tofu cred heirloom polaroid chia swag gastropub. Blog ennui VHS banjo authentic, Shoreditch meditation gluten-free plaid lo-fi whatever Echo Park Portland quinoa cold-pressed.&lt;/p&gt;
+
+&lt;p&gt;Brunch Williamsburg literally, art party DIY Portland Austin pork belly. Semiotics tofu tilde Banksy, pour-over pork belly church-key leggings migas. PBR&amp;amp;B Truffaut pork belly chambray, Williamsburg Marfa bespoke wayfarers messenger bag four loko typewriter organic distillery. Beard twee cardigan polaroid. Helvetica Brooklyn beard, Odd Future drinking vinegar Carles iPhone locavore DIY YOLO authentic pour-over Truffaut Intelligentsia stumptown. Pour-over seitan before they sold out 3 wolf moon. Gentrify tousled mixtape, Intelligentsia cardigan four dollar toast tattooed pork belly Helvetica beard cold-pressed letterpress farm-to-table.&lt;/p&gt;
+
+&lt;p&gt;Authentic ennui cold-pressed, kitsch messenger bag Shoreditch lumbersexual PBR pork belly tote bag fingerstache taxidermy Blue Bottle. Slow-carb forage synth, tote bag health goth sartorial paleo migas typewriter bitters try-hard umami. Mustache listicle keytar Kickstarter gentrify, raw denim Shoreditch. Odd Future keytar 8-bit scenester, lo-fi food truck letterpress next level. Flexitarian hashtag pop-up, sustainable lomo plaid trust fund gluten-free VHS twee locavore Blue Bottle you probably haven't heard of them. Four loko bicycle rights wayfarers sriracha migas, tattooed Portland locavore fingerstache stumptown street art. Retro tote bag gastropub occupy, banh mi 3 wolf moon ennui single-origin coffee Portland XOXO tilde flannel trust fund.&lt;/p&gt;
 </content>
   </entry>
 </feed>
