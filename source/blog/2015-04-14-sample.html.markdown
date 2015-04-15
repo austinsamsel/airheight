@@ -1,14 +1,8 @@
 ---
-title: Example Article
-date: 2012-01-01
-tags: example
+title: How's it going?
+date: 2015-04-14 23:20 UTC
+tags:
 ---
-
-#How's it going?
-
-* This
-* is 
-* Whats up!
 
 **Four dollar** toast beard polaroid Williamsburg Pitchfork listicle, brunch Vice. Neutra typewriter street art banh mi ugh twee cronut. Keffiyeh deep v single-origin coffee pork belly ennui. Wes Anderson trust fund chia cray, readymade XOXO cred. Hella cold-pressed iPhone narwhal. Banksy skateboard fixie actually vegan, readymade artisan banh mi mixtape bitters PBR polaroid art party listicle. Kitsch artisan master cleanse PBR&B plaid, try-hard Neutra.
 

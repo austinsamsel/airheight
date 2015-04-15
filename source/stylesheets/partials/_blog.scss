@@ -1,0 +1,23 @@
+#blog-content{
+  margin:80px auto;
+  max-width:800px;
+}
+
+.blog-nav{
+  position:fixed;
+  top:0;
+  left:0;
+}
+
+.blog-item{
+  margin-bottom:3em;
+  h1{
+    margin-bottom:0.3em;
+  }
+  h1 a{
+    background:transparent;
+  }
+  h5 {
+    margin:0;
+  }
+}

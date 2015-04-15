@@ -1,7 +1,24 @@
-<nav>
-  <ul>
-    <li>
-      <%= link_to "Blog Title", "index.html", :class => 'blog-title' %>
-    </li>
-  </ul>
-</nav>
+<div class="upstate-nav-sm blog-nav">
+  <header class="upstate-nav-wrapper" role="banner">
+    <div class="navigation-wrapper">
+      <a href="#Home" class="logo">
+        <img src="/images/hightops_logo.svg" alt="high tops logo" style="opacity:1.0 !important">
+      </a>
+      <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+      <nav role="navigation">
+      </nav>
+      <div class="navigation-tools">
+        <ul id="js-navigation-menu" class="navigation-menu show">
+          <li class="nav-link more"><a href="javascript:void(0)">Products</a>
+              <ul class="submenu">
+                <li><a href="http://hightopsnyc.com/upstate">Up State</a></li>
+              </ul>
+            </li>
+          <li data-menuanchor="pricing" class="nav-link"><a href="#Pricing">X</a></li>
+          <li data-menuanchor="contact" class="nav-link"><a href="#Contact">About</a></li>
+          <li data-menuanchor="apply" class="nav-link nav-bubble"><a href="#Apply">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+</div>
