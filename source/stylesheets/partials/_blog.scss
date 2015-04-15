@@ -1,6 +1,7 @@
 #blog-content{
   margin:80px auto;
-  max-width:800px;
+  max-width:750px;
+  padding: 0 20px
 }
 
 .blog-nav{
@@ -20,4 +21,8 @@
   h5 {
     margin:0;
   }
+}
+
+label{
+  font-size:1em;
 }
