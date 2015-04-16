@@ -1,0 +1,1 @@
+window.jQuery=window.$=jQuery,"function"==typeof define&&define.amd&&define.amd.jQuery&&define("jquery",[],function(){return jQuery});

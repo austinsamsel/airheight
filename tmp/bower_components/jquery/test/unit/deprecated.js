@@ -1,0 +1,1 @@
+module("deprecated"),jQuery.browser&&jQuery.uaMatch&&jQuery.get&&!isLocal&&asyncTest("browser",function(){jQuery.get("data/ua.txt",function(e){var r=e.split("\n");expect(2*(r.length-1)),jQuery.each(r,function(){var e,r=this.split("	"),t=r[2];t&&(e=jQuery.uaMatch(t),equal(e.browser,r[0],"browser ("+t+")"),equal(e.version,r[1],"version ("+t+")"))}),start()})});

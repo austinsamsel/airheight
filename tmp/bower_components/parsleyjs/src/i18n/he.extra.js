@@ -1,0 +1,1 @@
+window.ParsleyConfig=window.ParsleyConfig||{},window.ParsleyConfig.i18n=window.ParsleyConfig.i18n||{},window.ParsleyConfig.i18n.he=$.extend(window.ParsleyConfig.i18n.he||{},{dateiso:"\u05e2\u05e8\u05da \u05d6\u05d4 \u05e6\u05e8\u05d9\u05da \u05dc\u05d4\u05d9\u05d5\u05ea \u05ea\u05d0\u05e8\u05d9\u05da \u05d1\u05e4\u05d5\u05e8\u05de\u05d8 (YYYY-MM-DD)."});
