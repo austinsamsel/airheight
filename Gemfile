@@ -7,6 +7,7 @@ gem "middleman-blog", "~> 3.5.3"
 gem 'nokogiri'
 
 #ui
+gem "jquery-middleman"
 gem 'bitters', '~> 1.0.0'
 gem 'bourbon', '~> 4.2.1'
 gem 'neat', '~> 1.7.2'
@@ -30,4 +31,4 @@ gem "builder", "~> 3.0"
 
 gem 'rack-contrib'
 
-gem "middleman-livereload", "~> 3.3.0"
+gem "middleman-livereload"

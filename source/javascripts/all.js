@@ -1,5 +1,5 @@
 // source/js/all.js
-//= require jquery/jquery
+//= require jquery
 //= require fullpage.js/jquery.fullPage
 //= require waypoints/lib/jquery.waypoints
 //= require typed.js/js/typed
