@@ -1,3 +1,5 @@
+$( document ).ready(function() {
+
 var navMenu = function(){
   var menuToggle = $('#js-mobile-menu').unbind();
   $('#js-navigation-menu').removeClass("show");
@@ -12,7 +14,6 @@ var navMenu = function(){
   });
 };
 
-$( document ).ready(function() {
   navMenu();
 
   $('form').garlic();
