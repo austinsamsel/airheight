@@ -58,11 +58,11 @@ $(document).ready(function(){
           beforeSend: function() {
             $contactFormApp.find('.alert--success').hide();
             $contactFormApp.find('.alert--error').hide();
-            $contactFormApp.append('<div class="alert alert--loading"><div class="ui active inline loader small-loader"></div> Sending message…</div>');
+            $contactFormApp.append('<div class="alert alert--loading"><div class="ui active inline loader small-loader"></div> Submitting application…</div>');
           },
           success: function(data) {
             $contactFormApp.find('.alert--loading').hide();
-            $contactFormApp.append('<div class="alert alert--success"><i class="fa fa-check green"></i> Message sent!</div>');
+            $contactFormApp.append('<div class="alert alert--success"><i class="fa fa-check green"></i> Application submitted!</div>');
           },
           error: function(err) {
             $contactFormApp.find('.alert--loading').hide();
