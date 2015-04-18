@@ -139,6 +139,8 @@ GEM
     padrino-support (0.12.5)
       activesupport (>= 3.1)
     progress (3.1.0)
+    puma (2.11.0)
+      rack (>= 1.1, < 2.0)
     rack (1.6.0)
     rack-contrib (1.2.0)
       rack (>= 0.9.1)
@@ -191,4 +193,5 @@ DEPENDENCIES
   middleman-protect-emails
   neat (~> 1.7.2)
   nokogiri
+  puma
   rack-contrib
