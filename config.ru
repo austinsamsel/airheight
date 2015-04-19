@@ -33,7 +33,7 @@ use Rack::TryStatic,
     ]
 
 run lambda { |env|
-      four_oh_four_page = File.expand_path('../build/404/index.html', __FILE__)
+      four_oh_four_page = File.expand_path('../tmp/404/index.html', __FILE__)
       [
           404,
           {'Content-Type'  => 'text/html', 'Cache-Control' => "public, max-age=#{ONE_WEEK}"},
