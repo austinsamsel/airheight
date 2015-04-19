@@ -26,9 +26,9 @@ gem 'middleman-protect-emails'
 gem 'middleman-imageoptim'
 gem "middleman-minify-html"
 # gem "rack-zippy"
-# gem 'zippy_static_cache' 
-gem 'therubyracer'
-gem 'oj'
+# gem 'zippy_static_cache'
+#gem 'therubyracer'
+#gem 'oj'
 
 # For feed.xml.builder
 gem "builder", "~> 3.0"

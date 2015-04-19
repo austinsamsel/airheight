@@ -70,7 +70,6 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.2)
     kramdown (1.6.0)
-    libv8 (3.16.14.7)
     listen (2.10.0)
       celluloid (~> 0.16.0)
       rb-fsevent (>= 0.9.3)
@@ -136,7 +135,6 @@ GEM
       sass (>= 3.3)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
-    oj (2.12.3)
     padrino-helpers (0.12.5)
       i18n (~> 0.6, >= 0.6.7)
       padrino-support (= 0.12.5)
@@ -158,7 +156,6 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
-    ref (1.0.5)
     sass (3.4.13)
     sprockets (2.12.3)
       hike (~> 1.2)
@@ -170,9 +167,6 @@ GEM
     sprockets-sass (1.3.1)
       sprockets (~> 2.0)
       tilt (~> 1.1)
-    therubyracer (0.12.2)
-      libv8 (~> 3.16.14.0)
-      ref
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
@@ -205,8 +199,6 @@ DEPENDENCIES
   middleman-search_engine_sitemap (~> 1.3.0)
   neat (~> 1.7.2)
   nokogiri (~> 1.6.6)
-  oj
   puma
   rack-cache
   rack-contrib
-  therubyracer
