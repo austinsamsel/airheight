@@ -167,15 +167,46 @@ configure :build do
   activate :gzip
   activate :minify_html
 
+
   # Minify Javascript on build
   activate :minify_javascript
 
   # Enable cache buster
-  # activate :asset_hash
+  activate :asset_hash
 
   # Use relative URLs
   # activate :relative_assets
 
   # Or use a different image path
-  # set :http_prefix, "/Content/images/"
+  # set :http_prefix, "/Conent/images/"
+  
+  set :url_root, "https://#{ENV['APP_DOMAIN'] ? ENV['APP_DOMAIN'] : 'localhost:4567'}"
+
+  activate :search_engine_sitemap,
+           exclude_if: -> (resource) {
+             # Exclude all paths from sitemap that are sub-date indexes
+             resource.path.match(/[0-9]{4}(\/[0-9]{2})*.html/)
+           },
+           default_change_frequency: 'weekly'
+
+  # Filewatcher ignore list (workaround for search_engine_sitemap on
+  # Heroku - see https://github.com/Aupajo/middleman-search_engine_sitemap/issues/2)
+  set :file_watcher_ignore,
+      [
+          /^bin(\/|$)/,
+          /^\.bundle(\/|$)/,
+          # /^vendor(\/|$)/,
+          /^node_modules(\/|$)/,
+          /^\.sass-cache(\/|$)/,
+          /^\.cache(\/|$)/,
+          /^\.git(\/|$)/,
+          /^\.gitignore$/,
+          /\.DS_Store/,
+          /^\.rbenv-.*$/,
+          /^Gemfile$/,
+          /^Gemfile\.lock$/,
+          /~$/,
+          /(^|\/)\.?#/,
+          /^tmp\//
+      ]
 end
