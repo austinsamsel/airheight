@@ -1,7 +1,0 @@
-/*!
-Waypoints Infinite Scroll Shortcut - 3.1.1
-Copyright © 2011-2015 Caleb Troughton
-Licensed under the MIT license.
-https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
-*/
-!function(){"use strict";function e(i){this.options=t.extend({},e.defaults,i),this.container=this.options.element,"auto"!==this.options.container&&(this.container=this.options.container),this.$container=t(this.container),this.$more=t(this.options.more),this.$more.length&&(this.setupHandler(),this.waypoint=new n(this.options))}var t=window.jQuery,n=window.Waypoint;e.prototype.setupHandler=function(){this.options.handler=t.proxy(function(){this.options.onBeforePageLoad(),this.destroy(),this.$container.addClass(this.options.loadingClass),t.get(t(this.options.more).attr("href"),t.proxy(function(e){var i=t(t.parseHTML(e)),r=i.find(this.options.more),o=i.find(this.options.items);o.length||(o=i.filter(this.options.items)),this.$container.append(o),this.$container.removeClass(this.options.loadingClass),r.length||(r=i.filter(this.options.more)),r.length?(this.$more.replaceWith(r),this.$more=r,this.waypoint=new n(this.options)):this.$more.remove(),this.options.onAfterPageLoad()},this))},this)},e.prototype.destroy=function(){this.waypoint&&this.waypoint.destroy()},e.defaults={container:"auto",items:".infinite-item",more:".infinite-more-link",offset:"bottom-in-view",loadingClass:"infinite-loading",onBeforePageLoad:t.noop,onAfterPageLoad:t.noop},n.Infinite=e}();
