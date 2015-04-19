@@ -6,8 +6,8 @@ require 'rack/cache'
 
 # Forces SSL on all requests
 unless ENV['RACK_ENV'] == 'development'
-  require 'rack/ssl'
-  use Rack::SSL
+#  require 'rack/ssl'
+#  use Rack::SSL
 end
 
 use Rack::Cache,
