@@ -43,11 +43,14 @@ header.navigation li.more.nav-link>ul>li:first-child a, header.upstate-nav-wrapp
 header.navigation li.more.nav-link>a:after, header.upstate-nav-wrapper li.more.nav-link>a:after {
   right: -0.8em;
 }
-header.navigation li.more.nav-link a, header.upstate-nav-wrapper li.more.nav-link a {
-  //margin-right: 0em !important;
-}
 header.navigation li.more a, header.upstate-nav-wrapper li.more a {
   padding-right: 0em !important;
+}
+header.navigation li.more.nav-link a, header.upstate-nav-wrapper li.more.nav-link a {
+  margin-right: 0em;
+  @include media($large-screen){
+    margin-right:1em;
+  }
 }
 
 /* home slide */
