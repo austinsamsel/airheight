@@ -7,10 +7,10 @@
   ],
   "description": "Create  beautiful fullscreen scrolling websites",
   "main": [
-    "jquery.fullPage.js",
+    "jquery.fullPage-f3d5f358.js",
     "jquery.fullPage.css",
-    "vendors/jquery.easings.min.js",
-    "vendors/jquery.slimscroll.min.js"
+    "vendors/jquery.easings.min-3d1cab7c.js",
+    "vendors/jquery.slimscroll.min-63bab16b.js"
   ],
   "keywords": [
     "jquery",

@@ -1,5 +1,5 @@
 {
-  "name": "animate.css",
+  "name": "animate-eb9a51bc.css",
   "version": "3.2.6",
   "repository": {
     "type": "git",
@@ -14,6 +14,6 @@
     "load-grunt-tasks": "~0.2.0"
   },
   "spm": {
-    "main": "./animate.css"
+    "main": "animate-eb9a51bc.css"
   }
 }

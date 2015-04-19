@@ -1,7 +1,7 @@
 {
     "name": "garlicjs",
     "version": "1.2.1",
-    "main": "./dist/garlic.min.js",
+    "main": "dist/garlic.min-65587b24.js",
     "dependencies": {
         "jquery": "1.8.*"
     }
