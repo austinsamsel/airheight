@@ -91,26 +91,8 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://localhost:4567/google35c4cd4f8f6aef9a.html</loc>
-    <lastmod>2015-04-16T22:13:07-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://localhost:4567/bower_components/fullpage.js/pure javascript (Alpha)/demo.html</loc>
     <lastmod>2015-03-17T19:21:41-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://localhost:4567/bower_components/waypoints/README.html</loc>
-    <lastmod>2015-03-21T19:33:27-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://localhost:4567/bower_components/waypoints/CONTRIBUTING.html</loc>
-    <lastmod>2015-03-21T19:33:27-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -123,18 +105,6 @@
   <url>
     <loc>https://localhost:4567/bower_components/fullpage.js/README.html</loc>
     <lastmod>2015-03-17T19:21:41-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://localhost:4567/bower_components/waypoints/CHANGELOG.html</loc>
-    <lastmod>2015-03-21T19:33:27-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://localhost:4567/bower_components/typed.js/README.html</loc>
-    <lastmod>2015-03-28T11:06:41-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -163,14 +133,44 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://localhost:4567/bower_components/semantic-ui-loader/RELEASE-NOTES.html</loc>
-    <lastmod>2015-03-27T12:31:27-04:00</lastmod>
+    <loc>https://localhost:4567/bower_components/garlicjs/tests/</loc>
+    <lastmod>2014-05-23T04:33:16-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://localhost:4567/bower_components/garlicjs/tests/</loc>
-    <lastmod>2014-05-23T04:33:16-04:00</lastmod>
+    <loc>https://localhost:4567/google35c4cd4f8f6aef9a.html</loc>
+    <lastmod>2015-04-16T22:13:07-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://localhost:4567/bower_components/waypoints/README.html</loc>
+    <lastmod>2015-03-21T19:33:27-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://localhost:4567/bower_components/waypoints/CONTRIBUTING.html</loc>
+    <lastmod>2015-03-21T19:33:27-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://localhost:4567/bower_components/waypoints/CHANGELOG.html</loc>
+    <lastmod>2015-03-21T19:33:27-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://localhost:4567/bower_components/typed.js/README.html</loc>
+    <lastmod>2015-03-28T11:06:41-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://localhost:4567/bower_components/semantic-ui-loader/RELEASE-NOTES.html</loc>
+    <lastmod>2015-03-27T12:31:27-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
