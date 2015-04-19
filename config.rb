@@ -167,6 +167,7 @@ configure :build do
   activate :gzip
   activate :minify_html
 
+
   # Minify Javascript on build
   activate :minify_javascript
 
@@ -177,7 +178,7 @@ configure :build do
   # activate :relative_assets
 
   # Or use a different image path
-  # set :http_prefix, "/Content/images/"
+  # set :http_prefix, "/Conent/images/"
   
   set :url_root, "https://#{ENV['APP_DOMAIN'] ? ENV['APP_DOMAIN'] : 'localhost:4567'}"
 
