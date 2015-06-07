@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://localhost:4567/2012-01-01-example-article.html</loc>
-    <lastmod>2015-04-14T19:14:57-04:00</lastmod>
+    <lastmod>2015-04-14T18:51:43-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -92,7 +92,7 @@
   </url>
   <url>
     <loc>https://localhost:4567/</loc>
-    <lastmod>2015-04-20T23:38:46-04:00</lastmod>
+    <lastmod>2015-06-07T16:18:48-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -146,7 +146,7 @@
   </url>
   <url>
     <loc>https://localhost:4567/google35c4cd4f8f6aef9a.html</loc>
-    <lastmod>2015-04-16T22:13:07-04:00</lastmod>
+    <lastmod>2015-04-16T21:53:39-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

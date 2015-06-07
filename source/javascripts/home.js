@@ -53,7 +53,7 @@ $(document).ready(function() {
           navMenu();
           
           $("#hero-story").typed({
-                  strings: ["We create realities^500.", "We engineer^500 experiences^800.", "We make life ^500better ^1000:^800)^500","<a href='#Contact'>How can we help^800?</a>"],
+                  strings: ["Let's make life ^500better ^1000:^800)^500","<a href='#Contact'>How can I help^800?</a>"],
                   typeSpeed: 20,
                   backDelay: 500,
                   loop: false,
