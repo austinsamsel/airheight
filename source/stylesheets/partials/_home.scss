@@ -1,14 +1,22 @@
 .b-lazy {
-    -webkit-transition: opacity 500ms ease-in-out;
-       -moz-transition: opacity 500ms ease-in-out;
-         -o-transition: opacity 500ms ease-in-out;
-            transition: opacity 500ms ease-in-out;
-             max-width: 100%;
-               opacity: 0;
-}
-.b-lazy.b-loaded {
-               opacity: 1;
-}
+        -webkit-transition: opacity 500ms ease-in-out;
+           -moz-transition: opacity 500ms ease-in-out;
+             -o-transition: opacity 500ms ease-in-out;
+                transition: opacity 500ms ease-in-out;
+                 max-width: 100%;
+                   opacity: 0;
+
+                   max-height:10px;
+
+        -webkit-transition: max-height 0.8s;
+          -moz-transition: max-height 0.8s;
+          transition: max-height 0.8s;
+
+    }
+    .b-lazy.b-loaded {
+                   opacity: 1;
+                   max-height:800px;
+    }
 
 img {
   opacity: 0;
