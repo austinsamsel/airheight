@@ -111,8 +111,7 @@ header{
   z-index:999;
   transition: top 1.2s ease-in-out;
   position:fixed;
-  background:#fff;
-  top:-2.1em;
+  top:0;
   left:0;
   width:100%;
   height:2em;
@@ -135,6 +134,13 @@ header{
 .nav-sm .logo-wrap img {
   width: 160px;
   @include pad(0.55em 0px 8% default);
+}
+
+/* home slide */
+
+#home-slide{
+  margin-bottom:-10%;
+  min-height:420px;
 }
 
 .typed-cursor{
@@ -177,15 +183,20 @@ span.typed-cursor{
 .hero{
   font-family: 'enriqueta', serif;
   font-size:2em;
-  line-height:1em;
-  color: $brand-gray;
-  margin-bottom:8%;
+  line-height:1.1em;
+  //color: $brand-gray;
+  color: $blue;
+  margin-bottom:0.25em;
+  letter-spacing:-0.02em;
   text-align:center;
+  font-weight: 600;
     @include media($medium-screen) {
-      font-size:3em;
+      font-size:2.5em;
+      // padding: 0 3em 0 0;
     }
     @include media($large-screen) {
       font-size:3.5em;
+      // padding: 0 4em 0 0;
     }
 }
 .hero-sub{
@@ -231,6 +242,9 @@ h2 {
   @include media($medium-screen){
     font-size: 2.1em;
   }
+}
+.h2-header{
+  margin:0.5em 0 0.25em 0;
 }
 h3 {
   font-size:1.4em;
@@ -279,7 +293,6 @@ h5 {
   margin: 20px 11px 0 0;
   display:inline;
   @include media($medium-screen){
-    margin-left:80px;
   }
 }
 .testimonial-p{
@@ -289,10 +302,9 @@ h5 {
 .testimonial-block{
   border-left:$off-white 4px solid;
   padding: 10px 0px 10px 20px;
-  margin-left: 1em;
   font-size:90%;
+  margin-top:2em;
   @include media($medium-screen){
-    margin-left: 4em;
     font-size:110%;
   }
 }
@@ -332,6 +344,12 @@ h5 {
   }
 }
 /* info slide */
+.full-page-col{
+  @include span-columns(16);
+  width:100%;
+  position:relative;
+  clear: both;
+}
 
 .main-big{
   @include span-columns(12);

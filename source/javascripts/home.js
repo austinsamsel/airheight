@@ -9,12 +9,12 @@
 
 $(document).ready(function() {
     $navBar = $('.nav-sm');
-    var slideDown = function() {
-      $navBar.animate({top: '0em'}, 100);
-    };
-    var slideUp = function() {
-      $navBar.animate({top: '-2em'}, 100);
-    };
+    // var slideDown = function() {
+    //   $navBar.animate({top: '0em'}, 100);
+    // };
+    // var slideUp = function() {
+    //   $navBar.animate({top: '-2em'}, 100);
+    // };
     var loadBGs = function() {
       $('.slide-creators').addClass('loadImage-creators');
       $('.slide-madepulse').addClass('loadImage-madepulse');
@@ -36,7 +36,7 @@ $(document).ready(function() {
       });
     };
     $('#fullpage').fullpage({
-      anchors: ['Home', 'Praise', 'Services', 'Praise2', 'Work', 'About', 'Contact'],
+      anchors: ['Home', 'Work', 'About', 'Contact'],
       responsive: 50000,
       controlArrows: true,
       slidesNavigation: true,
@@ -45,7 +45,7 @@ $(document).ready(function() {
       animateAnchor: true,
       scrollBar: true,
       scrollingSpeed: 1900,
-      menu:'#js-centered-navigation-menu',
+      // menu:'#js-navigation-menu',
       css3: true,
       slidesNavPosition: 'bottom',
       afterRender: function(){
@@ -103,7 +103,7 @@ $(document).ready(function() {
           ;(function() {
             // Initialize
             var bLazy = new Blazy({ 
-                  offset: 300,
+                  offset: 9999999999999,
                   //selector: 'img', // all images
                   breakpoints: [{
                       width: 2000, // max-width
@@ -139,13 +139,13 @@ $(document).ready(function() {
           //email();
         }
         if(index == 1){
-          slideDown();
+          //slideDown();
         }
         if(index == 2 && direction == 'up'){
-          slideUp();
+          //slideUp();
         }
         if(index == 5){
-          slideDown();
+          //slideDown();
         }
       },
       afterSlideLoad: function( anchorLink, index, slideAnchor, slideIndex){
@@ -153,13 +153,13 @@ $(document).ready(function() {
           // used to be anchorLink == 'About' instead of index == 6
           // need to test if this works.
           if(index == 5 && slideIndex > 0){
-              slideUp();
+              //slideUp();
               $('.fp-controlArrow.fp-prev').css('display', 'block');
               var bLazy = new Blazy();
                   bLazy.revalidate(); // eg bLazy.revalidate();
           }
           if(index == 5 && slideIndex == 0){
-              slideDown();
+              //slideDown();
               $('.fp-controlArrow.fp-prev').css('display', 'none');
               var bLazy = new Blazy();
                   bLazy.revalidate(); // eg bLazy.revalidate();
