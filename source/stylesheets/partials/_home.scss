@@ -57,6 +57,10 @@ img {
   background:$bg-spring-vine;
   border-top:1px solid lighten($bg-spring-vine, 15%);
 }
+.spring-nite{
+  background:$bg-summer-nite;
+  border-top:1px solid lighten($bg-summer-nite, 15%);
+}
 .sirius-night{
   background: $bg-sirius-night;
   border-top:1px solid lighten($bg-sirius-night, 15%);
@@ -148,6 +152,10 @@ header{
 .nav-sm .logo-wrap img {
   width: 160px;
   @include pad(0.55em 0px 8% default);
+}
+li.nav-link.current a {
+  color: $blue !important;
+  font-weight: 600 !important;
 }
 
 /* home slide */
