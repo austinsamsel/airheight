@@ -1,0 +1,1 @@
+this.testBar="bar",jQuery("#ap").html("bar"),ok(!0,"test-daa0a15e.js executed");
