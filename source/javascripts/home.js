@@ -93,14 +93,16 @@ $(document).ready(function() {
             var bLazy = new Blazy({ 
                   offset: 9999999999999,
                   //selector: 'img', // all images
-                  breakpoints: [{
-                      width: 2000, // max-width
+                  breakpoints: [
+                  {
+                      width: 1000, // max-width
                       src: 'data-src-small'
                   },
-                  {
-                      width: 3000, // max-width
-                      src: 'data-src-medium'
-                  }]
+                  // {
+                  //     width: 3000, // max-width
+                  //     src: 'data-src-medium'
+                  // }
+                  ]
               });
           })();   
 
