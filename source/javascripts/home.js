@@ -10,13 +10,13 @@ $(document).ready(function() {
 
     $navBar = $('.nav-sm');
 
-    var loadBGs = function() {
-      $('.slide-creators').addClass('loadImage-creators');
-      $('.slide-madepulse').addClass('loadImage-madepulse');
-      $('.slide-bfp').addClass('loadImage-bfp');
-      $('.slide-calico').addClass('loadImage-calico');
-      $('.slide-haiku').addClass('loadImage-haiku');
-    };
+    // var loadBGs = function() {
+    //   $('.slide-creators').addClass('loadImage-creators');
+    //   $('.slide-madepulse').addClass('loadImage-madepulse');
+    //   $('.slide-bfp').addClass('loadImage-bfp');
+    //   $('.slide-calico').addClass('loadImage-calico');
+    //   $('.slide-haiku').addClass('loadImage-haiku');
+    // };
     var navMenu = function(){
       var menuToggle = $('#js-mobile-menu').unbind();
       $('#js-navigation-menu').removeClass("show");
@@ -42,10 +42,11 @@ $(document).ready(function() {
               filter: '',
               easing: 'swing',
               begin: function() {
-                  //I get fired when the animation is starting
+                  //Hack so you can click other menu items after the initial click
+                  $('body').append('<div id="device-dummy" style="height: 1px;"></div>');
               },
               end: function() {
-                  //I get fired when the animation is ending
+                  $('#device-dummy').remove();
               },
               scrollChange: function($currentListItem) {
                   //I get fired when you enter a section and I pass the list item of the section
@@ -91,7 +92,7 @@ $(document).ready(function() {
           ;(function() {
             // Initialize
             var bLazy = new Blazy({ 
-                  offset: 9999999999999,
+                  offset: 200,
                   //selector: 'img', // all images
                   breakpoints: [
                   {
@@ -104,7 +105,28 @@ $(document).ready(function() {
                   // }
                   ]
               });
-          })();   
+          })();  
+
+
+          $( window ).scroll(function() {
+            var bLazy = new Blazy();
+            bLazy.revalidate(); // eg bLazy.revalidate();
+          }); 
+
+          var iOS = navigator.userAgent.match(/(iPod|iPhone|iPad)/);
+          if(iOS){
+
+              function iosVhHeightBug() {
+                  var height = $(window).height();
+                  $('#Home, #About, #Contact').css('min-height', height);
+              }
+
+              iosVhHeightBug();
+              $(window).bind('resize', iosVhHeightBug);
+
+          }
+
+          
 
 });          
       

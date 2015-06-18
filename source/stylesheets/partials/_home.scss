@@ -5,7 +5,9 @@ body, html {
 
 .section{
   display:flex;
+  display: -webkit-flex;
   align-items:center;
+  -webkit-align-items:center;
   width:100%;}
 
 .wrapper{
@@ -189,9 +191,11 @@ div#Home{
     50% { opacity:0; }
     100% { opacity:1; }
 }
-section.wrapper.home-content {
-  margin-top: 4em;
-  padding: 9% 0;
+div#hero-story.hero{
+  margin-top:18%;
+}
+.hero-h2{
+  margin-bottom:9%;
 }
 #hero-story:after{
   @extend .typed-cursor;
