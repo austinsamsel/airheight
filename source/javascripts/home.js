@@ -88,30 +88,21 @@ $(document).ready(function() {
                 });
               });
 
-          $('img').addClass('b-lazy');
-          ;(function() {
-            // Initialize
-            var bLazy = new Blazy({ 
-                  offset: 200,
-                  //selector: 'img', // all images
-                  breakpoints: [
-                  {
-                      width: 1000, // max-width
-                      src: 'data-src-small'
-                  },
-                  // {
-                  //     width: 3000, // max-width
-                  //     src: 'data-src-medium'
-                  // }
-                  ]
-              });
-          })();  
 
-
-          $( window ).scroll(function() {
+          //$( window ).scroll(function() {
             var bLazy = new Blazy();
-            bLazy.revalidate(); // eg bLazy.revalidate();
-          }); 
+            bLazy.revalidate({ 
+                offset: 999999999,
+                // breakpoints: [
+                //   {
+                //       width: 1000, // max-width
+                //       src: 'data-src-small'
+                //   },
+                success: function(ele){
+                  //$('.ui.active.inverted.dimmer').find().fadeOut();
+                }
+            }); // eg bLazy.revalidate();
+          //}); 
 
           var iOS = navigator.userAgent.match(/(iPod|iPhone|iPad)/);
           if(iOS){
@@ -128,5 +119,26 @@ $(document).ready(function() {
 
           
 
-});          
+});      
+
+          $('img').addClass('b-lazy');
+          ;(function() {
+            // Initialize
+            var bLazy = new Blazy({ 
+                  offset: 999999999,
+                  //selector: 'img', // all images
+                  breakpoints: [
+                  {
+                      width: 1000, // max-width
+                      src: 'data-src-small'
+                  },
+                  // {
+                  //     width: 3000, // max-width
+                  //     src: 'data-src-medium'
+                  // }
+                  ]
+              });
+          })();  
+
+
       

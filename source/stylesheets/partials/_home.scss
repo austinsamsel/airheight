@@ -13,7 +13,17 @@ body, html {
 .wrapper{
   width:100%;
 }
-
+.scr-desktop, .scr-mobile{
+  z-index:10;
+  position:relative;
+}
+.ui.text.loader{
+  z-index:1;
+  // position:relative;
+}
+.sidebar2{
+  position:relative;
+}
 
 .b-lazy {
         -webkit-transition: opacity 500ms ease-in-out;
