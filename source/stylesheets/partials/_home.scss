@@ -402,6 +402,13 @@ h5 {
     @include span-columns(9);
   }
 }
+.main-big-spacetop{
+  margin-top:0.5em;
+  
+  @include media($medium-screen){
+    margin-top:1em;
+  }
+}
 .main{
   @include span-columns(12);
 
@@ -516,22 +523,29 @@ img.main{
   text-align:center;
 }
 .scr-mobile-wrap {
-  max-width: 100px;
-  position: absolute;
-  bottom: 8%;
-  margin-left: -20px;
-  display:none;
+  // max-width: 100px;
+  // position: absolute;
+  // bottom: 8%;
+  // margin-left: -20px;
+  // display:none;
+
   // @include media($medium-screen){
   //   max-width:200px;
   //   bottom:4%;
   // }
-  @include media($medium-screen){
+  //@include media($medium-screen){
     display:block;
     max-width:100%;
     position:relative;
     bottom:auto;
-    margin-left:0;
+    margin:1em auto;
+    max-width:75%;
+  //}
+  @include media($medium-screen){
+    margin:0;
+    max-width:100%;
   }
+
 }
 .mobile-top, .mobile-bottom {
   width:100%;
