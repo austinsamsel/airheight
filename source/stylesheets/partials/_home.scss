@@ -89,6 +89,10 @@ img {
   background:$bg-summer-nite;
   border-top:1px solid lighten($bg-summer-nite, 15%);
 }
+.gray-night{
+  background: $bg-gray-night;
+  border-top:1px solid lighten($bg-gray-night, 15%);
+}
 .sirius-night{
   background: $bg-sirius-night;
   border-top:1px solid lighten($bg-sirius-night, 15%);
