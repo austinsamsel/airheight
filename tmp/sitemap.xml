@@ -37,8 +37,44 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://localhost:4567/blog/yo.html</loc>
+    <lastmod>2015-07-01T20:57:03-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://localhost:4567/blog.html</loc>
     <lastmod>2015-04-14T20:44:11-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://localhost:4567/blog/tags/review.html</loc>
+    <lastmod>2015-03-17T15:20:09-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://localhost:4567/blog/tags/check-up.html</loc>
+    <lastmod>2015-03-17T15:20:09-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://localhost:4567/blog/tags/check-in.html</loc>
+    <lastmod>2015-03-17T15:20:09-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://localhost:4567/blog/tags/audit.html</loc>
+    <lastmod>2015-03-17T15:20:09-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://localhost:4567/blog/tags/website.html</loc>
+    <lastmod>2015-03-17T15:20:09-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -241,18 +277,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://localhost:4567/bower_components/scrollNav/README.html</loc>
-    <lastmod>2015-02-19T22:46:22-05:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://localhost:4567/bower_components/scrollNav/CHANGELOG.html</loc>
-    <lastmod>2015-02-19T22:46:22-05:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://localhost:4567/bower_components/jquery/test/data/ajax/unreleasedXHR.html</loc>
     <lastmod>2013-07-03T09:48:24-04:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -283,6 +307,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://localhost:4567/bower_components/jquery/test/data/event/focusElem.html</loc>
+    <lastmod>2013-07-03T09:48:24-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://localhost:4567/bower_components/jquery/test/data/event/promiseReady.html</loc>
     <lastmod>2013-07-03T09:48:24-04:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -297,6 +327,12 @@
   <url>
     <loc>https://localhost:4567/bower_components/jquery/test/data/iframe.html</loc>
     <lastmod>2013-07-03T09:48:24-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://localhost:4567/bower_components/scrollNav/README.html</loc>
+    <lastmod>2015-02-19T22:46:22-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -355,14 +391,8 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://localhost:4567/bower_components/jquery/test/readywait.html</loc>
-    <lastmod>2013-07-03T09:48:24-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://localhost:4567/bower_components/jquery/test/networkerror.html</loc>
-    <lastmod>2013-07-03T09:48:24-04:00</lastmod>
+    <loc>https://localhost:4567/bower_components/scrollNav/CHANGELOG.html</loc>
+    <lastmod>2015-02-19T22:46:22-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -391,12 +421,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://localhost:4567/bower_components/jquery/test/localfile.html</loc>
-    <lastmod>2013-07-03T09:48:24-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://localhost:4567/bower_components/jquery/test/data/support/shrinkWrapBlocks.html</loc>
     <lastmod>2013-07-03T09:48:24-04:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -415,12 +439,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://localhost:4567/bower_components/jquery/test/</loc>
-    <lastmod>2013-07-03T09:48:24-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://localhost:4567/bower_components/jquery/test/data/test2.html</loc>
     <lastmod>2013-07-03T09:48:24-04:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -433,7 +451,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://localhost:4567/bower_components/jquery/test/hovertest.html</loc>
+    <loc>https://localhost:4567/bower_components/jquery/test/networkerror.html</loc>
     <lastmod>2013-07-03T09:48:24-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -445,7 +463,25 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://localhost:4567/bower_components/jquery/test/data/event/focusElem.html</loc>
+    <loc>https://localhost:4567/bower_components/jquery/test/hovertest.html</loc>
+    <lastmod>2013-07-03T09:48:24-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://localhost:4567/bower_components/jquery/test/</loc>
+    <lastmod>2013-07-03T09:48:24-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://localhost:4567/bower_components/jquery/test/readywait.html</loc>
+    <lastmod>2013-07-03T09:48:24-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://localhost:4567/bower_components/jquery/test/localfile.html</loc>
     <lastmod>2013-07-03T09:48:24-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
