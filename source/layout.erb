@@ -8,7 +8,7 @@
     <link rel="canonical" href="http://hightopsnyc.com" />
     <%= auto_display_meta_tags %>
     <%= partial "partials/favicon" %>
-    
+
     <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
     <%= stylesheet_link_tag "all" %>
      <link href='http://fonts.googleapis.com/css?family=Archivo+Black|Archivo+Narrow:400,700,400italic|Enriqueta:400,700' rel='stylesheet' type='text/css'>
@@ -16,7 +16,7 @@
   <body>
 
   <%= yield %>
-  
+
   <%= javascript_include_tag  "home" %>
   <%= google_analytics_tag %>
   </body>
