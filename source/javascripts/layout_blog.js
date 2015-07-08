@@ -16,6 +16,25 @@ $( document ).ready(function() {
 
   navMenu();
 
+  $('img').addClass('b-lazy');
+  ;(function() {
+    // Initialize
+    var bLazy = new Blazy({
+          offset: 999999999,
+          //selector: 'img', // all images
+          breakpoints: [
+          {
+              width: 1000, // max-width
+              src: 'data-src-small'
+          },
+          // {
+          //     width: 3000, // max-width
+          //     src: 'data-src-medium'
+          // }
+          ]
+      });
+  })();
+
   //$('#upStateApp').garlic();
 
   // var $contactForm = $('#upStateApp');

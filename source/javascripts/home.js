@@ -31,7 +31,7 @@ $(document).ready(function() {
       });
     };
 
-          
+
           navMenu();
 
           $('.navigation-wrapper').onePageNav({
@@ -52,7 +52,7 @@ $(document).ready(function() {
                   //I get fired when you enter a section and I pass the list item of the section
               }
           });
-          
+
               $("#hero-story").typed({
                   strings: ["Let's make life ^500better ^1000:^800)^500","<a href='#Contact'>How can I help^800?</a>"],
                   typeSpeed: 20,
@@ -91,7 +91,7 @@ $(document).ready(function() {
 
           //$( window ).scroll(function() {
             var bLazy = new Blazy();
-            bLazy.revalidate({ 
+            bLazy.revalidate({
                 offset: 999999999,
                 // breakpoints: [
                 //   {
@@ -102,7 +102,7 @@ $(document).ready(function() {
                   //$('.ui.active.inverted.dimmer').find().fadeOut();
                 }
             }); // eg bLazy.revalidate();
-          //}); 
+          //});
 
           var iOS = navigator.userAgent.match(/(iPod|iPhone|iPad)/);
           if(iOS){
@@ -117,14 +117,14 @@ $(document).ready(function() {
 
           }
 
-          
 
-});      
+
+});
 
           $('img').addClass('b-lazy');
           ;(function() {
             // Initialize
-            var bLazy = new Blazy({ 
+            var bLazy = new Blazy({
                   offset: 999999999,
                   //selector: 'img', // all images
                   breakpoints: [
@@ -138,7 +138,7 @@ $(document).ready(function() {
                   // }
                   ]
               });
-          })();  
+          })();
 
 // function isScrolledIntoView(elem)
 // {
@@ -157,6 +157,3 @@ $(document).ready(function() {
 
 // if (isScrolledintoView(section) === true)
 //    console.log('true dog!');
-
-
-
