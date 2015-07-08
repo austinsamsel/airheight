@@ -4,7 +4,6 @@
 #robots.txt for http://hightopsnyc.com/
 
 User-agent: *
-Disallow: /blog/
 Disallow: /upstate/*
 Disallow: /upstate/L4TSXcvbQlfYgQ5J/*
 Disallow: /upstate/L4TSXcvbQlfYgQ5J/application.html
