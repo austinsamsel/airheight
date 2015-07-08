@@ -1,7 +1,7 @@
 ---
 layout: layout_article
 title: Go-Up-State
-date: 2015-07-09 07:00 UTC
+date: 2015-07-08 07:00 UTC
 tags: business
 ---
 
@@ -22,7 +22,7 @@ tags: business
     </div>
 
     <div class="published">
-     Published July 9, 2015
+     Published July 8, 2015
     </div>
 
   </div>
