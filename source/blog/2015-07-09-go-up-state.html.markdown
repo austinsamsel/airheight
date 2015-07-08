@@ -1,0 +1,77 @@
+---
+layout: layout_article
+title: Go-Up-State
+date: 2015-07-09 07:00 UTC
+tags: business
+---
+
+<div class='blog-header' style="background-image:url(/images/blog/trees.jpg);background-color: #A8C8C8;">
+
+  <div class="blog-header-content">
+
+    <h1>Go Up State</h1>
+    <h2 class="post-subtitle">a new website building service for awesome high quality results</h2>
+
+    <!-- 🌿 🌄 🌿 🌄 🌿 🌄 🌿 🌄 🌿 🌄 🌿 -->
+
+    <div class="author-block">
+      <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/images/austin.jpg" alt="austin, founder of High Tops" class="profile-pic author-pic">
+      <div class="author-name">
+        Austin Samsel
+      </div>
+    </div>
+
+    <div class="published">
+     Published July 9, 2015
+    </div>
+
+  </div>
+
+</div>
+
+##Announcing Up State
+
+Up State is a service that gets your website launched — the State of Up.
+
+" *Up State.* "
+
+Get it? Okay, cool.
+
+So not only does Up State get your website launched, but it'll be a **high quality**, **mobile-responsive** website, built in just one week. There's no quotes, no haggling, no weird stuff, just a flat-rate price of $999.
+
+So if you get your website in the Up State then you can go upstate, meaning, you can get away and go chill in a log cabin or splash around in a waterfall because now you have all this free time you — or you could, you know, just put the extra time into working on your business, too.
+
+So that's Up State.
+
+## Is this for me?
+
+I created Up State for two types of people:
+
+1. You're a **small business owner** and you need a website to promote your business.
+2. **You're a leader** at a company that is launching a new product, organizing a conference, or starting a new marketing campaign and you need to promote your product by giving it its own website.
+
+And you've probably already tried the following ways of getting a website up:
+
+* Do-It-Yourself
+* Hire a freelancer
+* Hire an agency
+
+…and you've had results ranging from **wtf** to **meh** to **okay-we're-broke-now**. And maybe you've wondered if there was something else that just made the whole process easier.
+
+## Is my project a fit?
+
+Up State isn't for every project. It's meant for small, simple projects — usually, brochure-style websites that only require some basic functionality: contact form, content slider, a mailing list sign up form, and so on. These are the types of features that come prepackaged with most premium WordPress themes.
+
+If your project requires more advanced functionality, like eCommerce, webinar sign ups, subscription services, or a lot of design customization, then sometimes Up State is a great way to quickly jumpstart your project and put you ahead of schedule. Starting with a premium theme allows for the streamlining of a lot of design and layout decisions. It keeps costs down and saves time.
+
+Up State makes sense for brand new projects as well as for existing, older websites that need to be totally refreshed. Up State websites are created with modern specs: a mobile-friendly responsive design, Google Analytics, global SEO, optimized page loading, and spam filters.
+
+## Everyone wins
+
+I always negotiate for win-win outcomes. And I think Up State is a good example of that. As a developer/designer, I get to be more productive by offering a standardized, streamlined service. My clients get a great product that's tailored for them and they get to save time, money, and sanity. Awesome!!
+
+## Up next
+
+I'm planning on creating a "playbook" that describes the whole process of building an Up State website. It will include cool stuff like which plugins I like to use and how I take my client's goals into consideration throughout. I'm also thinking about creating some add-on packages for more advanced analytics and visitor tracking -- or possibly a more involved SEO package.
+
+Is there something else you'd want in an Up State website? I'd love to hear your ideas in the comments below. Or  you can contact me directly at <a href="mailto:austin@hightopsnyc.com">austin@hightopsnyc.com</a>
