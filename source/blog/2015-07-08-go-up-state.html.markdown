@@ -1,6 +1,6 @@
 ---
 layout: layout_article
-title: Go-Up-State
+title: Go Up State
 date: 2015-07-08 07:00 UTC
 tags: business
 ---
