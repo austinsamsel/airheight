@@ -14,11 +14,11 @@
     <link rel="alternate" href="http://blog.url.com/blog/go-up-state.html"/>
     <id>http://blog.url.com/blog/go-up-state.html</id>
     <published>2015-07-08T03:00:00-04:00</published>
-    <updated>2015-07-08T16:58:37-04:00</updated>
+    <updated>2015-07-08T22:59:59-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;div class="blog-header" style="background-image:url(/images/blog/trees.jpg);background-color: #A8C8C8;"&gt;
+    <content type="html">&lt;div class="blog-header" style="background-image:url('/images/blog/trees.jpg');background-color: #A8C8C8;"&gt;
 
   &lt;div class="blog-header-content"&gt;
 
