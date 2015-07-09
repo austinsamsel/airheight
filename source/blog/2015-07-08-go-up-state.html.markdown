@@ -37,11 +37,9 @@ Up State is a service that gets your website launched — the State of Up.
 
 Get it? Okay, cool.
 
-So not only does Up State get your website launched, but it'll be a **high quality**, **mobile-responsive** website, built in just one week. There's no quotes, no haggling, no weird stuff, just a flat-rate price of $999.
+Not only does Up State get your website launched, but it'll be a **high quality**, **mobile-responsive** website, built in just one week. There's no quotes, no haggling, no weird stuff, just a flat-rate price of $999.
 
-So if you get your website in the Up State then you can go upstate, meaning, you can get away and go chill in a log cabin or splash around in a waterfall because now you have all this free time you — or you could, you know, just put the extra time into working on your business, too.
-
-So that's Up State.
+That's Up State.
 
 ## Is this for me?
 
