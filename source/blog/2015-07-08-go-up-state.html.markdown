@@ -5,7 +5,7 @@ date: 2015-07-08 07:00 UTC
 tags: business
 ---
 
-<div class='blog-header' style="background-image:url(/images/blog/trees.jpg);background-color: #A8C8C8;">
+<div class='blog-header' style="background-image:url('/images/blog/trees.jpg');background-color: #A8C8C8;">
 
   <div class="blog-header-content">
 
