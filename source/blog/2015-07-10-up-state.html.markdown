@@ -12,8 +12,6 @@ tags: business
     <h1>Up State</h1>
     <h2 class="post-subtitle">a website building service for awesome high quality results</h2>
 
-    <!-- 🌿 🌄 🌿 🌄 🌿 🌄 🌿 🌄 🌿 🌄 🌿 -->
-
     <div class="author-block">
       <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/images/austin.jpg" alt="austin, founder of High Tops" class="profile-pic author-pic">
       <div class="author-name">
