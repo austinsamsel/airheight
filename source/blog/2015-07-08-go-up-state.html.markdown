@@ -31,7 +31,7 @@ tags: business
 
 ##Announcing Up State
 
-Up State is a service that gets your website launched — the State of Up.
+<a href="http://www.upstatebiz.com/">Up State is a WordPress website building service</a>. The Up State service generates websites and gets them into the State of Up - online, launched, live.
 
 " *Up State.* "
 
@@ -66,10 +66,10 @@ Up State makes sense for brand new projects as well as for existing, older websi
 
 ## Everyone wins
 
-As a developer/designer, I get to be more productive by offering a standardized, streamlined service. My clients get a great product that's tailored for them and they get to save time, money, and sanity. Awesome!!
+As a developer/designer, I get to be more productive by offering a standardized, streamlined service. My clients get a great product that's tailored just for them and they get to save time, money, and sanity. Awesome!!
 
 ## Up next
 
-I'm planning on creating a "playbook" that describes the whole process of building an Up State website. It will include cool stuff like which plugins I like to use and how I take my client's goals into consideration throughout. I'm also thinking about creating some add-on packages for more advanced analytics and visitor tracking -- or possibly a more involved SEO package.
+I'm planning on creating a "playbook" that describes the whole process of building an Up State website. It will include cool stuff like which plugins I like to use and how I take my client's goals into consideration throughout the process. I'm also thinking about creating some add-on packages for more advanced analytics and visitor tracking -- or possibly a more involved SEO package.
 
 Is there something else you'd want in a new website? I'd love to hear what you're looking for in the comments below.
