@@ -1,7 +1,7 @@
 ---
 layout: layout_article
-title: Go Up State
-date: 2015-07-08 07:00 UTC
+title: Up State
+date: 2015-07-10 07:00 UTC
 tags: business
 ---
 
@@ -9,8 +9,8 @@ tags: business
 
   <div class="blog-header-content">
 
-    <h1>Go Up State</h1>
-    <h2 class="post-subtitle">a new website building service for awesome high quality results</h2>
+    <h1>Up State</h1>
+    <h2 class="post-subtitle">a website building service for awesome high quality results</h2>
 
     <!-- 🌿 🌄 🌿 🌄 🌿 🌄 🌿 🌄 🌿 🌄 🌿 -->
 
@@ -22,7 +22,7 @@ tags: business
     </div>
 
     <div class="published">
-     Published July 8, 2015
+     Published July 10, 2015
     </div>
 
   </div>
