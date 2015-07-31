@@ -5,7 +5,7 @@
 .read-more-container{
   max-width:750px;
   margin:0 auto;
-  padding:1em 0px;
+  padding:1em 20px;
 }
 .read-more-link{
 max-width:750px;
@@ -46,6 +46,9 @@ max-width:750px;
 .blog-content h5,
 .blog-content h6{
   margin:1em auto 0.65em;
+}
+.blog-content li {
+    padding: 0;
 }
 
 $list-padding: 3.5em;
