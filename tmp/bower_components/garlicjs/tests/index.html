@@ -30,7 +30,7 @@
         switch ( location.hash ) {
             case '#zepto':
                 jsAppend( zepto );
-                jsAppend( '../garlic-8d6d0f19.js' );
+                jsAppend( '../garlic-2c0f6b5c.js' );
                 document.getElementById( 'info' ).innerHTML = 'Garlic test suite for Zepto, unminified version';
                 break;
             case '#zepto-min':
@@ -49,12 +49,12 @@
                 break;
             default:
                 jsAppend( jquery );
-                jsAppend( '../garlic-8d6d0f19.js' );
+                jsAppend( '../garlic-2c0f6b5c.js' );
                 document.getElementById( 'info' ).innerHTML = 'Garlic test suite for jQuery, unminified version';
                 break;
         }
 
-        jsAppend( [ 'mocha-0371d293.js', 'expect-6f5d5428.js', 'tests-4282f3ab.js' ] );
+        jsAppend( [ 'mocha-39ace2bc.js', 'expect-4f18cd9d.js', 'tests-939c29dd.js' ] );
 
         window.onload = function() {
 

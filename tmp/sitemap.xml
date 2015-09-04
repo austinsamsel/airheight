@@ -25,8 +25,20 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://localhost:4567/blog/getting-started-with-cucumber-on-rails.html</loc>
+    <lastmod>2015-09-03T23:33:43-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://localhost:4567/blog.html</loc>
     <lastmod>2015-07-08T15:02:45-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://localhost:4567/blog/tags/software-development.html</loc>
+    <lastmod>2015-07-06T15:59:30-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -206,13 +218,13 @@
   </url>
   <url>
     <loc>https://localhost:4567/bower_components/semantic-ui-loader/RELEASE-NOTES.html</loc>
-    <lastmod>2015-03-27T12:31:27-04:00</lastmod>
+    <lastmod>2015-05-20T11:58:17-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://localhost:4567/bower_components/semantic-ui-loader/README.html</loc>
-    <lastmod>2015-03-27T12:31:27-04:00</lastmod>
+    <lastmod>2015-05-20T11:58:17-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -223,14 +235,14 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://localhost:4567/bower_components/scrollNav/CHANGELOG.html</loc>
-    <lastmod>2015-02-19T22:46:22-05:00</lastmod>
+    <loc>https://localhost:4567/bower_components/jquery/test/data/ajax/unreleasedXHR.html</loc>
+    <lastmod>2013-07-03T09:48:24-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://localhost:4567/bower_components/jquery/test/data/ajax/unreleasedXHR.html</loc>
-    <lastmod>2013-07-03T09:48:24-04:00</lastmod>
+    <loc>https://localhost:4567/bower_components/scrollNav/CHANGELOG.html</loc>
+    <lastmod>2015-02-19T22:46:22-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -337,18 +349,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://localhost:4567/bower_components/jquery/test/readywait.html</loc>
-    <lastmod>2013-07-03T09:48:24-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://localhost:4567/bower_components/jquery/test/networkerror.html</loc>
-    <lastmod>2013-07-03T09:48:24-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://localhost:4567/bower_components/jquery/test/data/selector/html5_selector.html</loc>
     <lastmod>2013-07-03T09:48:24-04:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -368,12 +368,6 @@
   </url>
   <url>
     <loc>https://localhost:4567/bower_components/jquery/test/data/support/boxSizing.html</loc>
-    <lastmod>2013-07-03T09:48:24-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://localhost:4567/bower_components/jquery/test/localfile.html</loc>
     <lastmod>2013-07-03T09:48:24-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -415,13 +409,31 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://localhost:4567/bower_components/jquery/test/hovertest.html</loc>
+    <loc>https://localhost:4567/bower_components/jquery/test/readywait.html</loc>
+    <lastmod>2013-07-03T09:48:24-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://localhost:4567/bower_components/jquery/test/networkerror.html</loc>
+    <lastmod>2013-07-03T09:48:24-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://localhost:4567/bower_components/jquery/test/localfile.html</loc>
     <lastmod>2013-07-03T09:48:24-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://localhost:4567/bower_components/jquery/test/delegatetest.html</loc>
+    <lastmod>2013-07-03T09:48:24-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://localhost:4567/bower_components/jquery/test/hovertest.html</loc>
     <lastmod>2013-07-03T09:48:24-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
