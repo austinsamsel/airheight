@@ -34,7 +34,9 @@ max-width:750px;
 .blog-content h6,
 .blog-content li,
 .blog-content ol,
-.blog-content ul,{
+.blog-content ul,
+pre,
+code{
   max-width:750px !important;
   padding: 0 20px;
   margin:1em auto;

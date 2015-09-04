@@ -24,6 +24,7 @@
     "parsleyjs": "~2.0.7",
     "garlicjs": "~1.2.3",
     "scrollNav": "~2.6.0",
-    "jQuery-One-Page-Nav": "~3.0.0"
+    "jQuery-One-Page-Nav": "~3.0.0",
+    "prism": "~1.0.1"
   }
 }

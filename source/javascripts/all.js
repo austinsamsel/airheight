@@ -5,3 +5,4 @@
 //= require blazy.min.js
 //= require garlicjs/dist/garlic.min.js
 //= require parsleyjs/dist/parsley
+//= require prism.js
