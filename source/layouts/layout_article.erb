@@ -12,11 +12,13 @@
   <body>
     <%= partial "partials/nav" %>
 
-    <div class="blog-content" role="main">
-      <%= yield %>
-      <%= partial "partials/mailchimp" %>
-      <%= partial "partials/disqus" %>
-      <%= partial "partials/footer" %>
+    <div class="blog-container">
+      <div class="blog-content" role="main">
+        <%= yield %>
+        <%= partial "partials/mailchimp" %>
+        <%= partial "partials/disqus" %>
+        <%= partial "partials/footer" %>
+      </div>
     </div>
 
     <%= google_analytics_tag %>

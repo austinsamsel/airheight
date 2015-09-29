@@ -42,6 +42,10 @@ code, pre {
   width:100%; overflow-x:auto;
 }
 
+.blog-container{
+  width:100%;
+  padding:0 20px;
+}
 .blog-content p,
 .blog-content h1,
 .blog-content h2,
@@ -55,7 +59,7 @@ code, pre {
 pre,
 code{
   max-width:750px !important;
-  padding: 0 20px;
+  padding: 0;
   margin:1em auto;
 }
 .blog-content h1,
