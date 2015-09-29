@@ -1,6 +1,7 @@
 #blog-index {
   max-width: 100% !important;
   padding: 0;
+  margin-top:4em;
 }
 .read-more-container{
   max-width:750px;
@@ -24,6 +25,22 @@ max-width:750px;
   background-color:lighten($blue, 10%);
 }
 
+.blog-content{
+  margin-top:4em;
+}
+
+code, pre {
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  webkit-box-sizing:border-box;
+  display:block;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+  width:100%; overflow-x:auto;
+}
 
 .blog-content p,
 .blog-content h1,
@@ -154,7 +171,11 @@ p {
 }
 
 .blog-content h1 {
-  color: $blue;
+  color: $brand-gray;
+  font-size:1.8em;
+  @include media($medium-screen){
+    font-size:2.1em;
+  }
 }
 footer{
   max-width: 750px;

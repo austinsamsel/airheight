@@ -5,8 +5,8 @@ date: 2015-08-31 17:09 UTC
 tags: software development
 ---
 
-<div class='blog-header' style="background-image:url('/images/blog/cucumber-face-mask.jpg');background-color: #A8C8C8;">
-  <div class="blog-header-content">
+
+  <!-- <div class="blog-header-content">
     <h1>Cucumber on Rails</h1>
     <h2 class="post-subtitle">A Tutorial in Behavior Driven Development</h2>
     <div class="author-block">
@@ -18,10 +18,9 @@ tags: software development
     <div class="published">
      Published July 10, 2015
     </div>
-  </div>
-</div>
+  </div> -->
 
-## Cucumber on Rails
+# Cucumber on Rails
 
 <p>This is a "getting started" with Cucumber and BDD testing in rails. We're literally jumping straight into it. I'm assuming you've already read up on some testing concepts and you've found your way here in order to understand what a workflow with Cucumber might look like and how we think about problems along the way. If you like, you can grab the finished code from <a href="https://github.com/austinsamsel/rails-cuke-todo">GitHub</a>.</p>
 
@@ -47,7 +46,7 @@ $ bundle install
 <pre><code class="language-ruby">$ rails generate cucumber:install
 </code></pre>
 
-<p>This gives us a new directory called <code class="language-ruby">features</code> which is where we'll write tests.</p>
+<p>This gives us a new directory called <em>features</em> which is where we'll write tests.</p>
 
 <h3>Step 2 - Create first feature: Add a Task.</h3>
 
@@ -66,7 +65,7 @@ Feature: Todos
   I want to be able to create a list of tasks.
 </code></pre>
 
-<p>Great. Let's write our first scenario. Each scenario is composed of steps that begin with keywords like <code class="language-ruby">Given</code> <code class="language-ruby">And</code> <code class="language-ruby">When</code> and finally <code class="language-ruby">Then</code>.</p>
+<p>Great. Let's write our first scenario. Each scenario is composed of steps that begin with keywords like <em>Given</em> <em>And</em> <em>When</em> and finally <em>Then</em>.</p>
 
 <pre><code class="language-ruby">#todos.feature
 ...
@@ -117,7 +116,7 @@ Then(/^I should see "(.*?)"$/) do |arg1|
 end
 </code></pre>
 
-<p>Whenever we want some feedback from cucumber, we'll run <code class="language-ruby">$ rake cucumber</code>.  And we'll see that it tells us our first step is pending.</p>
+<p>Whenever we want some feedback from cucumber, we'll run <em>$ rake cucumber</em>  And we'll see that it tells us our first step is pending.</p>
 
 <p>Fill out the first step definition with the following.</p>
 
@@ -158,7 +157,7 @@ root 'tasks#index'
 <pre><code class="language-ruby">$ rails g controller Tasks home --no-helper --no-assets
 </code></pre>
 
-<p>This will also give us the view we need as well at <code class="language-ruby">app/views/tasks/home.html.erb</code></p>
+<p>This will also give us the view we need as well at <em>app/views/tasks/home.html.erb</em></p>
 
 <p>When we run cucumber again, our first step passes! Now our next step is pending. So let's write the code for that.</p>
 
@@ -230,7 +229,7 @@ end
 ...
 </code></pre>
 
-<p>We updated the argument variables from <code class="language-ruby">arg1, arg2</code> to <code class="language-ruby">input, value</code> to be more readable.</p>
+<p>We updated the argument variables from <em>arg1, arg2</em> to <em>input, value</em> to be more readable.</p>
 
 <p>When we run cucumber, we get:</p>
 
@@ -456,7 +455,7 @@ end
 <pre><code class="language-ruby">Failed assertion, no message given. (Minitest::Assertion)
 </code></pre>
 
-<p>We still aren't being told of the failure. If we run <code class="language-ruby">rails s</code> and see what's going on when we submit a blank task, we're told "can't be blank". It is working! Cross referencing with our feature, we previously wrote, "Can't be blank". So we need to update our feature with the proper capitalization.</p>
+<p>We still aren't being told of the failure. If we run <em>rails s</em> to start the server and see what's going on when we submit a blank task, we're told "can't be blank". It is working! Cross referencing with our feature, we previously wrote, "Can't be blank". So we need to update our feature with the proper capitalization.</p>
 
 <pre><code class="language-ruby">#features/todos.feature
 ...
@@ -486,7 +485,7 @@ Then I should be told "can't be blank"
 
 <p>You'll notice a new format here. We created some sample data within Cucumber that can run. It's a simple and fast way to start writing more complex tests.</p>
 
-<p>We'll run cucumber and grab the output and paste it in our <code class="language-ruby">step_definitons/todos.rb</code> file.</p>
+<p>We'll run cucumber and grab the output and paste it in our <em>step_definitons/todos.rb</em> file.</p>
 
 <p>In order to work with the data in the fixtures, we'll modify our first step definition:</p>
 
@@ -691,7 +690,7 @@ before_action :find_task, only: [:edit, :update]
 end
 </code></pre>
 
-<p>This code checks if our list item has the css class <code class="language-ruby">.completed</code>. The argument has_css? looks within the list item to its children, when we wanted to check the list item itself. So we used <code class="language-ruby">.parent</code> to return the search to the list item element itself.</p>
+<p>This code checks if our list item has the css class <em>.completed</em>. The argument has_css? looks within the list item to its children, when we wanted to check the list item itself. So we used <em>.parent</em> to return the search to the list item element itself.</p>
 
 <p>Let's update the home page view with some logic that determines if the task is marked as completed, and if it is, to add the class, "completed"</p>
 
