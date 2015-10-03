@@ -6,7 +6,7 @@
 .read-more-container{
   max-width:750px;
   margin:0 auto;
-  padding:1em 20px;
+  padding:0.5em 0px;
 }
 .read-more-link{
 max-width:750px;
@@ -41,11 +41,18 @@ code, pre {
   word-wrap: break-word;
   width:100%; overflow-x:auto;
 }
+pre {
+  padding: 0em 1em !important;
+}
 
 .blog-container{
   width:100%;
   padding:0 20px;
 }
+.blog-container ul li {
+    line-height: 0.8em;
+}
+
 .blog-content p,
 .blog-content h1,
 .blog-content h2,
