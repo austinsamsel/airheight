@@ -1,7 +1,6 @@
 // source/js/all.js
 //= require jquery
 //= require jQuery-One-Page-Nav/jquery.nav.js
-//= require typed.js/js/typed
 //= require blazy.min.js
 //= require garlicjs/dist/garlic.min.js
 //= require parsleyjs/dist/parsley
@@ -52,14 +51,6 @@ $(document).ready(function() {
                   //I get fired when you enter a section and I pass the list item of the section
               }
           });
-
-              $("#hero-story").typed({
-                  strings: ["Let's make life ^500better ^1000:^800)^500","<a href='#Contact'>How can I help^800?</a>"],
-                  typeSpeed: 20,
-                  backDelay: 500,
-                  loop: false,
-                  loopCount: false
-              });
 
               var $contactForm = $('#contactform');
               $contactForm.submit(function(e) {

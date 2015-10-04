@@ -5,25 +5,167 @@
   <id>http://blog.url.com/blog</id>
   <link href="http://blog.url.com/blog"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2015-08-31T13:09:00-04:00</updated>
+  <updated>2015-10-03T17:34:00-04:00</updated>
   <author>
     <name>Blog Author</name>
   </author>
+  <entry>
+    <title>Building-Capote:-Meteor-&amp;-Mocha-TDD-(Part 1)</title>
+    <link rel="alternate" href="http://blog.url.com/blog/building-capote.html"/>
+    <id>http://blog.url.com/blog/building-capote.html</id>
+    <published>2015-10-03T17:34:00-04:00</published>
+    <updated>2015-10-03T18:01:44-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;h1 id="building-capote-meteor--mocha-tdd-part-1"&gt;Building Capote: Meteor &amp;amp; Mocha TDD (Part 1)&lt;/h1&gt;
+
+&lt;p&gt;You know what's annoying? Testing your app by physically logging in and going through your app to make sure everything works. Also, it takes a lot of time. Also, its scary. If I was doing that while working for a client, I'd really be stressed.&lt;/p&gt;
+
+&lt;p&gt;That's why there's TDD. Writing tests as you write your software. It helps your software suck less, gives you a little more peace of mind, and even though it means writing extra code, there's a really good chance it will save you a lot of time overall.&lt;/p&gt;
+
+&lt;p&gt;When you're learning a framework, you don't get much exposure to testing. Usually your learning resources are focused on covering the framework itself. They don't cover tests because there's so many different ways to do it. With Meteor there's a bunch of suites to test your app: cucumber, jasmine, mocha, etc.&lt;/p&gt;
+
+&lt;p&gt;If you're looking to get started with TDD or want to see some examples of using Mocha in TDD to build a Meteor app, this tutorial is for you.&lt;/p&gt;
+
+&lt;h2 id="resources"&gt;Resources&lt;/h2&gt;
+
+&lt;h5 id="meteor-tdd-bible"&gt;Meteor TDD bible:&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href="www.meteortesting.com"&gt;www.meteortesting.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id="also-especially-relevant"&gt;Also, especially relevant:&lt;/h5&gt;
+
+&lt;p&gt;Mocha documentation: &lt;a href="https://mochajs.org/"&gt;https://mochajs.org/&lt;/a&gt;
+Chai documentation: &lt;a href="http://chaijs.com/"&gt;http://chaijs.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Because while we're using Mocha we'll use Chai for assertions.&lt;/p&gt;
+
+&lt;h5 id="other-meteor-mocha-tutorials"&gt;other Meteor mocha tutorials:&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href="http://www.webtempest.com/meteor-js-testing-mocha-tutorial"&gt;http://www.webtempest.com/meteor-js-testing-mocha-tutorial&lt;/a&gt;
+&lt;a href="https://github.com/meteor-velocity/velocity-examples"&gt;https://github.com/meteor-velocity/velocity-examples&lt;/a&gt; (technically just examples)&lt;/p&gt;
+
+&lt;h2 id="about-our-app"&gt;About our app&lt;/h2&gt;
+
+&lt;p&gt;In this tutorial, we'll build an app that tracks a user's daily word count. I've gotten into the habit of waking up in the morning and writing at least 500 words a day. It's a great way to empty out my mind and free myself up for a little more creativity. We're going to name this app Capote, after Truman Capote. Whose that? Doesn't matter. But if you don't know, he was a writer from a long time ago and he probably wrote at least 500 words a day (I have no idea, but probably!). Also his last name sounds kind of cool for an app. So there it is, Capote.&lt;/p&gt;
+
+&lt;p&gt;Here are the features we'll build:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;List of posts: title &amp;amp; content&lt;/li&gt;
+  &lt;li&gt;Daily goal set by user.&lt;/li&gt;
+  &lt;li&gt;Streak banner: “congrats 1 day”&lt;/li&gt;
+  &lt;li&gt;Individual post page.&lt;/li&gt;
+  &lt;li&gt;Create, view, edit, delete post.&lt;/li&gt;
+  &lt;li&gt;Count words per day &amp;amp; record streak.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id="set-up"&gt;Set up&lt;/h2&gt;
+
+&lt;p&gt;For this first post, we'll set up our test suite and write our first test. We'll want to create a sample list of posts so we have some data to work with. First things first, we'll generate a new app.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ meteor create capote
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then let's trash the default files &lt;em&gt;capote.css&lt;/em&gt;, &lt;em&gt;capote.html&lt;/em&gt; and &lt;em&gt;capote.js&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Let's also add in our testing package:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ meteor add mike:mocha
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let's set up our tests directory structure like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;pre&amp;gt;&amp;lt;code class="language-javascript"&amp;gt;tests/
+- mocha/
+- - client/
+- - server/ &amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This type of pattern is required for velocity to read the tests and you'll need to use it while testing in Meteor with Cucumber, Jasmine, too. What is velocity? Velocity is Meteor's reactive test-runner and it supports a whole bunch of testing frameworks.&lt;/p&gt;
+
+&lt;h2 id="our-first-test"&gt;Our first test&lt;/h2&gt;
+
+&lt;p&gt;Let's start with the server. There's just a few parts to each post we need right now: a timestamp, a title, and the body of the post.&lt;/p&gt;
+
+&lt;p&gt;We'll write our first test. Any mocha tests are first going to be wrapped in the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;// tests/mocha/server/server.js
+if (!(typeof MochaWeb === 'undefined')){
+  MochaWeb.testOnly(function(){
+    /* some test code*/
+  });
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There isn't much documentation I can find about why we ought to do this… It looks like it helps to only run tests in the dev or mirror environment, but I'm honestly not sure. I've been able to run tests without it. For now, I include it because the Velocity developers do it.&lt;/p&gt;
+
+&lt;p&gt;Moving along. We'll write our first test, which just makes sure we have at least one post in the database.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;describe("Server initialization", function(){
+  it("should insert posts into the database on server startup", function(){
+    chai.assert(Posts.find().count() &amp;gt; 0);
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you run meteor now you'll see that velocity pops up. In your logs you'll also see a message saying, "You can see the mirror logs at: tail -f /path/to/your/logs". You can also pop open another command line window and paste in &lt;em&gt;tail -f /path/to/your/logs&lt;/em&gt; and get some extra insight.&lt;/p&gt;
+
+&lt;p&gt;Both the logs and our UI tell us the same thing. "1 test failed" and "Posts is not defined." I love TDD. It tells us what comes next. We can go ahead and define Posts now.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;// model/posts.js
+	Posts = new Mongo.Collection('posts');
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When the tests run again, we're told we have a failed "Server initialization." Let's add some posts on server start up.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;// server/app.js
+if (Meteor.isServer) {
+  Meteor.startup(function () {
+    if (Posts.find().count() === 0) {
+      Posts.insert({
+        title: "Neutra messenger bag",
+        content: "Tousled forage trust fund readymade Neutra messenger bag. Drinking vinegar chia Marfa, vegan messenger bag disrupt Wes Anderson try-hard. Small batch scenester raw denim synth cronut cornhole, iPhone try-hard single-origin."
+      });
+      Posts.insert({
+        title: "fatback filet mignon",
+        content: "Bacon ipsum dolor amet alcatra turkey shank cupim corned beef brisket chuck boudin tri-tip t-bone kevin fatback filet mignon. Short loin tongue short ribs."
+      });
+      Posts.insert({
+        title: "know what I'm sayin'",
+        content: "You see? It's curious. Ted did figure it out - time travel. And when we get back, we gonna tell everyone. How it's possible, how it's done, what the dangers are. But then why fifty years in the future when the spacecraft encounters a black hole does the computer call it an 'unknown entry event'?"
+      });
+    }
+  });
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I used &lt;a href="http://hipsum.co/"&gt;some&lt;/a&gt; &lt;a href="https://baconipsum.com/"&gt;pretty&lt;/a&gt; &lt;a href="http://slipsum.com/"&gt;sweet&lt;/a&gt; ipsum generators to create some sample content. We're inserting three posts with a title and content only if there are no posts in the database upon start up.&lt;/p&gt;
+
+&lt;p&gt;If you check the logs or the velocity helper in the UI, you'll notice that our first test passed. Great!&lt;/p&gt;
+
+&lt;h2 id="picking-up-the-pace"&gt;Picking up the pace&lt;/h2&gt;
+
+&lt;p&gt;I'm going to cap this post here, but in the next posts as we build out this app, I'm going to pick up the pace with these tests and we'll get a whole bunch done, real fast.&lt;/p&gt;
+
+&lt;p&gt;Part 2 coming soon.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Getting-Started-with-Cucumber-on-Rails</title>
     <link rel="alternate" href="http://blog.url.com/blog/getting-started-with-cucumber-on-rails.html"/>
     <id>http://blog.url.com/blog/getting-started-with-cucumber-on-rails.html</id>
     <published>2015-08-31T13:09:00-04:00</published>
-    <updated>2015-09-03T23:33:43-04:00</updated>
+    <updated>2015-10-03T17:37:38-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;div class="blog-header" style="background-image:url('/images/blog/cucumber-face-mask.jpg');background-color: #A8C8C8;"&gt;
-  &lt;div class="blog-header-content"&gt;
+    <content type="html">&lt;p&gt;&lt;!-- &lt;div class="blog-header-content"&gt;
     &lt;h1&gt;Cucumber on Rails&lt;/h1&gt;
     &lt;h2 class="post-subtitle"&gt;A Tutorial in Behavior Driven Development&lt;/h2&gt;
     &lt;div class="author-block"&gt;
-      &lt;img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/images/austin.jpg" alt="austin, founder of High Tops" class="profile-pic author-pic" /&gt;
+      &lt;img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/images/austin.jpg" alt="austin, founder of High Tops" class="profile-pic author-pic"&gt;
       &lt;div class="author-name"&gt;
         Austin Samsel
       &lt;/div&gt;
@@ -31,10 +173,9 @@
     &lt;div class="published"&gt;
      Published July 10, 2015
     &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+  &lt;/div&gt; --&gt;&lt;/p&gt;
 
-&lt;h2 id="cucumber-on-rails"&gt;Cucumber on Rails&lt;/h2&gt;
+&lt;h1 id="cucumber-on-rails"&gt;Cucumber on Rails&lt;/h1&gt;
 
 &lt;p&gt;This is a "getting started" with Cucumber and BDD testing in rails. We're literally jumping straight into it. I'm assuming you've already read up on some testing concepts and you've found your way here in order to understand what a workflow with Cucumber might look like and how we think about problems along the way. If you like, you can grab the finished code from &lt;a href="https://github.com/austinsamsel/rails-cuke-todo"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 
@@ -60,7 +201,7 @@ $ bundle install
 &lt;pre&gt;&lt;code class="language-ruby"&gt;$ rails generate cucumber:install
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;This gives us a new directory called &lt;code class="language-ruby"&gt;features&lt;/code&gt; which is where we'll write tests.&lt;/p&gt;
+&lt;p&gt;This gives us a new directory called &lt;em&gt;features&lt;/em&gt; which is where we'll write tests.&lt;/p&gt;
 
 &lt;h3&gt;Step 2 - Create first feature: Add a Task.&lt;/h3&gt;
 
@@ -79,7 +220,7 @@ Feature: Todos
   I want to be able to create a list of tasks.
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Great. Let's write our first scenario. Each scenario is composed of steps that begin with keywords like &lt;code class="language-ruby"&gt;Given&lt;/code&gt; &lt;code class="language-ruby"&gt;And&lt;/code&gt; &lt;code class="language-ruby"&gt;When&lt;/code&gt; and finally &lt;code class="language-ruby"&gt;Then&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Great. Let's write our first scenario. Each scenario is composed of steps that begin with keywords like &lt;em&gt;Given&lt;/em&gt; &lt;em&gt;And&lt;/em&gt; &lt;em&gt;When&lt;/em&gt; and finally &lt;em&gt;Then&lt;/em&gt;.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#todos.feature
 ...
@@ -129,7 +270,7 @@ Then(/^I should see "(.*?)"$/) do |arg1|
 end
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Whenever we want some feedback from cucumber, we'll run &lt;code class="language-ruby"&gt;$ rake cucumber&lt;/code&gt;.  And we'll see that it tells us our first step is pending.&lt;/p&gt;
+&lt;p&gt;Whenever we want some feedback from cucumber, we'll run &lt;em&gt;$ rake cucumber&lt;/em&gt;  And we'll see that it tells us our first step is pending.&lt;/p&gt;
 
 &lt;p&gt;Fill out the first step definition with the following.&lt;/p&gt;
 
@@ -170,7 +311,7 @@ root 'tasks#index'
 &lt;pre&gt;&lt;code class="language-ruby"&gt;$ rails g controller Tasks home --no-helper --no-assets
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;This will also give us the view we need as well at &lt;code class="language-ruby"&gt;app/views/tasks/home.html.erb&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This will also give us the view we need as well at &lt;em&gt;app/views/tasks/home.html.erb&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;When we run cucumber again, our first step passes! Now our next step is pending. So let's write the code for that.&lt;/p&gt;
 
@@ -242,7 +383,7 @@ end
 ...
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;We updated the argument variables from &lt;code class="language-ruby"&gt;arg1, arg2&lt;/code&gt; to &lt;code class="language-ruby"&gt;input, value&lt;/code&gt; to be more readable.&lt;/p&gt;
+&lt;p&gt;We updated the argument variables from &lt;em&gt;arg1, arg2&lt;/em&gt; to &lt;em&gt;input, value&lt;/em&gt; to be more readable.&lt;/p&gt;
 
 &lt;p&gt;When we run cucumber, we get:&lt;/p&gt;
 
@@ -467,7 +608,7 @@ end
 &lt;pre&gt;&lt;code class="language-ruby"&gt;Failed assertion, no message given. (Minitest::Assertion)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;We still aren't being told of the failure. If we run &lt;code class="language-ruby"&gt;rails s&lt;/code&gt; and see what's going on when we submit a blank task, we're told "can't be blank". It is working! Cross referencing with our feature, we previously wrote, "Can't be blank". So we need to update our feature with the proper capitalization.&lt;/p&gt;
+&lt;p&gt;We still aren't being told of the failure. If we run &lt;em&gt;rails s&lt;/em&gt; to start the server and see what's going on when we submit a blank task, we're told "can't be blank". It is working! Cross referencing with our feature, we previously wrote, "Can't be blank". So we need to update our feature with the proper capitalization.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#features/todos.feature
 ...
@@ -497,7 +638,7 @@ Then I should be told "can't be blank"
 
 &lt;p&gt;You'll notice a new format here. We created some sample data within Cucumber that can run. It's a simple and fast way to start writing more complex tests.&lt;/p&gt;
 
-&lt;p&gt;We'll run cucumber and grab the output and paste it in our &lt;code class="language-ruby"&gt;step_definitons/todos.rb&lt;/code&gt; file.&lt;/p&gt;
+&lt;p&gt;We'll run cucumber and grab the output and paste it in our &lt;em&gt;step_definitons/todos.rb&lt;/em&gt; file.&lt;/p&gt;
 
 &lt;p&gt;In order to work with the data in the fixtures, we'll modify our first step definition:&lt;/p&gt;
 
@@ -702,7 +843,7 @@ before_action :find_task, only: [:edit, :update]
 end
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;This code checks if our list item has the css class &lt;code class="language-ruby"&gt;.completed&lt;/code&gt;. The argument has_css? looks within the list item to its children, when we wanted to check the list item itself. So we used &lt;code class="language-ruby"&gt;.parent&lt;/code&gt; to return the search to the list item element itself.&lt;/p&gt;
+&lt;p&gt;This code checks if our list item has the css class &lt;em&gt;.completed&lt;/em&gt;. The argument has_css? looks within the list item to its children, when we wanted to check the list item itself. So we used &lt;em&gt;.parent&lt;/em&gt; to return the search to the list item element itself.&lt;/p&gt;
 
 &lt;p&gt;Let's update the home page view with some logic that determines if the task is marked as completed, and if it is, to add the class, "completed"&lt;/p&gt;
 
@@ -845,16 +986,16 @@ end
     <link rel="alternate" href="http://blog.url.com/blog/up-state.html"/>
     <id>http://blog.url.com/blog/up-state.html</id>
     <published>2015-07-10T03:00:00-04:00</published>
-    <updated>2015-07-10T09:00:30-04:00</updated>
+    <updated>2015-09-29T10:26:03-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;div class="blog-header" style="background-image:url('/images/blog/trees.jpg');background-color: #A8C8C8;"&gt;
+    <content type="html">&lt;!-- &lt;div class='blog-header' style="background-image:url('/images/blog/trees.jpg');background-color: #A8C8C8;"&gt;
   &lt;div class="blog-header-content"&gt;
     &lt;h1&gt;Up State&lt;/h1&gt;
     &lt;h2 class="post-subtitle"&gt;a website building service for awesome high quality results&lt;/h2&gt;
     &lt;div class="author-block"&gt;
-      &lt;img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/images/austin.jpg" alt="austin, founder of High Tops" class="profile-pic author-pic" /&gt;
+      &lt;img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/images/austin.jpg" alt="austin, founder of High Tops" class="profile-pic author-pic"&gt;
       &lt;div class="author-name"&gt;
         Austin Samsel
       &lt;/div&gt;
@@ -863,9 +1004,9 @@ end
      Published July 10, 2015
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt; --&gt;
 
-&lt;h2 id="announcing-up-state"&gt;Announcing Up State&lt;/h2&gt;
+&lt;h1 id="announcing-up-state"&gt;Announcing Up State&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href="http://www.upstatebiz.com/"&gt;Up State is a WordPress website building service&lt;/a&gt;. The Up State service generates websites and gets them into the State of Up - online, launched, live.&lt;/p&gt;
 

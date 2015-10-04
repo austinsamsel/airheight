@@ -216,14 +216,14 @@ div#hero-story.hero{
   margin-bottom:9%;
 }
 #hero-story:after{
-  @extend .typed-cursor;
-  content:' ';
-  background-color:rgba(0,0,0,0.25);
-  display:inline-block;
-  width:0.1em;
-  height:1.2em;
-  vertical-align: -.2em;
-  margin-left:0.05em;
+  // @extend .typed-cursor;
+  // content:' ';
+  // background-color:rgba(0,0,0,0.25);
+  // display:inline-block;
+  // width:0.1em;
+  // height:1.2em;
+  // vertical-align: -.2em;
+  // margin-left:0.05em;
 }
 span.typed-cursor{
   display:none !important;
@@ -240,7 +240,6 @@ span.typed-cursor{
   margin-bottom:0.25em;
   letter-spacing:-0.02em;
   text-align:center;
-  font-weight: 600;
     @include media($medium-screen) {
       font-size:2.5em;
       // padding: 0 3em 0 0;
