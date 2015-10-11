@@ -14,8 +14,13 @@ gem 'bitters', '~> 1.0.0'
 gem 'bourbon', '~> 4.2.1'
 gem 'neat', '~> 1.7.2'
 gem 'font-awesome-middleman', "~> 4.2.3"
-#gem "middleman-syntax"
-#gem 'redcarpet'
+# gem "middleman-syntax"
+# gem 'redcarpet'
+gem 'kramdown'
+gem 'rdiscount'
+gem 'bluecloth'
+gem 'maruku'
+
 #gem 'middleman-rouge'
 
 #intelligence

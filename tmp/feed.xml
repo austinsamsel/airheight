@@ -5,20 +5,169 @@
   <id>http://blog.url.com/blog</id>
   <link href="http://blog.url.com/blog"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2015-10-03T17:34:00-04:00</updated>
+  <updated>2015-10-10T18:08:00-04:00</updated>
   <author>
     <name>Blog Author</name>
   </author>
   <entry>
-    <title>Building-Capote:-Meteor-&amp;-Mocha-TDD-(Part 1)</title>
-    <link rel="alternate" href="http://blog.url.com/blog/building-capote.html"/>
-    <id>http://blog.url.com/blog/building-capote.html</id>
-    <published>2015-10-03T17:34:00-04:00</published>
-    <updated>2015-10-03T18:01:44-04:00</updated>
+    <title>Building-Capote:-Meteor-&amp;-Mocha-TDD-(Part2)</title>
+    <link rel="alternate" href="http://blog.url.com/blog/building-capote-part-2.html"/>
+    <id>http://blog.url.com/blog/building-capote-part-2.html</id>
+    <published>2015-10-10T18:08:00-04:00</published>
+    <updated>2015-10-10T20:20:04-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;h1 id="building-capote-meteor--mocha-tdd-part-1"&gt;Building Capote: Meteor &amp;amp; Mocha TDD (Part 1)&lt;/h1&gt;
+    <content type="html">&lt;h1&gt;Building Capote: Meteor &amp;amp; Mocha TDD (Part 2)&lt;/h1&gt;
+
+&lt;p&gt;In the last post, we set up our app, fixtures, and got our first test to pass. You can grab the code from the last chapter &lt;a href="https://github.com/austinsamsel/capote/tree/part-1"&gt;here&lt;/a&gt;. If you want to review the last post, you can &lt;a href="http://hightopsnyc.com/blog/building-capote.html"&gt;visit it here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Testing UI Objects and Sort Order&lt;/h2&gt;
+
+&lt;p&gt;It's time to actually show our posts in the UI to our users. In the first test, I want to make sure there's at least one post displaying by checking if the css class that's associated with the post gets printed to the page. Then I'll know there's a post on the page, no matter the content of the post. Then I want to test the order of the posts so that the most recent posts show up first in the list.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;// tests/mocha/client/client.js
+
+if (!(typeof MochaWeb === 'undefined')){
+  MochaWeb.testOnly(function(){
+
+    describe("Posts", function(){
+      it("shows a post", function(){
+        Meteor.flush();
+        chai.assert.typeOf($(".title:eq(0)"), 'object');
+      })
+      it("should show my latest post, first.", function(){
+        Meteor.flush();
+        chai.assert.equal($(".title:eq(0)").html(), "Neutra messenger bag");
+      });
+    });
+
+  });
+}&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;After the tests, we'll get to writing the actual code. First we'll create a subscription so our template can find the posts in the database. We don't need to create a publication since we still have the autopublish package installed by default (and we'd be sure to remove it if this app was going into production). We also set up our templates to display the posts.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;// client/posts.js
+if (Meteor.isClient) {
+  Template.body.helpers({
+    posts: function () {
+      return Posts.find({}, {sort: {createdAt: -1}});
+    }
+  });
+}&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;pre&gt;&lt;code&gt;// client/index.html
+&amp;lt;head&amp;gt;
+  &amp;lt;meta name="viewport" content="width=device-width, initial-scale=1" /&amp;gt;
+  &amp;lt;title&amp;gt;Capote - track your words per day&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+
+&amp;lt;body&amp;gt;
+  &amp;lt;div class="container"&amp;gt;
+    {{#each posts}}
+      {{&amp;gt; post}}
+    {{/each}}
+  &amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+
+&amp;lt;template name="post"&amp;gt;
+  &amp;lt;div class="title"&amp;gt;{{title}}&amp;lt;/div&amp;gt;
+  &amp;lt;div class="content"&amp;gt;{{content}}&amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2&gt;Testing Timestamps&lt;/h2&gt;
+
+&lt;p&gt;Before we can think about measuring the daily word count streak, we need to include a timestamp with each post. The following is a test to check for that.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;// tests/mocha/client/client
+...
+  it("should show a clean timestamp", function(){
+    chai.assert.equal($(".timestamp:eq(1)").html(), "01-03-2015");
+  });
+...&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;We'll update our fixtures by adding a date/time for when our posts are created. We'll also include the new field in our templates.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;// server/app.js
+
+if (Meteor.isServer) {
+  Meteor.startup(function () {
+    if (Posts.find().count() === 0) {
+      Posts.insert({
+        title: "Neutra messenger bag",
+        content: "Tousled forage trust fund readymade Neutra messenger bag. Drinking vinegar chia Marfa, vegan messenger bag disrupt Wes Anderson try-hard. Small batch scenester raw denim synth cronut cornhole, iPhone try-hard single-origin.",
+        createdAt: new Date(2015,0,4) // new timestamp
+      });
+      Posts.insert({
+        title: "fatback filet mignon",
+        content: "Bacon ipsum dolor amet alcatra turkey shank cupim corned beef brisket chuck boudin tri-tip t-bone kevin fatback filet mignon. Short loin tongue short ribs.",
+        createdAt: new Date(2015,0,3) // new timestamp
+      });
+      Posts.insert({
+        title: "know what I'm sayin'",
+        content: "You see? It's curious. Ted did figure it out - time travel. And when we get back, we gonna tell everyone. How it's possible, how it's done, what the dangers are. But then why fifty years in the future when the spacecraft encounters a black hole does the computer call it an 'unknown entry event'?",
+        createdAt: new Date(2015,0,1) // new timestamp
+      });
+    }
+  });
+}&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;pre&gt;&lt;code&gt;// client/index.html
+
+&amp;lt;template name="post"&amp;gt;
+  &amp;lt;!-- our new timestamp below --&amp;gt;
+  &amp;lt;div class="timestamp"&amp;gt;{{createdAt}}&amp;lt;/div&amp;gt;
+  &amp;lt;div class="title"&amp;gt;{{title}}&amp;lt;/div&amp;gt;
+  &amp;lt;div class="content"&amp;gt;{{content}}&amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To see whether this passes or fails, we'll manually reset our app by running &lt;em&gt;meteor reset &amp;amp;&amp;amp; meteor&lt;/em&gt; in the command line. Mocha's mirror derives itself from the application your developing, so the fixtures won't reset on their own. The idea is that you wouldn't want to reset the mirror database each time before running tests because it would take too long.&lt;/p&gt;
+
+&lt;p&gt;Our test still fails because, by default, Meteor prints out the full timestamp, like: &lt;em&gt;Sat Jan 03 2015 00:00:00 GMT-0500 (EST)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;We'll need to make use of &lt;a href="http://momentjs.com/"&gt;Moment JS&lt;/a&gt; to parse our timestamps. Run the following in the command line to add the moment package to our app.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;$ meteor add moments:moment&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Then we'll create a helper to parse the timestamp. It takes the default timestamp as an argument. Next we'll update our template with the cleanDate helper, effectively passing in that long default timestamp and returning our clean timestamp.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;// client/helper.js
+Template.registerHelper('cleanDate', function(date) {
+    return moment(date).format('MM-DD-YYYY');
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;pre&gt;&lt;code&gt;// client/index.html
+&amp;lt;div class="timestamp"&amp;gt;{{cleanDate createdAt}}&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now our tests all pass.&lt;/p&gt;
+
+&lt;h2&gt;Wrapping Up&lt;/h2&gt;
+
+&lt;p&gt;If you have any questions or you want me to break down the steps even further, please let me know. If you want to check out the code for this section, you can grab it from &lt;a href="https://github.com/austinsamsel/capote/tree/part-2"&gt;GitHub&lt;/a&gt;. In the next post we'll write tests for creating and deleting posts.&lt;/p&gt;
+
+&lt;p&gt;Part 3 coming soon.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Building-Capote:-Meteor-&amp;-Mocha-TDD-(Part1)</title>
+    <link rel="alternate" href="http://blog.url.com/blog/building-capote.html"/>
+    <id>http://blog.url.com/blog/building-capote.html</id>
+    <published>2015-10-03T17:34:00-04:00</published>
+    <updated>2015-10-10T18:11:38-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;h1&gt;Building Capote: Meteor &amp;amp; Mocha TDD (Part 1)&lt;/h1&gt;
 
 &lt;p&gt;You know what's annoying? Testing your app by physically logging in and going through your app to make sure everything works. Also, it takes a lot of time. Also, its scary. If I was doing that while working for a client, I'd really be stressed.&lt;/p&gt;
 
@@ -28,45 +177,49 @@
 
 &lt;p&gt;If you're looking to get started with TDD or want to see some examples of using Mocha in TDD to build a Meteor app, this tutorial is for you.&lt;/p&gt;
 
-&lt;h2 id="resources"&gt;Resources&lt;/h2&gt;
+&lt;p&gt;If you just want to see the code for this post, you can checkout the &lt;a href="https://github.com/austinsamsel/capote/tree/part-1"&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h5 id="meteor-tdd-bible"&gt;Meteor TDD bible:&lt;/h5&gt;
+&lt;h2&gt;Resources&lt;/h2&gt;
+
+&lt;h5&gt;Meteor TDD bible:&lt;/h5&gt;
 
 &lt;p&gt;&lt;a href="www.meteortesting.com"&gt;www.meteortesting.com&lt;/a&gt;&lt;/p&gt;
 
-&lt;h5 id="also-especially-relevant"&gt;Also, especially relevant:&lt;/h5&gt;
+&lt;h5&gt;Also, especially relevant:&lt;/h5&gt;
 
 &lt;p&gt;Mocha documentation: &lt;a href="https://mochajs.org/"&gt;https://mochajs.org/&lt;/a&gt;
 Chai documentation: &lt;a href="http://chaijs.com/"&gt;http://chaijs.com/&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Because while we're using Mocha we'll use Chai for assertions.&lt;/p&gt;
 
-&lt;h5 id="other-meteor-mocha-tutorials"&gt;other Meteor mocha tutorials:&lt;/h5&gt;
+&lt;h5&gt;other Meteor mocha tutorials:&lt;/h5&gt;
 
 &lt;p&gt;&lt;a href="http://www.webtempest.com/meteor-js-testing-mocha-tutorial"&gt;http://www.webtempest.com/meteor-js-testing-mocha-tutorial&lt;/a&gt;
 &lt;a href="https://github.com/meteor-velocity/velocity-examples"&gt;https://github.com/meteor-velocity/velocity-examples&lt;/a&gt; (technically just examples)&lt;/p&gt;
 
-&lt;h2 id="about-our-app"&gt;About our app&lt;/h2&gt;
+&lt;h2&gt;About our app&lt;/h2&gt;
 
 &lt;p&gt;In this tutorial, we'll build an app that tracks a user's daily word count. I've gotten into the habit of waking up in the morning and writing at least 500 words a day. It's a great way to empty out my mind and free myself up for a little more creativity. We're going to name this app Capote, after Truman Capote. Whose that? Doesn't matter. But if you don't know, he was a writer from a long time ago and he probably wrote at least 500 words a day (I have no idea, but probably!). Also his last name sounds kind of cool for an app. So there it is, Capote.&lt;/p&gt;
 
 &lt;p&gt;Here are the features we'll build:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;List of posts: title &amp;amp; content&lt;/li&gt;
-  &lt;li&gt;Daily goal set by user.&lt;/li&gt;
-  &lt;li&gt;Streak banner: “congrats 1 day”&lt;/li&gt;
-  &lt;li&gt;Individual post page.&lt;/li&gt;
-  &lt;li&gt;Create, view, edit, delete post.&lt;/li&gt;
-  &lt;li&gt;Count words per day &amp;amp; record streak.&lt;/li&gt;
+&lt;li&gt;List of posts: title &amp;amp; content&lt;/li&gt;
+&lt;li&gt;Daily goal set by user.&lt;/li&gt;
+&lt;li&gt;Streak banner: “congrats 1 day”&lt;/li&gt;
+&lt;li&gt;Individual post page.&lt;/li&gt;
+&lt;li&gt;Create, view, edit, delete post.&lt;/li&gt;
+&lt;li&gt;Count words per day &amp;amp; record streak.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id="set-up"&gt;Set up&lt;/h2&gt;
+
+&lt;h2&gt;Set up&lt;/h2&gt;
 
 &lt;p&gt;For this first post, we'll set up our test suite and write our first test. We'll want to create a sample list of posts so we have some data to work with. First things first, we'll generate a new app.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class="language-bash"&gt;$ meteor create capote
 &lt;/code&gt;&lt;/pre&gt;
+
 
 &lt;p&gt;Then let's trash the default files &lt;em&gt;capote.css&lt;/em&gt;, &lt;em&gt;capote.html&lt;/em&gt; and &lt;em&gt;capote.js&lt;/em&gt;&lt;/p&gt;
 
@@ -75,17 +228,20 @@ Chai documentation: &lt;a href="http://chaijs.com/"&gt;http://chaijs.com/&lt;/a&
 &lt;pre&gt;&lt;code class="language-bash"&gt;$ meteor add mike:mocha
 &lt;/code&gt;&lt;/pre&gt;
 
+
 &lt;p&gt;Let's set up our tests directory structure like this:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;&amp;lt;pre&amp;gt;&amp;lt;code class="language-javascript"&amp;gt;tests/
 - mocha/
 - - client/
-- - server/ &amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;
+- - server/
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
 
 &lt;p&gt;This type of pattern is required for velocity to read the tests and you'll need to use it while testing in Meteor with Cucumber, Jasmine, too. What is velocity? Velocity is Meteor's reactive test-runner and it supports a whole bunch of testing frameworks.&lt;/p&gt;
 
-&lt;h2 id="our-first-test"&gt;Our first test&lt;/h2&gt;
+&lt;h2&gt;Our first test&lt;/h2&gt;
 
 &lt;p&gt;Let's start with the server. There's just a few parts to each post we need right now: a timestamp, a title, and the body of the post.&lt;/p&gt;
 
@@ -99,24 +255,27 @@ if (!(typeof MochaWeb === 'undefined')){
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;There isn't much documentation I can find about why we ought to do this… It looks like it helps to only run tests in the dev or mirror environment, but I'm honestly not sure. I've been able to run tests without it. For now, I include it because the Velocity developers do it.&lt;/p&gt;
+
+&lt;p&gt;There isn't much documentation I can find about why we ought to do this... It looks like it helps to only run tests in the dev or mirror environment, but I'm honestly not sure. I've been able to run tests without it. For now, I include it because the Velocity developers do it.&lt;/p&gt;
 
 &lt;p&gt;Moving along. We'll write our first test, which just makes sure we have at least one post in the database.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class="language-javascript"&gt;describe("Server initialization", function(){
   it("should insert posts into the database on server startup", function(){
-    chai.assert(Posts.find().count() &amp;gt; 0);
+    chai.assert(Posts.find().count() &gt; 0);
   });
 });
 &lt;/code&gt;&lt;/pre&gt;
+
 
 &lt;p&gt;If you run meteor now you'll see that velocity pops up. In your logs you'll also see a message saying, "You can see the mirror logs at: tail -f /path/to/your/logs". You can also pop open another command line window and paste in &lt;em&gt;tail -f /path/to/your/logs&lt;/em&gt; and get some extra insight.&lt;/p&gt;
 
 &lt;p&gt;Both the logs and our UI tell us the same thing. "1 test failed" and "Posts is not defined." I love TDD. It tells us what comes next. We can go ahead and define Posts now.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class="language-javascript"&gt;// model/posts.js
-	Posts = new Mongo.Collection('posts');
+    Posts = new Mongo.Collection('posts');
 &lt;/code&gt;&lt;/pre&gt;
+
 
 &lt;p&gt;When the tests run again, we're told we have a failed "Server initialization." Let's add some posts on server start up.&lt;/p&gt;
 
@@ -141,15 +300,18 @@ if (Meteor.isServer) {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
+
 &lt;p&gt;I used &lt;a href="http://hipsum.co/"&gt;some&lt;/a&gt; &lt;a href="https://baconipsum.com/"&gt;pretty&lt;/a&gt; &lt;a href="http://slipsum.com/"&gt;sweet&lt;/a&gt; ipsum generators to create some sample content. We're inserting three posts with a title and content only if there are no posts in the database upon start up.&lt;/p&gt;
 
 &lt;p&gt;If you check the logs or the velocity helper in the UI, you'll notice that our first test passed. Great!&lt;/p&gt;
 
-&lt;h2 id="picking-up-the-pace"&gt;Picking up the pace&lt;/h2&gt;
+&lt;h2&gt;Picking up the pace&lt;/h2&gt;
 
 &lt;p&gt;I'm going to cap this post here, but in the next posts as we build out this app, I'm going to pick up the pace with these tests and we'll get a whole bunch done, real fast.&lt;/p&gt;
 
-&lt;p&gt;Part 2 coming soon.&lt;/p&gt;
+&lt;p&gt;You can grab the completed code for this post &lt;a href="https://github.com/austinsamsel/capote/tree/part-1"&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://hightopsnyc.com/blog/building-capote-part-2.html"&gt;Continue to Part 2&lt;/a&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry>
@@ -161,7 +323,7 @@ if (Meteor.isServer) {
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;&lt;!-- &lt;div class="blog-header-content"&gt;
+    <content type="html">&lt;p&gt;  &lt;!-- &lt;div class="blog-header-content"&gt;
     &lt;h1&gt;Cucumber on Rails&lt;/h1&gt;
     &lt;h2 class="post-subtitle"&gt;A Tutorial in Behavior Driven Development&lt;/h2&gt;
     &lt;div class="author-block"&gt;
@@ -175,18 +337,33 @@ if (Meteor.isServer) {
     &lt;/div&gt;
   &lt;/div&gt; --&gt;&lt;/p&gt;
 
-&lt;h1 id="cucumber-on-rails"&gt;Cucumber on Rails&lt;/h1&gt;
+&lt;h1&gt;Cucumber on Rails&lt;/h1&gt;
 
 &lt;p&gt;This is a "getting started" with Cucumber and BDD testing in rails. We're literally jumping straight into it. I'm assuming you've already read up on some testing concepts and you've found your way here in order to understand what a workflow with Cucumber might look like and how we think about problems along the way. If you like, you can grab the finished code from &lt;a href="https://github.com/austinsamsel/rails-cuke-todo"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 
+
+
+
 &lt;h3&gt;Step 1 - Set up.&lt;/h3&gt;
 
+
+
+
 &lt;p&gt;Create a new app&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;$ rails new todos-tdd-cucumber --skip-test-unit
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Add Cucumber to your Gemfile. We'll include database_cleaner, which comes highly recommended as per &lt;a href="https://github.com/cucumber/cucumber-rails"&gt;cucumber docs&lt;/a&gt;&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;group :test do
   gem 'cucumber-rails', require: false
@@ -196,21 +373,45 @@ end
 $ bundle install
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Run cucumber installer.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;$ rails generate cucumber:install
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;This gives us a new directory called &lt;em&gt;features&lt;/em&gt; which is where we'll write tests.&lt;/p&gt;
+
+
+
 
 &lt;h3&gt;Step 2 - Create first feature: Add a Task.&lt;/h3&gt;
 
+
+
+
 &lt;p&gt;Create the feature. Using (Gherkin)[https://github.com/cucumber/cucumber/wiki/Gherkin] - an easy to read syntax that works as both documentation and as tests. Your clients can read it and you can write it together. Even if you're not working with a client (or a client that wants to read it), its still worthwhile to use it because it forces you to "think like the user" as you write your features. Rather than mapping out your database and building your models, you'll develop your features with an "outside in" approach, starting from the homepage, and working with what you would see in the browser.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;$ touch features/todos.feature
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Your feature should express what you'd like to build and conclude with the business value behind it.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#todos.feature
 
@@ -220,7 +421,13 @@ Feature: Todos
   I want to be able to create a list of tasks.
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Great. Let's write our first scenario. Each scenario is composed of steps that begin with keywords like &lt;em&gt;Given&lt;/em&gt; &lt;em&gt;And&lt;/em&gt; &lt;em&gt;When&lt;/em&gt; and finally &lt;em&gt;Then&lt;/em&gt;.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#todos.feature
 ...
@@ -233,19 +440,40 @@ Scenario: Create a task
   Then I should see "My first todo!"
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Run cucumber for the first time as a rake task.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;$ rake cucumber
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Copy and paste the console output into our step definitions file.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;$ touch features/step_definitions/todos.rb
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;!-- --&gt;
 
+
+
+
 &lt;p&gt;&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#features/step_definitions/todos.rb
 
@@ -270,9 +498,18 @@ Then(/^I should see "(.*?)"$/) do |arg1|
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Whenever we want some feedback from cucumber, we'll run &lt;em&gt;$ rake cucumber&lt;/em&gt;  And we'll see that it tells us our first step is pending.&lt;/p&gt;
 
+
+
+
 &lt;p&gt;Fill out the first step definition with the following.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#features/step_definitions/todos.rb
 
@@ -282,16 +519,34 @@ end
 ...
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;This tells Cucumber we expect to be on the home page to start things off.&lt;/p&gt;
 
+
+
+
 &lt;p&gt;Cucumber tells us&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;No route matches [GET] "/" (ActionController::RoutingError)
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;What we need is a route to our homepage. Even if we build a route, we know we'll need a view and a controller (plus an index) to get it started...&lt;/p&gt;
 
+
+
+
 &lt;p&gt;Let's add a route.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;# config/routes.rb
 ...
@@ -299,46 +554,97 @@ root 'tasks#index'
 ...
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Run cucumber again.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;uninitialized constant TasksController (ActionController::RoutingError)
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Cucumber tells us we need a controller for our tasks. This is really TDD. Just taking one step, then another, letting the tests dictate each next step in development.&lt;/p&gt;
 
+
+
+
 &lt;p&gt;Let's create a controller.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;$ rails g controller Tasks home --no-helper --no-assets
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;This will also give us the view we need as well at &lt;em&gt;app/views/tasks/home.html.erb&lt;/em&gt;&lt;/p&gt;
+
+
+
 
 &lt;p&gt;When we run cucumber again, our first step passes! Now our next step is pending. So let's write the code for that.&lt;/p&gt;
 
+
+
+
 &lt;p&gt;Now we need to write the code for our next feature. We want to go to a page to add a new task. So we'll need a link users can click. We'll update the argument so its human readable, the_link and reference it in the code.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;Given(/^I go to "(.*?)"$/) do |the_link|
   click_link the_link
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Cucumber tells us:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;Unable to find link "Add new task" (Capybara::ElementNotFound)
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Now we have a failing test. It's time to update our application code with a link to add a new task.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/views/tasks/home.html.erb
 &amp;lt;%= link_to "Add new task", new_task_path %&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Cucumber tells us:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;undefined local variable or method `new_task_path' for #&amp;lt;#&amp;lt;Class:0x007fcc04b53060&amp;gt;:0x007fcc04b51dc8&amp;gt; (ActionView::Template::Error)
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;We don't have a route for new. So let's change our code in our routes to:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;config/routes.rb
 ...
@@ -347,12 +653,24 @@ resources :tasks
 ...
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Cucumber tells us:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;The action 'new' could not be found for TasksController (AbstractController::ActionNotFound)
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;So we need to update our controller with a new action.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/controllers/task_controller.rb
 class TasksController &amp;lt; ApplicationController
@@ -361,19 +679,40 @@ class TasksController &amp;lt; ApplicationController
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Cucumber tells us:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;Missing template tasks/new, application/new with {:locale=&amp;gt;[:en], :formats=&amp;gt;[:html], :variants=&amp;gt;[], :handlers=&amp;gt;[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;We need a view template for our new action.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;$ touch app/views/tasks/new.html.erb
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Rake tells us this step passes!&lt;/p&gt;
 
+
+
+
 &lt;p&gt;Let's write the code for our next step.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;# features/step_definitions/todos.rb
 ...
@@ -383,14 +722,29 @@ end
 ...
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;We updated the argument variables from &lt;em&gt;arg1, arg2&lt;/em&gt; to &lt;em&gt;input, value&lt;/em&gt; to be more readable.&lt;/p&gt;
 
+
+
+
 &lt;p&gt;When we run cucumber, we get:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;Unable to find field "Task Field" (Capybara::ElementNotFound)
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Cucumber is looking for the form to add a new task. Let's create the form. First let's add Simple Form to our gemfile.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#Gemfile
 ...
@@ -402,7 +756,13 @@ $ bundle install
 $ rails g simple_form:install
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;!-- --&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/views/tasks/home.html.erb
 &amp;lt;%= simple_form_for(@task) do |f| %&amp;gt;
@@ -411,12 +771,24 @@ $ rails g simple_form:install
 &amp;lt;% end %&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Run Cucumber and we get:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;undefined method `model_name' for nil:NilClass (ActionView::Template::Error)
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;We need to update our controller action that will allow us to create a new task.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/controllers/tasks_controller.rb
 ...
@@ -426,22 +798,46 @@ end
 ...
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;We need to create a model.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;$ rails g model Task name:string
 $ rake db:migrate
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Then we get...&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;Unable to find field "Task Field" (Capybara::ElementNotFound)
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Capybara is having trouble finding the field for which we'd like to add in the name of our task. It's time to take a second look at our original step definition and enter a revision. If you run your rails server and inspect the source code, our rails form field looks like this: &lt;code class="language-ruby"&gt;&amp;lt;input class="string optional" type="text" name="task[name]" id="task_name" /&amp;gt;&lt;/code&gt; Cucumber is able to find the field by name or ID. So let's update our feature with the id as the form field identifier:&lt;/p&gt;
+
+
+
 
 &lt;p&gt;Our step definition passes.&lt;/p&gt;
 
+
+
+
 &lt;p&gt;Let's write the code for our third step definition.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#features/step_definitions/todos.rb
 ...
@@ -451,7 +847,13 @@ end
 ...
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Run cucumber and we get:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;The action 'create' could not be found for TasksController (AbstractController::ActionNotFound)
 
@@ -465,12 +867,24 @@ end
 ...
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Run Cucumber.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;Missing template tasks/create, application/create with {:locale=&amp;gt;[:en], :formats=&amp;gt;[:html], :variants=&amp;gt;[], :handlers=&amp;gt;[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;By default Rails is trying to take us to a new page... Since this is just a one page app, let's keep everything on the home page. And so our app is secure, I'm including in params at this time.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/controllers/task_controller.erb
 ...
@@ -488,7 +902,13 @@ private
 ...
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Our step passes. Now we should verify that we can see our new task. Let's finish out the code for the fourth step. Where we test to make sure we can actually see the new task posted.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#features/step_definitions/todos.rb
 ...
@@ -498,12 +918,24 @@ end
 ...
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Run Cucumber:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;Failed assertion, no message given. (Minitest::Assertion)
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;This isn't that informative. But considering we haven't done anything to actually list tasks, let's start with the view.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/views/tasks/home.html.erb
 ...
@@ -512,12 +944,24 @@ end
 &amp;lt;% end %&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Run Cucumber:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;undefined method `each' for nil:NilClass (ActionView::Template::Error)
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;We don't have anything in the controller to feed the view any data. So let's update that.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/controllers/task_controller.rb
 ...
@@ -527,13 +971,28 @@ end
 ...
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Then all our tests pass.&lt;/p&gt;
+
+
+
 
 &lt;h3&gt;Step 3: Create a failing test&lt;/h3&gt;
 
+
+
+
 &lt;p&gt;What happens when the user does something weird? Do we want users to create empty tasks? No. So let's test to make sure that invalid tasks are not posted.&lt;/p&gt;
 
+
+
+
 &lt;p&gt;Let's write a feature:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#features/todos.feature
 ...
@@ -548,9 +1007,18 @@ Scenario: Create an invalid task
   Then I should see "My first todo!"
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;There's some repetition here in the steps. We're only going to have to write one new step definition. The rest is repeat. The new step definition is &lt;code class="language-ruby"&gt;Then I should be told "Can't be blank"&lt;/code&gt;&lt;/p&gt;
 
+
+
+
 &lt;p&gt;When we run Cucumber, it gives us our new step definition to implement. We'll copy and paste it into our todos.rb&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#features/step_definitions/todos.rb
 ...
@@ -560,7 +1028,13 @@ Then(/^I should be told "(.*?)"$/) do |arg1|
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;And let's update this step definition with our test code.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#features/step_definitions/todos.rb
 ...
@@ -570,12 +1044,24 @@ Then(/^I should be told "(.*?)"$/) do |error_message|
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Cucumber tells us:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;Failed assertion, no message given. (Minitest::Assertion)
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Not that informative. But we know we don't have any validations on our task model. So let's update that.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/models/task.rb
 class Task &amp;lt; ActiveRecord::Base
@@ -583,12 +1069,24 @@ class Task &amp;lt; ActiveRecord::Base
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Cucumber tells us:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;Missing template tasks/create, application/create with {:locale=&amp;gt;[:en], :formats=&amp;gt;[:html], :variants=&amp;gt;[], :handlers=&amp;gt;[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;It looks like Rails is trying to reroute us. We want to stay on the same page and see the error. Let's update the controller action with a scenario detailing what happens when a task is not saved.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/controllers/tasks_controller.rb
 ...
@@ -603,12 +1101,24 @@ end
 ...
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Cucumber tells us:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;Failed assertion, no message given. (Minitest::Assertion)
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;We still aren't being told of the failure. If we run &lt;em&gt;rails s&lt;/em&gt; to start the server and see what's going on when we submit a blank task, we're told "can't be blank". It is working! Cross referencing with our feature, we previously wrote, "Can't be blank". So we need to update our feature with the proper capitalization.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#features/todos.feature
 ...
@@ -618,11 +1128,23 @@ Then I should be told "can't be blank"
 ...
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Now all our tests pass.&lt;/p&gt;
+
+
+
 
 &lt;h3&gt;Step 4: Completing Tasks&lt;/h3&gt;
 
+
+
+
 &lt;p&gt;Let's write the scenario for marking a task as complete.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;Scenario: Mark a task as completed
   Given I have the following tasks:
@@ -636,11 +1158,23 @@ Then I should be told "can't be blank"
   Then I should see "My 1st Todo" as completed.
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;You'll notice a new format here. We created some sample data within Cucumber that can run. It's a simple and fast way to start writing more complex tests.&lt;/p&gt;
+
+
+
 
 &lt;p&gt;We'll run cucumber and grab the output and paste it in our &lt;em&gt;step_definitons/todos.rb&lt;/em&gt; file.&lt;/p&gt;
 
+
+
+
 &lt;p&gt;In order to work with the data in the fixtures, we'll modify our first step definition:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;Given(/^I have the following tasks:$/) do |table|
   for hash in table.hashes
@@ -649,30 +1183,60 @@ Then I should be told "can't be blank"
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Then we're told:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;unknown attribute 'completed' for Task. (ActiveRecord::UnknownAttributeError)
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;We never created the a field for "completed" so let's add that now.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;$ rails g migration AddCompletedToTasks completed:boolean
 $ rake db:migrate
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Our second step passes. Now we need to write another step definition:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;When(/^I follow "(.*?)" associated with "(.*?)"$/) do |arg1, arg2|
   first('li').click_link('Edit')
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;This will find the first "Edit" link on the page, which will be associated with our first todo. Capybara will tell us it can't find it:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;Unable to find link "Edit" (Capybara::ElementNotFound)
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;We'll add an edit link into our view.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/views/tasks/home.html.erb
 ...
@@ -681,12 +1245,24 @@ end
 &amp;lt;% end %&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Then Cucumber tells us we don't have a controller action:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;The action 'edit' could not be found for TasksController (AbstractController::ActionNotFound)
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;We'll add the action to our tasks controller:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/controllers/tasks_controller.rb
 
@@ -694,29 +1270,59 @@ def edit
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Now we're missing our view&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;Missing template tasks/edit, application/edit with {:locale=&amp;gt;[:en], :formats=&amp;gt;[:html], :variants=&amp;gt;[], :handlers=&amp;gt;[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;We'll add it in. Again just doing the bare minimum at each step.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;$ touch app/views/tasks/edit.html.erb
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Our step passes. We now need to write the code for the next step definition to test completing a task.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;When(/^I check the "(.*?)" checkbox$/) do |arg1|
   page.find('input[type=checkbox]').set(true)
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Cucumber:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;Unable to find css "input[type=checkbox]" (Capybara::ElementNotFound)
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;All we have is a blank page. Its time to add in a form to edit the task on our edit page. It's the same form as on the new view, except with a new field to mark todos as completed.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/views/tasks/edit.html.erb
 
@@ -727,12 +1333,24 @@ end
 &amp;lt;% end %&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;We get:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;undefined method `model_name' for nil:NilClass (ActionView::Template::Error)
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;There's nothing in the controller to help rails find the task. So let's update the edit method:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/controllers/task_controller.rb
 def edit
@@ -740,12 +1358,24 @@ def edit
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Cucumber tells us:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;The action 'update' could not be found for TasksController (AbstractController::ActionNotFound)
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Let's add an update action to our tasks controller.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/controllers/task_controller.rb
 
@@ -753,12 +1383,24 @@ def update
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Cucumber says:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;Missing template tasks/update, application/update with {:locale=&amp;gt;[:en], :formats=&amp;gt;[:html], :variants=&amp;gt;[], :handlers=&amp;gt;[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;We don't want to create a view for update... so let's try updating the action to include some rerouting... After a successful update we want to go to the home page and if there's been an error, we want to stay on the edit page.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/controllers/task_controller.rb
 
@@ -771,7 +1413,13 @@ def update
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;One more problem, rails can't find the task we're trying to update... so let's copy over the same find code from the edit action...&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/controllers/task_controller.rb
 
@@ -785,12 +1433,24 @@ def update
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;And now...&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;wrong number of arguments (0 for 1) (ArgumentError)
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;We need to fix our strong parameters in our private task_params method.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/controllers/task_controller.rb
 
@@ -799,7 +1459,13 @@ def task_params
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;We also need to pass our params into the update method.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/controllers/task_controller.rb
 
@@ -813,12 +1479,24 @@ def update
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;The step passes. Before we go on, let's refactor the code so we aren't repeating the same line of code in the edit and update methods in the controller. Remove the following line from the edit and update actions.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;@task = Task.find(params[:id])
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Then create a new private method:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/controllers/task_controller.rb
 
@@ -827,39 +1505,78 @@ def find_task
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;And at the top of our controller we'll call our new method with a before_action hook:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/controllers/task_controller.rb
 
 before_action :find_task, only: [:edit, :update]
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;If we run cucumber again and see it still working, we were just able to "fearlessly" refactor.&lt;/p&gt;
 
+
+
+
 &lt;p&gt;Finally, let's finish this last step. We need to communicate to the user that the task is completed.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;Then(/^I should see "(.*?)" as completed\.$/) do |task|
   assert first('li').parent.has_css?('.completed')
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;This code checks if our list item has the css class &lt;em&gt;.completed&lt;/em&gt;. The argument has_css? looks within the list item to its children, when we wanted to check the list item itself. So we used &lt;em&gt;.parent&lt;/em&gt; to return the search to the list item element itself.&lt;/p&gt;
 
+
+
+
 &lt;p&gt;Let's update the home page view with some logic that determines if the task is marked as completed, and if it is, to add the class, "completed"&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/views/tasks/home.html.erb
 
 &amp;lt;li class="&amp;lt;%= task.completed == true ? "completed" : "" %&amp;gt;"&amp;gt;&amp;lt;%= task.name %&amp;gt; • &amp;lt;%= link_to 'Edit', edit_task_path(task) %&amp;gt;&amp;lt;/li&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;You may want to move this logic out into a helper method, but for now, this will adequately accomplish what we want.&lt;/p&gt;
 
+
+
+
 &lt;p&gt;Then let's add a new CSS file:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-css"&gt;$ touch app/assets/stylesheets/tasks.css
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;And add the code:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-css"&gt;#app/assets/stylesheets/tasks.css
 
@@ -868,13 +1585,28 @@ li.completed{
 }
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Then we can run cucumber and verify that all our tests are passing. It kind of sucks that we have a line running through even the edit and delete actions, but oh well - this isn't about being pretty, but just showing how this can all work.&lt;/p&gt;
+
+
+
 
 &lt;h3&gt;Step 5: Removing Tasks&lt;/h3&gt;
 
+
+
+
 &lt;p&gt;When a user has completed a bunch of tasks, after a time, it makes sense to that our user may no longer want to view the tasks. So we need a way to delete tasks.&lt;/p&gt;
 
+
+
+
 &lt;p&gt;So let's write the following scenario:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;Scenario: Delete a task
   Given I have the following tasks:
@@ -886,19 +1618,37 @@ li.completed{
   Then I should no longer see "My First Todo"
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Let's write our first step. We want to tell Cucumber to click the delete link:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;When(/^I click on the "(.*?)" next to "(.*?)"$/) do |arg1, arg2|
   first('li').click_link('Delete')
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Cucumber tells us:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;Unable to find link "Delete" (Capybara::ElementNotFound)
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Let's add a delete link to the Home page view.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/views/tasks/new.html.erb
 
@@ -911,12 +1661,24 @@ end
 &amp;lt;% end %&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Cucumber tells us:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;The action 'destroy' could not be found for TasksController (AbstractController::ActionNotFound)
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Let's add the necessary controller action:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/controllers/task_controller.rb
 
@@ -924,12 +1686,24 @@ def destroy
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Cucumber tells us:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;Missing template tasks/destroy, application/destroy with {:locale=&amp;gt;[:en], :formats=&amp;gt;[:html], :variants=&amp;gt;[], :handlers=&amp;gt;[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Let's fill out the action with:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/controllers/task_controller.rb
 
@@ -938,19 +1712,37 @@ def destroy
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;And also include the destroy action in the before_action hook:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/controllers/task_controller.rb
 
 before_action :find_task, only: [:edit, :update, :destroy]
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;We keep getting the same message:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt; Missing template tasks/destroy, application/destroy with {:locale=&amp;gt;[:en], :formats=&amp;gt;[:html], :variants=&amp;gt;[], :handlers=&amp;gt;[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;So let's add a redirect&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;#app/controllers/task_controller.rb
 
@@ -960,25 +1752,50 @@ def destroy
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Our step passes.&lt;/p&gt;
 
+
+
+
 &lt;p&gt;Let's write the last step here.&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;Then(/^I should no longer see "(.*?)"$/) do |task|
   !assert page.has_content?(task)
 end
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;This is similar to when we were first checking to see if the task would appear on the page when we created a new task. Here we want to test that it doesn't show. So I slightly modified the code with a bang, to assert the opposite.&lt;/p&gt;
 
+
+
+
 &lt;p&gt;Cucumber tells us:&lt;/p&gt;
+
+
+
 
 &lt;pre&gt;&lt;code class="language-ruby"&gt;And I press "Delete" associated with "My First Todo"
 &lt;/code&gt;&lt;/pre&gt;
 
+
+
+
 &lt;p&gt;Nice! We created a Todo app using Cucumber that allows us to create tasks, validates against invalid tasks, mark tasks as complete, and delete tasks. This this type of functionality is pretty common and can be applied in a lot of scenarios.&lt;/p&gt;
 
+
+
+
 &lt;p&gt;If you have any questions, or notice anything that can be improved, please let me know!&lt;/p&gt;
+
 </content>
   </entry>
   <entry>
@@ -1006,7 +1823,8 @@ end
   &lt;/div&gt;
 &lt;/div&gt; --&gt;
 
-&lt;h1 id="announcing-up-state"&gt;Announcing Up State&lt;/h1&gt;
+
+&lt;h1&gt;Announcing Up State&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href="http://www.upstatebiz.com/"&gt;Up State is a WordPress website building service&lt;/a&gt;. The Up State service generates websites and gets them into the State of Up - online, launched, live.&lt;/p&gt;
 
@@ -1018,26 +1836,28 @@ end
 
 &lt;p&gt;That's Up State.&lt;/p&gt;
 
-&lt;h2 id="is-this-for-me"&gt;Is this for me?&lt;/h2&gt;
+&lt;h2&gt;Is this for me?&lt;/h2&gt;
 
 &lt;p&gt;I created Up State for two types of people:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;You're a &lt;strong&gt;small business owner&lt;/strong&gt; and you need a website to promote your business.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;You're a leader&lt;/strong&gt; at a company that is launching a new product, organizing a conference, or starting a new marketing campaign and you need to promote your product by creating a new website.&lt;/li&gt;
+&lt;li&gt;You're a &lt;strong&gt;small business owner&lt;/strong&gt; and you need a website to promote your business.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;You're a leader&lt;/strong&gt; at a company that is launching a new product, organizing a conference, or starting a new marketing campaign and you need to promote your product by creating a new website.&lt;/li&gt;
 &lt;/ol&gt;
+
 
 &lt;p&gt;You may have tried the following ways of getting a website up:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Do-It-Yourself&lt;/li&gt;
-  &lt;li&gt;Hire a freelancer&lt;/li&gt;
-  &lt;li&gt;Hire an agency&lt;/li&gt;
+&lt;li&gt;Do-It-Yourself&lt;/li&gt;
+&lt;li&gt;Hire a freelancer&lt;/li&gt;
+&lt;li&gt;Hire an agency&lt;/li&gt;
 &lt;/ul&gt;
+
 
 &lt;p&gt;…and you had results ranging from &lt;strong&gt;wtf&lt;/strong&gt; to &lt;strong&gt;meh&lt;/strong&gt; to &lt;strong&gt;okay-we're-broke-now&lt;/strong&gt;. And maybe you wondered if there was something else that could make the whole process easier.&lt;/p&gt;
 
-&lt;h2 id="is-my-project-a-fit"&gt;Is my project a fit?&lt;/h2&gt;
+&lt;h2&gt;Is my project a fit?&lt;/h2&gt;
 
 &lt;p&gt;Up State isn't for every project. It's meant for small, simple projects — usually brochure-style websites that only require some basic functionality: contact form, content slider, a mailing list sign up form, and so on. These are the types of features that come prepackaged with most premium WordPress themes.&lt;/p&gt;
 
@@ -1045,13 +1865,13 @@ end
 
 &lt;p&gt;Up State makes sense for brand new projects as well as for existing, older websites that need to be totally refreshed. Up State websites are created with modern specs: a mobile-friendly responsive design, Google Analytics, global SEO, optimized page loading, and spam filters.&lt;/p&gt;
 
-&lt;h2 id="everyone-wins"&gt;Everyone wins&lt;/h2&gt;
+&lt;h2&gt;Everyone wins&lt;/h2&gt;
 
 &lt;p&gt;As a developer/designer, I get to be more productive by offering a standardized, streamlined service. My clients get a great product that's tailored just for them and they get to save time, money, and sanity. Awesome!!&lt;/p&gt;
 
-&lt;h2 id="up-next"&gt;Up next&lt;/h2&gt;
+&lt;h2&gt;Up next&lt;/h2&gt;
 
-&lt;p&gt;I'm planning on creating a "playbook" that describes the whole process of building an Up State website. It will include cool stuff like which plugins I like to use and how I take my client's goals into consideration throughout the process. I'm also thinking about creating some add-on packages for more advanced analytics and visitor tracking – or possibly a more involved SEO package.&lt;/p&gt;
+&lt;p&gt;I'm planning on creating a "playbook" that describes the whole process of building an Up State website. It will include cool stuff like which plugins I like to use and how I take my client's goals into consideration throughout the process. I'm also thinking about creating some add-on packages for more advanced analytics and visitor tracking -- or possibly a more involved SEO package.&lt;/p&gt;
 
 &lt;p&gt;Is there something else you'd want in a new website? I'd love to hear what you're looking for in the comments below.&lt;/p&gt;
 </content>

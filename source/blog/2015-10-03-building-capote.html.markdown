@@ -1,6 +1,6 @@
 ---
 layout: layout_article
-title: Building-Capote:-Meteor-&-Mocha-TDD-(Part 1)
+title: Building-Capote:-Meteor-&-Mocha-TDD-(Part1)
 date: 2015-10-03 21:34 UTC
 tags: meteor, mocha, tdd
 ---
@@ -14,6 +14,8 @@ That's why there's TDD. Writing tests as you write your software. It helps your 
 When you're learning a framework, you don't get much exposure to testing. Usually your learning resources are focused on covering the framework itself. They don't cover tests because there's so many different ways to do it. With Meteor there's a bunch of suites to test your app: cucumber, jasmine, mocha, etc.
 
 If you're looking to get started with TDD or want to see some examples of using Mocha in TDD to build a Meteor app, this tutorial is for you.
+
+If you just want to see the code for this post, you can checkout the [GitHub repository](https://github.com/austinsamsel/capote/tree/part-1).
 
 ## Resources
 
@@ -135,4 +137,6 @@ If you check the logs or the velocity helper in the UI, you'll notice that our f
 
 I'm going to cap this post here, but in the next posts as we build out this app, I'm going to pick up the pace with these tests and we'll get a whole bunch done, real fast.
 
-Part 2 coming soon.
+You can grab the completed code for this post [here](https://github.com/austinsamsel/capote/tree/part-1).
+
+[Continue to Part 2](http://hightopsnyc.com/blog/building-capote-part-2.html) 

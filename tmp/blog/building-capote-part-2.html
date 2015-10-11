@@ -1,0 +1,84 @@
+<!doctype html> <html> <head> <meta charset=utf-8 /> <meta http-equiv=X-UA-Compatible content='IE=edge;chrome=1'/> <title>High Tops Blog - Building-Capote:-Meteor-&-Mocha-TDD-(Part2)</title> <link rel=alternate type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml"/> <link href="../stylesheets/blog-664f7eb6.css" rel=stylesheet /> <link href='http://fonts.googleapis.com/css?family=Archivo+Black|Archivo+Narrow:400,700,400italic|Enriqueta:400,700' rel=stylesheet> <script src="../javascripts/all-bd0e0691.js"></script><script src="../javascripts/layout_blog-c3e5140f.js"></script> </head> <body> <div class=nav-sm> <header class=navigation role=banner> <div class=navigation-wrapper> <div> <div> <a href="/#Home" class=logo> <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/images/hightops_logo-d66ed1d8.svg" alt="high tops logo"> </a> </div> </div> <a href="javascript:void(0)" class=navigation-menu-button id=js-mobile-menu>MENU</a> <div class=navigation-tools> <ul id=js-navigation-menu class="navigation-menu show"> <li data-menuanchor=Work class=nav-link><a href="/#Work">Work</a></li> <li data-menuanchor=About class=nav-link><a href="/#About">About</a></li> <li data-menuanchor=Contact class=nav-link><a href="/#Contact">Contact</a></li> <li class=nav-link><a href="/blog.html">Blog</a></li> </ul> </div> </div> </header> </div> <div class=blog-content role=main> <h1>Building Capote: Meteor &amp; Mocha TDD (Part 2)</h1> <p>In the last post, we set up our app, fixtures, and got our first test to pass. You can grab the code from the last chapter <a href="https://github.com/austinsamsel/capote/tree/part-1">here</a>. If you want to review the last post, you can <a href="http://hightopsnyc.com/blog/building-capote.html">visit it here</a>.</p> <h2>Testing UI Objects and Sort Order</h2> <p>It's time to actually show our posts in the UI to our users. In the first test, I want to make sure there's at least one post displaying by checking if the css class that's associated with the post gets printed to the page. Then I'll know there's a post on the page, no matter the content of the post. Then I want to test the order of the posts so that the most recent posts show up first in the list.</p> <pre><code class="language-javascript">// tests/mocha/client/client.js
+
+if (!(typeof MochaWeb === 'undefined')){
+  MochaWeb.testOnly(function(){
+
+    describe("Posts", function(){
+      it("shows a post", function(){
+        Meteor.flush();
+        chai.assert.typeOf($(".title:eq(0)"), 'object');
+      })
+      it("should show my latest post, first.", function(){
+        Meteor.flush();
+        chai.assert.equal($(".title:eq(0)").html(), "Neutra messenger bag");
+      });
+    });
+
+  });
+}</code></pre> <p>After the tests, we'll get to writing the actual code. First we'll create a subscription so our template can find the posts in the database. We don't need to create a publication since we still have the autopublish package installed by default (and we'd be sure to remove it if this app was going into production). We also set up our templates to display the posts.</p> <pre><code class="language-javascript">// client/posts.js
+if (Meteor.isClient) {
+  Template.body.helpers({
+    posts: function () {
+      return Posts.find({}, {sort: {createdAt: -1}});
+    }
+  });
+}</code></pre> <pre><code>// client/index.html
+&lt;head&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
+  &lt;title&gt;Capote - track your words per day&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    {{#each posts}}
+      {{&gt; post}}
+    {{/each}}
+  &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;template name="post"&gt;
+  &lt;div class="title"&gt;{{title}}&lt;/div&gt;
+  &lt;div class="content"&gt;{{content}}&lt;/div&gt;
+&lt;/template&gt;
+</code></pre> <h2>Testing Timestamps</h2> <p>Before we can think about measuring the daily word count streak, we need to include a timestamp with each post. The following is a test to check for that.</p> <pre><code class="language-javascript">// tests/mocha/client/client
+...
+  it("should show a clean timestamp", function(){
+    chai.assert.equal($(".timestamp:eq(1)").html(), "01-03-2015");
+  });
+...</code></pre> <p>We'll update our fixtures by adding a date/time for when our posts are created. We'll also include the new field in our templates.</p> <pre><code class="language-javascript">// server/app.js
+
+if (Meteor.isServer) {
+  Meteor.startup(function () {
+    if (Posts.find().count() === 0) {
+      Posts.insert({
+        title: "Neutra messenger bag",
+        content: "Tousled forage trust fund readymade Neutra messenger bag. Drinking vinegar chia Marfa, vegan messenger bag disrupt Wes Anderson try-hard. Small batch scenester raw denim synth cronut cornhole, iPhone try-hard single-origin.",
+        createdAt: new Date(2015,0,4) // new timestamp
+      });
+      Posts.insert({
+        title: "fatback filet mignon",
+        content: "Bacon ipsum dolor amet alcatra turkey shank cupim corned beef brisket chuck boudin tri-tip t-bone kevin fatback filet mignon. Short loin tongue short ribs.",
+        createdAt: new Date(2015,0,3) // new timestamp
+      });
+      Posts.insert({
+        title: "know what I'm sayin'",
+        content: "You see? It's curious. Ted did figure it out - time travel. And when we get back, we gonna tell everyone. How it's possible, how it's done, what the dangers are. But then why fifty years in the future when the spacecraft encounters a black hole does the computer call it an 'unknown entry event'?",
+        createdAt: new Date(2015,0,1) // new timestamp
+      });
+    }
+  });
+}</code></pre> <pre><code>// client/index.html
+
+&lt;template name="post"&gt;
+  &lt;!-- our new timestamp below --&gt;
+  &lt;div class="timestamp"&gt;{{createdAt}}&lt;/div&gt;
+  &lt;div class="title"&gt;{{title}}&lt;/div&gt;
+  &lt;div class="content"&gt;{{content}}&lt;/div&gt;
+&lt;/template&gt;
+</code></pre> <p>To see whether this passes or fails, we'll manually reset our app by running <em>meteor reset &amp;&amp; meteor</em> in the command line. Mocha's mirror derives itself from the application your developing, so the fixtures won't reset on their own. The idea is that you wouldn't want to reset the mirror database each time before running tests because it would take too long.</p> <p>Our test still fails because, by default, Meteor prints out the full timestamp, like: <em>Sat Jan 03 2015 00:00:00 GMT-0500 (EST)</em></p> <p>We'll need to make use of <a href="http://momentjs.com/">Moment JS</a> to parse our timestamps. Run the following in the command line to add the moment package to our app.</p> <pre><code class="language-javascript">$ meteor add moments:moment</code></pre> <p>Then we'll create a helper to parse the timestamp. It takes the default timestamp as an argument. Next we'll update our template with the cleanDate helper, effectively passing in that long default timestamp and returning our clean timestamp.</p> <pre><code class="language-javascript">// client/helper.js
+Template.registerHelper('cleanDate', function(date) {
+    return moment(date).format('MM-DD-YYYY');
+});
+</code></pre> <pre><code>// client/index.html
+&lt;div class="timestamp"&gt;{{cleanDate createdAt}}&lt;/div&gt;
+</code></pre> <p>Now our tests all pass.</p> <h2>Wrapping Up</h2> <p>If you have any questions or you want me to break down the steps even further, please let me know. If you want to check out the code for this section, you can grab it from <a href="https://github.com/austinsamsel/capote/tree/part-2">GitHub</a>. In the next post we'll write tests for creating and deleting posts.</p> <p>Part 3 coming soon.</p> <footer> <ul class=large-column> <li><h5 class=heading>Recent Articles</h5></li> <li> <ol> <li> <a href="/blog/building-capote-part-2.html">Building-Capote:-Meteor-&-Mocha-TDD-(Part2)</a> <span>Oct 10</span> </li> <li> <a href="/blog/building-capote.html">Building-Capote:-Meteor-&-Mocha-TDD-(Part1)</a> <span>Oct 3</span> </li> <li> <a href="/blog/getting-started-with-cucumber-on-rails.html">Getting-Started-with-Cucumber-on-Rails</a> <span>Aug 31</span> </li> <li> <a href="/blog/up-state.html">Up State</a> <span>Jul 10</span> </li> </ol> </li> </ul> <ul class=small-column> <li><h5 class=heading>Tags</h5></li> <li> <ol> <li><a href="/blog/tags/business.html">business (1)</a></li> <li><a href="/blog/tags/software-development.html">software development (1)</a></li> <li><a href="/blog/tags/meteor.html">meteor (2)</a></li> <li><a href="/blog/tags/mocha.html">mocha (2)</a></li> <li><a href="/blog/tags/tdd.html">tdd (2)</a></li> </ol> </li> <ul> </footer> </div> <script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-61921206-1"]),_gaq.push(["_setDomainName","hightopsnyc.com"]),_gaq.push(["_trackPageview"]),function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"==document.location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";var e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}();</script> </body> </html>

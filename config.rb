@@ -81,7 +81,7 @@ page "/feed.xml", layout: false
 
 # set :markdown_engine, :redcarpet
 # set :markdown, :fenced_code_blocks => true, :smartypants => true
-#set :markdown_engine, :kramdown
+set :markdown_engine, :rdiscount
 #activate :rouge_syntax
 #activate :syntax
 
