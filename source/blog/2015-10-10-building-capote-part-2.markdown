@@ -2,6 +2,7 @@
 title: Building-Capote:-Meteor-&-Mocha-TDD-(Part2)
 date: 2015-10-10 22:08 UTC
 tags: meteor, mocha, tdd
+layout: layout_article
 ---
 
 # Building Capote: Meteor & Mocha TDD (Part 2)
