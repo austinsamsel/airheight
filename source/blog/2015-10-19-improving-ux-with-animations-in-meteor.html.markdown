@@ -156,4 +156,13 @@ span.todo{
   vertical-align: 3px;
 }</code></pre>
 
-I think this update will make using Nice Track a little bit more enjoyable and sensible. While its nice to have an animation that hides each topic item, it'd be nice if it didn't run the animation when coming to the ratings page from another page in the app. I'd really like for it to only start an animation after the user makes a rating, but for now I'm going to save that problem for later.
+While its nice to have an animation that hides each topic item, it'd be nice if it didn't run the animation when coming to the ratings page from another page in the app. I'd really like for it to only start an animation after the user makes a rating.
+
+<pre><code class="language-javascript">//client/topics/topic_item.js
+Template.topicItemRate.onRendered (function() {
+  $('.hideThis').remove();
+});</code></pre>
+
+This will remove any rating cards that have a .hideThis class attached once the items have rendered. This is a quick and easy way of skipping the loading animation when we don't really need it.
+
+I think these updates will make using Nice Track a little bit more enjoyable and sensible. If you have any suggestions for improvements please let me know!

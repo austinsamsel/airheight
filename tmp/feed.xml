@@ -5,16 +5,182 @@
   <id>http://blog.url.com/blog</id>
   <link href="http://blog.url.com/blog"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2015-10-18T20:16:00-04:00</updated>
+  <updated>2015-10-26T19:58:00-04:00</updated>
   <author>
     <name>Blog Author</name>
   </author>
+  <entry>
+    <title>Building Capote Meteor &amp; Mocha TDD (Part 3)</title>
+    <link rel="alternate" href="http://blog.url.com/blog/building-capote-part-3.html"/>
+    <id>http://blog.url.com/blog/building-capote-part-3.html</id>
+    <published>2015-10-26T19:58:00-04:00</published>
+    <updated>2015-10-27T00:04:26-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;h1&gt;Building Capote: Meteor &amp;amp; Mocha TDD (Part 3)&lt;/h1&gt;
+
+&lt;p&gt;Welcome to Part 3 !!!&lt;/p&gt;
+
+&lt;p&gt;In last week's post we wrote the tests and code for showing our posts in order and we created timestamps for our posts. You can grab the code from the last chapter &lt;a href="https://github.com/austinsamsel/capote/tree/part-2"&gt;here&lt;/a&gt;. If you want to review the last post, you can &lt;a href="http://hightopsnyc.com/blog/building-capote-part-2.html"&gt;visit it here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In this part we are going to add the ability to create posts, delete them. I'm going to sprint through the Meteor creating and deleting posts, but give a little more explanation for the tests that go into this.&lt;/p&gt;
+
+&lt;p&gt;Here's our test for creating posts. We're inputting text into our form fields named title and content, then calling jQuery's click handler, &lt;em&gt;.click();&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Finally we check that the first title is matching our assertion. This type of test is in the BDD style, in the sense that I'm thinking about the user finding the form fields on the page, filling in the values and then pressing submit.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;// tests/mocha/client/client.js
+…
+describe("Creating Posts", function(){
+  it("creates a post when I fill in the fields", function(){
+    Meteor.flush();
+    $('[name="title"]').val('a new post');
+    $('[name="content"]').val('a new sample post');
+    $('[type="submit"]').click();
+    chai.assert.equal($(".title:eq(0)").html(), "a new post");
+  });
+});
+…&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;This test will fail until we add in our code to the client. Let's go ahead and update our templates with the form.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//client/index.html
+…
+{{&amp;gt; createPost}} &amp;lt;!-- new stuff here: this calls in the new createPost template --&amp;gt;
+&amp;lt;div class="container"&amp;gt;
+  {{#each posts}}
+    {{&amp;gt; post}}
+  {{/each}}
+&amp;lt;/div&amp;gt;
+…
+&amp;lt;template name="createPost"&amp;gt;
+  &amp;lt;div class="create-post"&amp;gt;
+    &amp;lt;form&amp;gt;
+      Create a post:
+      &amp;lt;input type="text" placeholder="add a title" name="title"&amp;gt;
+      &amp;lt;textarea placeholder="write your words here" name="content"&amp;gt;&amp;lt;/textarea&amp;gt;
+      &amp;lt;input type="submit" value="Submit" /&amp;gt;
+   &amp;lt;/form&amp;gt;
+ &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Our test will still fail until we allow entries to be inserted to the database.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;//client/posts.js
+…
+Template.createPost.events({
+  'submit form': function(e){
+    e.preventDefault();
+    var title = $('[name="title"]').val();
+    var content = $('[name="content"]').val();
+
+    Posts.insert({
+      title: title,
+      content: content,
+      createdAt: new Date()
+    });
+    $('[name=title]').val('');
+    $('[name=content]').val('');
+  }
+});
+…&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;You'll notice all the tests have gone to green... but only the first time you run them!&lt;/p&gt;
+
+&lt;p&gt;If you check out the Mocha iframe in the Velocity panel, you'll see a mirror version of the app. Every time the tests run it will add in a new post and break our previous tests. That's probably a sign these are some brittle tests. Either we can make them a little more general or automatically flush the database every time we run the tests or we can make use of a before or after block to clean up what we've changed. For now, I'm going to do the latter.&lt;/p&gt;
+
+&lt;p&gt;If we successfully add a new post, then let's delete it after it's been created. You could find the post using jQuery... or just use a method to find and remove the post by its ID. I'm doing the latter here. I think its a nicer way to do the clean up than waiting for the delete feature to be working. And what would happen if we build in the delete feature, but it breaks? We'd have many failing tests instead of just one.&lt;/p&gt;
+
+&lt;p&gt;We'll add this test in the beginning of the "describe" block of "Creating Posts".
+&lt;span style="color:#fff"&gt;```&lt;/span&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;// tests/mocha/client/client.js
+…
+after(function(done){
+  var latestPost = Posts.findOne({}, {sort: {createdAt: -1}});
+  var latestId = latestPost._id
+  Meteor.autorun(function(){
+    if (latestId){
+      Posts.remove(latestId);
+      done();
+    }
+  });
+});
+…&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Stop the server and run &lt;em&gt;meteor reset &amp;amp;&amp;amp; meteor&lt;/em&gt; in the command line to manually reset the database and mirror database. All tests should be passing.&lt;/p&gt;
+
+&lt;p&gt;We'll follow a similar pattern for deleting posts. First, we'll write our tests. I'm imagining we'll have either a text link or a button next to each post. Either way it can have a css class called &lt;em&gt;.deletePost&lt;/em&gt; which we'll reference from our javascript.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;//tests/mocha/client/client.js
+…
+describe("deleting posts", function(){
+  it("deletes when I tell it to delete", function(){
+    Meteor.flush();
+    $(".deletePost").first().click();
+    chai.assert.equal($(".title:eq(0)").html(), "Neutra messenger bag");
+  });
+});
+…&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;We'll add in the code for deleting posts now.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  //client.index.html
+  …
+  &amp;lt;div class="content"&amp;gt;{{content}}&amp;lt;/div&amp;gt;
+  &amp;lt;!-- we'll add in the delete link right below the content helper --&amp;gt;
+  • &amp;lt;a href="#" class="deletePost"&amp;gt;delete&amp;lt;/a&amp;gt;
+  …
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A new helper for the content template will allow us delete a post in the database.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;// client/posts.js
+…
+Template.post.events({
+  'click .deletePost': function(e){
+    e.preventDefault();
+    var thisPostId = this._id;
+    Posts.remove(thisPostId);
+  }
+});
+…&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Again we'll have some wonky action in our tests. Let's create a post before we delete it, so that all our tests begin with a fresh state. We'll add this code first thing in the describe block for "deleting posts".&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;// tests/mocha/client/client.js
+…
+before(function(done){
+  Posts.insert({
+    title: "delete me",
+    content: "please delete me",
+    createdAt: new Date()
+  });
+  done();
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;You'll probably need to run &lt;em&gt;metor reset &amp;amp;&amp;amp; meteor&lt;/em&gt; again from the command line to clear out the databases. Once you do that all tests should be green.&lt;/p&gt;
+
+&lt;p&gt;If you want to check out the code from this section, you can grab it from &lt;a href="https://github.com/austinsamsel/capote/tree/part-3"&gt;GitHub&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In part 4, we'll build out the word count feature.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Improving-User-Experience:-Meteor-Reactivity-and Animations-using-CSS</title>
     <link rel="alternate" href="http://blog.url.com/blog/improving-ux-with-animations-in-meteor.html"/>
     <id>http://blog.url.com/blog/improving-ux-with-animations-in-meteor.html</id>
     <published>2015-10-18T20:16:00-04:00</published>
-    <updated>2015-10-18T21:11:33-04:00</updated>
+    <updated>2015-10-24T10:49:16-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -175,15 +341,25 @@ span.todo{
 }&lt;/code&gt;&lt;/pre&gt;
 
 
-&lt;p&gt;I think this update will make using Nice Track a little bit more enjoyable and sensible. While its nice to have an animation that hides each topic item, it'd be nice if it didn't run the animation when coming to the ratings page from another page in the app. I'd really like for it to only start an animation after the user makes a rating, but for now I'm going to save that problem for later.&lt;/p&gt;
+&lt;p&gt;While its nice to have an animation that hides each topic item, it'd be nice if it didn't run the animation when coming to the ratings page from another page in the app. I'd really like for it to only start an animation after the user makes a rating.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;//client/topics/topic_item.js
+Template.topicItemRate.onRendered (function() {
+  $('.hideThis').remove();
+});&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;This will remove any rating cards that have a .hideThis class attached once the items have rendered. This is a quick and easy way of skipping the loading animation when we don't really need it.&lt;/p&gt;
+
+&lt;p&gt;I think these updates will make using Nice Track a little bit more enjoyable and sensible. If you have any suggestions for improvements please let me know!&lt;/p&gt;
 </content>
   </entry>
   <entry>
-    <title>Building-Capote:-Meteor-&amp;-Mocha-TDD-(Part2)</title>
+    <title>Building Capote Meteor &amp; Mocha TDD (Part2)</title>
     <link rel="alternate" href="http://blog.url.com/blog/building-capote-part-2.html"/>
     <id>http://blog.url.com/blog/building-capote-part-2.html</id>
     <published>2015-10-10T18:08:00-04:00</published>
-    <updated>2015-10-18T20:17:11-04:00</updated>
+    <updated>2015-10-26T23:40:07-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -324,15 +500,15 @@ Template.registerHelper('cleanDate', function(date) {
 
 &lt;p&gt;If you have any questions or you want me to break down the steps even further, please let me know. If you want to check out the code for this section, you can grab it from &lt;a href="https://github.com/austinsamsel/capote/tree/part-2"&gt;GitHub&lt;/a&gt;. In the next post we'll write tests for creating and deleting posts.&lt;/p&gt;
 
-&lt;p&gt;Part 3 coming soon.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://hightopsnyc.com/blog/building-capote-part-3.html"&gt;Continue to Part 3&lt;/a&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry>
-    <title>Building-Capote:-Meteor-&amp;-Mocha-TDD-(Part1)</title>
+    <title>Building Capote Meteor &amp; Mocha TDD (Part1)</title>
     <link rel="alternate" href="http://blog.url.com/blog/building-capote.html"/>
     <id>http://blog.url.com/blog/building-capote.html</id>
     <published>2015-10-03T17:34:00-04:00</published>
-    <updated>2015-10-10T20:41:21-04:00</updated>
+    <updated>2015-10-26T23:42:28-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -373,12 +549,10 @@ Chai documentation: &lt;a href="http://chaijs.com/"&gt;http://chaijs.com/&lt;/a&
 &lt;p&gt;Here are the features we'll build:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;List of posts: title &amp;amp; content&lt;/li&gt;
+&lt;li&gt;A listing of posts.&lt;/li&gt;
+&lt;li&gt;Create and edit posts.&lt;/li&gt;
 &lt;li&gt;Daily goal set by user.&lt;/li&gt;
-&lt;li&gt;Streak banner: “congrats 1 day”&lt;/li&gt;
-&lt;li&gt;Individual post page.&lt;/li&gt;
-&lt;li&gt;Create, view, edit, delete post.&lt;/li&gt;
-&lt;li&gt;Count words per day &amp;amp; record streak.&lt;/li&gt;
+&lt;li&gt;Count words for each post.&lt;/li&gt;
 &lt;/ul&gt;
 
 
@@ -484,11 +658,11 @@ if (Meteor.isServer) {
 </content>
   </entry>
   <entry>
-    <title>Getting-Started-with-Cucumber-on-Rails</title>
+    <title>Getting Started with Cucumber on Rails</title>
     <link rel="alternate" href="http://blog.url.com/blog/getting-started-with-cucumber-on-rails.html"/>
     <id>http://blog.url.com/blog/getting-started-with-cucumber-on-rails.html</id>
     <published>2015-08-31T13:09:00-04:00</published>
-    <updated>2015-10-10T20:41:21-04:00</updated>
+    <updated>2015-10-26T20:13:18-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -1972,7 +2146,7 @@ end
     <link rel="alternate" href="http://blog.url.com/blog/up-state.html"/>
     <id>http://blog.url.com/blog/up-state.html</id>
     <published>2015-07-10T03:00:00-04:00</published>
-    <updated>2015-10-10T20:41:21-04:00</updated>
+    <updated>2015-10-26T20:13:20-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>

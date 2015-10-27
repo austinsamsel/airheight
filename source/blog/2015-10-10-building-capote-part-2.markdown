@@ -1,5 +1,5 @@
 ---
-title: Building-Capote:-Meteor-&-Mocha-TDD-(Part2)
+title: Building Capote Meteor & Mocha TDD (Part2)
 date: 2015-10-10 22:08 UTC
 tags: meteor, mocha, tdd
 layout: layout_article
@@ -134,4 +134,4 @@ Now our tests all pass.
 
 If you have any questions or you want me to break down the steps even further, please let me know. If you want to check out the code for this section, you can grab it from [GitHub](https://github.com/austinsamsel/capote/tree/part-2). In the next post we'll write tests for creating and deleting posts.
 
-Part 3 coming soon.
+[Continue to Part 3](http://hightopsnyc.com/blog/building-capote-part-3.html)

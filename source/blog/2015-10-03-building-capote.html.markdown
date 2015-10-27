@@ -1,6 +1,6 @@
 ---
 layout: layout_article
-title: Building-Capote:-Meteor-&-Mocha-TDD-(Part1)
+title: Building Capote Meteor & Mocha TDD (Part1)
 date: 2015-10-03 21:34 UTC
 tags: meteor, mocha, tdd
 ---
@@ -41,12 +41,10 @@ In this tutorial, we'll build an app that tracks a user's daily word count. I've
 
 Here are the features we'll build:
 
-* List of posts: title & content
+* A listing of posts.
+* Create and edit posts.
 * Daily goal set by user.
-* Streak banner: “congrats 1 day”
-* Individual post page.
-* Create, view, edit, delete post.
-* Count words per day & record streak.
+* Count words for each post.
 
 ## Set up
 
@@ -139,4 +137,4 @@ I'm going to cap this post here, but in the next posts as we build out this app,
 
 You can grab the completed code for this post [here](https://github.com/austinsamsel/capote/tree/part-1).
 
-[Continue to Part 2](http://hightopsnyc.com/blog/building-capote-part-2.html) 
+[Continue to Part 2](http://hightopsnyc.com/blog/building-capote-part-2.html)
