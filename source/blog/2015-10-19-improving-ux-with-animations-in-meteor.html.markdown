@@ -1,11 +1,11 @@
 ---
-title: Improving-User-Experience:-Meteor-Reactivity-and Animations-using-CSS
+title: Improving User Experience Meteor Reactivity and CSS Animations
 date: 2015-10-19 00:16 UTC
 tags: meteor, ux, animations
 layout: layout_article
 ---
 
-# Improving User Experience: Meteor Reactivity and Animations using CSS
+# Improving User Experience: Meteor Reactivity and CSS Animations
 
 [Nice Track](https://nicetrack.meteor.com) is one of the first apps I created using Meteor. It allows you to privately create topics which you can then rate on a daily basis in order to track your progress, satisfaction, or feelings. You can also add a few notes to each rating. After you've rated your topics some statistics are provided so you can analyze your ratings.
 
@@ -91,6 +91,7 @@ When the {{minRecent}} helper is active, it adds the class, "hideThis" which inc
     opacity: 0;
     position:relative;
     z-index:1;
+    padding: 0 1em; /* makes animation smoother */
   }
   100%{
     position:absolute;
