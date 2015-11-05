@@ -2,6 +2,7 @@
 title: Building Capote Meteor & Mocha TDD (Part 3)
 date: 2015-10-26 23:58 UTC
 tags: meteor, mocha, tdd
+layout: layout_article
 ---
 
 # Building Capote: Meteor & Mocha TDD (Part 3)
@@ -151,4 +152,4 @@ You'll probably need to run *metor reset && meteor* again from the command line 
 
 If you want to check out the code from this section, you can grab it from [GitHub](https://github.com/austinsamsel/capote/tree/part-3)
 
-In part 4, we'll build out the word count feature.
+[Continue to Part 4](http://hightopsnyc.com/blog/building-capote-part-4.html)

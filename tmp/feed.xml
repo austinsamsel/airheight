@@ -5,16 +5,233 @@
   <id>http://blog.url.com/blog</id>
   <link href="http://blog.url.com/blog"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2015-10-26T19:58:00-04:00</updated>
+  <updated>2015-11-04T17:00:00-05:00</updated>
   <author>
     <name>Blog Author</name>
   </author>
+  <entry>
+    <title>Building Capote Meteor &amp; Mocha TDD (Part 4)</title>
+    <link rel="alternate" href="http://blog.url.com/blog/building-capote-part-4.html"/>
+    <id>http://blog.url.com/blog/building-capote-part-4.html</id>
+    <published>2015-11-04T17:00:00-05:00</published>
+    <updated>2015-11-04T22:21:33-05:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;h1&gt;Building Capote: Meteor &amp;amp; Mocha TDD (Part 4)&lt;/h1&gt;
+
+&lt;p&gt;Last week we created the add the ability to create posts and delete them. Now we're going to build our word count feature.&lt;/p&gt;
+
+&lt;p&gt;You can grab the code from the last chapter &lt;a href="https://github.com/austinsamsel/capote/tree/part-3"&gt;here&lt;/a&gt;. If you want to review the last post, you can &lt;a href="http://hightopsnyc.com/blog/building-capote-part-3.html"&gt;visit it here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Let's make sure there's a word count associated with each post, and that it shows up in the UI. I'll write a quick test based on some of the first ones we wrote. It tests to make sure the first post has a word count of 33 words. I know it will have 33 words because I literally just counted the words in that post.&lt;/p&gt;
+
+&lt;p&gt;You can add this test in the "Posts" section, our first set of tests.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;// tests/mocha/client/client.js
+it("should show a wordcount", function(){
+  chai.assert.equal($('.wordcount:eq(0)').html(), "33");
+});&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;First let's update our fixtures and give each post a word count.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;// tests/mocha/client/client.js
+
+...
+Posts.insert({
+  title: "Neutra messenger bag",
+  content: "Tousled forage trust fund readymade Neutra messenger bag. Drinking vinegar chia Marfa, vegan messenger bag disrupt Wes Anderson try-hard. Small batch scenester raw denim synth cronut cornhole, iPhone try-hard single-origin.",
+  createdAt: new Date(2015,0,4),
+  wordCount: 33
+});
+Posts.insert({
+  title: "fatback filet mignon",
+  content: "Bacon ipsum dolor amet alcatra turkey shank cupim corned beef brisket chuck boudin tri-tip t-bone kevin fatback filet mignon. Short loin tongue short ribs.",
+  createdAt: new Date(2015,0,3),
+  wordCount: 26
+});
+Posts.insert({
+  title: "know what I'm sayin'",
+  content: "You see? It's curious. Ted did figure it out - time travel. And when we get back, we gonna tell everyone. How it's possible, how it's done, what the dangers are. But then why fifty years in the future when the spacecraft encounters a black hole does the computer call it an 'unknown entry event'?",
+  createdAt: new Date(2015,0,1),
+  wordCount: 54
+});
+...&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Cool.&lt;/p&gt;
+
+&lt;p&gt;Reset the server &lt;em&gt;meteor reset &amp;amp;&amp;amp; meteor&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;And let's get the word count visible in the app. You can add this line in the "post" template at the end.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// client/index.html
+
+&amp;lt;div class="wordcount"&amp;gt;{{wordCount}}&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Our test should be passing.&lt;/p&gt;
+
+&lt;p&gt;If you create a new post, there's still no way to calculate or record how many words are in the post. Its time to build in that feature now. We're going to make use of &lt;a href="https://www.npmjs.com/package/wordcount"&gt;wordcount&lt;/a&gt;, an npm package. It basically does what you might think it does, it counts words. In order to use npm packages with Meteor, we'll need to add the meteorhacks:npm package.&lt;/p&gt;
+
+&lt;p&gt;In the command line, run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;$ meteor add meteorhacks:npm&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Adding this package will automatically create a packages.json file. This is where we'll list our packages, like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;// packages.json
+{
+  "wordcount": "1.1.1"
+}&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Its a good idea to restart the meteor server at this point so npm and the new package can be loaded into our meteor app.&lt;/p&gt;
+
+&lt;p&gt;Its important to know that when you use meteorhacks:npm, these packages are only available server side. So we'll set up our word count function in our server code as a method, then call it from the client when we need to make use of it.&lt;/p&gt;
+
+&lt;p&gt;Before we write the code, let's also add one more package:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;$ meteor add check&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;The &lt;a href="https://atmospherejs.com/meteor/check"&gt;check&lt;/a&gt; package helps with security by ensuring your users can only pass through the right types of data. You used to be able to use the audit-argument-checks package for the same purpose. But it seems that the check package has taken over. You can read some more about it &lt;a href="http://docs.meteor.com/#/full/check"&gt;in the documentation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Here we are creating a new method called 'getWordcount' which accepts one argument, words, which will be coming from the client. We check to make sure it is only accepting a string. We also require the wordcount package, then return our argument after running it through the wordcount package.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;//server/app.js
+
+Meteor.methods({
+  'getWordcount': function getWordcount(words) {
+    check(words, String);
+    var wordcount = Meteor.npmRequire('wordcount');
+    return wordcount(words);
+  }
+});&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;To see if this is going to work, we call the method in our server file and watch the command line console for an update.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;//server/app.js
+
+Meteor.call('getWordcount', 'hows it going world?', function(err, results){
+  if(err){
+    console.error(err);
+  }
+  else{
+    console.log('HEY! it worked, it was ' + results + ' words!');
+  }
+});&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;The message should get logged in your console and look like: "HEY! it worked, it was 4 words!"&lt;/p&gt;
+
+&lt;p&gt;Now we need a way to record how many words the user is actually typing as they type it and once we have that number we can easily save it into the database when the user submits their post.&lt;/p&gt;
+
+&lt;p&gt;We'll write a test to make sure that if a user enters two words into the 'content' section of the post, then the word count should reflect that the word count is 2. This is the first post where we need to set a timeout before running our assertion. Apparently there is some lag in updating the session and reflecting that in the UI, so we'll give it half a second to update. Our test is going to look something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;// tests/mocha/client/client.js
+
+describe("wordcount", function() {
+  before(function(done){
+    $('[name="content"]').val('a new');
+    $('[name="content"]').keyup();
+    done();
+  });
+  it("displays the wordcount when the user types in the form", function(){
+    Meteor.flush();
+    setTimeout(function(){
+      chai.assert.equal($('span.wordcount-num').text(), "2")
+    }, 500);
+  });
+});&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Let's create a new template.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// client/index.html
+
+&amp;lt;template name="wordcount"&amp;gt;
+  &amp;lt;div class="wordcount-msg"&amp;gt;
+    word count: &amp;lt;span class="wordcount-num"&amp;gt;{{wordcount}}&amp;lt;/span&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And include it in underneath the createPost helper.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// client/index.html
+
+&amp;lt;body&amp;gt;
+  {{&amp;gt; createPost}}
+  {{&amp;gt; wordcount}} &amp;lt;!-- new helper here --&amp;gt;
+  &amp;lt;div class="container"&amp;gt;
+    {{#each posts}}
+      {{&amp;gt; post}}
+    {{/each}}
+  &amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We're going to add a helper and an onRendered call. The onRendered call will set the word count to zero. This makes sense because this should only be called on render, before anyone's typed in the form. Then the helper gets the wordcount's session value.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;//model/posts.js
+
+Template.wordcount.onRendered(function(){
+  Session.set('wordcount', 0);
+});
+Template.wordcount.helpers({
+  wordcount: function(){
+    return Session.get('wordcount');
+  }
+});&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Now we need to set the session value. We will tie in to the keyup action in the form. I got this idea from &lt;a href="http://meteortips.com/second-meteor-tutorial/managing-todos/"&gt;Meteortips&lt;/a&gt;. Whenever a user presses a key (and lifts up their finger) we can fire an event in Meteor that will send whatever is in the form to our wordcount package to count the words. In the createPost events block, add in:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;//model/posts.js
+
+'keyup [name=content]': function(e){
+  var wordsToCount = $('[name="content"]').val();
+  Meteor.call('getWordcount', wordsToCount, function(err, results){
+    if(err){
+      console.error(err);
+    }
+    else{
+      Session.set('wordcount', results);
+    }
+  });
+}&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; I moved all the content from client/posts.js into model/posts.js -- it didn't make sense to have two posts.js files. The above code gets wrapped by the Meteor.isClient if statement.&lt;/p&gt;
+
+&lt;p&gt;This should put our test in the green.&lt;/p&gt;
+
+&lt;p&gt;We'll also take care of one more detail. In order to start again with a clean slate after submitting a post and clearing the form, we should also programatically wipe the wordcount session. If we don't, the session value will remain at the previous wordcount until we start typing again. We can update this by adding in our createPost events function:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;//model/posts.js
+
+$('[name=title]').val('');
+$('[name=content]').val('');
+Session.set('wordcount', 0); // clears the session.&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Awesome!!!!&lt;/p&gt;
+
+&lt;p&gt;Next up, we're going to add in a daily goals feature and connect it to the word count so we can set a minimum word count for each post.&lt;/p&gt;
+
+&lt;p&gt;If you want to check out the code from this section, you can grab it from &lt;a href="https://github.com/austinsamsel/capote/tree/part-4"&gt;GitHub&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Building Capote Meteor &amp; Mocha TDD (Part 3)</title>
     <link rel="alternate" href="http://blog.url.com/blog/building-capote-part-3.html"/>
     <id>http://blog.url.com/blog/building-capote-part-3.html</id>
     <published>2015-10-26T19:58:00-04:00</published>
-    <updated>2015-10-27T00:04:26-04:00</updated>
+    <updated>2015-11-04T22:22:54-05:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -172,19 +389,19 @@ before(function(done){
 
 &lt;p&gt;If you want to check out the code from this section, you can grab it from &lt;a href="https://github.com/austinsamsel/capote/tree/part-3"&gt;GitHub&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;In part 4, we'll build out the word count feature.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://hightopsnyc.com/blog/building-capote-part-4.html"&gt;Continue to Part 4&lt;/a&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry>
-    <title>Improving-User-Experience:-Meteor-Reactivity-and Animations-using-CSS</title>
+    <title>Improving User Experience Meteor Reactivity and CSS Animations</title>
     <link rel="alternate" href="http://blog.url.com/blog/improving-ux-with-animations-in-meteor.html"/>
     <id>http://blog.url.com/blog/improving-ux-with-animations-in-meteor.html</id>
     <published>2015-10-18T20:16:00-04:00</published>
-    <updated>2015-10-24T10:49:16-04:00</updated>
+    <updated>2015-10-31T11:25:59-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;h1&gt;Improving User Experience: Meteor Reactivity and Animations using CSS&lt;/h1&gt;
+    <content type="html">&lt;h1&gt;Improving User Experience: Meteor Reactivity and CSS Animations&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href="https://nicetrack.meteor.com"&gt;Nice Track&lt;/a&gt; is one of the first apps I created using Meteor. It allows you to privately create topics which you can then rate on a daily basis in order to track your progress, satisfaction, or feelings. You can also add a few notes to each rating. After you've rated your topics some statistics are provided so you can analyze your ratings.&lt;/p&gt;
 
@@ -272,6 +489,7 @@ Template.topicItemRate.helpers({
     opacity: 0;
     position:relative;
     z-index:1;
+    padding: 0 1em; /* makes animation smoother */
   }
   100%{
     position:absolute;
@@ -359,7 +577,7 @@ Template.topicItemRate.onRendered (function() {
     <link rel="alternate" href="http://blog.url.com/blog/building-capote-part-2.html"/>
     <id>http://blog.url.com/blog/building-capote-part-2.html</id>
     <published>2015-10-10T18:08:00-04:00</published>
-    <updated>2015-10-26T23:40:07-04:00</updated>
+    <updated>2015-10-31T11:26:01-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -508,7 +726,7 @@ Template.registerHelper('cleanDate', function(date) {
     <link rel="alternate" href="http://blog.url.com/blog/building-capote.html"/>
     <id>http://blog.url.com/blog/building-capote.html</id>
     <published>2015-10-03T17:34:00-04:00</published>
-    <updated>2015-10-26T23:42:28-04:00</updated>
+    <updated>2015-10-31T11:26:03-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -662,7 +880,7 @@ if (Meteor.isServer) {
     <link rel="alternate" href="http://blog.url.com/blog/getting-started-with-cucumber-on-rails.html"/>
     <id>http://blog.url.com/blog/getting-started-with-cucumber-on-rails.html</id>
     <published>2015-08-31T13:09:00-04:00</published>
-    <updated>2015-10-26T20:13:18-04:00</updated>
+    <updated>2015-10-31T11:26:04-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -2139,84 +2357,6 @@ end
 
 &lt;p&gt;If you have any questions, or notice anything that can be improved, please let me know!&lt;/p&gt;
 
-</content>
-  </entry>
-  <entry>
-    <title>Up State</title>
-    <link rel="alternate" href="http://blog.url.com/blog/up-state.html"/>
-    <id>http://blog.url.com/blog/up-state.html</id>
-    <published>2015-07-10T03:00:00-04:00</published>
-    <updated>2015-10-26T20:13:20-04:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;!-- &lt;div class='blog-header' style="background-image:url('/images/blog/trees.jpg');background-color: #A8C8C8;"&gt;
-  &lt;div class="blog-header-content"&gt;
-    &lt;h1&gt;Up State&lt;/h1&gt;
-    &lt;h2 class="post-subtitle"&gt;a website building service for awesome high quality results&lt;/h2&gt;
-    &lt;div class="author-block"&gt;
-      &lt;img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/images/austin.jpg" alt="austin, founder of High Tops" class="profile-pic author-pic"&gt;
-      &lt;div class="author-name"&gt;
-        Austin Samsel
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="published"&gt;
-     Published July 10, 2015
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt; --&gt;
-
-
-&lt;h1&gt;Announcing Up State&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href="http://www.upstatebiz.com/"&gt;Up State is a WordPress website building service&lt;/a&gt;. The Up State service generates websites and gets them into the State of Up - online, launched, live.&lt;/p&gt;
-
-&lt;p&gt;" &lt;em&gt;Up State.&lt;/em&gt; "&lt;/p&gt;
-
-&lt;p&gt;Get it? Okay, cool.&lt;/p&gt;
-
-&lt;p&gt;Not only does Up State get your website launched, but it'll be a &lt;strong&gt;high quality&lt;/strong&gt;, &lt;strong&gt;mobile-responsive&lt;/strong&gt; website, built in just one week. There's no quotes, no haggling, no weird stuff, just a flat-rate price of $999.&lt;/p&gt;
-
-&lt;p&gt;That's Up State.&lt;/p&gt;
-
-&lt;h2&gt;Is this for me?&lt;/h2&gt;
-
-&lt;p&gt;I created Up State for two types of people:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;You're a &lt;strong&gt;small business owner&lt;/strong&gt; and you need a website to promote your business.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;You're a leader&lt;/strong&gt; at a company that is launching a new product, organizing a conference, or starting a new marketing campaign and you need to promote your product by creating a new website.&lt;/li&gt;
-&lt;/ol&gt;
-
-
-&lt;p&gt;You may have tried the following ways of getting a website up:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Do-It-Yourself&lt;/li&gt;
-&lt;li&gt;Hire a freelancer&lt;/li&gt;
-&lt;li&gt;Hire an agency&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;p&gt;…and you had results ranging from &lt;strong&gt;wtf&lt;/strong&gt; to &lt;strong&gt;meh&lt;/strong&gt; to &lt;strong&gt;okay-we're-broke-now&lt;/strong&gt;. And maybe you wondered if there was something else that could make the whole process easier.&lt;/p&gt;
-
-&lt;h2&gt;Is my project a fit?&lt;/h2&gt;
-
-&lt;p&gt;Up State isn't for every project. It's meant for small, simple projects — usually brochure-style websites that only require some basic functionality: contact form, content slider, a mailing list sign up form, and so on. These are the types of features that come prepackaged with most premium WordPress themes.&lt;/p&gt;
-
-&lt;p&gt;If your project requires more advanced functionality, like eCommerce, webinar sign ups, subscription services, or a lot of design customization, then sometimes Up State is a great way to quickly jumpstart your project and put you ahead of schedule. Starting with a premium theme allows for the streamlining of a lot of design and layout decisions. It keeps costs down and saves time.&lt;/p&gt;
-
-&lt;p&gt;Up State makes sense for brand new projects as well as for existing, older websites that need to be totally refreshed. Up State websites are created with modern specs: a mobile-friendly responsive design, Google Analytics, global SEO, optimized page loading, and spam filters.&lt;/p&gt;
-
-&lt;h2&gt;Everyone wins&lt;/h2&gt;
-
-&lt;p&gt;As a developer/designer, I get to be more productive by offering a standardized, streamlined service. My clients get a great product that's tailored just for them and they get to save time, money, and sanity. Awesome!!&lt;/p&gt;
-
-&lt;h2&gt;Up next&lt;/h2&gt;
-
-&lt;p&gt;I'm planning on creating a "playbook" that describes the whole process of building an Up State website. It will include cool stuff like which plugins I like to use and how I take my client's goals into consideration throughout the process. I'm also thinking about creating some add-on packages for more advanced analytics and visitor tracking -- or possibly a more involved SEO package.&lt;/p&gt;
-
-&lt;p&gt;Is there something else you'd want in a new website? I'd love to hear what you're looking for in the comments below.&lt;/p&gt;
 </content>
   </entry>
 </feed>
