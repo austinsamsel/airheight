@@ -146,7 +146,7 @@
   </url>
   <url>
     <loc>https://localhost:4567/</loc>
-    <lastmod>2015-11-21T21:32:11-05:00</lastmod>
+    <lastmod>2015-11-22T20:45:42-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -259,19 +259,13 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://localhost:4567/bower_components/waypoints/README.html</loc>
-    <lastmod>2015-03-21T19:33:27-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://localhost:4567/bower_components/jquery/test/data/ajax/unreleasedXHR.html</loc>
     <lastmod>2013-07-03T09:48:24-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://localhost:4567/bower_components/waypoints/CONTRIBUTING.html</loc>
+    <loc>https://localhost:4567/bower_components/waypoints/README.html</loc>
     <lastmod>2015-03-21T19:33:27-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -325,7 +319,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://localhost:4567/bower_components/waypoints/CHANGELOG.html</loc>
+    <loc>https://localhost:4567/bower_components/waypoints/CONTRIBUTING.html</loc>
     <lastmod>2015-03-21T19:33:27-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -385,14 +379,8 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://localhost:4567/bower_components/semantic-ui-loader/RELEASE-NOTES.html</loc>
-    <lastmod>2015-05-20T11:58:17-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://localhost:4567/bower_components/semantic-ui-loader/README.html</loc>
-    <lastmod>2015-05-20T11:58:17-04:00</lastmod>
+    <loc>https://localhost:4567/bower_components/waypoints/CHANGELOG.html</loc>
+    <lastmod>2015-03-21T19:33:27-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -421,6 +409,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://localhost:4567/bower_components/semantic-ui-loader/RELEASE-NOTES.html</loc>
+    <lastmod>2015-05-20T11:58:17-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://localhost:4567/bower_components/jquery/test/data/support/shrinkWrapBlocks.html</loc>
     <lastmod>2013-07-03T09:48:24-04:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -439,6 +433,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://localhost:4567/bower_components/semantic-ui-loader/README.html</loc>
+    <lastmod>2015-05-20T11:58:17-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://localhost:4567/bower_components/jquery/test/data/test2.html</loc>
     <lastmod>2013-07-03T09:48:24-04:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -447,12 +447,6 @@
   <url>
     <loc>https://localhost:4567/bower_components/jquery/test/data/test3.html</loc>
     <lastmod>2013-07-03T09:48:24-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://localhost:4567/bower_components/scrollNav/README.html</loc>
-    <lastmod>2015-02-19T22:46:22-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -475,7 +469,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://localhost:4567/bower_components/scrollNav/CHANGELOG.html</loc>
+    <loc>https://localhost:4567/bower_components/scrollNav/README.html</loc>
     <lastmod>2015-02-19T22:46:22-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -495,6 +489,12 @@
   <url>
     <loc>https://localhost:4567/bower_components/jquery/test/readywait.html</loc>
     <lastmod>2013-07-03T09:48:24-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://localhost:4567/bower_components/scrollNav/CHANGELOG.html</loc>
+    <lastmod>2015-02-19T22:46:22-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
