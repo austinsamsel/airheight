@@ -5,16 +5,175 @@
   <id>http://blog.url.com/blog</id>
   <link href="http://blog.url.com/blog"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2015-11-17T01:00:00-05:00</updated>
+  <updated>2015-12-03T14:04:00-05:00</updated>
   <author>
     <name>Blog Author</name>
   </author>
+  <entry>
+    <title>Working with a React View Layer in Meteor</title>
+    <link rel="alternate" href="http://blog.url.com/blog/working-with-react-in-meteor.html"/>
+    <id>http://blog.url.com/blog/working-with-react-in-meteor.html</id>
+    <published>2015-12-03T14:04:00-05:00</published>
+    <updated>2015-12-03T14:33:35-05:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;h1&gt;Integrating a React View Layer in Meteor&lt;/h1&gt;
+
+&lt;p&gt;I've been trying to stay focused in terms of what new technologies I'll try out or learn. I've been reading about React since the beginning of the year, but I've held off on doing anything more than a tutorial. Now it seems like &lt;a href="https://forums.meteor.com/t/next-steps-on-blaze-and-the-view-layer/13561"&gt;React might be more fully integrated with Meteor&lt;/a&gt; as a front end engine, beyond official support by the Meteor Development Group. According to the discussion its possible Blaze 2.0 could be some kind of merger with React. Once I read that, it gave me the excuse I needed to start working with React.&lt;/p&gt;
+
+&lt;h2&gt;Still &amp;lt;3 you Blaze&lt;/h2&gt;
+
+&lt;p&gt;Blaze made development really fast and productive. Wrapping HTML in template tags felt like a pretty good separation of concerns and was really easy to conceptualize. I had my HTML, my CSS, and my Javascript. If I needed some logic in my templates I had a lot of options with spacebars, helpers. However, it seems like we can get all that same functionality with React.&lt;/p&gt;
+
+&lt;h2&gt;Cleaner Code&lt;/h2&gt;
+
+&lt;p&gt;To test it out, I'm creating an app that lets users send letters (or messages), snail mail style — where it takes a few days for each message to be delivered. It's an idea I've been thinking about for a while.&lt;/p&gt;
+
+&lt;p&gt;By now I've run the &lt;a href="https://www.meteor.com/tutorials/react/creating-an-app"&gt;official Meteor React tutorial&lt;/a&gt; a couple times and used that basic functionality as a starting point for this app. I feel like I finally hit that react style "functional" (using this word lightly here) programming moment when I refactored a bunch of functionality I was storing in variables... and moved it out into functions which could be used a little bit more open-endedly and repeatedly. Of course you don't need React to code like this, but this style is more encouraged... As a reference for the following example, you can see the full code at my &lt;a href="https://github.com/austinsamsel/snail"&gt;Github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In my user.jsx file, my code was looking like this. This is probably how I would have written my apps in Meteor before. I'd use a lot of variables and make it kind of human readable by naming them well. It always worked! But there's probably a better way…&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;// components/User.jsx
+render(){
+  var currentUserId = Meteor.userId();
+  var followedUserId = this.props.user._id;
+  var notCurrentUser = this.props.user._id != currentUserId;
+  var notFollowedByCurrentUser = Relationships.findOne({$and : [{owner : currentUserId}, {saveContact : followedUserId}] }) == null;
+  var followUserButton = notCurrentUser &amp;&amp; notFollowedByCurrentUser;
+
+  var followedByCurrentUser = Relationships.findOne({$and : [{owner : currentUserId}, {saveContact : followedUserId}] }) != null;
+
+  var unfollowUserButton = notCurrentUser &amp;&amp; followedByCurrentUser;
+
+return (
+  &lt;li&gt;
+    {this.props.user.username}
+    { followUserButton ? (
+      &lt;button className="save" onClick={this.saveThisContact}&gt;save contact&lt;/button&gt;
+      ) : ''}
+
+    { unfollowUserButton ? (
+      &lt;button className="remove" onClick={this.removeThisContact}&gt;remove contact&lt;/button&gt;
+    ): ''}
+  &lt;/li&gt;
+  )
+}&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;I searched around for how other people were working with React, especially in terms of Meteor and came across &lt;a href="http://blog.differential.com/react-for-meteor-developers/"&gt;this article&lt;/a&gt; which inspired me to rearrange my code like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;// components/User.jsx
+render(){
+  return (
+    &lt;li&gt;
+      {this.props.user.username}
+      {this.followButton()}
+      {this.unfollowButton()}
+    &lt;/li&gt;
+  )
+},
+//method calls
+saveThisContact() {
+  Meteor.call("saveContact", this.props.user._id);
+},
+removeThisContact(){
+  var currentUserId = Meteor.userId();
+  var followedUserId = this.props.user._id;
+  Meteor.call("removeContact", currentUserId, followedUserId);
+},
+// render conditionals
+followButton(){
+  if ( ! this.isCurrentUser() &amp;&amp; ! this.isFollowed() ) {
+    return &lt;button
+      className="save"
+      onClick={this.saveThisContact}&gt;
+      save contact
+    &lt;/button&gt;;
+  }
+},
+unfollowButton(){
+  if ( ! this.isCurrentUser() &amp;&amp; this.isFollowed() ) {
+    return &lt;button
+      className="remove"
+      onClick={this.removeThisContact}&gt;
+      remove contact
+    &lt;/button&gt;;
+  }
+},
+// helper functions
+isCurrentUser(){
+  if (this.props.user._id == Meteor.userId())
+    return true;
+},
+isFollowed(){
+  if (Relationships.findOne({$and: [{owner: Meteor.userId()}, {saveContact: this.props.user._id}] }) != null)
+    return true;
+},&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Here, I moved the render() function towards the top, so if I'm searching through my files, I'll immediately see what's being rendered in the UI, rather than a bunch of functions. I replaced all the variables with functions. I also moved the if/else logic out of the render() function and into helper functions. On the one hand, the first render() function looks a lot more clean, but also a lot more empty. This definitely spreads out the code more, but I think it'd also be faster to trace. And as the app grows, or if more is included in the component, it should be easy to maintain.&lt;/p&gt;
+
+&lt;h2&gt;Atmosphere packages&lt;/h2&gt;
+
+&lt;p&gt;It isn't explicitly said anywhere, so maybe this is just something that is obvious to everyone but me, but you can use atmosphere packages really easily with React in your Meteor projects. The Meteor-react tutorial gave some special care to the Accounts UI package, setting it up in a wrapper before placing it in the DOM. This got me thinking I'd need to drop Atmosphere and start working with meteorhacks:npm and cosmos:browserify packages.&lt;/p&gt;
+
+&lt;p&gt;However, yes, you can use Atmosphere as your package manager. When I wanted to include a timestamp for each message, I ran "meteor add momentjs:moment" in the command line as usual to include &lt;a href="http://momentjs.com/"&gt;Moment&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I like to do things step by step, so I first tried to print the timestamp with a prop like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;{this.props.letter.createdAt}&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;so that I could at least see the object I'd be working with. However this returned a pretty dense error message:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Uncaught Error: Invariant Violation: Objects are not valid as a React child (found: Sun Nov 29 2015 17:31:47 GMT-0500 (EST)). If you meant to render a collection of children, use an array instead or wrap the object using createFragment(object) from the React add-ons. Check the render method of `Letter`.&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;After some googling I caught a hint that the date object needed to be converted to a string first.&lt;/p&gt;
+
+&lt;p&gt;So I created a function to do just that&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;letterCreatedAt(){
+  var a = this.props.letter.createdAt;
+  return a.toString();
+}&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;And added in a call from the render() function:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;{this.letterCreatedAt()}&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Seeing that that worked. I updated my function to covert the timestamp with Moment JS.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-javascript"&gt;letterCreatedAt(){
+  var a = this.props.letter.createdAt;
+  return moment(a).format('MMMM Do YYYY, h:mm a');
+}&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;h2&gt;React packages&lt;/h2&gt;
+
+&lt;p&gt;Some atmosphere packages won't work well with React. For example, I wanted to build an input field with autocomplete functionality that would help search for users. I began installing the &lt;a href="https://github.com/sergeyt/meteor-typeahead/"&gt;typeahead package&lt;/a&gt; which was based on meteor templates and found out it was not going to be easily compatible with React.&lt;/p&gt;
+
+&lt;p&gt;So for a case like this I needed browserify and meteorhacks:npm as described in the &lt;a href="http://react-in-meteor.readthedocs.org/en/latest/client-npm/"&gt;React-in-Meteor docs&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I found the &lt;a href="https://github.com/elidoran/cosmos-browserify"&gt;cosmos:browserify&lt;/a&gt; docs contradicted the React-in-Meteor docs suggesting to use &lt;a href="https://www.npmjs.com/package/browserify-exposify"&gt;exposify&lt;/a&gt; rather than &lt;a href="https://www.npmjs.com/package/externalify"&gt;externalify&lt;/a&gt; in order to instruct any npm modules to use Meteor's version of react. The cosmos:browserify docs also suggested to place the browserify files in a client/lib folder so the libraries are only loaded once, instead of twice (client and server).&lt;/p&gt;
+
+&lt;p&gt;Once following the instructions for set up I was able to get it working with &lt;a href="https://www.npmjs.com/package/react-typeahead"&gt;React Typeahead&lt;/a&gt;. I tried several different similar packages, but this was the easiest to get working.&lt;/p&gt;
+
+&lt;h2&gt;Onward&lt;/h2&gt;
+
+&lt;p&gt;At this point in my app, I've created the barebones functionality with the backend Meteor logic and simple react components to create views. I'm looking forward to animating with React and turning this into a full featured application.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Building Capote Meteor &amp; Mocha TDD (Part 5)</title>
     <link rel="alternate" href="http://blog.url.com/blog/building-capote-part-5.html"/>
     <id>http://blog.url.com/blog/building-capote-part-5.html</id>
     <published>2015-11-17T01:00:00-05:00</published>
-    <updated>2015-11-17T16:13:44-05:00</updated>
+    <updated>2015-12-03T14:31:02-05:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -953,160 +1112,6 @@ Template.registerHelper('cleanDate', function(date) {
 &lt;p&gt;If you have any questions or you want me to break down the steps even further, please let me know. If you want to check out the code for this section, you can grab it from &lt;a href="https://github.com/austinsamsel/capote/tree/part-2"&gt;GitHub&lt;/a&gt;. In the next post we'll write tests for creating and deleting posts.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://hightopsnyc.com/blog/building-capote-part-3.html"&gt;Continue to Part 3&lt;/a&gt;&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Building Capote Meteor &amp; Mocha TDD (Part1)</title>
-    <link rel="alternate" href="http://blog.url.com/blog/building-capote.html"/>
-    <id>http://blog.url.com/blog/building-capote.html</id>
-    <published>2015-10-03T17:34:00-04:00</published>
-    <updated>2015-10-31T11:26:03-04:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;h1&gt;Building Capote: Meteor &amp;amp; Mocha TDD (Part 1)&lt;/h1&gt;
-
-&lt;p&gt;You know what's annoying? Testing your app by physically logging in and going through your app to make sure everything works. Also, it takes a lot of time. Also, its scary. If I was doing that while working for a client, I'd really be stressed.&lt;/p&gt;
-
-&lt;p&gt;That's why there's TDD. Writing tests as you write your software. It helps your software suck less, gives you a little more peace of mind, and even though it means writing extra code, there's a really good chance it will save you a lot of time overall.&lt;/p&gt;
-
-&lt;p&gt;When you're learning a framework, you don't get much exposure to testing. Usually your learning resources are focused on covering the framework itself. They don't cover tests because there's so many different ways to do it. With Meteor there's a bunch of suites to test your app: cucumber, jasmine, mocha, etc.&lt;/p&gt;
-
-&lt;p&gt;If you're looking to get started with TDD or want to see some examples of using Mocha in TDD to build a Meteor app, this tutorial is for you.&lt;/p&gt;
-
-&lt;p&gt;If you just want to see the code for this post, you can checkout the &lt;a href="https://github.com/austinsamsel/capote/tree/part-1"&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2&gt;Resources&lt;/h2&gt;
-
-&lt;h5&gt;Meteor TDD bible:&lt;/h5&gt;
-
-&lt;p&gt;&lt;a href="www.meteortesting.com"&gt;www.meteortesting.com&lt;/a&gt;&lt;/p&gt;
-
-&lt;h5&gt;Also, especially relevant:&lt;/h5&gt;
-
-&lt;p&gt;Mocha documentation: &lt;a href="https://mochajs.org/"&gt;https://mochajs.org/&lt;/a&gt;
-Chai documentation: &lt;a href="http://chaijs.com/"&gt;http://chaijs.com/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Because while we're using Mocha we'll use Chai for assertions.&lt;/p&gt;
-
-&lt;h5&gt;other Meteor mocha tutorials:&lt;/h5&gt;
-
-&lt;p&gt;&lt;a href="http://www.webtempest.com/meteor-js-testing-mocha-tutorial"&gt;http://www.webtempest.com/meteor-js-testing-mocha-tutorial&lt;/a&gt;
-&lt;a href="https://github.com/meteor-velocity/velocity-examples"&gt;https://github.com/meteor-velocity/velocity-examples&lt;/a&gt; (technically just examples)&lt;/p&gt;
-
-&lt;h2&gt;About our app&lt;/h2&gt;
-
-&lt;p&gt;In this tutorial, we'll build an app that tracks a user's daily word count. I've gotten into the habit of waking up in the morning and writing at least 500 words a day. It's a great way to empty out my mind and free myself up for a little more creativity. We're going to name this app Capote, after Truman Capote. Whose that? Doesn't matter. But if you don't know, he was a writer from a long time ago and he probably wrote at least 500 words a day (I have no idea, but probably!). Also his last name sounds kind of cool for an app. So there it is, Capote.&lt;/p&gt;
-
-&lt;p&gt;Here are the features we'll build:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;A listing of posts.&lt;/li&gt;
-&lt;li&gt;Create and edit posts.&lt;/li&gt;
-&lt;li&gt;Daily goal set by user.&lt;/li&gt;
-&lt;li&gt;Count words for each post.&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;h2&gt;Set up&lt;/h2&gt;
-
-&lt;p&gt;For this first post, we'll set up our test suite and write our first test. We'll want to create a sample list of posts so we have some data to work with. First things first, we'll generate a new app.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class="language-bash"&gt;$ meteor create capote
-&lt;/code&gt;&lt;/pre&gt;
-
-
-&lt;p&gt;Then let's trash the default files &lt;em&gt;capote.css&lt;/em&gt;, &lt;em&gt;capote.html&lt;/em&gt; and &lt;em&gt;capote.js&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Let's also add in our testing package:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class="language-bash"&gt;$ meteor add mike:mocha
-&lt;/code&gt;&lt;/pre&gt;
-
-
-&lt;p&gt;Let's set up our tests directory structure like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;pre&amp;gt;&amp;lt;code class="language-javascript"&amp;gt;tests/
-- mocha/
-- - client/
-- - server/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-
-&lt;p&gt;This type of pattern is required for velocity to read the tests and you'll need to use it while testing in Meteor with Cucumber, Jasmine, too. What is velocity? Velocity is Meteor's reactive test-runner and it supports a whole bunch of testing frameworks.&lt;/p&gt;
-
-&lt;h2&gt;Our first test&lt;/h2&gt;
-
-&lt;p&gt;Let's start with the server. There's just a few parts to each post we need right now: a timestamp, a title, and the body of the post.&lt;/p&gt;
-
-&lt;p&gt;We'll write our first test. Any mocha tests are first going to be wrapped in the following:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class="language-javascript"&gt;// tests/mocha/server/server.js
-if (!(typeof MochaWeb === 'undefined')){
-  MochaWeb.testOnly(function(){
-    /* some test code*/
-  });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-
-&lt;p&gt;There isn't much documentation I can find about why we ought to do this... It looks like it helps to only run tests in the dev or mirror environment, but I'm honestly not sure. I've been able to run tests without it. For now, I include it because the Velocity developers do it.&lt;/p&gt;
-
-&lt;p&gt;Moving along. We'll write our first test, which just makes sure we have at least one post in the database.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class="language-javascript"&gt;describe("Server initialization", function(){
-  it("should insert posts into the database on server startup", function(){
-    chai.assert(Posts.find().count() &gt; 0);
-  });
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-
-&lt;p&gt;If you run meteor now you'll see that velocity pops up. In your logs you'll also see a message saying, "You can see the mirror logs at: tail -f /path/to/your/logs". You can also pop open another command line window and paste in &lt;em&gt;tail -f /path/to/your/logs&lt;/em&gt; and get some extra insight.&lt;/p&gt;
-
-&lt;p&gt;Both the logs and our UI tell us the same thing. "1 test failed" and "Posts is not defined." I love TDD. It tells us what comes next. We can go ahead and define Posts now.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class="language-javascript"&gt;// model/posts.js
-    Posts = new Mongo.Collection('posts');
-&lt;/code&gt;&lt;/pre&gt;
-
-
-&lt;p&gt;When the tests run again, we're told we have a failed "Server initialization." Let's add some posts on server start up.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class="language-javascript"&gt;// server/app.js
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    if (Posts.find().count() === 0) {
-      Posts.insert({
-        title: "Neutra messenger bag",
-        content: "Tousled forage trust fund readymade Neutra messenger bag. Drinking vinegar chia Marfa, vegan messenger bag disrupt Wes Anderson try-hard. Small batch scenester raw denim synth cronut cornhole, iPhone try-hard single-origin."
-      });
-      Posts.insert({
-        title: "fatback filet mignon",
-        content: "Bacon ipsum dolor amet alcatra turkey shank cupim corned beef brisket chuck boudin tri-tip t-bone kevin fatback filet mignon. Short loin tongue short ribs."
-      });
-      Posts.insert({
-        title: "know what I'm sayin'",
-        content: "You see? It's curious. Ted did figure it out - time travel. And when we get back, we gonna tell everyone. How it's possible, how it's done, what the dangers are. But then why fifty years in the future when the spacecraft encounters a black hole does the computer call it an 'unknown entry event'?"
-      });
-    }
-  });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-
-&lt;p&gt;I used &lt;a href="http://hipsum.co/"&gt;some&lt;/a&gt; &lt;a href="https://baconipsum.com/"&gt;pretty&lt;/a&gt; &lt;a href="http://slipsum.com/"&gt;sweet&lt;/a&gt; ipsum generators to create some sample content. We're inserting three posts with a title and content only if there are no posts in the database upon start up.&lt;/p&gt;
-
-&lt;p&gt;If you check the logs or the velocity helper in the UI, you'll notice that our first test passed. Great!&lt;/p&gt;
-
-&lt;h2&gt;Picking up the pace&lt;/h2&gt;
-
-&lt;p&gt;I'm going to cap this post here, but in the next posts as we build out this app, I'm going to pick up the pace with these tests and we'll get a whole bunch done, real fast.&lt;/p&gt;
-
-&lt;p&gt;You can grab the completed code for this post &lt;a href="https://github.com/austinsamsel/capote/tree/part-1"&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="http://hightopsnyc.com/blog/building-capote-part-2.html"&gt;Continue to Part 2&lt;/a&gt;&lt;/p&gt;
 </content>
   </entry>
 </feed>
