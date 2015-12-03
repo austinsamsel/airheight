@@ -5,13 +5,13 @@ tags: meteor, react, javascript
 layout: layout_article
 ---
 
-# Working with a React View Layer in Meteor
+# Integrating a React View Layer in Meteor
 
 I've been trying to stay focused in terms of what new technologies I'll try out or learn. I've been reading about React since the beginning of the year, but I've held off on doing anything more than a tutorial. Now it seems like [React might be more fully integrated with Meteor](https://forums.meteor.com/t/next-steps-on-blaze-and-the-view-layer/13561) as a front end engine, beyond official support by the Meteor Development Group. According to the discussion its possible Blaze 2.0 could be some kind of merger with React. Once I read that, it gave me the excuse I needed to start working with React.
 
-## <3 you Blaze
+## Still <3 you Blaze
 
-Blaze made development really fast. Wrapping HTML in template tags felt like a pretty good separation of concerns and was really easy to conceptualize. I had my HTML, my CSS, and my Javascript. If I needed some logic in my templates I had a lot of options with spacebars, helpers. However, it seems like we can get all that same functionality with React.
+Blaze made development really fast and productive. Wrapping HTML in template tags felt like a pretty good separation of concerns and was really easy to conceptualize. I had my HTML, my CSS, and my Javascript. If I needed some logic in my templates I had a lot of options with spacebars, helpers. However, it seems like we can get all that same functionality with React.
 
 ## Cleaner Code
 
