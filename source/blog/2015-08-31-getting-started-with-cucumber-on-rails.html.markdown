@@ -5,21 +5,6 @@ date: 2015-08-31 17:09 UTC
 tags: software development
 ---
 
-
-  <!-- <div class="blog-header-content">
-    <h1>Cucumber on Rails</h1>
-    <h2 class="post-subtitle">A Tutorial in Behavior Driven Development</h2>
-    <div class="author-block">
-      <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/images/austin.jpg" alt="austin, founder of High Tops" class="profile-pic author-pic">
-      <div class="author-name">
-        Austin Samsel
-      </div>
-    </div>
-    <div class="published">
-     Published July 10, 2015
-    </div>
-  </div> -->
-
 # Cucumber on Rails
 
 <p>This is a "getting started" with Cucumber and BDD testing in rails. We're literally jumping straight into it. I'm assuming you've already read up on some testing concepts and you've found your way here in order to understand what a workflow with Cucumber might look like and how we think about problems along the way. If you like, you can grab the finished code from <a href="https://github.com/austinsamsel/rails-cuke-todo">GitHub</a>.</p>

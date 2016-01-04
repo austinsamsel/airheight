@@ -1,0 +1,161 @@
+<!doctype html> <html> <head> <meta charset=utf-8> <meta name=viewport content="width=device-width, initial-scale=1.0, user-scalable=yes"> <style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style> <title>Available styles</title> <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['$$$','$$$']]}});</script><script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> </head> <body> <h1>Better Bourbon Buttons</h1> <p>Better button mixins for [Bourbon scss framework].</p> <h2>Demo</h2> <p>For a look at how everything looks, <a href="//mariosant.github.io/bbb-website/">check out this page</a> with code samples and rendered buttons.</p> <h2>Usage</h2> <p>Include the mixins into your SCSS declarations.</p> <pre><code>button.purple {
+    // This will create a purple button
+    @include bbb_flat_style(#e310eb, white); // Ooooh flat style OTB!
+    @include bbb_size(2); // I would like it bigger than usual please
+}
+</code></pre> <h3>Available styles</h3> <p>This is a list with the available mixin styles and their usage.</p> <ul> <li>3D Style: <code>@include bbb_3D_style($background-color, $color, $shadow-size);</code></li> <li>Bordered Style: <code>@include bbb_bordered_style($border-color, $color);</code></li> <li>Flat Style: <code>@include bbb_flat_style($background-color, $color);</code></li> <li>Simple Style: <code>@include bbb_simple_style($background-color, $color);</code></li> </ul> <p>You can also change the size of the button with the size mixin. It is not obligatory, but it is a very easy way to set button size.</p> <pre><code>@include bbb_size(1);  # you can use multipliers to define size
+@include bbb_size(10px);  # or pass the size you want with units
+</code></pre> <h3>Expandability / Alternative styles</h3> <p>As Bourbon framework is itself designed to be expanded, the same logic applies to to these mixins. You will find it rather easy to create your own stylings and modify the already defined styles.</p> <p>Lets create a pill button.</p> <pre><code>button.pill {
+  @include bbb_simple_style();
+  @include bbb_size();
+  border-radius: 100px;
+}
+</code></pre> <h2>Installation</h2> <p>For now, just copy/paste the files into a directory and <code>@import("better-bourbon-buttons/bbb");</code>. There will be a better way in the near future.</p> <h2>Contributions</h2> <p>Contributions are welcome! Please create a pull request.</p> </body> </html>
